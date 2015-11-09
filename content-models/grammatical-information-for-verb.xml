@@ -1,0 +1,6 @@
+<form xmlns="http://www.tei-c.org/ns/1.0" type="grammatical-information-for-verb">
+	<mood value="" />
+	<tns value="" />
+	<per value="" />
+	<form type="details-for-grammatical-information-for-verb" />
+</form>

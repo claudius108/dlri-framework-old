@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader type="text">
+		<fileDesc>
+			<titleStmt>
+				<author />
+				<editor role="reviewer" />
+			</titleStmt>
+		</fileDesc>
+		<profileDesc>
+			<creation>
+				<date when="${date(yyyy-MM-dd'T'HH:mm:ssZ)}" />
+			</creation>
+		</profileDesc>
+		<revisionDesc status="proposed" />
+	</teiHeader>
+	<text>
+		<body>
+			<entry>
+				<form type="main">
+					<orth n="" />
+					<syll />
+					<pron />
+				</form>
+				<gramGrp>
+					<pos value="" />
+				</gramGrp>
+				<sense level="" xml:id="id">
+					<idno type="" />
+					<def n="" />
+					<cit>
+						<quote />
+						<bibl type="">
+							<ptr target="" />
+							<date type="" />
+							<citedRange />
+						</bibl>
+					</cit>
+				</sense>
+				<etym>
+					<idno type="" />
+				</etym>
+			</entry>
+		</body>
+	</text>
+</TEI>

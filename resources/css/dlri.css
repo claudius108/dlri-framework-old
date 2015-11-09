@@ -1,0 +1,191 @@
+/**
+ * CSS file for DLRI.
+ * 
+ * Copyright (C) 2013	Linguistic Institute "IORGU IORDAN - AL.ROSETTI", Romanian Academy.
+ * 
+ * 
+ */
+@namespace oxy url("http://www.oxygenxml.com/extensions/author");
+@namespace xml url('http://www.w3.org/XML/1998/namespace');
+ 
+* {
+	display: block;
+}
+
+*:before {
+	color: gray;
+	font-weight: bold;
+}
+
+title, author, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
+form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'] {
+	visibility: "-oxy-collapse-text";
+}
+
+oxy|comment, form[type = 'main'] > syll {
+	display: none !important;
+}
+
+creation {
+	font-weight: bold;
+}
+
+creation>date {
+	display: inline;
+	font-weight: normal;
+}
+
+revisionDesc {
+	font-weight: bold;
+}
+
+change {
+	font-weight: normal;
+}
+
+entry>form,teiHeader,entry>gramGrp {
+	border: solid 1px black;
+	width: 1100px;
+	min-height: 100px;
+	padding: 10px;
+}
+
+orth,form[type = 'main'] > pron,def,cit,entry>form[type = 'main'] {
+	width: 1000px;
+	background-color: #d8d8d8;
+	margin-top: 5px;
+}
+
+form[type = 'main'] > pron {
+	display: none;
+}
+
+def {
+	margin-left: 10px;
+	border: solid 1px black;
+}
+
+hi {
+	display: inline;
+}
+
+hi[rend = 'bold'] {
+	font-weight: bold;
+}
+
+*:focus {
+      background: red;   /* sexy hot pink */
+}
+
+etym {
+	width: 1125px;
+	border-bottom: solid 1px black;
+	padding-bottom: 10px;	
+}
+
+etym > idno[type = 'trimitere-subtype-for-V.'] + certainty {
+    display: none;
+}
+
+etym > idno:nth-of-type(2)[type = 'etymon-subtype-for-inherited-element'] ~ certainty:nth-of-type(2) {
+	display:  none;		
+}
+
+etym:before {
+	font-weight: bold;
+	width: 1125px;	
+}
+
+etym > idno {
+	display: inline;
+}
+
+etym > idno:first-of-type {
+	border-top: solid 1px black;		
+}
+
+etym:first-of-type:before {
+	padding-bottom: 20px;	
+}
+
+xr > * {
+	display: block;
+}
+
+xr > * > * {
+	display: inline-block;
+}
+
+usg {
+	margin-left: 10px;
+}
+
+usg > * {
+	display: inline-block;
+}
+
+quote {
+	margin-left: 10px;
+	height: 200px;
+}
+
+bibl>* {
+	display: none;
+}
+
+entry>gramGrp>* {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+pos[value=''] ~ * {
+	display: none;
+}
+
+form>gramGrp>* {
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
+
+form[type = 'grammatical-information'] > * {
+	display: inline;
+	margin-right: 10px;
+}
+
+form[type = 'grammatical-information-for-plural'] > gen, form[type = 'grammatical-information-for-case'] > case {
+	margin-left: 10px;	
+}
+
+form[type = 'grammatical-information-for-verb'] > mood,
+form[type = 'grammatical-information-for-verb'] > tns,
+form[type = 'grammatical-information-for-verb'] > per,
+form[type = 'details-for-grammatical-information-for-verb'] {
+	display: inline;
+	margin-right: 10px;
+}
+
+entry sense {
+	display: none;
+}
+
+sense sense {
+	display: none;
+}
+
+sense {
+	border: solid 1px black;
+	width: 1122px;
+	min-height: 600px;
+}
+
+sense > * {
+	display: block;
+}
+
+sense > form {
+	margin-left: 10px;
+	border: solid 1px black;
+}

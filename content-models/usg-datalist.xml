@@ -1,0 +1,111 @@
+
+<datalist xmlns="http://www.w3.org/1999/xhtml" id="usage-options">
+	 <option label="Ban." value="geo"/>
+	 <option label="Bas." value="geo"/>
+	 <option label="Bucov." value="geo"/>
+	 <option label="Dobr." value="geo"/>
+	 <option label="Maram." value="geo"/>
+	 <option label="Mold." value="geo"/>
+	 <option label="Munt." value="geo"/>
+	 <option label="Olt." value="geo"/>
+	 <option label="Transilv." value="geo"/>
+	 <option label="învechit" value="time"/>
+	 <option label="ieşit din uz" value="time"/>
+	 <option label="astăzi rar" value="time"/>
+	 <option label="Aeron." value="dom"/>
+	 <option label="Agric." value="dom"/>
+	 <option label="Agron." value="dom"/>
+	 <option label="Anat." value="dom"/>
+	 <option label="Apic." value="dom"/>
+	 <option label="A. plast." value="dom"/>
+	 <option label="Arheol." value="dom"/>
+	 <option label="Arhit." value="dom"/>
+	 <option label="Astron." value="dom"/>
+	 <option label="Biol." value="dom"/>
+	 <option label="Bis." value="dom"/>
+	 <option label="Bot." value="dom"/>
+	 <option label="Chim." value="dom"/>
+	 <option label="Cor." value="dom"/>
+	 <option label="Cosm." value="dom"/>
+	 <option label="Culin." value="dom"/>
+	 <option label="Ec. pol." value="dom"/>
+	 <option label="Entom." value="dom"/>
+	 <option label="Farm." value="dom"/>
+	 <option label="Filoz./Filos." value="dom"/>
+	 <option label="Fil." value="dom"/>
+	 <option label="Fin." value="dom"/>
+	 <option label="Fiz." value="dom"/>
+	 <option label="Fiziol." value="dom"/>
+	 <option label="Fon." value="dom"/>
+	 <option label="Geogr." value="dom"/>
+	 <option label="Geol." value="dom"/>
+	 <option label="Geom." value="dom"/>
+	 <option label="Gram." value="dom"/>
+	 <option label="Hort." value="dom"/>
+	 <option label="Iht." value="dom"/>
+	 <option label="Ind." value="dom"/>
+	 <option label="Ist." value="dom"/>
+	 <option label="Jur." value="dom"/>
+	 <option label="Lingv." value="dom"/>
+	 <option label="Lit." value="dom"/>
+	 <option label="Mat." value="dom"/>
+	 <option label="Med." value="dom"/>
+	 <option label="Med. vet." value="dom"/>
+	 <option label="Meteor." value="dom"/>
+	 <option label="Mil." value="dom"/>
+	 <option label="Min." value="dom"/>
+	 <option label="Mitol." value="dom"/>
+	 <option label="Muz." value="dom"/>
+	 <option label="Nav." value="dom"/>
+	 <option label="Numism." value="dom"/>
+	 <option label="Ornit." value="dom"/>
+	 <option label="Psih." value="dom"/>
+	 <option label="Silv." value="dom"/>
+	 <option label="Şt. nat." value="dom"/>
+	 <option label="Tehn." value="dom"/>
+	 <option label="Teol." value="dom"/>
+	 <option label="Text." value="dom"/>
+	 <option label="Tipogr." value="dom"/>
+	 <option label="Top." value="dom"/>
+	 <option label="Zool." value="dom"/>
+	 <option label="livresc" value="register"/>
+	 <option label="popular" value="register"/>
+	 <option label="regional" value="register"/>
+	 <option label="familiar" value="register"/>
+	 <option label="în dicţionarele din trecut" value="register"/>
+	 <option label="grecism" value="register"/>
+	 <option label="turcism" value="register"/>
+	 <option label="franţuzism" value="register"/>
+	 <option label="englezism" value="register"/>
+	 <option label="latinism" value="register"/>
+	 <option label="neobişnuit" value="register"/>
+	 <option label="argotic" value="register"/>
+	 <option label="figurat" value="style"/>
+	 <option label="ironic" value="style"/>
+	 <option label="depreciativ" value="style"/>
+	 <option label="glumeţ" value="style"/>
+	 <option label="emfatic" value="style"/>
+	 <option label="eufemistic" value="style"/>
+	 <option label="peiorativ" value="style"/>
+	 <option label="poetic" value="style"/>
+	 <option label="ca epitet" value="style"/>
+	 <option label="rar" value="plev"/>
+	 <option label="mai ales" value="plev"/>
+	 <option label="adesea" value="plev"/>
+	 <option label="în special" value="plev"/>
+	 <option label="curent" value="plev"/>
+	 <option label="în dicţionare" value="plev"/>
+	 <option label="substantivat" value="gram"/>
+	 <option label="adverbial" value="gram"/>
+	 <option label="absolut" value="gram"/>
+	 <option label="la sg." value="gram"/>
+	 <option label="la pl." value="gram"/>
+	 <option label="la sg. cu sens de pl." value="gram"/>
+	 <option label="la sg. cu sens colectiv" value="gram"/>
+	 <option label="în forma pasivă" value="gram"/>
+	 <option label="la m." value="gram"/>
+	 <option label="la f." value="gram"/>
+	 <option label="la n." value="gram"/>
+	 <option label="articulat" value="gram"/>
+	 <option label="la gerunziu" value="gram"/>
+</datalist>

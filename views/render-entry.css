@@ -1,0 +1,39 @@
+/**
+ * CSS file for DLRI.
+ * 
+ * Copyright (C) 2013	Linguistic Institute "IORGU IORDAN - AL.ROSETTI", Romanian Academy.
+ * 
+ * 
+ *
+
+html {
+	background-color: red;
+}
+
+.headword, .sense-level, .bold {
+  font-weight: bold;
+}
+
+.superscript {
+  vertical-align: super;
+  font-size: 80%;
+}
+
+.spacing, .analog, .asoc, .trimitere {
+  letter-spacing: 0.3em;
+  
+}
+
+.quote {
+  font-style: italic;
+}            
+       
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer button {
+    margin: 0 20px 10px 0;
+}

@@ -1,0 +1,15 @@
+@namespace oxy url("http://www.oxygenxml.com/extensions/author");
+@namespace xml url('http://www.w3.org/XML/1998/namespace');
+
+entry sense[currentEdited='false'], entry sense[currentEdited='false']>* {
+	display: none;
+}
+
+entry sense[currentEdited='false'] {
+	border: none;
+}
+
+/*The current edited sense and it's children are displayed*/
+entry sense[currentEdited='true'], entry sense[currentEditedParent='true'] {
+	display: block;
+}
