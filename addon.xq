@@ -851,7 +851,7 @@ ua:action(
         if (@type = 'cuvântul titlu-element moştenit-etimon atestat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'high',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -861,7 +861,7 @@ ua:action(
         if (@type = 'cuvântul titlu-element moştenit-etimon neatestat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -871,14 +871,14 @@ ua:action(
         if (@type = 'cuvântul titlu-element de substrat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, doc('content-models/mentioned.xml')) after ./following-sibling::*[1]
             )
         else (),  
         if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
@@ -886,7 +886,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-derivat-cu sufix')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'sufix'
@@ -894,7 +894,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix şi sufix')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
                 replace value of node ./following-sibling::*[3]/@type with 'base',
@@ -903,7 +903,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-compus-element de compunere + cuvânt bază')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'component-element',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
@@ -911,7 +911,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'component-element'
@@ -919,7 +919,7 @@ ua:action(
         else (),              
         if (@type = 'cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
@@ -935,67 +935,67 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-derivat regresiv')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'regressive-derivate'
         )
         else (),                
         if (@type = 'cuvântul titlu-formație internă-derivat postverbal')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'postverbal-derivate'
         )
         else (),
         if (@type = 'cuvântul titlu-formație internă-trimitere-V.')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low'
              )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-trimitere-Cf.')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1]
              )
         else (),     
         if (starts-with(@type, 'cuvântul titlu-formație internă-trimitere-De la-'))
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
         )
         else (),         
         if (starts-with(@type, 'cuvântul titlu-formație internă-trimitere-Din-'))
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
         )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-prescurtare')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'abbreviation'
         )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-contaminare-cu un element-în care primul element este')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
         )
         else (),         
         if (@type = 'cuvântul titlu-formație internă-contaminare-cu un element-în care unul dintre elemente este')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
         )
         else (),            
         if (@type = 'cuvântul titlu-formație internă-contaminare-cu două sau mai multe elemente')
         then (
-               delete nodes ./following-sibling::*[position() > 1],
+               delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes ($term-template, $term-template, $term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'contaminated-element',
                 replace value of node ./following-sibling::*[3]/@type with 'alternative-contaminated-element',
@@ -1012,7 +1012,7 @@ ua:action(
         else (), 
                  if (@type = 'cuvântul titlu-formație internă-onomatopee')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@type with 'onomatopoeia'
         )
@@ -1081,38 +1081,38 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-element extern-împrumut-etimon sigur')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
              )
         else (),        
         if (@type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
              )
         else (),         
         if (@type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'v. sl.'
         )
         else (),
         if (@type = 'cuvântul titlu-element extern-calc')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
              )
         else (),        
         if (@type = 'cuvântul titlu-element extern-trimitere')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node doc('content-models/mentioned.xml') after ./following-sibling::*[1]
              )
         else (), 
         if (@type = 'cuvântul titlu-element necunoscut')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert node $term-template after ./following-sibling::*[1]
         )
         else (),        
@@ -1135,13 +1135,7 @@ ua:action(
                 replace value of node ./following-sibling::*[1]/@type with 'lexical-variant'
         )
         else (),        
-        if (@type = 'variantă-directă-cu schimbare de suf.')
-        then (
-                delete nodes following-sibling::*,
-                insert node $term-template after .,
-                replace value of node ./following-sibling::*[1] with 'Cu schimbare de sufix'
-        )
-        else (), 
+
         
         
         
@@ -1156,7 +1150,7 @@ ua:action(
         if (@type = 'etymon-type-for-multiple-senses')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes (doc('content-models/idno.xml'), doc('content-models/sense-number-pointer.xml'), doc('content-models/idno.xml')) after ./following-sibling::*[1]
             )
         else (),   
@@ -1165,7 +1159,7 @@ ua:action(
         else (),
         if (@type = 'etymon-type-for-multiple-lexical-variants')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and local-name() != 'note'],
                 insert nodes (doc('content-models/idno.xml'), $term-template, doc('content-models/idno.xml')) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[3]/@type with 'lexical-variant'
         )
@@ -1530,6 +1524,8 @@ ua:template("etym-idno-first-of-type",
             <option label="variantă-directă-prin accidente fonetice-sinereză" value="variantă-directă-prin accidente fonetice-sinereză" />
             <option label="variantă-directă-cu schimbare de suf." value="variantă-directă-cu schimbare de suf." />
             
+            <option label="variantă-directă-refăcut după forma articulată" value="variantă-directă-refăcut după forma articulată" />
+            <option label="variantă-directă-refăcut după sg. art." value="variantă-directă-refăcut după sg. art." />
             
         </select>
     </template>
