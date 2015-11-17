@@ -26,7 +26,8 @@
 					<pos value="" />
 				</gramGrp>
 				<sense level="" xml:id="id">
-					<idno type="" />
+					<idno n="tip-unitate-semantică-subsumată" type="" />
+					<idno n="tip-proces-semantic" type="" />
 					<def n="" />
 					<cit>
 						<quote />
