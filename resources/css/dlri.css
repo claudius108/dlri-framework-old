@@ -19,7 +19,8 @@
 
 title, author, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'] {
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
+note {
 	visibility: "-oxy-collapse-text";
 }
 
