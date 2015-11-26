@@ -789,7 +789,7 @@ ua:action(
     (
         if (@value = ('adj.-empty', 'adj.-pos.', 'adj.-inter.-rel.', 'adj.-dem.', 'adj.-nehot.', 'art.-adj.', 'art.-hot.', 'art.-nehot.',
             'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-(folosit şi absol.)', 'vb.-absol.',
-            'vb.-fact.">fact.', 'vb.-intranz.', 'vb.-refl.', 'vb.-refl. impers.', 'vb.-refl. pos.', 'vb.-refl. recipr.', 'vb.-refl. unipers.',
+            'vb.-fact.', 'vb.-intranz.', 'vb.-refl.', 'vb.-refl. impers.', 'vb.-refl. pos.', 'vb.-refl. recipr.', 'vb.-refl. unipers.',
             'vb.-tranz.', 'vb.-tranz. fact.', 'vb.-intranz. şi refl.'))
         then ()
         else (),            
@@ -841,6 +841,11 @@ ua:action(
             delete nodes ./following-sibling::form[@type = 'unitate-semantică-subsumată']
         )
         else (),
+        if (parent::*[@type = 'grammatical-information'] and @type = '')
+        then (
+            delete nodes ./following-sibling::*
+        )
+        else (),     
         if (@n = 'tip-unitate-semantică-subsumată' and string-length(@type) > 0)
         then
             (
@@ -848,8 +853,7 @@ ua:action(
                 ,
                 insert node <form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" /> after parent::*/idno[last()]
             )        
-        else (),        
-        
+        else (), 
         if (@type = 'cuvântul titlu-element moştenit-etimon atestat')
         then
             (
@@ -1114,35 +1118,33 @@ ua:action(
         else (), 
         if (@type = 'grammatical-information-type-for-adj-et-al')
         then (
-            delete nodes ./following-sibling::*[position() > 1],
-            insert node doc('content-models/idno.xml') after ./following-sibling::*[1]
+            delete nodes ./following-sibling::*,
+            insert node doc('content-models/idno.xml') after .
         )
         else (),
         if (@type = 'grammatical-information-type-for-vb')
         then (
-            delete nodes ./following-sibling::*[position() > 1],
-            insert node doc('content-models/grammatical-information-for-verb.xml') after ./following-sibling::*[1]
+            delete nodes ./following-sibling::*,
+            insert node doc('content-models/grammatical-information-for-verb.xml') after .
         )
         else (),
         if (@type = 'grammatical-information-subtype-for-pl')
         then (
-            delete nodes ./following-sibling::*[position() > 1],
-            insert node doc('content-models/grammatical-information-for-plural.xml') after ./following-sibling::*[1]
+            delete nodes ./following-sibling::*,
+            insert node doc('content-models/grammatical-information-for-plural.xml') after .
         )
         else (),        
         if (@type = 'grammatical-information-subtype-for-case')
         then (
-            delete nodes ./following-sibling::*[position() > 1],
-            insert node doc('content-models/grammatical-information-for-case.xml') after ./following-sibling::*[1]
+            delete nodes ./following-sibling::*,
+            insert node doc('content-models/grammatical-information-for-case.xml') after .
         )
         else (),
         if (@type = 'grammatical-information-subtype-for-gender')
-        then
-            (
-                delete nodes ./following-sibling::*[position() > 1]
-                ,
-                insert node doc('content-models/grammatical-information-for-gender.xml') after ./following-sibling::*[1]
-            )
+        then (
+                delete nodes ./following-sibling::*,
+                insert node doc('content-models/grammatical-information-for-gender.xml') after .
+        )
         else ()
     )
 ),
@@ -3132,19 +3134,10 @@ ua:template("author-before",
             <option label="Vasilescu Florin" value="FlorinV" />
         </select>
         <button onclick="{oxy:execute-action-by-name('insertAuthorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("author:before"), "author-before"),
-
-ua:template("author-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('author-before')
-        }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("author:not( :first-of-type):before"), "author-not-first-of-type-before"), 
 
 ua:template("editor-before",
     <template>
@@ -3153,19 +3146,10 @@ ua:template("editor-before",
             <option label="guest" value="guest" />
         </select>
         <button onclick="{oxy:execute-action-by-name('insertEditorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/editor) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("editor:before"), "editor-before"),
-
-ua:template("editor-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('editor-before')
-        }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("editor:not( :first-of-type):before"), "editor-not-first-of-type-before"), 
 
 ua:template("creation",
     <template>
