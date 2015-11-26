@@ -853,7 +853,7 @@ ua:action(
         if (@type = 'cuvântul titlu-element moştenit-etimon atestat')
         then
             (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'high',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -863,7 +863,7 @@ ua:action(
         if (@type = 'cuvântul titlu-element moştenit-etimon neatestat')
         then
             (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -873,31 +873,35 @@ ua:action(
         if (@type = 'cuvântul titlu-element de substrat')
         then
             (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert nodes ($term-template, doc('content-models/mentioned.xml')) after ./following-sibling::*[1]
+                delete nodes ./following-sibling::*[position() > 1],
+                insert nodes ($term-template, doc('content-models/mentioned.xml')) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''
             )
         else (),  
         if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix')
         then
             (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
             )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-derivat-cu sufix')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'sufix'
         )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix şi sufix')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
                 replace value of node ./following-sibling::*[3]/@type with 'base',
                 replace value of node ./following-sibling::*[4]/@type with 'sufix'
@@ -905,53 +909,68 @@ ua:action(
         else (),        
         if (@type = 'cuvântul titlu-formație internă-compus-element de compunere + cuvânt bază')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'component-element',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
         )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'component-element'
         )
         else (),              
         if (@type = 'cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
                 replace value of node ./following-sibling::*[3]/@type with 'base'
         )
         else (),
         if (@type = 'cuvântul titlu-formație internă-compus-formație savantă din latină')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'latin-base',
                 replace value of node ./following-sibling::*[3]/@type with 'added-base'
         )
         else (),
+        if (@type = 'cuvântul titlu-formație internă-compus-format din')
+        then (
+                delete nodes ./following-sibling::*[position() > 1],
+                insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
+                replace value of node ./following-sibling::*[2]/@type with 'cuvântul titlu-formație internă-compus-format din-bază',
+                replace value of node ./following-sibling::*[3]/@type with 'cuvântul titlu-formație internă-compus-format din-element adăugat'
+        )
+        else (),    
         if (@type = 'cuvântul titlu-formație internă-trimitere-V.')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low'
              )
         else (),        
         if (@type = 'cuvântul titlu-formație internă-trimitere-Cf.')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1]
+                delete nodes ./following-sibling::*[position() > 1],
+                insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''
              )
         else (),
         if (@type = 'cuvântul titlu-formație internă-contaminare-cu două sau mai multe elemente')
         then (
-               delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+               delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template, $term-template, $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@type with 'contaminated-element',
                 replace value of node ./following-sibling::*[3]/@type with 'alternative-contaminated-element',
                 replace value of node ./following-sibling::*[4]/@type with 'contamination-element',
@@ -960,23 +979,40 @@ ua:action(
         else (),
         if (@type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
+                delete nodes ./following-sibling::*[position() > 1],
                 insert node $term-template after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with '',                
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'v. sl.'
         )
         else (),       
         if (@type = 'cuvântul titlu-element extern-trimitere')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert node doc('content-models/mentioned.xml') after ./following-sibling::*[1]
+                delete nodes ./following-sibling::*[position() > 1],
+                insert node doc('content-models/mentioned.xml') after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''              
              )
         else (),    
         if (@type = 'unul sau mai multe sensuri-explicarea sensului-cf. izvor')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert nodes (doc('content-models/ptr.xml'), $bibl-template) after ./following-sibling::*[1]
+                delete nodes ./following-sibling::*[position() > 1],
+                insert nodes (doc('content-models/ptr.xml'), $bibl-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''                
              )
         else (),  
+        if (@type =
+            (
+                'unul sau mai multe sensuri-sensul-cf. etimon',
+                'unul sau mai multe sensuri-sensul-cf. și etimon'
+            )
+        )
+        then (
+                delete nodes ./following-sibling::*[position() > 1],
+                insert nodes (doc('content-models/ptr.xml'), $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''                
+             )
+        else (),        
+        
+        
         if (@type = 
             (
                 'cuvântul titlu-formație internă-contaminare-cu un element-în care primul element este',
@@ -984,9 +1020,10 @@ ua:action(
             )
         )
         then (
-               delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert node $term-template after ./following-sibling::*[1],
-                replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
+               delete nodes ./following-sibling::*[position() > 1],
+               insert node $term-template after ./following-sibling::*[1],
+               replace value of node ./following-sibling::*[1]/@cert with '',               
+               replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
         )
         else (),
         if (@type =
@@ -1020,19 +1057,8 @@ ua:action(
                     'cuvântul titlu-element necunoscut',
                     'variantă-directă-etimon variantă-atestat',
                     'variantă-directă-etimon variantă-reconstruit',                
-                    'variantă-directă-sg. refăcut după pluralul',
+                    'variantă-directă-singular refăcut după pluralul',
                     'variantă-directă-prin apropiere de',
-                    'variantă-directă-prin accidente fonetice-afereză',
-                    'variantă-directă-prin accidente fonetice-proteză',
-                    'variantă-directă-prin accidente fonetice-sincopă',
-                    'variantă-directă-prin accidente fonetice-epenteză',
-                    'variantă-directă-prin accidente fonetice-anaptixă',
-                    'variantă-directă-prin accidente fonetice-apocopă',
-                    'variantă-directă-prin accidente fonetice-elidare',
-                    'variantă-directă-prin accidente fonetice-metateză',
-                    'variantă-directă-prin accidente fonetice-propagare',
-                    'variantă-directă-prin accidente fonetice-sinereză',                  
-                    
                     'variantă-directă-prin derivare cu suf.',
                     'variantă-directă-sub influența',
                     'variantă-directă-etimologie populară prin apropiere de',
@@ -1042,80 +1068,81 @@ ua:action(
                 )
         )
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert node $term-template after ./following-sibling::*[1]
+                delete nodes ./following-sibling::*[position() > 1],
+                insert node $term-template after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with ''
         )
         else (),         
         if (starts-with(@type, 'una sau mai multe variante lexicale-') and ends-with(@type, '-trimitere-cf. cuvânt'))
         then (
-            delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-            insert node doc('content-models/ptr.xml') after ./following-sibling::*[1]
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node doc('content-models/ptr.xml') after ./following-sibling::*[1],
+            replace value of node ./following-sibling::*[1]/@cert with ''
         )
-        else (),          
+        else (), 
+        if (starts-with(@type, 'una sau mai multe variante lexicale-') and ends-with(@type, '-trimitere-cf. izvor'))
+        then (
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node $bibl-template after ./following-sibling::*[1],
+            replace value of node ./following-sibling::*[1]/@cert with ''
+        )
+        else (),                 
         if (@type = 
             (
                 '',
                 'variantă-directă-cu schimbare de suf.',
                 'variantă-directă-refăcut după forma articulată',
-                'variantă-directă-refăcut după sg. art.'                
+                'variantă-directă-refăcut după sg. art.',
+                'variantă-directă-sg. refăcut după plural',
+                'variantă-directă-prin etimologie populară',
+                'variantă-directă-prin accidente fonetice-afereză',
+                'variantă-directă-prin accidente fonetice-proteză',
+                'variantă-directă-prin accidente fonetice-sincopă',
+                'variantă-directă-prin accidente fonetice-epenteză',
+                'variantă-directă-prin accidente fonetice-anaptixă',
+                'variantă-directă-prin accidente fonetice-apocopă',
+                'variantă-directă-prin accidente fonetice-elidare',
+                'variantă-directă-prin accidente fonetice-metateză',
+                'variantă-directă-prin accidente fonetice-propagare',
+                'variantă-directă-prin accidente fonetice-sinereză'
             )
         )
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)])
-        else (),    
-        if (@type = 'etymon-type-for-multiple-senses')
-        then
-            (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert nodes (doc('content-models/idno.xml'), doc('content-models/sense-number-pointer.xml'), doc('content-models/idno.xml')) after ./following-sibling::*[1]
-            )
-        else (),   
-        if (@type = ('multiple-senses-etymon-subtype-for-cf etimon', 'multiple-senses-etymon-subtype-for-cf. şi etimon'))
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/ptr.xml') after ./following-sibling::*[1])
-        else (),
-        if (@type = 'etymon-type-for-multiple-lexical-variants')
         then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert nodes (doc('content-models/idno.xml'), $term-template, doc('content-models/idno.xml')) after ./following-sibling::*[1],
-                replace value of node ./following-sibling::*[3]/@type with 'lexical-variant'
+            delete nodes ./following-sibling::*[position() > 1],
+            replace value of node ./following-sibling::*[1]/@cert with ''
         )
-        else (),        
-        if (@type = ('lexical-variant-subtype-for-directă', 'lexical-variant-subtype-for-trimitere'))
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/idno.xml') after ./following-sibling::*[1])
-        else (),
-        if (@type = 'trimitere-subtype-for-cf. izvor')
-        then (
-            delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-            insert node $bibl-template after ./following-sibling::*[1]
-        )
-        else (),
-        if (starts-with(@type, 'directă-subtype-for-'))
-        then (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)],
-                insert node $term-template after ./following-sibling::*[1]
-        )
-        else (),        
+        else (), 
         if (@type = 'grammatical-information-type-for-adj-et-al')
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/idno.xml') after ./following-sibling::*[1])
+        then (
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node doc('content-models/idno.xml') after ./following-sibling::*[1]
+        )
         else (),
         if (@type = 'grammatical-information-type-for-vb')
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/grammatical-information-for-verb.xml') after ./following-sibling::*[1])
+        then (
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node doc('content-models/grammatical-information-for-verb.xml') after ./following-sibling::*[1]
+        )
         else (),
         if (@type = 'grammatical-information-subtype-for-pl')
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/grammatical-information-for-plural.xml') after ./following-sibling::*[1])
+        then (
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node doc('content-models/grammatical-information-for-plural.xml') after ./following-sibling::*[1]
+        )
         else (),        
         if (@type = 'grammatical-information-subtype-for-case')
-        then (delete nodes ./following-sibling::*[position() = (2 to last() - 1)], insert node doc('content-models/grammatical-information-for-case.xml') after ./following-sibling::*[1])
+        then (
+            delete nodes ./following-sibling::*[position() > 1],
+            insert node doc('content-models/grammatical-information-for-case.xml') after ./following-sibling::*[1]
+        )
         else (),
         if (@type = 'grammatical-information-subtype-for-gender')
         then
             (
-                delete nodes ./following-sibling::*[position() = (2 to last() - 1)]
+                delete nodes ./following-sibling::*[position() > 1]
                 ,
                 insert node doc('content-models/grammatical-information-for-gender.xml') after ./following-sibling::*[1]
             )
-        else (),
-        if (@type != '')
-        then ()
         else ()
     )
 ),
@@ -1181,8 +1208,21 @@ ua:action(
         "smallIconPath" := "${framework}/resources/images/add.png"
     }, 
     (
-        insert node $term-template after .,
+        insert node $term-template after .
+        ,
         replace value of node ./following-sibling::*[1]/@type with 'added-base'
+    )
+),
+ua:action(
+    "insertTermElementOfTypeElementAdăugat",
+    map { 
+        "name" := "insertTermElementOfTypeElementAdăugat",
+        "smallIconPath" := "${framework}/resources/images/add.png"
+    }, 
+    (
+        insert node $term-template after .
+        ,
+        replace value of node ./following-sibling::*[1]/@type with 'cuvântul titlu-formație internă-compus-format din-element adăugat'
     )
 ),
 ua:action(
@@ -1339,10 +1379,8 @@ ua:attach-template(ua-dt:css-selector("etym:not( :first-of-type):before"), "etym
 ua:template("etym-idno-first-of-type",
     <template>
         \00000A Etimologie pentru&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false" style="width: 70px;">
+        <datalist id="etym-options">
             <option label="" value="" />
-            <option label="unul sau mai multe sensuri" value="etymon-type-for-multiple-senses" />
-            <option label="una sau mai multe variante lexicale" value="etymon-type-for-multiple-lexical-variants" />
             <option label="cuvântul titlu-element moştenit-etimon atestat" value="cuvântul titlu-element moştenit-etimon atestat" />
             <option label="cuvântul titlu-element moştenit-etimon neatestat" value="cuvântul titlu-element moştenit-etimon neatestat" />
             <option label="cuvântul titlu-element de substrat" value="cuvântul titlu-element de substrat" />
@@ -1353,6 +1391,7 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere" value="cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere" />
             <option label="cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază" value="cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază" />
             <option label="cuvântul titlu-formație internă-compus-formație savantă din latină" value="cuvântul titlu-formație internă-compus-formație savantă din latină" />
+            <option label="cuvântul titlu-formație internă-compus-format din" value="cuvântul titlu-formație internă-compus-format din" />
             <option label="cuvântul titlu-formație internă-derivat regresiv" value="cuvântul titlu-formație internă-derivat regresiv" />
             <option label="cuvântul titlu-formație internă-derivat postverbal" value="cuvântul titlu-formație internă-derivat postverbal" />
             <option label="cuvântul titlu-formație internă-trimitere-V." value="cuvântul titlu-formație internă-trimitere-V." />
@@ -1388,13 +1427,14 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul titlu-element extern-trimitere" value="cuvântul titlu-element extern-trimitere" />
             <option label="cuvântul titlu-element necunoscut" value="cuvântul titlu-element necunoscut" />
             <option label="unul sau mai multe sensuri-explicarea sensului-cf. izvor" value="unul sau mai multe sensuri-explicarea sensului-cf. izvor" />
-            
-            
-            
+            <option label="unul sau mai multe sensuri-sensul-cf. etimon" value="unul sau mai multe sensuri-sensul-cf. etimon" />
+            <option label="unul sau mai multe sensuri-sensul-cf. și etimon" value="unul sau mai multe sensuri-sensul-cf. și etimon" />
             <option label="variantă-directă-etimon variantă-atestat" value="variantă-directă-etimon variantă-atestat" />
             <option label="variantă-directă-etimon variantă-reconstruit" value="variantă-directă-etimon variantă-reconstruit" />
-            <option label="variantă-directă-sg. refăcut după pluralul" value="variantă-directă-sg. refăcut după pluralul" />
+            <option label="variantă-directă-sg. refăcut după plural" value="variantă-directă-sg. refăcut după plural" />            
+            <option label="variantă-directă-singular refăcut după pluralul" value="variantă-directă-singular refăcut după pluralul" />
             <option label="variantă-directă-prin apropiere de" value="variantă-directă-prin apropiere de" />
+            <option label="variantă-directă-prin etimologie populară" value="variantă-directă-prin etimologie populară" />
             <option label="variantă-directă-prin accidente fonetice-afereză" value="variantă-directă-prin accidente fonetice-afereză" />
             <option label="variantă-directă-prin accidente fonetice-proteză" value="variantă-directă-prin accidente fonetice-proteză" />
             <option label="variantă-directă-prin accidente fonetice-sincopă" value="variantă-directă-prin accidente fonetice-sincopă" />
@@ -1415,77 +1455,16 @@ ua:template("etym-idno-first-of-type",
             <option label="variantă-directă-derivat regresiv de la" value="variantă-directă-derivat regresiv de la" />
             <option label="variantă-directă-prin confuzie cu" value="variantă-directă-prin confuzie cu" />
             <option label="una sau mai multe variante lexicale-variantă-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variantă-trimitere-cf. cuvânt" />
+            <option label="una sau mai multe variante lexicale-variantă-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variantă-trimitere-cf. izvor" />
             <option label="una sau mai multe variante lexicale-variante cu-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variante cu-trimitere-cf. cuvânt" />
+            <option label="una sau mai multe variante lexicale-variante cu-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variante cu-trimitere-cf. izvor" />
             <option label="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. cuvânt" />
-        </select>
+            <option label="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. izvor" />
+        </datalist>
+        <input data-ua-ref="{@type}" size="700" list="etym-options" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
-
-ua:template("etymon-type-for-multiple-senses-first-idno",
-    <template>
-        Pentru&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
-            <option label="explicarea sensului" value="multiple-senses-etymon-subtype-for-explicarea sensului" />
-            <option label="sensul" value="multiple-senses-etymon-subtype-for-sensul" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'etymon-type-for-multiple-senses'] + certainty + idno"), "etymon-type-for-multiple-senses-first-idno"),
-
-ua:template("etymon-type-for-multiple-senses-second-idno",
-    <template>
-        Etimologie sens&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
-            <option label="cf. izvor" value="multiple-senses-etymon-subtype-for-cf. izvor" />
-            <option label="cf etimon" value="multiple-senses-etymon-subtype-for-cf etimon" />
-            <option label="cf. şi etimon" value="multiple-senses-etymon-subtype-for-cf. şi etimon" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'etymon-type-for-multiple-senses'] + certainty + idno ~ ptr + idno"), "etymon-type-for-multiple-senses-second-idno"),
-
-ua:template("variantă-directă-prin accidente fonetice-template",
-    <template>
-        Variantă lexicală&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-prin accidente fonetice-'] ~ term:after"), "variantă-directă-prin accidente fonetice-template"),
-
-ua:template("lexical-variant-idno",
-    <template>
-        Tip etimologie&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
-            <option label="directă" value="lexical-variant-subtype-for-directă" />
-            <option label="trimitere" value="lexical-variant-subtype-for-trimitere" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'lexical-variant'] + idno"), "lexical-variant-idno"),
-
-ua:template("lexical-variant-subtype-for-directă",
-    <template>
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
-            <option label="etimon variantă" value="directă-subtype-for-etimon variantă" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'lexical-variant-subtype-for-directă'] + idno"), "lexical-variant-subtype-for-directă"),
-
-ua:template("lexical-variant-subtype-for-trimitere",
-    <template>
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
-            <option label="cf. izvor" value="trimitere-subtype-for-cf. izvor" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'lexical-variant-subtype-for-trimitere'] + idno"), "lexical-variant-subtype-for-trimitere"),
 
 ua:template("variantă-directă-etimon variantă-*-template",
     <template>
@@ -1570,41 +1549,68 @@ ua:template("cuvântul titlu-formație internă-denumire comercială-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-denumire comercială'] ~ term"), "cuvântul titlu-formație internă-denumire comercială-template"),
 
-ua:template("latin-base", <template>lat. <input data-ua-ref="{text()}" size="22" /></template>),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'latin-base']"), "latin-base"),
+ua:template("cuvântul titlu-formație internă-compus-formație savantă din latină-term-first-of-type-template",
+    <template>
+        lat.
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-formație savantă din latină'] ~ term:first-of-type:after"), "cuvântul titlu-formație internă-compus-formație savantă din latină-term-first-of-type-template"),
+
+ua:template("cuvântul titlu-formație internă-compus-formație savantă din latină-term-not-first-of-type-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:execute-action-by-name('insertAddedBase')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-formație savantă din latină'] ~ term:not( :first-of-type):after"), "cuvântul titlu-formație internă-compus-formație savantă din latină-term-not-first-of-type-template"),
+
+
+
+
+
+ua:template("cuvântul titlu-formație internă-compus-format din-term-bază-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-format din'] ~ term[type = 'cuvântul titlu-formație internă-compus-format din-bază']:after"), "cuvântul titlu-formație internă-compus-format din-term-bază-template"),
+
+ua:template("cuvântul titlu-formație internă-compus-format din-term-element adăugat-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:execute-action-by-name('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul titlu-formație internă-compus-format din-element adăugat']) >= 2};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-format din'] ~ term[type = 'cuvântul titlu-formație internă-compus-format din-element adăugat']:after"), "cuvântul titlu-formație internă-compus-format din-term-element adăugat-template"),
+
+
+
 
 ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
 
-ua:template("etymon-type-for-multiple-senses-sense-number",
-    <template>
-        <input data-ua-ref="{text()}" size="5" />
-        <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'sense-number']) > 1};" />
-     </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'etymon-type-for-multiple-senses'] + certainty + idno ~ ptr[type = 'sense-number']"), "etymon-type-for-multiple-senses-sense-number"),
-
-ua:template("multiple-senses-etymon-subtype-for-cf etimon",
-    <template>
-        Cf. etimon&amp;nbsp;
-        <input data-ua-ref="{text()}" size="5" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'multiple-senses-etymon-subtype-for-cf etimon'] ~ ptr"), "multiple-senses-etymon-subtype-for-cf etimon"),
-
-ua:template("multiple-senses-etymon-subtype-for-cf. şi etimon", <template>Cf. şi etimon <input data-ua-ref="{text()}" size="5" /> Nr. omonim <input data-ua-ref="{@subtype}" size="3" /></template>),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'multiple-senses-etymon-subtype-for-cf. şi etimon'] ~ ptr"), "multiple-senses-etymon-subtype-for-cf. şi etimon"),
-
-ua:template("variantă-directă-sg. refăcut după pluralul-template",
+ua:template("variantă-directă-singular refăcut după pluralul-template",
     <template>
         Sg. refăcut după pluralul&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sg. refăcut după pluralul'] ~ term"), "variantă-directă-sg. refăcut după pluralul-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-singular refăcut după pluralul'] ~ term"), "variantă-directă-singular refăcut după pluralul-template")
 ,
 ua:template("variantă-directă-prin apropiere de-template",
     <template>
@@ -1749,12 +1755,12 @@ ua:template("cuvântul titlu-element extern-calc-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-calc'] ~ term"), "cuvântul titlu-element extern-calc-template"),
 
-ua:template("cuvântul titlu-element necunoscut-term",
+ua:template("cuvântul titlu-element necunoscut-template",
     <template>
         Et. nec.
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element necunoscut'] ~ term"), "cuvântul titlu-element necunoscut-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element necunoscut'] ~ term"), "cuvântul titlu-element necunoscut-template"),
 
 ua:template("unul sau mai multe sensuri-explicarea sensului-cf. izvor-template",
     <template>
@@ -1774,6 +1780,47 @@ ua:template("unul sau mai multe sensuri-explicarea sensului-cf. izvor-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-explicarea sensului-cf. izvor'] ~ ptr:after"), "unul sau mai multe sensuri-explicarea sensului-cf. izvor-template"),
+
+ua:template("unul sau mai multe sensuri-sensul-*-ptr-template",
+    <template>
+        Număr de sens&amp;nbsp;
+        {
+            ua:get-template(oxy:get-template("combo",
+                map {
+                    "edit" := "@target",
+                    "editable" := false,
+                    "values" := string-join(//sense/@xml:id, ','),
+                    "labels" := string-join(//sense/@level, ',')
+                }            
+            ))
+        }
+        <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'unul sau mai multe sensuri-sensul-'] ~ ptr:after"), "unul sau mai multe sensuri-sensul-*-ptr-template"),
+
+ua:template("unul sau mai multe sensuri-sensul-cf. etimon-term-template",
+    <template>
+        Cf.&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-sensul-cf. etimon'] ~ term:after"), "unul sau mai multe sensuri-sensul-cf. etimon-term-template"),
+
+ua:template("unul sau mai multe sensuri-sensul-cf. și etimon-template",
+    <template>
+        Cf. și&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-sensul-cf. și etimon'] ~ term:after"), "unul sau mai multe sensuri-sensul-cf. și etimon-template"),
 
 ua:template("etym-mentioned",
     <template>
@@ -1807,13 +1854,6 @@ ua:template("etym-certainty-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > certainty"), "etym-certainty-template"),
-
-ua:template("etym-note-template",
-    <template>
-        <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > note"), "etym-note-template"),
 
 ua:template("cuvântul titlu-element de substrat-mentioned-etymon",
     <template>
@@ -2044,19 +2084,6 @@ ua:template("cuvântul titlu-formație internă-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-calc'] ~ term"), "cuvântul titlu-formație internă-calc-template"),
-
-ua:template("etym-term-added-base",
-    <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:execute-action-by-name('insertAddedBase')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'added-base']) > 1};" />        
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'added-base']"), "etym-term-added-base"),
 
 ua:template("xr-syn-before",
     <template>
