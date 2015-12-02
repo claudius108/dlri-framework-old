@@ -9,52 +9,52 @@ declare variable $ua:document := /;
 
 declare variable $languages-template as element() :=
         <select data-ua-ref="{ua:context()/@xml:lang}" contenteditable="false">
-            <option label="" value="" />
-            <option label="alb." value="alb." />
-            <option label="arom." value="arom." />
-            <option label="bg." value="bg." />
-            <option label="cat." value="cat." />
-            <option label="ceh." value="ceh." />
-            <option label="cr." value="cr." />
-            <option label="dalm." value="dalm." />
-            <option label="ebr." value="ebr." />
-            <option label="engad." value="engad." />
-            <option label="engl." value="engl." />
-            <option label="esper." value="esper." />
-            <option label="fr." value="fr." />
-            <option label="friul." value="friul." />
-            <option label="germ." value="germ." />
-            <option label="gr." value="gr." />
-            <option label="istr." value="istr." />
-            <option label="it." value="it." />
-            <option label="lat." value="lat." />
-            <option label="lat. pop." value="lat. pop." />
-            <option label="lat. mediev." value="lat. mediev." />
-            <option label="magh." value="magh." />
-            <option label="megl." value="megl." />
-            <option label="m. gr." value="m. gr." />
-            <option label="ngr." value="ngr." />
-            <option label="pol." value="pol." />
-            <option label="port." value="port." />
-            <option label="prov." value="prov." />
-            <option label="retorom." value="retorom." />
-            <option label="rom." value="rom." />
-            <option label="rus." value="rus." />
-            <option label="săs." value="săs." />
-            <option label="sard." value="sard." />
-            <option label="sb." value="sb." />
-            <option label="sicil." value="sicil." />
-            <option label="sl." value="sl." />
-            <option label="slavon." value="slavon." />
-            <option label="slov." value="slov." />
-            <option label="sp." value="sp." />
-            <option label="tăt." value="tăt." />
-            <option label="tc." value="tc." />
-            <option label="tc. dial." value="tc. dial." />
-            <option label="ţig." value="ţig." />
-            <option label="ucr." value="ucr." />
-            <option label="vegl." value="vegl." />
-            <option label="v. sl." value="v. sl." />            
+            <option xml:id="" label="" value="" />
+            <option xml:id="alb" label="alb." value="alb." />
+            <option xml:id="rup" label="arom." value="arom." />
+            <option xml:id="bul" label="bg." value="bg." />
+            <option xml:id="cat" label="cat." value="cat." />
+            <option xml:id="cze" label="ceh." value="ceh." />
+            <option xml:id="hrv" label="cr." value="cr." />
+            <option xml:id="dlm" label="dalm." value="dalm." />
+            <option xml:id="heb" label="ebr." value="ebr." />
+            <option xml:id="" label="engad." value="engad." />
+            <option xml:id="eng" label="engl." value="engl." />
+            <option xml:id="epo" label="esper." value="esper." />
+            <option xml:id="epo" label="fr." value="fr." />
+            <option xml:id="fur" label="friul." value="friul." />
+            <option xml:id="ger" label="germ." value="germ." />
+            <option xml:id="gre" label="gr." value="gr." />
+            <option xml:id="ruo" label="istr." value="istr." />
+            <option xml:id="ruo" label="it." value="it." />
+            <option xml:id="lat" label="lat." value="lat." />
+            <option xml:id="" label="lat. pop." value="lat. pop." />
+            <option xml:id="" label="lat. mediev." value="lat. mediev." />
+            <option xml:id="lat" label="magh." value="magh." />
+            <option xml:id="ruq" label="megl." value="megl." />
+            <option xml:id="" label="m. gr." value="m. gr." />
+            <option xml:id="gre" label="ngr." value="ngr." />
+            <option xml:id="pol" label="pol." value="pol." />
+            <option xml:id="por" label="port." value="port." />
+            <option xml:id="" label="prov." value="prov." />
+            <option xml:id="" label="retorom." value="retorom." />
+            <option xml:id="" label="rom." value="rom." />
+            <option xml:id="rus" label="rus." value="rus." />
+            <option xml:id="" label="săs." value="săs." />
+            <option xml:id="srd" label="sard." value="sard." />
+            <option xml:id="srp" label="sb." value="sb." />
+            <option xml:id="scn" label="sicil." value="sicil." />
+            <option xml:id="" label="sl." value="sl." />
+            <option xml:id="" label="slavon." value="slavon." />
+            <option xml:id="slv" label="slov." value="slov." />
+            <option xml:id="spa" label="sp." value="sp." />
+            <option xml:id="tat" label="tăt." value="tăt." />
+            <option xml:id="tur" label="tc." value="tc." />
+            <option xml:id="" label="tc. dial." value="tc. dial." />
+            <option xml:id="" label="ţig." value="ţig." />
+            <option xml:id="ukr" label="ucr." value="ucr." />
+            <option xml:id="" label="vegl." value="vegl." />
+            <option xml:id="" label="v. sl." value="v. sl." />            
         </select>
 ;
 
@@ -394,10 +394,10 @@ ua:action(
         "name" := "Accentuare"        
     },
     (
-        if (local-name(.) = 'etym')
+        if (local-name(.) = 'TEI')
         then (insert node doc('content-models/accentuation.xml') after //entry/sense[last()])
         else (),
-        if (local-name(.) != 'etym')
+        if (local-name(.) != 'TEI')
         then (insert node doc('content-models/accentuation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr)[last()])
         else ()
     )
@@ -416,10 +416,10 @@ ua:action(
         "name" := "Pronunțare"       
     },
     (
-        if (local-name() = 'etym')
+        if (local-name() = 'TEI')
         then (insert node doc('content-models/pronunciation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)])[last()])
         else (),
-        if (local-name() != 'etym')
+        if (local-name() != 'TEI')
         then (insert node doc('content-models/pronunciation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
             accentuation-variant ', @type)])[last()])
         else ()
@@ -446,11 +446,11 @@ ua:action(
         "name" := "Indicații gramaticale"        
     },
     (
-        if (local-name() = 'etym')
+        if (local-name() = 'TEI')
         then (insert node doc('content-models/grammatical-information.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
             form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()])
         else (),
-        if (local-name() != 'etym')
+        if (local-name() != 'TEI')
         then (insert node doc('content-models/grammatical-information.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
             accentuation-variant ', @type)] | form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()])
         else ()
@@ -536,11 +536,11 @@ ua:action(
         "name" := "Scriere"        
     },
     (
-        if (local-name() = 'etym')
+        if (local-name() = 'TEI')
         then (insert node doc('content-models/writing.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
             form[@type = 'pronunciation'])[last()])
         else (),
-        if (local-name() != 'etym')
+        if (local-name() != 'TEI')
         then (insert node doc('content-models/writing.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
             accentuation-variant ', @type)] | form[@type = 'pronunciation'])[last()])
         else ()
@@ -560,11 +560,11 @@ ua:action(
         "name" := "Abreviere"        
     },
     (
-        if (local-name() = 'etym')
+        if (local-name() = 'TEI')
         then (insert node doc('content-models/abbreviation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
             form[@type = 'pronunciation'] | form[@type = 'writing'])[last()])
         else (),
-        if (local-name() != 'etym')
+        if (local-name() != 'TEI')
         then (insert node doc('content-models/abbreviation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
             accentuation-variant ', @type)] | form[@type = 'pronunciation'] | form[@type = 'writing'])[last()])
         else ()
@@ -1285,16 +1285,21 @@ ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selecto
         "attributeFilter" := "['value']"}
 ),
 
-ua:add-event-listener($ua:document, "load", oxy:execute-action-by-name('Author/No_tags')),
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
 
-ua:template("tei-before",
+ua:template("root-before-template",
     <template>
-        <button onclick="{oxy:execute-action-by-name('validate')}" />
-        <button onclick="{oxy:execute-action-by-name('render')}" />
+        <button onclick="{oxy:execute-action-by-name('validate')}" style="background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('render')}" style="background-color: transparent; color: blue;" />    
+        <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector('TEI:before'), "tei-before"),
+ua:attach-template(ua-dt:css-selector("*:root:before"), "root-before-template"),
 
 ua:template("grammatical-information-form",
     <template>
@@ -1343,40 +1348,15 @@ ua:attach-template(ua-dt:css-selector("xr[type = 'antonim']:before"), "antonim-b
 
 ua:template("etym-before",
     <template>
-        \00000A Etimologie&amp;nbsp;
         <button onclick="{oxy:execute-action-by-name('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul titlu-element de substrat'};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul titlu-element de substrat'};" />
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul titlu-formație internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una sau mai multe variante lexicale-')] and count(term[@type = 'translation']) = 0};" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
-
-ua:template("etym-first-of-type-before",
-    <template>
-        <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0};" />
-        {
-            ua:get-template("etym-before")
-        }
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym:first-of-type:before"), "etym-first-of-type-before"),
-
-ua:template("etym-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template("etym-before")
-        }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym:not( :first-of-type):before"), "etym-not-first-of-type-before"),
 
 ua:template("etym-idno-first-of-type",
     <template>

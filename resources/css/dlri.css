@@ -17,6 +17,17 @@
 	font-weight: bold;
 }
 
+*:root:before {
+    border: 1px solid black;
+    background-color: rgb(255, 215, 97);
+    padding: 0.2em;
+	position: fixed;
+    left: 89%;  
+    display:block;
+    width: 8%;
+    color: blue;
+}
+
 title, author, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
@@ -28,7 +39,7 @@ oxy|comment, form[type = 'main'] > syll {
 	display: none !important;
 }
 
-creation {
+creation, revisionDesc {
 	font-weight: bold;
 }
 
@@ -37,19 +48,15 @@ creation>date {
 	font-weight: normal;
 }
 
-revisionDesc {
-	font-weight: bold;
-}
-
 change {
 	font-weight: normal;
 }
 
-entry>form,teiHeader,entry>gramGrp {
+entry>form,teiHeader,entry>gramGrp, etym {
 	border: solid 1px black;
 	width: 1100px;
 	min-height: 100px;
-	padding: 10px;
+	margin-bottom: 20px;
 }
 
 orth,form[type = 'main'] > pron,def,cit,entry>form[type = 'main'] {
@@ -76,38 +83,11 @@ hi[rend = 'bold'] {
 }
 
 *:focus {
-      background: red;   /* sexy hot pink */
-}
-
-etym {
-	width: 1125px;
-	border-bottom: solid 1px black;
-	padding-bottom: 10px;	
-}
-
-etym > idno[type = 'trimitere-subtype-for-V.'] + certainty {
-    display: none;
-}
-
-etym > idno:nth-of-type(2)[type = 'etymon-subtype-for-inherited-element'] ~ certainty:nth-of-type(2) {
-	display:  none;		
-}
-
-etym:before {
-	font-weight: bold;
-	width: 1125px;	
+      background: red;
 }
 
 etym > idno {
 	display: inline;
-}
-
-etym > idno:first-of-type {
-	border-top: solid 1px black;		
-}
-
-etym:first-of-type:before {
-	padding-bottom: 20px;	
 }
 
 xr > * {
