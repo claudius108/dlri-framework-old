@@ -24,7 +24,7 @@
 	position: fixed;
     left: 89%;  
     display:block;
-    width: 8%;
+    max-width: 8%;
     color: blue;
 }
 
@@ -80,10 +80,6 @@ hi {
 
 hi[rend = 'bold'] {
 	font-weight: bold;
-}
-
-*:focus {
-      background: red;
 }
 
 etym > idno {
