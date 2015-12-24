@@ -22,13 +22,13 @@
     background-color: rgb(255, 215, 97);
     padding: 0.2em;
 	position: fixed;
-    left: 89%;  
+    left: 0;  
     display:block;
-    max-width: 8%;
+/*    max-width: 8%;*/
     color: blue;
 }
 
-title, author, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
+title, author, editor, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
 note {
@@ -56,6 +56,7 @@ entry>form,teiHeader,entry>gramGrp, etym {
 	border: solid 1px black;
 	width: 1100px;
 	min-height: 100px;
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
