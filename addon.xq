@@ -1287,7 +1287,7 @@ ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selecto
 
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
 
-ua:template("root-before-template",
+ua:template("TEI-before-template",
     <template>
         <button onclick="{oxy:execute-action-by-name('validate')}" style="background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('render')}" style="background-color: transparent; color: blue;" />    
@@ -1299,7 +1299,7 @@ ua:template("root-before-template",
         <button onclick="{oxy:execute-action-by-name('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("*:root:before"), "root-before-template"),
+ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
 
 ua:template("grammatical-information-form",
     <template>
