@@ -53,7 +53,7 @@
 									</cssFile>
 									<cssFile>
 										<field name="href">
-											<String>${framework}/resources/css/to-be-deleted.css</String>
+											<String>${framework}/resources/css/sense.css</String>
 										</field>
 										<field name="title">
 											<String></String>

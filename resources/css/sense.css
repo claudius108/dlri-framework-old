@@ -1,6 +1,33 @@
 @namespace oxy url("http://www.oxygenxml.com/extensions/author");
 @namespace xml url('http://www.w3.org/XML/1998/namespace');
 
+sense > form {
+	visibility: "-oxy-collapse-text";
+}
+
+entry sense {
+	display: none;
+}
+
+sense sense {
+	display: none;
+}
+
+sense {
+	border: solid 1px black;
+	width: 1122px;
+	min-height: 600px;
+}
+
+sense > * {
+	display: block;
+}
+
+sense > form {
+	margin-left: 10px;
+	border: solid 1px black;
+}
+
 entry sense[currentEdited='false'], entry sense[currentEdited='false']>* {
 	display: none;
 }

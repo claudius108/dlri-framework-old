@@ -28,7 +28,7 @@
     color: blue;
 }
 
-title, author, editor, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth, sense > form,
+title, author, editor, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
 note {
@@ -143,27 +143,4 @@ form[type = 'grammatical-information-for-verb'] > per,
 form[type = 'details-for-grammatical-information-for-verb'] {
 	display: inline;
 	margin-right: 10px;
-}
-
-entry sense {
-	display: none;
-}
-
-sense sense {
-	display: none;
-}
-
-sense {
-	border: solid 1px black;
-	width: 1122px;
-	min-height: 600px;
-}
-
-sense > * {
-	display: block;
-}
-
-sense > form {
-	margin-left: 10px;
-	border: solid 1px black;
 }
