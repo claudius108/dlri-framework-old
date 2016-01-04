@@ -713,13 +713,6 @@ ua:action(
     oxy:execute-action-by-class("ro.dlri.oxygen.templates.validationDialog.ValidateDialogComponent")
 ),
 ua:action(
-    "render",
-    map { 
-        "name" := "Redare"        
-    },   
-    oxy:execute-action-by-class("ro.dlri.oxygen.templates.renderingDialog.RenderingDialogComponent")
-),
-ua:action(
     "changedValueAttrForFormElement",
     map { 
         "name" := "changedValueAttrForFormElement"
@@ -1290,7 +1283,6 @@ ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kube
 ua:template("TEI-before-template",
     <template>
         <button onclick="{oxy:execute-action-by-name('validate')}" style="background-color: transparent; color: blue;" />
-        <button onclick="{oxy:execute-action-by-name('render')}" style="background-color: transparent; color: blue;" />    
         <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
