@@ -1,8 +1,10 @@
-xquery version "1.0";
+xquery version "3.0";
 
 declare default element namespace "http://www.w3.org/1999/xhtml";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace dlri-views = "http://dlri.ro/ns/dlri-views";
+
+declare variable $dir external;
 
 
 declare function dlri-views:dispatch($node as node()) as item()* {
@@ -172,9 +174,9 @@ declare function local:usg($node as node()) as item()+ {
 };
 
 (
-    <?xml-stylesheet type="text/css" href="file:///home/claudius/.com.oxygenxml.author/extensions/v17.1/frameworks/http___claudius108.users.sourceforge.net_repos_dlri_plugin_addon.xml/dlri/views/oxygen.css"?>
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $dir, "oxygen.css&quot;")}
     ,
-    <?xml-stylesheet type="text/css" href="file:///home/claudius/.com.oxygenxml.author/extensions/v17.1/frameworks/http___claudius108.users.sourceforge.net_repos_dlri_plugin_addon.xml/dlri/views/render-entry.css"?>
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $dir, "render-entry.css&quot;")}
     ,
     <html>
         <head>
