@@ -7,8 +7,6 @@
  *
  */
 
-* {-oxy-display-tags: none;}
-
-title, head {
-	display: none;
-}        
+html {
+	background-color: #e2f791;
+}
