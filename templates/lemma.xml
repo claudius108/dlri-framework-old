@@ -3,6 +3,7 @@
 	<teiHeader type="text">
 		<fileDesc>
 			<titleStmt>
+				<title />
 				<author />
 				<editor role="reviewer" />
 			</titleStmt>
