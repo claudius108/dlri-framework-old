@@ -54,13 +54,10 @@ declare function dlri-views:form($node as node()) as item()* {
 };
 
 declare function dlri-views:form-main($node as node()) as item()+ {
-  (
+  <div>
     <span class="headword">{data($node/tei:orth)}</span>
-    ,
     <span class="superscript">{data($node/tei:orth/@n)}</span>
-    ,
-    <p />
-  )
+  </div>
 };
 
 declare function dlri-views:form-phrase($node as node()) as item()+ {
@@ -174,67 +171,17 @@ declare function local:usg($node as node()) as item()+ {
   )
 };
 
-<html>
-    <head>
-        {dlri-views:get-page-title(/)}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <script type="text/javascript">
-            <![CDATA[
-                //  onload="window.setTimeout(generate, 3000)"
-                function generate() {
-                    window.location.reload(true); 
-                }
-            ]]>
-        </script>        
-        <style type="text/css">
-        <![CDATA[
-            #content {
-                margin-bottom: 100px;
-            }
-            .headword, .sense-level, .bold {
-              font-weight: bold;
-            }
-            
-            .superscript {
-              vertical-align: super;
-              font-size: 80%;
-            }
-            
-            .spacing, .analog, .asoc, .trimitere {
-              letter-spacing: 0.3em;
-              
-            }
-            
-            .quote {
-              font-style: italic;
-            }            
-                   
-            #footer {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                background-color: #E6E6E6;
-            }
-            
-            #footer button {
-                margin: 0 20px 10px 0;
-            }
-            #page-reload-button {
-                height: 20px;
-                width: 20px;
-                background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVQokZWSParCUBCFTwaUiCFil0LQNG5A7BQsLcQFaGNjZSFKBHfgAiwFEQQXINiLiFWwsxUsRIOCWAgWQ8bi5fnzXlJ4url83z3M5Soigm9C7wMzT6fTer1eKBTG47G/Ib+Zz+fpdPp5Xq1WxS+eMJvNwuEwgGw22+/3bdu+3++Bwn6/13UdQKfTcV3Xl/sQ2u02gFKpFETfbrdms/kSEokEgPV6HXRrq9UiouFwKCK4XC4AYrFYEL1cLjVN03U9mUw6joPj8QjAMAxf2nXdYrGoaRqAeDzeaDTAzJFIhIhOp1NQSblcBjCZTLwdfuZer+dL73Y7VVWJ6HA4eMJqtVIURVXVxWLxh75er7lcDkCtVnu9kohYlgUgFApZlrXZbJjZcZzRaGSaJoBUKnU+nz8EZu52u0SEf8lkMtvt9tmJt36xbbtSqRiGASAajebz+cFgwMzvjCJffu8HcgnCJkJHF6UAAAAASUVORK5CYII=);
-                background-repeat:no-repeat;
-            }            
-        ]]>
-        </style> 
-    </head>
-    <body>
-        <div id="content">
-            {for $node in /node() return local:dispatch($node)}
-        </div>
-        <div id="footer">
-            <button id="page-reload-button" onclick="window.location.reload(true);"/>
-            <button style="float: right;" onclick="OxygenAddonBuilder.closeDialogWindow();">Close</button>
-        </div>      
-    </body>
-</html>
+(
+    <?xml-stylesheet type="text/css" href="file:///home/claudius/.com.oxygenxml.author/extensions/v17.1/frameworks/http___claudius108.users.sourceforge.net_repos_dlri_plugin_addon.xml/dlri/views/oxygen.css"?>
+    ,
+    <?xml-stylesheet type="text/css" href="file:///home/claudius/.com.oxygenxml.author/extensions/v17.1/frameworks/http___claudius108.users.sourceforge.net_repos_dlri_plugin_addon.xml/dlri/views/render-entry.css"?>
+    ,
+    <html>
+        <head>
+            {dlri-views:get-page-title(/)}
+        </head>
+        <body>
+            {for $node in /node() return local:dispatch($node)}     
+        </body>
+    </html>
+)

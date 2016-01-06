@@ -1,0 +1,18 @@
+/**
+ * CSS file for DLRI.
+ * 
+ * Copyright (C) 2013	Linguistic Institute "IORGU IORDAN - AL.ROSETTI", Romanian Academy.
+ * 
+ * 
+ *
+ */
+
+* {-oxy-display-tags: none;}
+
+html {
+	background-color: yellow;
+}
+
+title, head {
+	display: none;
+}        

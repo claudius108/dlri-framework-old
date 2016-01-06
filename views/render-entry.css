@@ -5,10 +5,7 @@
  * 
  * 
  *
-
-html {
-	background-color: red;
-}
+ */
 
 .headword, .sense-level, .bold {
   font-weight: bold;
@@ -27,13 +24,3 @@ html {
 .quote {
   font-style: italic;
 }            
-       
-#footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-#footer button {
-    margin: 0 20px 10px 0;
-}
