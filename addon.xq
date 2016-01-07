@@ -3132,7 +3132,7 @@ ua:attach-template(ua-dt:css-selector("creation"), "creation"),
 
 ua:template("creation-date",
     <template>
-        {concat(substring(@when, 1, 22), ':', substring(@when, 23))}
+        {concat(substring(@when-iso, 1, 22), ':', substring(@when-iso, 23))}
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("creation > date"), "creation-date"),
