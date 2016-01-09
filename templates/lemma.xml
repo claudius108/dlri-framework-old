@@ -7,10 +7,16 @@
 				<author />
 				<editor role="reviewer" />
 			</titleStmt>
+			<publicationStmt>
+				<publisher>Linguistic Institute of the Romanian Academy</publisher>
+			</publicationStmt>
+			<sourceDesc>
+				<p>born digital</p>
+			</sourceDesc>		
 		</fileDesc>
 		<profileDesc>
 			<creation>
-				<date when="${date(yyyy-MM-dd'T'HH:mm:ssZ)}" />
+				<date when-iso="${date(yyyy-MM-dd'T'HH:mm:ssZ)}" />
 			</creation>
 		</profileDesc>
 		<revisionDesc status="proposed" />

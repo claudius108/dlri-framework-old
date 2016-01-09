@@ -1,7 +1,7 @@
 /**
  * CSS file for DLRI.
  * 
- * Copyright (C) 2013	Linguistic Institute "IORGU IORDAN - AL.ROSETTI", Romanian Academy.
+ * Copyright (C) 2013	Linguistic Institute of the Romanian Academy.
  * 
  * 
  */
@@ -35,7 +35,7 @@ note {
 	visibility: "-oxy-collapse-text";
 }
 
-oxy|comment, form[type = 'main'] > syll {
+oxy|comment, form[type = 'main'] > syll, titleStmt > title, publicationStmt, publicationStmt > *, sourceDesc, sourceDesc > * {
 	display: none !important;
 }
 
