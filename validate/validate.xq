@@ -6,9 +6,9 @@ declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
 declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework(dlri)}");
 
 (
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/resources/css/html.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
     ,
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/resources/css/oxygen-render.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "validate/oxygen-render.css&quot;")}
     ,
     <html>
         <head>

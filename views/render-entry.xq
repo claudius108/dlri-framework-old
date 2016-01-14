@@ -177,7 +177,7 @@ declare function local:usg($node as node()) as item()+ {
 (
     processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
     ,
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/oxygen-render.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/oxygen-render.css&quot;")}
     ,    
     processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/render-entry.css&quot;")}
     ,
