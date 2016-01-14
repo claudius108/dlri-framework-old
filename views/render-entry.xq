@@ -3,8 +3,9 @@ xquery version "3.0";
 declare default element namespace "http://www.w3.org/1999/xhtml";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace dlri-views = "http://dlri.ro/ns/dlri-views";
+declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
 
-declare variable $dir external;
+declare variable $framework-dir := dlri-utils:getFrameworkDir();
 
 
 declare function dlri-views:dispatch($node as node()) as item()* {
@@ -174,11 +175,11 @@ declare function local:usg($node as node()) as item()+ {
 };
 
 (
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $dir, "html.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/resources/css/html.css&quot;")}
     ,
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $dir, "oxygen-render.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/resources/css/oxygen-render.css&quot;")}
     ,    
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $dir, "render-entry.css&quot;")}
+    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/views/render-entry.css&quot;")}
     ,
     <html>
         <head>
