@@ -3,7 +3,7 @@ xquery version "3.0";
 declare default element namespace "http://www.w3.org/1999/xhtml";
 declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
 
-declare variable $framework-dir := dlri-utils:getFrameworkDir();
+declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework(dlri)}");
 
 (
     processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "/resources/css/html.css&quot;")}
@@ -14,7 +14,7 @@ declare variable $framework-dir := dlri-utils:getFrameworkDir();
         <head>
             <title />
         </head>
-        <body>{$framework-dir}
+        <body>
             <h2>Validare structurală</h2>
             <ul>
                 {
