@@ -92,7 +92,7 @@ declare variable $def-template as element() :=
 
 declare variable $sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" level="">
-        <idno n="tip-unitate-semantică-subsumată" type="" />
+        <idno n="tip-unitate-semantică-subsumată" type="unknown" />
         <idno n="tip-proces-semantic" type="" />
         {$def-template}
         {$cit-template}
@@ -831,22 +831,24 @@ ua:action(
     (
         if (@n = 'tip-unitate-semantică-subsumată' and @type = '')
         then (
-            delete nodes ./following-sibling::form[@type = 'unitate-semantică-subsumată']
+            delete nodes ./following-sibling::form[@type = 'unitate-semantică-subsumată'],
+            replace value of node @type with 'unknown'
         )
         else (),
-        if (parent::*[@type = 'grammatical-information'] and @type = '')
-        then (
-            delete nodes ./following-sibling::*
-        )
-        else (),     
-        if (@n = 'tip-unitate-semantică-subsumată' and string-length(@type) > 0)
+        if (@n = 'tip-unitate-semantică-subsumată' and @type != 'unknown')
         then
             (
                 delete nodes ./following-sibling::form[@type = 'unitate-semantică-subsumată']
                 ,
                 insert node <form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" /> after parent::*/idno[last()]
             )        
-        else (), 
+        else (),        
+        
+        if (parent::*[@type = 'grammatical-information'] and @type = '')
+        then (
+            delete nodes ./following-sibling::*
+        )
+        else (),     
         if (@type = 'cuvântul titlu-element moştenit-etimon atestat')
         then
             (
