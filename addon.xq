@@ -93,7 +93,7 @@ declare variable $def-template as element() :=
 declare variable $sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" level="">
         <idno n="tip-unitate-semantică-subsumată" type="unknown" />
-        <idno n="tip-proces-semantic" type="" />
+        <idno n="tip-proces-semantic" type="unknown" />
         {$def-template}
         {$cit-template}
     </sense>
@@ -149,6 +149,7 @@ declare variable $collocations-template as element() :=
 
 declare variable $semantical-process-template as element() :=
     <select data-ua-ref="{@type}" style="width: 22px;" contenteditable="false">
+        <option label="" value="unknown" />
         <option label="abstr." value="abstr." />
         <option label="concr." value="concr." />
         <option label="fig." value="fig." />
@@ -842,8 +843,7 @@ ua:action(
                 ,
                 insert node <form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" /> after parent::*/idno[last()]
             )        
-        else (),        
-        
+        else (),   
         if (parent::*[@type = 'grammatical-information'] and @type = '')
         then (
             delete nodes ./following-sibling::*
