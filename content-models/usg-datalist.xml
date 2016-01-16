@@ -1,5 +1,6 @@
 
 <datalist xmlns="http://www.w3.org/1999/xhtml" id="usage-options">
+	<option label="" value="unknown"/>
 	 <option label="Ban." value="geo"/>
 	 <option label="Bas." value="geo"/>
 	 <option label="Bucov." value="geo"/>

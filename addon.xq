@@ -1220,7 +1220,9 @@ ua:action(
     map { 
         "name" := "changedValueAttrForUsgElement"
     }, 
-    (replace value of node ./@type with doc('content-models/usg-datalist.xml')/*/*[@label = ./@value]/@value/string())
+    (
+        replace value of node ./@type with for $a in ./@value return doc('content-models/usg-datalist.xml')//*[@label = $a]/@value/string()
+    )
 ),
 ua:action(
     "deleteContaminationElement",
