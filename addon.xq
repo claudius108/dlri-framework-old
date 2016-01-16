@@ -91,7 +91,8 @@ declare variable $def-template as element() :=
 ;
 
 declare variable $sense-template as element() :=
-    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" level="">
+    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
+        <idno n="" type="level-label" />
         <idno n="tip-unitate-semantică-subsumată" type="unknown" />
         <idno n="tip-proces-semantic" type="unknown" />
         {$def-template}
@@ -1741,7 +1742,7 @@ ua:template("unul sau mai multe sensuri-explicarea sensului-cf. izvor-template",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/@level, ',')
+                    "labels" := string-join(//sense/idno[1]/@n, ',')
                 }            
             ))
         }
@@ -1760,7 +1761,7 @@ ua:template("unul sau mai multe sensuri-sensul-*-ptr-template",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/@level, ',')
+                    "labels" := string-join(//sense/idno[1]/@n, ',')
                 }            
             ))
         }
@@ -2882,7 +2883,7 @@ ua:template("form-multiple-ptr-after",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/@level, ',')
+                    "labels" := string-join(//sense/idno[1]/@n, ',')
                 }            
             ))
         }
@@ -2900,7 +2901,7 @@ ua:template("form-grammatical-information-for-verb-ptr-after",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/@level, ',')
+                    "labels" := string-join(//sense/idno[1]/@n, ',')
                 }            
             ))
         }
@@ -2917,7 +2918,7 @@ ua:template("form-lexical-variant-section-ptr-after",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/@level, ',')
+                    "labels" := string-join(//sense/idno[1]/@n, ',')
                 }            
             ))
         }
@@ -3029,17 +3030,22 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("sense-currentEdited-value-before",
     <template>
-        Nivel:&amp;nbsp;
-        <select data-ua-ref="{@level}" contenteditable="true" style="width: 17px;">
-            <option label="◊" value="◊" />
-            <option label="♦" value="♦" />
-        </select>
         <button onclick="{oxy:execute-action-by-name('addGramGrp')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertReference')}" />     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
 
+ua:template("sense-level-template",
+    <template>
+        Nivel:&amp;nbsp;
+        <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
+            <option label="◊" value="◊" />
+            <option label="♦" value="♦" />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > idno:first-of-type"), "sense-level-template"),
 
 ua:template("idno-unitate-semantică-subsumată",
     <template>
@@ -3156,7 +3162,7 @@ ua:template("entry-form-main-after",
                     "edit" := "#text",
                     "width" := "1100",
                     "height" := "350",
-                    "itemLabel" := "concat(@level, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))"
+                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))"
                 }            
             ))
         }
@@ -3174,8 +3180,6 @@ ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 
 ua:template("def",
     <template>
-        Nivel&amp;nbsp;
-        <input data-ua-ref="{@n}" size="7" />
         <button onclick="{oxy:execute-action-by-name('insertUsgElement')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertSynonym')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" data-showIcon="false" />
