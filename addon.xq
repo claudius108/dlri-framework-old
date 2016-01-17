@@ -59,7 +59,7 @@ declare variable $languages-template as element() :=
 ;
 
 declare variable $bibl-template as element() :=
-    <bibl xmlns="http://www.tei-c.org/ns/1.0" type="">
+    <bibl xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
         <ptr target="" />
         <date type="" />
         <citedRange />
@@ -2232,8 +2232,8 @@ ua:attach-template(ua-dt:css-selector("quote"), "quote"),
 
 ua:template("bibl-before",
     <template>
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
+        <select data-ua-ref="{@type}" contenteditable="false" style="width: 5px;">
+            <option label="" value="unknown" />
             <option label="ap." value="ap." />
             <option label="cf." value="cf." />
             <option label="în" value="în" />

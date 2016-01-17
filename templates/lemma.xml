@@ -39,9 +39,9 @@
 					<def n="" />
 					<cit>
 						<quote />
-						<bibl type="">
+						<bibl type="unknown">
 							<ptr target="" />
-							<date type="" />
+							<date />
 							<citedRange />
 						</bibl>
 					</cit>
