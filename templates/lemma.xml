@@ -19,7 +19,6 @@
 				<date when-iso="${date(yyyy-MM-dd'T'HH:mm:ssZ)}" />
 			</creation>
 		</profileDesc>
-		<revisionDesc status="proposed" />
 	</teiHeader>
 	<text>
 		<body>
@@ -47,8 +46,8 @@
 					</cit>
 				</sense>
 				<etym>
-					<idno type="" />
-					<certainty cert="" locus="value"/>
+					<idno type="unknown" />
+					<certainty cert="unknown" locus="value"/>
 				</etym>
 			</entry>
 		</body>
