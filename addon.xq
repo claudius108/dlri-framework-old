@@ -60,8 +60,8 @@ declare variable $languages-template as element() :=
 
 declare variable $bibl-template as element() :=
     <bibl xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
-        <ptr target="" />
-        <date type="" />
+        <ptr target="unknown" />
+        <date />
         <citedRange />
     </bibl>
 ;
@@ -101,12 +101,12 @@ declare variable $sense-template as element() :=
 ;
 
 declare variable $term-template as element() :=
-    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="" subtype="" />
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
 
 declare variable $analogy-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="analog">
-        <ref target="">
+        <ref target="unknown">
             <oRef type="" />
             <lbl />
         </ref>
@@ -115,7 +115,7 @@ declare variable $analogy-template as element() :=
 
 declare variable $association-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="asoc">
-        <ref target="">
+        <ref target="unknown">
             <oRef type="" />
             <lbl />
         </ref>
@@ -124,7 +124,7 @@ declare variable $association-template as element() :=
 
 declare variable $antonym-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="antonim">
-        <ref target="">
+        <ref target="unknown">
             <oRef type="" />
             <lbl />
         </ref>
@@ -694,7 +694,7 @@ ua:action(
     },   
     replace node . with
         <xr xmlns="http://www.tei-c.org/ns/1.0" type="derivation-base">
-            <ref target="">
+            <ref target="unknown">
                 <oRef type="" />
                 <lbl />
             </ref>
@@ -2760,7 +2760,7 @@ ua:template("form-grammatical-information-for-gender-gen-before",
     <template>
         Gen&amp;nbsp;
         <select data-ua-ref="{@target}" contenteditable="false">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="m" value="m" />
             <option label="f" value="f" />
             <option label="n" value="n" />
