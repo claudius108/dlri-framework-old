@@ -154,13 +154,13 @@ declare variable $semantical-process-template as element() :=
         <option label="abstr." value="abstr." />
         <option label="concr." value="concr." />
         <option label="fig." value="fig." />
-        <option label="p. analogie" value="p. analogie" />
-        <option label="p. analogie cu" value="p. analogie cu" />
-        <option label="p. ext." value="p. ext." />
-        <option label="p. gener." value="p. gener." />
-        <option label="p. restr." value="p. restr." />
-        <option label="p. spec." value="p. spec." />
-        <option label="prin lărgirea sensului" value="prin lărgirea sensului" />
+        <option label="p. analogie" value="p.-analogie" />
+        <option label="p. analogie cu" value="p.-analogie-cu" />
+        <option label="p. ext." value="p.-ext." />
+        <option label="p. gener." value="p.-gener." />
+        <option label="p. restr." value="p.-restr." />
+        <option label="p. spec." value="p.-spec." />
+        <option label="prin lărgirea sensului" value="prin-lărgirea-sensului" />
     </select>
 ;
 
