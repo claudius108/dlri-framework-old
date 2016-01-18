@@ -107,7 +107,7 @@ declare variable $term-template as element() :=
 declare variable $analogy-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="analog">
         <ref target="unknown">
-            <oRef type="" />
+            <oRef type="unknown" />
             <lbl />
         </ref>
     </xr>
@@ -116,7 +116,7 @@ declare variable $analogy-template as element() :=
 declare variable $association-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="asoc">
         <ref target="unknown">
-            <oRef type="" />
+            <oRef type="unknown" />
             <lbl />
         </ref>
     </xr>
@@ -125,7 +125,7 @@ declare variable $association-template as element() :=
 declare variable $antonym-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="antonim">
         <ref target="unknown">
-            <oRef type="" />
+            <oRef type="unknown" />
             <lbl />
         </ref>
     </xr>
@@ -701,7 +701,7 @@ ua:action(
     replace node . with
         <xr xmlns="http://www.tei-c.org/ns/1.0" type="derivation-base">
             <ref target="unknown">
-                <oRef type="" />
+                <oRef type="unknown" />
                 <lbl />
             </ref>
         </xr>

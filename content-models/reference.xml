@@ -1,6 +1,6 @@
 <xr xmlns="http://www.tei-c.org/ns/1.0" type="trimitere">
 	<ref target="unknown">
-		<oRef type="" />
+		<oRef type="unknown" />
 		<lbl />
 	</ref>
 </xr>
