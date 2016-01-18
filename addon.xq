@@ -843,7 +843,7 @@ ua:action(
             delete nodes ./following-sibling::*
         )
         else (),     
-        if (@type = 'cuvântul titlu-element moştenit-etimon atestat')
+        if (@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
         then
             (
                 delete nodes ./following-sibling::*[position() > 1],
@@ -853,7 +853,7 @@ ua:action(
                 replace value of node ./following-sibling::*[2]/@type with ''
             )
         else (),
-        if (@type = 'cuvântul titlu-element moştenit-etimon neatestat')
+        if (@type = 'cuvântul.titlu-element.moştenit-etimon.neatestat')
         then
             (
                 delete nodes ./following-sibling::*[position() > 1],
@@ -863,7 +863,7 @@ ua:action(
                 replace value of node ./following-sibling::*[2]/@type with '' 
             )
         else (),        
-        if (@type = 'cuvântul titlu-element de substrat')
+        if (@type = 'cuvântul.titlu-element.de.substrat')
         then
             (
                 delete nodes ./following-sibling::*[position() > 1],
@@ -871,7 +871,7 @@ ua:action(
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
             )
         else (),  
-        if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix')
+        if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
         then
             (
                 delete nodes ./following-sibling::*[position() > 1],
@@ -881,7 +881,7 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'base'
             )
         else (),        
-        if (@type = 'cuvântul titlu-formație internă-derivat-cu sufix')
+        if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
@@ -890,7 +890,7 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'sufix'
         )
         else (),        
-        if (@type = 'cuvântul titlu-formație internă-derivat-cu prefix şi sufix')
+        if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template, $term-template) after ./following-sibling::*[1],
@@ -900,7 +900,7 @@ ua:action(
                 replace value of node ./following-sibling::*[4]/@type with 'sufix'
         )
         else (),        
-        if (@type = 'cuvântul titlu-formație internă-compus-element de compunere + cuvânt bază')
+        if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
@@ -909,7 +909,7 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'base'
         )
         else (),        
-        if (@type = 'cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere')
+        if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
@@ -918,7 +918,7 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'component-element'
         )
         else (),              
-        if (@type = 'cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază')
+        if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
@@ -927,7 +927,7 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'base'
         )
         else (),
-        if (@type = 'cuvântul titlu-formație internă-compus-formație savantă din latină')
+        if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
@@ -936,30 +936,30 @@ ua:action(
                 replace value of node ./following-sibling::*[3]/@type with 'added-base'
         )
         else (),
-        if (@type = 'cuvântul titlu-formație internă-compus-format din')
+        if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
-                replace value of node ./following-sibling::*[2]/@type with 'cuvântul titlu-formație internă-compus-format din-bază',
-                replace value of node ./following-sibling::*[3]/@type with 'cuvântul titlu-formație internă-compus-format din-element adăugat'
+                replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-bază',
+                replace value of node ./following-sibling::*[3]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
         )
         else (),    
-        if (@type = 'cuvântul titlu-formație internă-trimitere-V.')
+        if (@type = 'cuvântul.titlu-formație.internă-trimitere-V.')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low'
              )
         else (),        
-        if (@type = 'cuvântul titlu-formație internă-trimitere-Cf.')
+        if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
              )
         else (),
-        if (@type = 'cuvântul titlu-formație internă-contaminare-cu două sau mai multe elemente')
+        if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
         then (
                delete nodes ./following-sibling::*[position() > 1],
                 insert nodes ($term-template, $term-template, $term-template, $term-template) after ./following-sibling::*[1],
@@ -970,7 +970,7 @@ ua:action(
                 replace value of node ./following-sibling::*[5]/@type with 'alternative-contamination-element'
         )
         else (),
-        if (@type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *')
+        if (@type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert node $term-template after ./following-sibling::*[1],
@@ -978,14 +978,14 @@ ua:action(
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'v. sl.'
         )
         else (),       
-        if (@type = 'cuvântul titlu-element extern-trimitere')
+        if (@type = 'cuvântul.titlu-element.extern-trimitere')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert node doc('content-models/mentioned.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'              
              )
         else (),    
-        if (@type = 'unul sau mai multe sensuri-explicarea sensului-cf. izvor')
+        if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert nodes (doc('content-models/ptr.xml'), $bibl-template) after ./following-sibling::*[1],
@@ -994,8 +994,8 @@ ua:action(
         else (),  
         if (@type =
             (
-                'unul sau mai multe sensuri-sensul-cf. etimon',
-                'unul sau mai multe sensuri-sensul-cf. și etimon'
+                'unul.sau.mai.multe.sensuri-sensul-cf.etimon',
+                'unul.sau.mai.multe.sensuri-sensul-cf.și.etimon'
             )
         )
         then (
@@ -1008,8 +1008,8 @@ ua:action(
         
         if (@type = 
             (
-                'cuvântul titlu-formație internă-contaminare-cu un element-în care primul element este',
-                'cuvântul titlu-formație internă-contaminare-cu un element-în care unul dintre elemente este'        
+                'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
+                'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este'        
             )
         )
         then (
@@ -1021,43 +1021,43 @@ ua:action(
         else (),
         if (@type =
                 (
-                    'cuvântul titlu-formație internă-derivat regresiv',
-                    'cuvântul titlu-formație internă-derivat postverbal',                
-                    'cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al plantei',
-                    'cuvântul titlu-formație internă-trimitere-De la-n. pr.',
-                    'cuvântul titlu-formație internă-trimitere-De la-numele de localitate',
-                    'cuvântul titlu-formație internă-trimitere-De la-numele sărbătorii religioase',
-                    'cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al planetei',
-                    'cuvântul titlu-formație internă-trimitere-Din-etimon atestat',
-                    'cuvântul titlu-formație internă-trimitere-Din-etimon *',
-                    'cuvântul titlu-formație internă-prescurtare',
-                    'cuvântul titlu-formație internă-calc',
-                    'cuvântul titlu-formație internă-onomatopee',
-                    'cuvântul titlu-formație internă-contragere',
-                    'cuvântul titlu-formație internă-izolare-prin analiză din împrumuturi ca',                    
-                    'cuvântul titlu-formație internă-izolare-prin analiză din cuvinte compuse împrumutate',
-                    'cuvântul titlu-formație internă-izolare-din nume de localităţi',                    
-                    'cuvântul titlu-formație internă-singular refăcut după plural',
-                    'cuvântul titlu-formație internă-formație onomatopeică',
-                    'cuvântul titlu-formație internă-formație spontană de la',
-                    'cuvântul titlu-formație internă-prin figură etimologică de la',
-                    'cuvântul titlu-formație internă-din formulă de urare',
-                    'cuvântul titlu-formație internă-format după',
-                    'cuvântul titlu-formație internă-denumire comercială',
-                    'cuvântul titlu-element extern-împrumut-etimon sigur',
-                    'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)',
-                    'cuvântul titlu-element extern-calc',
-                    'cuvântul titlu-element necunoscut',
-                    'variantă-directă-etimon variantă-atestat',
-                    'variantă-directă-etimon variantă-reconstruit',                
-                    'variantă-directă-singular refăcut după pluralul',
-                    'variantă-directă-prin apropiere de',
-                    'variantă-directă-prin derivare cu suf.',
-                    'variantă-directă-sub influența',
-                    'variantă-directă-etimologie populară prin apropiere de',
-                    'variantă-directă-din lat.',
-                    'variantă-directă-derivat regresiv de la',
-                    'variantă-directă-prin confuzie cu'
+                    'cuvântul.titlu-formație.internă-derivat.regresiv',
+                    'cuvântul.titlu-formație.internă-derivat postverbal',                
+                    'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
+                    'cuvântul.titlu-formație.internă-trimitere-De.la-n.pr.',
+                    'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
+                    'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
+                    'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
+                    'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
+                    'cuvântul.titlu-formație.internă-trimitere-Din-etimon*',
+                    'cuvântul.titlu-formație.internă-prescurtare',
+                    'cuvântul.titlu-formație.internă-calc',
+                    'cuvântul.titlu-formație.internă-onomatopee',
+                    'cuvântul.titlu-formație.internă-contragere',
+                    'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
+                    'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
+                    'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                    
+                    'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
+                    'cuvântul.titlu-formație.internă-formație.onomatopeică',
+                    'cuvântul.titlu-formație.internă-formație.spontană.de.la',
+                    'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
+                    'cuvântul.titlu-formație.internă-din.formulă.de.urare',
+                    'cuvântul.titlu-formație.internă-format.după',
+                    'cuvântul.titlu-formație.internă-denumire.comercială',
+                    'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
+                    'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)',
+                    'cuvântul.titlu-element.extern-calc',
+                    'cuvântul.titlu-element.necunoscut',
+                    'variantă-directă-etimon.variantă-atestat',
+                    'variantă-directă-etimon.variantă-reconstruit',                
+                    'variantă-directă-singular.refăcut.după.pluralul',
+                    'variantă-directă-prin.apropiere.de',
+                    'variantă-directă-prin.derivare.cu.suf.',
+                    'variantă-directă-sub.influența',
+                    'variantă-directă-etimologie.populară.prin.apropiere.de',
+                    'variantă-directă-din.lat.',
+                    'variantă-directă-derivat.regresiv.de.la',
+                    'variantă-directă-prin.confuzie.cu'
                 )
         )
         then (
@@ -1066,14 +1066,14 @@ ua:action(
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (),         
-        if (starts-with(@type, 'una sau mai multe variante lexicale-') and ends-with(@type, '-trimitere-cf. cuvânt'))
+        if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf.cuvânt'))
         then (
             delete nodes ./following-sibling::*[position() > 1],
             insert node doc('content-models/ptr.xml') after ./following-sibling::*[1],
             replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (), 
-        if (starts-with(@type, 'una sau mai multe variante lexicale-') and ends-with(@type, '-trimitere-cf. izvor'))
+        if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf.izvor'))
         then (
             delete nodes ./following-sibling::*[position() > 1],
             insert node $bibl-template after ./following-sibling::*[1],
@@ -1083,21 +1083,21 @@ ua:action(
         if (@type = 
             (
                 '',
-                'variantă-directă-cu schimbare de suf.',
-                'variantă-directă-refăcut după forma articulată',
-                'variantă-directă-refăcut după sg. art.',
-                'variantă-directă-sg. refăcut după plural',
-                'variantă-directă-prin etimologie populară',
-                'variantă-directă-prin accidente fonetice-afereză',
-                'variantă-directă-prin accidente fonetice-proteză',
-                'variantă-directă-prin accidente fonetice-sincopă',
-                'variantă-directă-prin accidente fonetice-epenteză',
-                'variantă-directă-prin accidente fonetice-anaptixă',
-                'variantă-directă-prin accidente fonetice-apocopă',
-                'variantă-directă-prin accidente fonetice-elidare',
-                'variantă-directă-prin accidente fonetice-metateză',
-                'variantă-directă-prin accidente fonetice-propagare',
-                'variantă-directă-prin accidente fonetice-sinereză'
+                'variantă-directă-cu.schimbare.de.suf.',
+                'variantă-directă-refăcut.după.forma.articulată',
+                'variantă-directă-refăcut.după.sg.art.',
+                'variantă-directă-sg.refăcut.după.plural',
+                'variantă-directă-prin.etimologie.populară',
+                'variantă-directă-prin.accidente.fonetice-afereză',
+                'variantă-directă-prin.accidente.fonetice-proteză',
+                'variantă-directă-prin.accidente.fonetice-sincopă',
+                'variantă-directă-prin.accidente.fonetice-epenteză',
+                'variantă-directă-prin.accidente.fonetice-anaptixă',
+                'variantă-directă-prin.accidente.fonetice-apocopă',
+                'variantă-directă-prin.accidente.fonetice-elidare',
+                'variantă-directă-prin.accidente.fonetice-metateză',
+                'variantă-directă-prin.accidente.fonetice-propagare',
+                'variantă-directă-prin.accidente.fonetice-sinereză'
             )
         )
         then (
@@ -1213,7 +1213,7 @@ ua:action(
     (
         insert node $term-template after .
         ,
-        replace value of node ./following-sibling::*[1]/@type with 'cuvântul titlu-formație internă-compus-format din-element adăugat'
+        replace value of node ./following-sibling::*[1]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
     )
 ),
 ua:action(
@@ -1338,10 +1338,10 @@ ua:attach-template(ua-dt:css-selector("xr[type = 'antonim']:before"), "antonim-b
 ua:template("etym-before",
     <template>
         <button onclick="{oxy:execute-action-by-name('addEtymElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul titlu-element de substrat'};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul titlu-element de substrat'};" />
+        <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
+        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul titlu-formație internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una sau mai multe variante lexicale-')] and count(term[@type = 'translation']) = 0};" />
+        <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
@@ -1352,85 +1352,85 @@ ua:template("etym-idno-first-of-type",
         \00000A Etimologie pentru&amp;nbsp;
         <datalist id="etym-options">
             <option label="" value="" />
-            <option label="cuvântul titlu-element moştenit-etimon atestat" value="cuvântul titlu-element moştenit-etimon atestat" />
-            <option label="cuvântul titlu-element moştenit-etimon neatestat" value="cuvântul titlu-element moştenit-etimon neatestat" />
-            <option label="cuvântul titlu-element de substrat" value="cuvântul titlu-element de substrat" />
-            <option label="cuvântul titlu-formație internă-derivat-cu prefix" value="cuvântul titlu-formație internă-derivat-cu prefix" />
-            <option label="cuvântul titlu-formație internă-derivat-cu sufix" value="cuvântul titlu-formație internă-derivat-cu sufix" />
-            <option label="cuvântul titlu-formație internă-derivat-cu prefix şi sufix" value="cuvântul titlu-formație internă-derivat-cu prefix şi sufix" />
-            <option label="cuvântul titlu-formație internă-compus-element de compunere + cuvânt bază" value="cuvântul titlu-formație internă-compus-element de compunere + cuvânt bază" />
-            <option label="cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere" value="cuvântul titlu-formație internă-compus-cuvânt bază + element de compunere" />
-            <option label="cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază" value="cuvântul titlu-formație internă-compus-din mai multe cuvinte de bază" />
-            <option label="cuvântul titlu-formație internă-compus-formație savantă din latină" value="cuvântul titlu-formație internă-compus-formație savantă din latină" />
-            <option label="cuvântul titlu-formație internă-compus-format din" value="cuvântul titlu-formație internă-compus-format din" />
-            <option label="cuvântul titlu-formație internă-derivat regresiv" value="cuvântul titlu-formație internă-derivat regresiv" />
-            <option label="cuvântul titlu-formație internă-derivat postverbal" value="cuvântul titlu-formație internă-derivat postverbal" />
-            <option label="cuvântul titlu-formație internă-trimitere-V." value="cuvântul titlu-formație internă-trimitere-V." />
-            <option label="cuvântul titlu-formație internă-trimitere-Cf." value="cuvântul titlu-formație internă-trimitere-Cf." />
-            <option label="cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al plantei" value="cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al plantei" />
-            <option label="cuvântul titlu-formație internă-trimitere-De la-n. pr." value="cuvântul titlu-formație internă-trimitere-De la-n. pr." />
-            <option label="cuvântul titlu-formație internă-trimitere-De la-numele de localitate" value="cuvântul titlu-formație internă-trimitere-De la-numele de localitate" />
-            <option label="cuvântul titlu-formație internă-trimitere-De la-numele sărbătorii religioase" value="cuvântul titlu-formație internă-trimitere-De la-numele sărbătorii religioase" />
-            <option label="cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al planetei" value="cuvântul titlu-formație internă-trimitere-De la-numele ştiințific al planetei" />
-            <option label="cuvântul titlu-formație internă-trimitere-Din-etimon atestat" value="cuvântul titlu-formație internă-trimitere-Din-etimon atestat" />
-            <option label="cuvântul titlu-formație internă-trimitere-Din-etimon *" value="cuvântul titlu-formație internă-trimitere-Din-etimon *" />
-            <option label="cuvântul titlu-formație internă-prescurtare" value="cuvântul titlu-formație internă-prescurtare" />
-            <option label="cuvântul titlu-formație internă-contaminare-cu un element-în care primul element este" value="cuvântul titlu-formație internă-contaminare-cu un element-în care primul element este" />
-            <option label="cuvântul titlu-formație internă-contaminare-cu un element-în care unul dintre elemente este" value="cuvântul titlu-formație internă-contaminare-cu un element-în care unul dintre elemente este" />
-            <option label="cuvântul titlu-formație internă-contaminare-cu două sau mai multe elemente" value="cuvântul titlu-formație internă-contaminare-cu două sau mai multe elemente" />
-            <option label="cuvântul titlu-formație internă-calc" value="cuvântul titlu-formație internă-calc" />
-            <option label="cuvântul titlu-formație internă-onomatopee" value="cuvântul titlu-formație internă-onomatopee" />
-            <option label="cuvântul titlu-formație internă-contragere" value="cuvântul titlu-formație internă-contragere" />
-            <option label="cuvântul titlu-formație internă-izolare-prin analiză din împrumuturi ca" value="cuvântul titlu-formație internă-izolare-prin analiză din împrumuturi ca" />
-            <option label="cuvântul titlu-formație internă-izolare-prin analiză din cuvinte compuse împrumutate" value="cuvântul titlu-formație internă-izolare-prin analiză din cuvinte compuse împrumutate" />
-            <option label="cuvântul titlu-formație internă-izolare-din nume de localităţi" value="cuvântul titlu-formație internă-izolare-din nume de localităţi" />
-            <option label="cuvântul titlu-formație internă-singular refăcut după plural" value="cuvântul titlu-formație internă-singular refăcut după plural" />
-            <option label="cuvântul titlu-formație internă-formație onomatopeică" value="cuvântul titlu-formație internă-formație onomatopeică" />
-            <option label="cuvântul titlu-formație internă-formație spontană de la" value="cuvântul titlu-formație internă-formație spontană de la" />
-            <option label="cuvântul titlu-formație internă-prin figură etimologică de la" value="cuvântul titlu-formație internă-prin figură etimologică de la" />
-            <option label="cuvântul titlu-formație internă-din formulă de urare" value="cuvântul titlu-formație internă-din formulă de urare" />
-            <option label="cuvântul titlu-formație internă-format după" value="cuvântul titlu-formație internă-format după" />
-            <option label="cuvântul titlu-formație internă-denumire comercială" value="cuvântul titlu-formație internă-denumire comercială" />
-            <option label="cuvântul titlu-element extern-împrumut-etimon sigur" value="cuvântul titlu-element extern-împrumut-etimon sigur" />
-            <option label="cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)" value="cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)" />
-            <option label="cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *" value="cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *" />
-            <option label="cuvântul titlu-element extern-calc" value="cuvântul titlu-element extern-calc" />
-            <option label="cuvântul titlu-element extern-trimitere" value="cuvântul titlu-element extern-trimitere" />
-            <option label="cuvântul titlu-element necunoscut" value="cuvântul titlu-element necunoscut" />
-            <option label="unul sau mai multe sensuri-explicarea sensului-cf. izvor" value="unul sau mai multe sensuri-explicarea sensului-cf. izvor" />
-            <option label="unul sau mai multe sensuri-sensul-cf. etimon" value="unul sau mai multe sensuri-sensul-cf. etimon" />
-            <option label="unul sau mai multe sensuri-sensul-cf. și etimon" value="unul sau mai multe sensuri-sensul-cf. și etimon" />
-            <option label="variantă-directă-etimon variantă-atestat" value="variantă-directă-etimon variantă-atestat" />
-            <option label="variantă-directă-etimon variantă-reconstruit" value="variantă-directă-etimon variantă-reconstruit" />
-            <option label="variantă-directă-sg. refăcut după plural" value="variantă-directă-sg. refăcut după plural" />            
-            <option label="variantă-directă-singular refăcut după pluralul" value="variantă-directă-singular refăcut după pluralul" />
-            <option label="variantă-directă-prin apropiere de" value="variantă-directă-prin apropiere de" />
-            <option label="variantă-directă-prin etimologie populară" value="variantă-directă-prin etimologie populară" />
-            <option label="variantă-directă-prin accidente fonetice-afereză" value="variantă-directă-prin accidente fonetice-afereză" />
-            <option label="variantă-directă-prin accidente fonetice-proteză" value="variantă-directă-prin accidente fonetice-proteză" />
-            <option label="variantă-directă-prin accidente fonetice-sincopă" value="variantă-directă-prin accidente fonetice-sincopă" />
-            <option label="variantă-directă-prin accidente fonetice-epenteză" value="variantă-directă-prin accidente fonetice-epenteză" />
-            <option label="variantă-directă-prin accidente fonetice-anaptixă" value="variantă-directă-prin accidente fonetice-anaptixă" />
-            <option label="variantă-directă-prin accidente fonetice-apocopă" value="variantă-directă-prin accidente fonetice-apocopă" />
-            <option label="variantă-directă-prin accidente fonetice-elidare" value="variantă-directă-prin accidente fonetice-elidare" />
-            <option label="variantă-directă-prin accidente fonetice-metateză" value="variantă-directă-prin accidente fonetice-metateză" />
-            <option label="variantă-directă-prin accidente fonetice-propagare" value="variantă-directă-prin accidente fonetice-propagare" />
-            <option label="variantă-directă-prin accidente fonetice-sinereză" value="variantă-directă-prin accidente fonetice-sinereză" />
-            <option label="variantă-directă-cu schimbare de suf." value="variantă-directă-cu schimbare de suf." />
-            <option label="variantă-directă-prin derivare cu suf." value="variantă-directă-prin derivare cu suf." />
-            <option label="variantă-directă-sub influența" value="variantă-directă-sub influența" />
-            <option label="variantă-directă-refăcut după forma articulată" value="variantă-directă-refăcut după forma articulată" />
-            <option label="variantă-directă-refăcut după sg. art." value="variantă-directă-refăcut după sg. art." />
-            <option label="variantă-directă-etimologie populară prin apropiere de" value="variantă-directă-etimologie populară prin apropiere de" />
-            <option label="variantă-directă-din lat." value="variantă-directă-din lat." />
-            <option label="variantă-directă-derivat regresiv de la" value="variantă-directă-derivat regresiv de la" />
-            <option label="variantă-directă-prin confuzie cu" value="variantă-directă-prin confuzie cu" />
-            <option label="una sau mai multe variante lexicale-variantă-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variantă-trimitere-cf. cuvânt" />
-            <option label="una sau mai multe variante lexicale-variantă-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variantă-trimitere-cf. izvor" />
-            <option label="una sau mai multe variante lexicale-variante cu-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variante cu-trimitere-cf. cuvânt" />
-            <option label="una sau mai multe variante lexicale-variante cu-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variante cu-trimitere-cf. izvor" />
-            <option label="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. cuvânt" value="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. cuvânt" />
-            <option label="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. izvor" value="una sau mai multe variante lexicale-variante de tipul-trimitere-cf. izvor" />
+            <option label="cuvântul.titlu-element.moştenit-etimon.atestat" value="cuvântul.titlu-element.moştenit-etimon.atestat" />
+            <option label="cuvântul.titlu-element.moştenit-etimon.neatestat" value="cuvântul.titlu-element.moştenit-etimon.neatestat" />
+            <option label="cuvântul.titlu-element.de.substrat" value="cuvântul.titlu-element.de.substrat" />
+            <option label="cuvântul titlu-formație internă-derivat-cu prefix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix" />
+            <option label="cuvântul titlu-formație internă-derivat-cu sufix" value="cuvântul.titlu-formație.internă-derivat-cu.sufix" />
+            <option label="cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix" />
+            <option label="cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază" value="cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază" />
+            <option label="cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere" value="cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere" />
+            <option label="cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază" value="cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază" />
+            <option label="cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină" value="cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină" />
+            <option label="cuvântul.titlu-formație.internă-compus-format.din" value="cuvântul.titlu-formație.internă-compus-format.din" />
+            <option label="cuvântul.titlu-formație.internă-derivat.regresiv" value="cuvântul.titlu-formație.internă-derivat.regresiv" />
+            <option label="cuvântul.titlu-formație.internă-derivat postverbal" value="cuvântul.titlu-formație.internă-derivat postverbal" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-V." value="cuvântul.titlu-formație.internă-trimitere-V." />
+            <option label="cuvântul.titlu-formație.internă-trimitere-Cf." value="cuvântul.titlu-formație.internă-trimitere-Cf." />
+            <option label="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei" value="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-De.la-n.pr." value="cuvântul.titlu-formație.internă-trimitere-De.la-n.pr." />
+            <option label="cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate" value="cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase" value="cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei" value="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat" value="cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat" />
+            <option label="cuvântul.titlu-formație.internă-trimitere-Din-etimon*" value="cuvântul.titlu-formație.internă-trimitere-Din-etimon*" />
+            <option label="cuvântul.titlu-formație.internă-prescurtare" value="cuvântul.titlu-formație.internă-prescurtare" />
+            <option label="cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este" value="cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este" />
+            <option label="cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este" value="cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este" />
+            <option label="cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente" value="cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente" />
+            <option label="cuvântul.titlu-formație.internă-calc" value="cuvântul.titlu-formație.internă-calc" />
+            <option label="cuvântul.titlu-formație.internă-onomatopee" value="cuvântul.titlu-formație.internă-onomatopee" />
+            <option label="cuvântul.titlu-formație.internă-contragere" value="cuvântul.titlu-formație.internă-contragere" />
+            <option label="cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca" value="cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca" />
+            <option label="cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate" value="cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate" />
+            <option label="cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi" value="cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi" />
+            <option label="cuvântul.titlu-formație.internă-singular.refăcut.după.plural" value="cuvântul.titlu-formație.internă-singular.refăcut.după.plural" />
+            <option label="cuvântul.titlu-formație.internă-formație.onomatopeică" value="cuvântul.titlu-formație.internă-formație.onomatopeică" />
+            <option label="cuvântul.titlu-formație.internă-formație.spontană.de.la" value="cuvântul.titlu-formație.internă-formație.spontană.de.la" />
+            <option label="cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la" value="cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la" />
+            <option label="cuvântul.titlu-formație.internă-din.formulă.de.urare" value="cuvântul.titlu-formație.internă-din.formulă.de.urare" />
+            <option label="cuvântul.titlu-formație.internă-format.după" value="cuvântul.titlu-formație.internă-format.după" />
+            <option label="cuvântul.titlu-formație.internă-denumire.comercială" value="cuvântul.titlu-formație.internă-denumire.comercială" />
+            <option label="cuvântul.titlu-element.extern-împrumut-etimon.sigur" value="cuvântul.titlu-element.extern-împrumut-etimon.sigur" />
+            <option label="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)" value="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)" />
+            <option label="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*" value="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*" />
+            <option label="cuvântul.titlu-element.extern-calc" value="cuvântul.titlu-element.extern-calc" />
+            <option label="cuvântul.titlu-element.extern-trimitere" value="cuvântul.titlu-element.extern-trimitere" />
+            <option label="cuvântul.titlu-element.necunoscut" value="cuvântul.titlu-element.necunoscut" />
+            <option label="unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor" value="unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor" />
+            <option label="unul.sau.mai.multe.sensuri-sensul-cf.etimon" value="unul.sau.mai.multe.sensuri-sensul-cf.etimon" />
+            <option label="unul.sau.mai.multe.sensuri-sensul-cf.și.etimon" value="unul.sau.mai.multe.sensuri-sensul-cf.și.etimon" />
+            <option label="variantă-directă-etimon.variantă-atestat" value="variantă-directă-etimon.variantă-atestat" />
+            <option label="variantă-directă-etimon.variantă-reconstruit" value="variantă-directă-etimon.variantă-reconstruit" />
+            <option label="variantă-directă-sg.refăcut.după.plural" value="variantă-directă-sg.refăcut.după.plural" />            
+            <option label="variantă-directă-singular.refăcut.după.pluralul" value="variantă-directă-singular.refăcut.după.pluralul" />
+            <option label="variantă-directă-prin.apropiere.de" value="variantă-directă-prin.apropiere.de" />
+            <option label="variantă-directă-prin.etimologie.populară" value="variantă-directă-prin.etimologie.populară" />
+            <option label="variantă-directă-prin.accidente.fonetice-afereză" value="variantă-directă-prin.accidente.fonetice-afereză" />
+            <option label="variantă-directă-prin.accidente.fonetice-proteză" value="variantă-directă-prin.accidente.fonetice-proteză" />
+            <option label="variantă-directă-prin.accidente.fonetice-sincopă" value="variantă-directă-prin.accidente.fonetice-sincopă" />
+            <option label="variantă-directă-prin.accidente.fonetice-epenteză" value="variantă-directă-prin.accidente.fonetice-epenteză" />
+            <option label="variantă-directă-prin.accidente.fonetice-anaptixă" value="variantă-directă-prin.accidente.fonetice-anaptixă" />
+            <option label="variantă-directă-prin.accidente.fonetice-apocopă" value="variantă-directă-prin.accidente.fonetice-apocopă" />
+            <option label="variantă-directă-prin.accidente.fonetice-elidare" value="variantă-directă-prin.accidente.fonetice-elidare" />
+            <option label="variantă-directă-prin.accidente.fonetice-metateză" value="variantă-directă-prin.accidente.fonetice-metateză" />
+            <option label="variantă-directă-prin.accidente.fonetice-propagare" value="variantă-directă-prin.accidente.fonetice-propagare" />
+            <option label="variantă-directă-prin.accidente.fonetice-sinereză" value="variantă-directă-prin.accidente.fonetice-sinereză" />
+            <option label="variantă-directă-cu.schimbare.de.suf." value="variantă-directă-cu.schimbare.de.suf." />
+            <option label="variantă-directă-prin.derivare.cu.suf." value="variantă-directă-prin.derivare.cu.suf." />
+            <option label="variantă-directă-sub.influența" value="variantă-directă-sub.influența" />
+            <option label="variantă-directă-refăcut.după.forma.articulată" value="variantă-directă-refăcut.după.forma.articulată" />
+            <option label="variantă-directă-refăcut.după.sg.art." value="variantă-directă-refăcut.după.sg.art." />
+            <option label="variantă-directă-etimologie.populară.prin.apropiere.de" value="variantă-directă-etimologie.populară.prin.apropiere.de" />
+            <option label="variantă-directă-din.lat." value="variantă-directă-din.lat." />
+            <option label="variantă-directă-derivat.regresiv.de.la" value="variantă-directă-derivat.regresiv.de.la" />
+            <option label="variantă-directă-prin.confuzie.cu" value="variantă-directă-prin.confuzie.cu" />
+            <option label="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.cuvânt" />
+            <option label="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.izvor" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.cuvânt" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.izvor" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante de tipul-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante de tipul-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" />
         </datalist>
         <input data-ua-ref="{@type}" size="700" list="etym-options" />        
     </template>
@@ -1448,7 +1448,7 @@ ua:template("variantă-directă-etimon variantă-*-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon variantă-'] ~ term"), "variantă-directă-etimon variantă-*-template"),
 
-ua:template("cuvântul titlu-formație internă-singular refăcut după plural-template",
+ua:template("cuvântul.titlu-formație.internă-singular.refăcut.după.plural-template",
     <template>
         Singular refăcut după plural&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1456,17 +1456,17 @@ ua:template("cuvântul titlu-formație internă-singular refăcut după plural-t
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-singular refăcut după plural'] ~ term"), "cuvântul titlu-formație internă-singular refăcut după plural-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-singular.refăcut.după.plural'] ~ term"), "cuvântul.titlu-formație.internă-singular.refăcut.după.plural-template"),
 
-ua:template("cuvântul titlu-formație internă-formație onomatopeică-template",
+ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template",
     <template>
         Formaţie onomatopeică&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-formație onomatopeică'] ~ term"), "cuvântul titlu-formație internă-formație onomatopeică-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-formație.onomatopeică'] ~ term"), "cuvântul.titlu-formație.internă-formație.onomatopeică-template"),
 
-ua:template("cuvântul titlu-formație internă-formație spontană de la-template",
+ua:template("cuvântul.titlu-formație.internă-formație.spontană.de.la-template",
     <template>
         Formaţie spontană de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1474,9 +1474,9 @@ ua:template("cuvântul titlu-formație internă-formație spontană de la-templa
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-formație spontană de la'] ~ term"), "cuvântul titlu-formație internă-formație spontană de la-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-formație.spontană.de.la'] ~ term"), "cuvântul.titlu-formație.internă-formație.spontană.de.la-template"),
 
-ua:template("cuvântul titlu-formație internă-prin figură etimologică de la-template",
+ua:template("cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-template",
     <template>
         Prin figură etimologică de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1484,9 +1484,9 @@ ua:template("cuvântul titlu-formație internă-prin figură etimologică de la-
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-prin figură etimologică de la'] ~ term"), "cuvântul titlu-formație internă-prin figură etimologică de la-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la'] ~ term"), "cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-template"),
 
-ua:template("cuvântul titlu-formație internă-contragere-template",
+ua:template("cuvântul.titlu-formație.internă-contragere-template",
     <template>
         Contras din&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1494,41 +1494,41 @@ ua:template("cuvântul titlu-formație internă-contragere-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-contragere'] ~ term"), "cuvântul titlu-formație internă-contragere-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contragere'] ~ term"), "cuvântul.titlu-formație.internă-contragere-template"),
 
-ua:template("cuvântul titlu-formație internă-din formulă de urare-template",
+ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
     <template>
         Din formulă de urare&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-din formulă de urare'] ~ term"), "cuvântul titlu-formație internă-din formulă de urare-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-din.formulă.de.urare'] ~ term"), "cuvântul.titlu-formație.internă-din.formulă.de.urare-template"),
 
-ua:template("cuvântul titlu-formație internă-format după-template",
+ua:template("cuvântul.titlu-formație.internă-format.după-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-format după'] ~ term"), "cuvântul titlu-formație internă-format după-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-format.după'] ~ term"), "cuvântul.titlu-formație.internă-format.după-template"),
 
-ua:template("cuvântul titlu-formație internă-denumire comercială-template",
+ua:template("cuvântul.titlu-formație.internă-denumire.comercială-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-denumire comercială'] ~ term"), "cuvântul titlu-formație internă-denumire comercială-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-denumire.comercială'] ~ term"), "cuvântul.titlu-formație.internă-denumire.comercială-template"),
 
-ua:template("cuvântul titlu-formație internă-compus-formație savantă din latină-term-first-of-type-template",
+ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-first-of-type-template",
     <template>
         lat.
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-formație savantă din latină'] ~ term:first-of-type:after"), "cuvântul titlu-formație internă-compus-formație savantă din latină-term-first-of-type-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină'] ~ term:first-of-type:after"), "cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-first-of-type-template"),
 
-ua:template("cuvântul titlu-formație internă-compus-formație savantă din latină-term-not-first-of-type-template",
+ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-not-first-of-type-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -1539,13 +1539,9 @@ ua:template("cuvântul titlu-formație internă-compus-formație savantă din la
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-formație savantă din latină'] ~ term:not( :first-of-type):after"), "cuvântul titlu-formație internă-compus-formație savantă din latină-term-not-first-of-type-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină'] ~ term:not( :first-of-type):after"), "cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-not-first-of-type-template"),
 
-
-
-
-
-ua:template("cuvântul titlu-formație internă-compus-format din-term-bază-template",
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-bază-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -1554,9 +1550,9 @@ ua:template("cuvântul titlu-formație internă-compus-format din-term-bază-tem
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-format din'] ~ term[type = 'cuvântul titlu-formație internă-compus-format din-bază']:after"), "cuvântul titlu-formație internă-compus-format din-term-bază-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-bază-template"),
 
-ua:template("cuvântul titlu-formație internă-compus-format din-term-element adăugat-template",
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -1564,10 +1560,10 @@ ua:template("cuvântul titlu-formație internă-compus-format din-term-element a
         }
         <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:execute-action-by-name('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul titlu-formație internă-compus-format din-element adăugat']) >= 2};" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-compus-format din'] ~ term[type = 'cuvântul titlu-formație internă-compus-format din-element adăugat']:after"), "cuvântul titlu-formație internă-compus-format din-term-element adăugat-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template"),
 
 
 
@@ -1575,69 +1571,69 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-forma
 ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
 
-ua:template("variantă-directă-singular refăcut după pluralul-template",
+ua:template("variantă-directă-singular.refăcut.după.pluralul-template",
     <template>
         Sg. refăcut după pluralul&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-singular refăcut după pluralul'] ~ term"), "variantă-directă-singular refăcut după pluralul-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-singular.refăcut.după.pluralul'] ~ term"), "variantă-directă-singular.refăcut.după.pluralul-template")
 ,
-ua:template("variantă-directă-prin apropiere de-template",
+ua:template("variantă-directă-prin.apropiere.de-template",
     <template>
         Prin apropiere de&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin apropiere de'] ~ term"), "variantă-directă-prin apropiere de-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.apropiere.de'] ~ term"), "variantă-directă-prin.apropiere.de-template")
 ,
-ua:template("variantă-directă-prin derivare cu suf.-template",
+ua:template("variantă-directă-prin.derivare.cu.suf.-template",
     <template>
         Prin derivare cu sufix&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin derivare cu suf.'] ~ term"), "variantă-directă-prin derivare cu suf.-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.derivare.cu.suf.'] ~ term"), "variantă-directă-prin.derivare.cu.suf.-template")
 ,
-ua:template("variantă-directă-sub influența-template",
+ua:template("variantă-directă-sub.influența-template",
     <template>
         Sub influenţa&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sub influența'] ~ term"), "variantă-directă-sub influența-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sub.influența'] ~ term"), "variantă-directă-sub.influența-template")
 ,
-ua:template("variantă-directă-etimologie populară prin apropiere de-template",
+ua:template("variantă-directă-etimologie.populară.prin.apropiere.de-template",
     <template>
         Etimologie populară prin apropiere de&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-etimologie populară prin apropiere de'] ~ term"), "variantă-directă-etimologie populară prin apropiere de-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-etimologie.populară.prin.apropiere.de'] ~ term"), "variantă-directă-etimologie.populară.prin.apropiere.de-template")
 ,
-ua:template("variantă-directă-din lat.-template",
+ua:template("variantă-directă-din.lat.-template",
     <template>
         Din lat.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-din lat.'] ~ term"), "variantă-directă-din lat.-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-din.lat.'] ~ term"), "variantă-directă-din.lat.-template")
 ,
-ua:template("variantă-directă-prin confuzie cu-template",
+ua:template("variantă-directă-prin.confuzie.cu-template",
     <template>
         Prin confuzie cu&amp;nbsp;
         <input data-ua-ref="{text()}" size="5" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin confuzie cu'] ~ term"), "variantă-directă-prin confuzie cu-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.confuzie.cu'] ~ term"), "variantă-directă-prin.confuzie.cu-template")
 ,
-ua:template("una sau mai multe variante lexicale-*-trimitere-cf. cuvânt-template",
+ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf.cuvânt-template",
     <template>
         Cf.&amp;nbsp;
         <input data-ua-ref="{text()}" size="5" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una sau mai multe variante lexicale-'][type $= '-trimitere-cf. cuvânt'] ~ ptr"), "una sau mai multe variante lexicale-*-trimitere-cf. cuvânt-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una.sau.mai.multe.variante.lexicale-'][type $= '-trimitere-cf.cuvânt'] ~ ptr"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf.cuvânt-template")
 ,
 ua:template("cuvântul titlu-formație internă-izolare-term",
     <template>
@@ -1648,7 +1644,7 @@ ua:template("cuvântul titlu-formație internă-izolare-term",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-izolare-'] ~ term"), "cuvântul titlu-formație internă-izolare-term"),
         
-ua:template("cuvântul titlu-formație internă-trimitere-V.-template",
+ua:template("cuvântul.titlu-formație.internă-trimitere-V.-template",
     <template>
         V.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1658,9 +1654,9 @@ ua:template("cuvântul titlu-formație internă-trimitere-V.-template",
         <input data-ua-ref="{@type}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-trimitere-V.'] ~ ptr"), "cuvântul titlu-formație internă-trimitere-V.-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-trimitere-V.'] ~ ptr"), "cuvântul.titlu-formație.internă-trimitere-V.-template"),
 
-ua:template("cuvântul titlu-formație internă-trimitere-Cf.-template",
+ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-template",
     <template>
         Cf.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1670,7 +1666,7 @@ ua:template("cuvântul titlu-formație internă-trimitere-Cf.-template",
         <input data-ua-ref="{@type}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-trimitere-Cf.'] ~ ptr"), "cuvântul titlu-formație internă-trimitere-Cf.-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.'] ~ ptr"), "cuvântul.titlu-formație.internă-trimitere-Cf.-template"),
 
 ua:template("cuvântul titlu-formație internă-trimitere-De la-template",
     <template>
@@ -1683,7 +1679,7 @@ ua:template("cuvântul titlu-formație internă-trimitere-De la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-trimitere-De la-'] ~ term"), "cuvântul titlu-formație internă-trimitere-De la-template"),
 
-ua:template("cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)-term",
+ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)-term",
     <template>
         Limba&amp;nbsp;
         {
@@ -1693,15 +1689,15 @@ ua:template("cuvântul titlu-element extern-împrumut-etimon neatestat (reconstr
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)'] ~ term"), "cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (necunoscut)-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)-term"),
 
-ua:template("cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *-term",
+ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*-term",
     <template>
         etimon neatestat (reconstruit) v. sl. *&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *'] ~ term"), "cuvântul titlu-element extern-împrumut-etimon neatestat (reconstruit)-etimon neatestat (reconstruit) v. sl. *-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*-term"),
 
 ua:template("cuvântul titlu-formație internă-trimitere-Din-template",
     <template>
@@ -1714,7 +1710,7 @@ ua:template("cuvântul titlu-formație internă-trimitere-Din-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-trimitere-Din-'] ~ term"), "cuvântul titlu-formație internă-trimitere-Din-template"),
 
-ua:template("cuvântul titlu-element extern-calc-template",
+ua:template("cuvântul.titlu-element.extern-calc-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -1724,16 +1720,16 @@ ua:template("cuvântul titlu-element extern-calc-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-calc'] ~ term"), "cuvântul titlu-element extern-calc-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-calc'] ~ term"), "cuvântul.titlu-element.extern-calc-template"),
 
-ua:template("cuvântul titlu-element necunoscut-template",
+ua:template("cuvântul.titlu-element.necunoscut-template",
     <template>
         Et. nec.
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element necunoscut'] ~ term"), "cuvântul titlu-element necunoscut-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.necunoscut'] ~ term"), "cuvântul.titlu-element.necunoscut-template"),
 
-ua:template("unul sau mai multe sensuri-explicarea sensului-cf. izvor-template",
+ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor-template",
     <template>
         Număr de sens&amp;nbsp;
         {
@@ -1750,7 +1746,7 @@ ua:template("unul sau mai multe sensuri-explicarea sensului-cf. izvor-template",
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-explicarea sensului-cf. izvor'] ~ ptr:after"), "unul sau mai multe sensuri-explicarea sensului-cf. izvor-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor-template"),
 
 ua:template("unul sau mai multe sensuri-sensul-*-ptr-template",
     <template>
@@ -1771,7 +1767,7 @@ ua:template("unul sau mai multe sensuri-sensul-*-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'unul sau mai multe sensuri-sensul-'] ~ ptr:after"), "unul sau mai multe sensuri-sensul-*-ptr-template"),
 
-ua:template("unul sau mai multe sensuri-sensul-cf. etimon-term-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf.etimon-term-template",
     <template>
         Cf.&amp;nbsp;
         {
@@ -1780,9 +1776,9 @@ ua:template("unul sau mai multe sensuri-sensul-cf. etimon-term-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-sensul-cf. etimon'] ~ term:after"), "unul sau mai multe sensuri-sensul-cf. etimon-term-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf.etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf.etimon-term-template"),
 
-ua:template("unul sau mai multe sensuri-sensul-cf. și etimon-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf.și.etimon-template",
     <template>
         Cf. și&amp;nbsp;
         {
@@ -1791,7 +1787,7 @@ ua:template("unul sau mai multe sensuri-sensul-cf. și etimon-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul sau mai multe sensuri-sensul-cf. și etimon'] ~ term:after"), "unul sau mai multe sensuri-sensul-cf. și etimon-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf.și.etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf.și.etimon-template"),
 
 ua:template("etym-mentioned",
     <template>
@@ -1800,7 +1796,7 @@ ua:template("etym-mentioned",
 ),
 ua:attach-template(ua-dt:css-selector("etym > mentioned"), "etym-mentioned"),
 
-ua:template("cuvântul titlu-element extern-trimitere-mentioned",
+ua:template("cuvântul.titlu-element.extern-trimitere-mentioned",
     <template>
         Limba&amp;nbsp;
         {
@@ -1812,7 +1808,7 @@ ua:template("cuvântul titlu-element extern-trimitere-mentioned",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-trimitere'] ~ mentioned"), "cuvântul titlu-element extern-trimitere-mentioned"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-trimitere'] ~ mentioned"), "cuvântul.titlu-element.extern-trimitere-mentioned"),
 
 ua:template("etym-certainty-template",
     <template>
@@ -1826,7 +1822,7 @@ ua:template("etym-certainty-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > certainty"), "etym-certainty-template"),
 
-ua:template("cuvântul titlu-element de substrat-mentioned-etymon",
+ua:template("cuvântul.titlu-element.de.substrat-mentioned-etymon",
     <template>
         Cf.&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
@@ -1840,32 +1836,32 @@ ua:template("cuvântul titlu-element de substrat-mentioned-etymon",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul titlu-element de substrat'] ~ mentioned"), "cuvântul titlu-element de substrat-mentioned-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ mentioned"), "cuvântul.titlu-element.de.substrat-mentioned-etymon"),
 
-ua:template("cuvântul titlu-element de substrat-term-etymon",
+ua:template("cuvântul.titlu-element.de.substrat-term-etymon",
     <template>
         El. de substrat&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul titlu-element de substrat'] ~ term"), "cuvântul titlu-element de substrat-term-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term"), "cuvântul.titlu-element.de.substrat-term-etymon"),
 
-ua:template("cuvântul titlu-element moştenit-etimon atestat-etymon",
+ua:template("cuvântul.titlu-element.moştenit-etimon.atestat-etymon",
     <template>
         Lat.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
         În funcţie de partea de vorbire se vor indica următoarele forme ale etimonului: pentru s./ subst. - Nom. şi Gen; pentru adj. - formele de m, f şi n.; pentru vb. - inf. lung ; pentru pron. - formele de Nom., Gen. şi Dat.; pentru num. - formele de m. şi f.; pentru art. - formele de m. şi f.
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul titlu-element moştenit-etimon atestat'] ~ term"), "cuvântul titlu-element moştenit-etimon atestat-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.moştenit-etimon.atestat'] ~ term"), "cuvântul.titlu-element.moştenit-etimon.atestat-etymon"),
 
-ua:template("cuvântul titlu-element moştenit-etimon neatestat-etymon",
+ua:template("cuvântul.titlu-element.moştenit-etimon.neatestat-etymon",
     <template>
         Lat. *&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul titlu-element moştenit-etimon neatestat'] ~ term"), "cuvântul titlu-element moştenit-etimon neatestat-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.moştenit-etimon.neatestat'] ~ term"), "cuvântul.titlu-element.moştenit-etimon.neatestat-etymon"),
 
 ua:template("etym-term-prefix",
     <template>
@@ -1926,7 +1922,7 @@ ua:template("etym-term-component-element",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'component-element']"), "etym-term-component-element"),
 
-ua:template("cuvântul titlu-formație internă-derivat regresiv-template",
+ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
     <template>
         Derivat regresiv de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1934,17 +1930,17 @@ ua:template("cuvântul titlu-formație internă-derivat regresiv-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-derivat regresiv'] ~ term"), "cuvântul titlu-formație internă-derivat regresiv-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat.regresiv'] ~ term"), "cuvântul.titlu-formație.internă-derivat.regresiv-template")
 ,
-ua:template("variantă-directă-derivat regresiv de la-template",
+ua:template("variantă-directă-derivat.regresiv.de.la-template",
     <template>
         Derivat regresiv de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-derivat regresiv de la'] ~ term"), "variantă-directă-derivat regresiv de la-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-derivat.regresiv.de.la'] ~ term"), "variantă-directă-derivat.regresiv.de.la-template")
 ,
-ua:template("cuvântul titlu-formație internă-derivat postverbal-template",
+ua:template("cuvântul.titlu-formație.internă-derivat postverbal-template",
     <template>
         Derivat postverbal de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1952,9 +1948,9 @@ ua:template("cuvântul titlu-formație internă-derivat postverbal-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-derivat postverbal'] ~ term"), "cuvântul titlu-formație internă-derivat postverbal-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat postverbal'] ~ term"), "cuvântul.titlu-formație.internă-derivat postverbal-template"),
 
-ua:template("cuvântul titlu-formație internă-prescurtare-template",
+ua:template("cuvântul.titlu-formație.internă-prescurtare-template",
     <template>
         Prescurtat de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1962,9 +1958,9 @@ ua:template("cuvântul titlu-formație internă-prescurtare-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-prescurtare'] ~ term"), "cuvântul titlu-formație internă-prescurtare-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-prescurtare'] ~ term"), "cuvântul.titlu-formație.internă-prescurtare-template"),
 
-ua:template("cuvântul titlu-formație internă-onomatopee-template",
+ua:template("cuvântul.titlu-formație.internă-onomatopee-template",
     <template>
         Onomatopee&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1972,7 +1968,7 @@ ua:template("cuvântul titlu-formație internă-onomatopee-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-onomatopee'] ~ term"), "cuvântul titlu-formație internă-onomatopee-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-onomatopee'] ~ term"), "cuvântul.titlu-formație.internă-onomatopee-template"),
 
 ua:template("contamination-element",
     <template>
@@ -2015,7 +2011,7 @@ ua:template("alternative-contamination-between",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'] ~ term[type = 'alternative-contamination-element']"), "alternative-contamination-between"),
 
-ua:template("cuvântul titlu-element extern-împrumut-etimon sigur-template",
+ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -2042,9 +2038,9 @@ ua:template("cuvântul titlu-element extern-împrumut-etimon sigur-template",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-element extern-împrumut-etimon sigur'] ~ term"), "cuvântul titlu-element extern-împrumut-etimon sigur-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.sigur'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.sigur-template"),
 
-ua:template("cuvântul titlu-formație internă-calc-template",
+ua:template("cuvântul.titlu-formație.internă-calc-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -2054,7 +2050,7 @@ ua:template("cuvântul titlu-formație internă-calc-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul titlu-formație internă-calc'] ~ term"), "cuvântul titlu-formație internă-calc-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
 
 ua:template("xr-syn-before",
     <template>
