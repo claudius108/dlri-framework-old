@@ -9,6 +9,6 @@
 
 * {-oxy-display-tags: none;}
 
-title, head {
+title, head, ul {
 	display: none;
 }        

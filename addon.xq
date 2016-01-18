@@ -449,12 +449,16 @@ ua:action(
     },
     (
         if (local-name() = 'TEI')
-        then (insert node doc('content-models/grammatical-information.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
-            form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()])
+        then (
+            insert node doc('content-models/grammatical-information.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
+            form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()]
+        )
         else (),
         if (local-name() != 'TEI')
-        then (insert node doc('content-models/grammatical-information.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
-            accentuation-variant ', @type)] | form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()])
+        then (
+            insert node doc('content-models/grammatical-information.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
+            accentuation-variant ', @type)] | form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()]
+        )
         else ()
     )
 ),
@@ -466,7 +470,9 @@ ua:action(
     },
     (
         if (local-name() = 'form' and @type = 'grammatical-information')
-        then (insert node doc('content-models/grammatical-information.xml') after .)
+        then (
+            insert node doc('content-models/grammatical-information.xml') after .
+        )
         else (),
         if (local-name() = 'etym')
         then (insert node doc('content-models/grammatical-information.xml') after (term | ptr)[last()])
@@ -838,7 +844,7 @@ ua:action(
                 insert node <form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" /> after parent::*/idno[last()]
             )        
         else (),   
-        if (parent::*[@type = 'grammatical-information'] and @type = '')
+        if (parent::*[@type = 'grammatical-information'] and @type = 'unknown')
         then (
             delete nodes ./following-sibling::*
         )
@@ -1351,7 +1357,7 @@ ua:template("etym-idno-first-of-type",
     <template>
         \00000A Etimologie pentru&amp;nbsp;
         <datalist id="etym-options">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="cuvântul.titlu-element.moştenit-etimon.atestat" value="cuvântul.titlu-element.moştenit-etimon.atestat" />
             <option label="cuvântul.titlu-element.moştenit-etimon.neatestat" value="cuvântul.titlu-element.moştenit-etimon.neatestat" />
             <option label="cuvântul.titlu-element.de.substrat" value="cuvântul.titlu-element.de.substrat" />
@@ -2019,7 +2025,7 @@ ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
         }
         tip etimon sigur&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="cuv. chinezesc" value="cuv. chinezesc" />
             <option label="cuv. japonez" value="cuv. japonez" />
             <option label="cuv. mongol" value="cuv. mongol" />
@@ -2366,7 +2372,7 @@ ua:template("name-before",
     <template>
         Articulare:&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="(articulat)" value="(articulat)" />
             <option label="(mai ales art.)" value="(mai ales art.)" />
             <option label="articulat" value="articulat" />
@@ -2716,7 +2722,7 @@ ua:template("form-grammatical-information-idno-first-of-type",
     <template>
         Indicații pentru&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="adj. / pron. / num. / s. / subst." value="grammatical-information-type-for-adj-et-al" />
             <option label="vb." value="grammatical-information-type-for-vb" />
         </select>   
@@ -2727,7 +2733,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information'] > 
 ua:template("form-grammatical-information-idno-nth-of-type-2",
     <template>
         <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="" />
+            <option label="" value="unknown" />
             <option label="pl." value="grammatical-information-subtype-for-pl" />
             <option label="caz" value="grammatical-information-subtype-for-case" />
             <option label="gen" value="grammatical-information-subtype-for-gender" />
