@@ -157,10 +157,10 @@ declare function local:xr-association($node as node()) as item()+ {
 declare function local:xr-reference($node as node()) as item()+ {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'trimitere']) eq 0) then "v. " else "",
-      <span class="{$node/ancestor::tei:xr/@type}">{concat(' ', $node//tei:oRef)}</span>,
-      <span class="superscript">{data($node//tei:oRef/@type)}</span>,
+      <span class="{$node/ancestor::tei:xr/@type}">{concat(' ', $node/@target)}</span>,
+      <span class="superscript">{data($node/@target)}</span>,
       "(",
-      <span class="bold">{ $node//tei:lbl/text()}</span>,
+      <span class="bold">{data($node/@target)}</span>,
       ")",
     if (count($node/following-sibling::tei:xr[@type = 'trimitere']) eq 0) then ". " else ()
   )

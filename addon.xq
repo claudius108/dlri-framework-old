@@ -106,28 +106,19 @@ declare variable $term-template as element() :=
 
 declare variable $analogy-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="analog">
-        <ref target="unknown">
-            <oRef type="unknown" />
-            <lbl />
-        </ref>
+        <ptr target="unknown" />
     </xr>
 ;
 
 declare variable $association-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="asoc">
-        <ref target="unknown">
-            <oRef type="unknown" />
-            <lbl />
-        </ref>
+        <ptr target="unknown" />
     </xr>
 ;
 
 declare variable $antonym-template as element() :=
     <xr xmlns="http://www.tei-c.org/ns/1.0" type="antonim">
-        <ref target="unknown">
-            <oRef type="unknown" />
-            <lbl />
-        </ref>
+        <ptr target="unknown" />
     </xr>
 ;
 
@@ -700,10 +691,7 @@ ua:action(
     },   
     replace node . with
         <xr xmlns="http://www.tei-c.org/ns/1.0" type="derivation-base">
-            <ref target="unknown">
-                <oRef type="unknown" />
-                <lbl />
-            </ref>
+            <ptr target="unknown" />
         </xr>
 ),
 ua:action(
@@ -2068,20 +2056,12 @@ ua:template("xr-syn-before",
 ),
 ua:attach-template(ua-dt:css-selector("xr[type = 'syn']:before"), "xr-syn-before"),
 
-ua:template("xr-oRef-before",
+ua:template("xr-before",
     <template>
-        <input data-ua-ref="{text()}" size="22" />
-        <input data-ua-ref="{@type}" size="2" />
+        <input data-ua-ref="{@target}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("xr oRef:before"), "xr-oRef-before"),
-
-ua:template("xr-lbl-before",
-    <template>
-        <input data-ua-ref="{text()}" size="10" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("xr lbl:before"), "xr-lbl-before"),
+ua:attach-template(ua-dt:css-selector("xr > ptr:before"), "xr-before"),
 
 ua:template("usg-before",
     <template>
