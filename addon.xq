@@ -1016,7 +1016,7 @@ ua:action(
         if (@type =
                 (
                     'cuvântul.titlu-formație.internă-derivat.regresiv',
-                    'cuvântul.titlu-formație.internă-derivat postverbal',                
+                    'cuvântul.titlu-formație.internă-derivat.postverbal',                
                     'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
                     'cuvântul.titlu-formație.internă-trimitere-De.la-n.pr.',
                     'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
@@ -1334,7 +1334,7 @@ ua:template("etym-before",
         <button onclick="{oxy:execute-action-by-name('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul titlu-formație internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
+        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
@@ -1349,8 +1349,8 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul.titlu-element.moştenit-etimon.atestat" value="cuvântul.titlu-element.moştenit-etimon.atestat" />
             <option label="cuvântul.titlu-element.moştenit-etimon.neatestat" value="cuvântul.titlu-element.moştenit-etimon.neatestat" />
             <option label="cuvântul.titlu-element.de.substrat" value="cuvântul.titlu-element.de.substrat" />
-            <option label="cuvântul titlu-formație internă-derivat-cu prefix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix" />
-            <option label="cuvântul titlu-formație internă-derivat-cu sufix" value="cuvântul.titlu-formație.internă-derivat-cu.sufix" />
+            <option label="cuvântul.titlu-formație.internă-derivat-cu.prefix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix" />
+            <option label="cuvântul.titlu-formație.internă-derivat-cu.sufix" value="cuvântul.titlu-formație.internă-derivat-cu.sufix" />
             <option label="cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix" />
             <option label="cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază" value="cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază" />
             <option label="cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere" value="cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere" />
@@ -1358,7 +1358,7 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină" value="cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină" />
             <option label="cuvântul.titlu-formație.internă-compus-format.din" value="cuvântul.titlu-formație.internă-compus-format.din" />
             <option label="cuvântul.titlu-formație.internă-derivat.regresiv" value="cuvântul.titlu-formație.internă-derivat.regresiv" />
-            <option label="cuvântul.titlu-formație.internă-derivat postverbal" value="cuvântul.titlu-formație.internă-derivat postverbal" />
+            <option label="cuvântul.titlu-formație.internă-derivat.postverbal" value="cuvântul.titlu-formație.internă-derivat.postverbal" />
             <option label="cuvântul.titlu-formație.internă-trimitere-V." value="cuvântul.titlu-formație.internă-trimitere-V." />
             <option label="cuvântul.titlu-formație.internă-trimitere-Cf." value="cuvântul.titlu-formație.internă-trimitere-Cf." />
             <option label="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei" value="cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei" />
@@ -1423,10 +1423,10 @@ ua:template("etym-idno-first-of-type",
             <option label="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf.izvor" />
             <option label="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.cuvânt" />
             <option label="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf.izvor" />
-            <option label="una.sau.mai.multe.variante.lexicale-variante de tipul-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" />
-            <option label="una.sau.mai.multe.variante.lexicale-variante de tipul-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" />
+            <option label="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" />
         </datalist>
-        <input data-ua-ref="{@type}" size="700" list="etym-options" />        
+        <input data-ua-ref="{@type}" size="80" list="etym-options" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
@@ -1629,14 +1629,14 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf.cuvânt-template
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una.sau.mai.multe.variante.lexicale-'][type $= '-trimitere-cf.cuvânt'] ~ ptr"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf.cuvânt-template")
 ,
-ua:template("cuvântul titlu-formație internă-izolare-term",
+ua:template("cuvântul.titlu-formație.internă-izolare-term",
     <template>
         <input data-ua-ref="{text()}" size="22" />
         Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-izolare-'] ~ term"), "cuvântul titlu-formație internă-izolare-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-izolare-'] ~ term"), "cuvântul.titlu-formație.internă-izolare-term"),
         
 ua:template("cuvântul.titlu-formație.internă-trimitere-V.-template",
     <template>
@@ -1662,7 +1662,7 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.'] ~ ptr"), "cuvântul.titlu-formație.internă-trimitere-Cf.-template"),
 
-ua:template("cuvântul titlu-formație internă-trimitere-De la-template",
+ua:template("cuvântul.titlu-formație.internă-trimitere-De la-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
         Nr. omonim&amp;nbsp;
@@ -1671,7 +1671,7 @@ ua:template("cuvântul titlu-formație internă-trimitere-De la-template",
         <input data-ua-ref="{@type}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-trimitere-De la-'] ~ term"), "cuvântul titlu-formație internă-trimitere-De la-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-De la-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-De la-template"),
 
 ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)-term",
     <template>
@@ -1693,7 +1693,7 @@ ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstru
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*-term"),
 
-ua:template("cuvântul titlu-formație internă-trimitere-Din-template",
+ua:template("cuvântul.titlu-formație.internă-trimitere-Din-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
         Nr. omonim&amp;nbsp;
@@ -1702,7 +1702,7 @@ ua:template("cuvântul titlu-formație internă-trimitere-Din-template",
         <input data-ua-ref="{@type}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul titlu-formație internă-trimitere-Din-'] ~ term"), "cuvântul titlu-formație internă-trimitere-Din-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-Din-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-Din-template"),
 
 ua:template("cuvântul.titlu-element.extern-calc-template",
     <template>
@@ -1934,7 +1934,7 @@ ua:template("variantă-directă-derivat.regresiv.de.la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-derivat.regresiv.de.la'] ~ term"), "variantă-directă-derivat.regresiv.de.la-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-derivat postverbal-template",
+ua:template("cuvântul.titlu-formație.internă-derivat.postverbal-template",
     <template>
         Derivat postverbal de la&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
@@ -1942,7 +1942,7 @@ ua:template("cuvântul.titlu-formație.internă-derivat postverbal-template",
         <input data-ua-ref="{@subtype}" size="3" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat postverbal'] ~ term"), "cuvântul.titlu-formație.internă-derivat postverbal-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat.postverbal'] ~ term"), "cuvântul.titlu-formație.internă-derivat.postverbal-template"),
 
 ua:template("cuvântul.titlu-formație.internă-prescurtare-template",
     <template>
