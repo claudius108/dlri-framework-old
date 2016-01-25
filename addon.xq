@@ -2177,7 +2177,7 @@ ua:template("usg-before",
             <option label="articulat" value="gram"/>
             <option label="la gerunziu" value="gram"/>
         </datalist>
-        <input data-ua-ref="{@value}" size="300" list="usage-options" />
+        <input data-ua-ref="{@value}" size="20" list="usage-options" />
         <input data-ua-ref="{text()}" size="22" />      
     </template>
 ),
@@ -2185,9 +2185,9 @@ ua:attach-template(ua-dt:css-selector("usg:before"), "usg-before"),
 
 ua:template("pc",
     <template>
-        <select data-ua-ref="{text()}" contenteditable="false">
+        <select data-ua-ref="{text()}" contenteditable="false" style="width: 7px;">
             <option label="" value="" />
-            <option label="," value="," />
+            <option label="\\," value="\\," />
             <option label=";" value=";" />
             <option label="și" value="și" />
             <option label="sau" value="sau" />
