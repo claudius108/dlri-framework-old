@@ -12,7 +12,7 @@
 			</publicationStmt>
 			<sourceDesc>
 				<p>born digital</p>
-			</sourceDesc>		
+			</sourceDesc>
 		</fileDesc>
 		<profileDesc>
 			<creation>
@@ -47,7 +47,7 @@
 				</sense>
 				<etym>
 					<idno type="unknown" />
-					<certainty cert="unknown" locus="value"/>
+					<certainty cert="unknown" locus="value" />
 				</etym>
 			</entry>
 		</body>
