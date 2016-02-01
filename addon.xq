@@ -699,14 +699,7 @@ ua:action(
     map { 
         "name" := "Izvor"       
     },   
-    oxy:execute-action-by-class("ro.dlri.oxygen.templates.bibliographicReference.SelectBibliographicReferenceDialog")
-),
-ua:action(
-    "searchBibliographicReference2",
-    map { 
-        "name" := "Izvor"       
-    },   
-    oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'bibliographic-references/get-bibliographic-references.xq'; biblio:run()")
+    oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; biblio:run($currentElementLocation)")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -1448,24 +1441,6 @@ ua:template("variantă-directă-etimon variantă-*-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon variantă-'] ~ term"), "variantă-directă-etimon variantă-*-template"),
-
-
-
-ua:template("text-template",
-    <template>
-        Text field:&amp;nbsp;
-        <datalist id="bibliographic-entries">
-            <option label="daca24be-3a04-4ec0-85e2-1a3d2cf0dddc" value="daca24be-3a04-4ec0-85e2-1a3d2cf0dddc"/>
-            <option label="4fd328fd-03fb-4985-b470-940eabd682e9" value="4fd328fd-03fb-4985-b470-940eabd682e9"/>
-        </datalist>        
-        <input data-ua-ref="{text()}" size="40" list="bibliographic-entries" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("text:before"), "text-template"),
-
-
-
-
 
 ua:template("cuvântul.titlu-formație.internă-singular.refăcut.după.plural-template",
     <template>
@@ -2245,13 +2220,22 @@ ua:template("bibl-before",
             <option label="cf." value="cf." />
             <option label="în" value="în" />
             <option label="▭" value="▭" />
-        </select>    
-        <button onclick="{oxy:execute-action-by-name('searchBibliographicReference')}" />
-        <button onclick="{oxy:xquery('searchBibliographicReference2')}" />
-        {concat(ptr/@target, ' ', citedRange/text(), ', datare: ', date/text())}
+        </select>  
+        {concat(citedRange/text(), ', datare: ', date/text())}
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-before"),
+
+ua:template("bibl-ptr-before",
+    <template>
+        <datalist id="bibliographic-entries">
+            <option label="" value=""/>
+        </datalist>        
+        <input data-ua-ref="{@target}" size="40" list="bibliographic-entries" />
+        <button onclick="{oxy:xquery('searchBibliographicReference')}" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl > ptr:before"), "bibl-ptr-before"),
 
 ua:template("cit-before",
     <template>
