@@ -2230,7 +2230,7 @@ ua:template("bibl-ptr-before",
     <template>
         <datalist id="bibliographic-entries">
             <option label="" value=""/>
-        </datalist>        
+        </datalist>
         <input data-ua-ref="{@target}" size="40" list="bibliographic-entries" />
         <button onclick="{oxy:xquery('searchBibliographicReference')}" />
     </template>

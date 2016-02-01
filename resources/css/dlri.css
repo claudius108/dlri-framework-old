@@ -108,10 +108,6 @@ quote {
 	height: 200px;
 }
 
-bibl>* {
-	display: none;
-}
-
 entry>gramGrp>* {
 	display: inline-block;
 	margin-right: 10px;
