@@ -2247,7 +2247,7 @@ ua:template("bibl-before",
             <option label="▭" value="▭" />
         </select>    
         <button onclick="{oxy:execute-action-by-name('searchBibliographicReference')}" />
-        <button onclick="{oxy:execute-action-by-name('searchBibliographicReference2')}" />
+        <button onclick="{oxy:xquery('searchBibliographicReference2')}" />
         {concat(ptr/@target, ' ', citedRange/text(), ', datare: ', date/text())}
     </template>
 ),
