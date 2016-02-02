@@ -697,7 +697,7 @@ ua:action(
 ua:action(
     "searchBibliographicReference",
     map { 
-        "name" := "Izvor"       
+        "name" := "Căutare"       
     },   
     oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; biblio:run($currentElementLocation)")
 ),
@@ -2214,14 +2214,14 @@ ua:attach-template(ua-dt:css-selector("quote"), "quote"),
 
 ua:template("bibl-before",
     <template>
+        Izvor:&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false" style="width: 5px;">
             <option label="" value="unknown" />
             <option label="ap." value="ap." />
             <option label="cf." value="cf." />
             <option label="în" value="în" />
             <option label="▭" value="▭" />
-        </select>  
-        {concat(citedRange/text(), ', datare: ', date/text())}
+        </select>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-before"),
@@ -2232,10 +2232,24 @@ ua:template("bibl-ptr-before",
             <option label="" value=""/>
         </datalist>
         <input data-ua-ref="{@target}" size="40" list="bibliographic-entries" />
-        <button onclick="{oxy:xquery('searchBibliographicReference')}" />
+        <button onclick="{oxy:xquery('searchBibliographicReference')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > ptr:before"), "bibl-ptr-before"),
+
+ua:template("bibl-date-before",
+    <template>
+        <input data-ua-ref="{text()}" size="10" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before"),
+
+ua:template("bibl-citedRange-before",
+    <template>
+        <input data-ua-ref="{text()}" size="10" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRange-before"),
 
 ua:template("cit-before",
     <template>

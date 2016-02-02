@@ -140,3 +140,11 @@ form[type = 'details-for-grammatical-information-for-verb'] {
 	display: inline;
 	margin-right: 10px;
 }
+
+bibl {
+	margin-left: 10px;
+}
+
+bibl > * {
+	display: inline-block;
+}
