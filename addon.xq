@@ -1220,6 +1220,18 @@ ua:action(
     )
 ),
 ua:action(
+    "changedTargetAttrForPtrElement",
+    map { 
+        "name" := "changedTargetAttrForPtrElement"
+    }, 
+    (
+        replace value of node ./@target with ./@target
+    )
+),
+
+
+
+ua:action(
     "deleteContaminationElement",
     map { 
         "name" := "Ștergere",
@@ -1268,6 +1280,13 @@ ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selecto
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
+),
+
+ua:observer("changedTargetAttrForPtrElementObserver", "changedTargetAttrForPtrElement"),
+ua:connect-observer("changedTargetAttrForPtrElementObserver", ua-dt:xpath-selector('//ptr'),
+    map {
+        "attributes" := "true",
+        "attributeFilter" := "['target']"}
 ),
 
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
