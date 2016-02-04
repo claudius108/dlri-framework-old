@@ -1225,12 +1225,17 @@ ua:action(
         "name" := "changedTargetAttrForPtrElement"
     }, 
     (
-        replace value of node ./@target with ./@target
+        if (contains(@target, ' = '))
+        then (
+                replace value of node ./@target with for $a in ./@target return substring-before($a, ' =')
+        )
+        else ()
+        ,
+        if (not(contains(@target, ' = ')))
+        then ()
+        else ()
     )
 ),
-
-
-
 ua:action(
     "deleteContaminationElement",
     map { 
