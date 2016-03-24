@@ -404,13 +404,28 @@ ua:action(
     insert node doc('content-models/accentuation.xml') after .
 ),
 ua:action(
+    "addFirstArticulationSection",
+    map { 
+        "name" := "Articulare"        
+    },
+    insert node doc('content-models/articulation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)])[last()]
+),
+ua:action(
+    "addArticulationSection",
+    map { 
+        "name" := "Articulare",
+        "smallIconPath" := "${framework}/resources/images/add.png"        
+    },   
+    insert node doc('content-models/articulation.xml') after .
+),
+ua:action(
     "addFirstPronunciationSection",
     map { 
         "name" := "Pronunțare"       
     },
     (
         if (local-name() = 'TEI')
-        then (insert node doc('content-models/pronunciation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)])[last()])
+        then (insert node doc('content-models/pronunciation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] | form[@type = 'articulation'])[last()])
         else (),
         if (local-name() != 'TEI')
         then (insert node doc('content-models/pronunciation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
@@ -1299,7 +1314,7 @@ ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kube
 ua:template("TEI-before-template",
     <template>
         <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:execute-action-by-name('addFirstArticulationSection')}" style="visibility: {count(//entry/form[@type = 'articulation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
@@ -2609,7 +2624,28 @@ ua:template("form-accentuation-before",
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />     
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation']:before, form[type = 'accentuation-variant']:before"), "form-accentuation-before"),
+ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation']:before, form[type = 'accentuation-variant']:before"), "form-accentuation-before")
+,
+ua:template("form-articulation-before",
+    <template>
+        Articulat&amp;nbsp;
+        <button onclick="{oxy:execute-action-by-name('addArticulationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />     
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'articulation']:before"), "form-articulation-before")
+,
+ua:template("form-articulation-term-before",
+    <template>
+        <input data-ua-ref="{text()}" size="40" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'articulation'] > term:before"), "form-articulation-term-before")
+,
+
+
+
+
 
 ua:template("stress",
     <template>
