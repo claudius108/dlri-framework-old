@@ -2642,11 +2642,6 @@ ua:template("form-articulation-term-before",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'articulation'] > term:before"), "form-articulation-term-before")
 ,
-
-
-
-
-
 ua:template("stress",
     <template>
         Variantă de accentuare&amp;nbsp;
