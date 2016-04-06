@@ -1,406 +1,396 @@
 
 <datalist xmlns="http://www.w3.org/1999/xhtml" id="usage-options">
-	<option label="regional" value="geo" />
-	<option label="Ban." value="geo" />
-	<option label="Bucov." value="geo" />
-	<option label="Criș." value="geo" />
-	<option label="Dobr." value="geo" />
-	<option label="Maram." value="geo" />
-	<option label="Mold." value="geo" />
-	<option label="Munt." value="geo" />
-	<option label="Olt." value="geo" />
-	<option label="Transilv." value="geo" />
-	<option label="prin Ban." value="geo" />
-	<option label="prin Bucov." value="geo" />
-	<option label="prin Criș." value="geo" />
-	<option label="prin Dobr." value="geo" />
-	<option label="prin Maram." value="geo" />
-	<option label="prin Mold." value="geo" />
-	<option label="prin Munt." value="geo" />
-	<option label="prin Olt." value="geo" />
-	<option label="prin Transilv." value="geo" />
-	<option label="în Ban." value="geo" />
-	<option label="în Bucov." value="geo" />
-	<option label="în Criș." value="geo" />
-	<option label="în Dobr." value="geo" />
-	<option label="în Maram." value="geo" />
-	<option label="în Mold." value="geo" />
-	<option label="în Munt." value="geo" />
-	<option label="în Olt." value="geo" />
-	<option label="în Transilv." value="geo" />
-	<option label="Bucov." value="geo" />
-	<option label="Criș." value="geo" />
-	<option label="în nordul" value="geo" />
-	<option label="în sudul" value="geo" />
-	<option label="în estul" value="geo" />
-	<option label="în vestul" value="geo" />
-	<option label="în sud-vestul" value="geo" />
-	<option label="în sud-estul" value="geo" />
-	<option label="în nord-vestul" value="geo" />
-	<option label="în nord-estul" value="geo" />
-	<option label="prin nordul" value="geo" />
-	<option label="prin sudul" value="geo" />
-	<option label="prin estul" value="geo" />
-	<option label="prin vestul" value="geo" />
-	<option label="prin sud-vestul" value="geo" />
-	<option label="prin sud-estul" value="geo" />
-	<option label="prin nord-vestul" value="geo" />
-	<option label="prin nord-estul" value="geo" />
-	<option label="în Țările române " value="geo" />
-	<option label="din Austria" value="geo" />
-	<option label="învechit" value="time" />
-	<option label="ieșit din uz" value="time" />
-	<option label="astăzi" value="time" />
-	<option label="în Antichitate" value="time" />
-	<option label="în capitalism" value="time" />
-	<option label="în socialism" value="time" />
-	<option label="în Evul Mediu" value="time" />
-	<option label="la sfârșitul Evului Mediu" value="time" />
-	<option label="în monarhiile constituționale" value="time" />
-	<option label="în organizarea" value="time" />
-	<option label="A. plast." value="dom" />
-	<option label="Aeron." value="dom" />
-	<option label="Agric." value="dom" />
-	<option label="Agron." value="dom" />
-	<option label="Anat." value="dom" />
-	<option label="Apic." value="dom" />
-	<option label="Arheol." value="dom" />
-	<option label="Arhit." value="dom" />
-	<option label="Astron." value="dom" />
-	<option label="Biochim." value="dom" />
-	<option label="Biol." value="dom" />
-	<option label="Bis." value="dom" />
-	<option label="Bot." value="dom" />
-	<option label="Chim." value="dom" />
-	<option label="Ciber." value="dom" />
-	<option label="Cinem." value="dom" />
-	<option label="Comerț" value="dom" />
-	<option label="Constr." value="dom" />
-	<option label="Contab." value="dom" />
-	<option label="Cosm." value="dom" />
-	<option label="Cosmol." value="dom" />
-	<option label="Culgh." value="dom" />
-	<option label="Culin." value="dom" />
-	<option label="Ec." value="dom" />
-	<option label="Ec. pol." value="dom" />
-	<option label="Electron." value="dom" />
-	<option label="Electrotehn." value="dom" />
-	<option label="Entom." value="dom" />
-	<option label="Farm." value="dom" />
-	<option label="Farmac." value="dom" />
-	<option label="Fil." value="dom" />
-	<option label="Filoz./Filos." value="dom" />
-	<option label="Fin." value="dom" />
-	<option label="Fiz." value="dom" />
-	<option label="Fiziol." value="dom" />
-	<option label="Fon." value="dom" />
-	<option label="Fonol." value="dom" />
-	<option label="Fot." value="dom" />
-	<option label="Genet." value="dom" />
-	<option label="Geogr." value="dom" />
-	<option label="Geol." value="dom" />
-	<option label="Geom." value="dom" />
-	<option label="Gram." value="dom" />
-	<option label="Hot." value="dom" />
-	<option label="Iht." value="dom" />
-	<option label="Ind." value="dom" />
-	<option label="Inform." value="dom" />
-	<option label="Ist." value="dom" />
-	<option label="Jur." value="dom" />
-	<option label="Lingv." value="dom" />
-	<option label="Lit." value="dom" />
-	<option label="Log." value="dom" />
-	<option label="Mar." value="dom" />
-	<option label="Mat." value="dom" />
-	<option label="Mec." value="dom" />
-	<option label="Med." value="dom" />
-	<option label="Med. pop." value="dom" />
-	<option label="Med. vet." value="dom" />
-	<option label="Met." value="dom" />
-	<option label="Meteor." value="dom" />
-	<option label="Mil." value="dom" />
-	<option label="Mil." value="dom" />
-	<option label="Min." value="dom" />
-	<option label="Mineral." value="dom" />
-	<option label="Mitol." value="dom" />
-	<option label="Muz." value="dom" />
-	<option label="Nav." value="dom" />
-	<option label="Numism." value="dom" />
-	<option label="Opt." value="dom" />
-	<option label="Ornit." value="dom" />
-	<option label="Paleogr." value="dom" />
-	<option label="Pict." value="dom" />
-	<option label="Poligr." value="dom" />
-	<option label="Psih." value="dom" />
-	<option label="Radiofon." value="dom" />
-	<option label="Rel." value="dom" />
-	<option label="Statis." value="dom" />
-	<option label="Silv." value="dom" />
-	<option label="Șt. jur." value="dom" />
-	<option label="Șt. nat." value="dom" />
-	<option label="Tehn." value="dom" />
-	<option label="Telec." value="dom" />
-	<option label="Teol." value="dom" />
-	<option label="Text." value="dom" />
-	<option label="Tipogr." value="dom" />
-	<option label="Top." value="dom" />
-	<option label="TV." value="dom" />
-	<option label="Urban." value="dom" />
-	<option label="Zool." value="dom" />
-	<option label="argotic" value="register style" />
-	<option label="arhaic" value="register style" />
-	<option label="ca epitet pe lângă" value="register style" />
-	<option label="creație populară" value="register style" />
-	<option label="depreciativ" value="register style" />
-	<option label="emfatic" value="register style" />
-	<option label="eufemistic" value="register style" />
-	<option label="exclamativ" value="register style" />
-	<option label="familiar" value="register style" />
-	<option label="fig." value="register style" />
-	<option label="figurat" value="register style" />
-	<option label="glumeț" value="register style" />
-	<option label="în argoul" value="register style" />
-	<option label="în basme" value="register style" />
-	<option label="în basme și superstiții" value="register style" />
-	<option label="în cântece de leagăn" value="register style" />
-	<option label="în colinde" value="register style" />
-	<option label="în concepțiile religioase" value="register style" />
-	<option label="în credințele mistice" value="register style" />
-	<option label="în credințele populare" value="register style" />
-	<option label="în credințele religioase" value="register style" />
-	<option label="în descântece" value="register style" />
-	<option label="în descântece și superstiții" value="register style" />
-	<option label="în ghicitori" value="register style" />
-	<option label="în imprecații" value="register style" />
-	<option label="în invocații" value="register style" />
-	<option label="în limba literară" value="register style" />
-	<option label="în limba veche" value="register style" />
-	<option label="în limbajul" value="register style" />
-	<option label="în poezia populară" value="register style" />
-	<option label="în practicile religioase" value="register style" />
-	<option label="în predicile bazate pe superstiții" value="register style" />
-	<option label="în stilul" value="register style" />
-	<option label="în supestiții" value="register style" />
-	<option label="în textele" value="register style" />
-	<option label="ironic" value="register style" />
-	<option label="literar" value="register style" />
-	<option label="livresc" value="register style" />
-	<option label="peiorativ" value="register style" />
-	<option label="personificat" value="register style" />
-	<option label="poetic" value="register style" />
-	<option label="popular" value="register style" />
-	<option label="prin exagerare" value="register style" />
-	<option label="adesea" value="plev" />
-	<option label="de obicei" value="plev" />
-	<option label="mai ales" value="plev" />
-	<option label="uneori" value="plev" />
-	<option label="neobișnuit" value="plev" />
-	<option label="rar" value="plev" />
-	<option label="curent" value="plev" />
-	<option label="mai rar" value="plev" />
-	<option label="franțuzism" value="lang" />
-	<option label="germanism" value="lang" />
-	<option label="italienism" value="lang" />
-	<option label="grecism" value="lang" />
-	<option label="maghiarism" value="lang" />
-	<option label="latinism" value="lang" />
-	<option label="sârbism" value="lang" />
-	<option label="slavonism" value="lang" />
-	<option label="turcism" value="lang" />
-	<option label="adjectival" value="gram" />
-	<option label="adverbial" value="gram" />
-	<option label="artic." value="gram" />
-	<option label="cu aglutinarea art. pos." value="gram" />
-	<option label="cu pron. postpuse" value="gram" />
-	<option label="cu schimbare de suf." value="gram" />
-	<option label="cu valoare" value="gram" />
-	<option label="folosit și absol" value="gram" />
-	<option label="imper. lui" value="gram" />
-	<option label="impers." value="gram" />
-	<option label="invar." value="gram" />
-	<option label="la comparativ" value="gram" />
-	<option label="la f." value="gram" />
-	<option label="la f. pl." value="gram" />
-	<option label="la f. sg." value="gram" />
-	<option label="la imper." value="gram" />
-	<option label="la m." value="gram" />
-	<option label="la m. pl." value="gram" />
-	<option label="la m. sg." value="gram" />
-	<option label="la n." value="gram" />
-	<option label="la n. sg." value="gram" />
-	<option label="la pers. 1" value="gram" />
-	<option label="la pers. 2" value="gram" />
-	<option label="la pers. 3" value="gram" />
-	<option label="la pl." value="gram" />
-	<option label="la pl. cu valoare de sg." value="gram" />
-	<option label="la sg." value="gram" />
-	<option label="la sg. cu sens colectiv" value="gram" />
-	<option label="la sg. cu sens de pl." value="gram" />
-	<option label="la superlativ" value="gram" />
-	<option label="la voc." value="gram" />
-	<option label="pl. lui" value="gram" />
-	<option label="substantivat" value="gram" />
-	<option label="complementul indică" value="obj" />
-	<option label="cu complement intern" value="obj" />
-	<option label="cu subiectul ... sau un echivalent al acestuia"
-		value="subj" />
-	<option label="cu subiectul neexprimat, subînțelegându-se"
-		value="subj" />
-	<option label="cu subiectul personificat" value="subj" />
-	<option label="cu subiectul personificat" value="subj" />
-	<option label="cu subiectului exprimat sau subînțeles" value="subj" />
-	<option label="subiect gramatical sau logic" value="subj" />
-	<option label="subiectul este" value="subj" />
-	<option label="subiectul indică" value="subj" />
-	<option label="atestat prima dată în" value="hint" />
-	<option label="atestat prima dată la" value="hint" />
-	<option label="ca apelativ" value="hint" />
-	<option label="ca epitet" value="hint" />
-	<option label="ca s. pr." value="hint" />
-	<option label="ca termen de" value="hint" />
-	<option label="ca termen tehnic" value="hint" />
-	<option label="cea mai veche atestare ar data" value="hint" />
-	<option label="creație personală" value="hint" />
-	<option label="creație spontană" value="hint" />
-	<option label="cu aluzie la" value="hint" />
-	<option label="cu echivalente ale acestora" value="hint" />
-	<option label="cu echivalente ale acestuia" value="hint" />
-	<option label="cu elipsa" value="hint" />
-	<option label="cu nuanță" value="hint" />
-	<option label="cu sens" value="hint" />
-	<option label="cu ortografie etimologică" value="hint" />
-	<option label="cu sensul" value="hint" />
-	<option label="cu un echivalent al acestora" value="hint" />
-	<option label="despre" value="hint" />
-	<option label="din necesități prozodice" value="hint" />
-	<option label="după ortografia germ." value="hint" />
-	<option label="eliptic" value="hint" />
-	<option label="folosit independent" value="hint" />
-	<option label="folosit la adresa" value="hint" />
-	<option label="folosit pentru a contrazice categoric pe vorbitor"
-		value="hint" />
-	<option label="folosit pleonastic" value="hint" />
-	<option label="folosit pleonastic pe lângă" value="hint" />
-	<option label="formă coruptă" value="hint" />
-	<option label="formă greşită" value="hint" />
-	<option label="formă latinizantă" value="hint" />
-	<option label="formă prescurtată" value="hint" />
-	<option label="greșit în dicționare" value="hint" />
-	<option label="impropriu" value="hint" />
-	<option label="în comparații" value="hint" />
-	<option label="în dialog" value="hint" />
-	<option label="în dicționarele din trecut" value="hint" />
-	<option label="în enumerări" value="hint" />
-	<option label="în filozofia" value="hint" />
-	<option label="în formă prescurtată" value="hint" />
-	<option label="în forme compuse, așezat între" value="hint" />
-	<option label="în opoziție cu" value="hint" />
-	<option label="în textele" value="hint" />
-	<option label="între articol şi numeral intervine art. nehot."
-		value="hint" />
-	<option label="la" value="hint" />
-	<option label="la jocul de" value="hint" />
-	<option label="la unele jocuri de" value="hint" />
-	<option label="la unele sporturi" value="hint" />
-	<option label="nedefinit mai îndeaproape" value="hint" />
-	<option label="pleonastic" value="hint" />
-	<option label="precizat prin" value="hint" />
-	<option label="prin adaptare la sistemul fonetic popular" value="hint" />
-	<option label="prin antiteză" value="hint" />
-	<option label="prin confuzie" value="hint" />
-	<option label="prin confuzie cu" value="hint" />
-	<option label="prin haplologie" value="hint" />
-	<option label="prin metateză" value="hint" />
-	<option label="prin sincopare" value="hint" />
-	<option label="probabil din necesități prozodice" value="hint" />
-	<option label="pronunțat cu" value="hint" />
-	<option label="scris într-un singur cuvânt" value="hint" />
-	<option label="suspect" value="hint" />
-	<option label="construit cu" value="coloc" />
-	<option label="construit cu corelativele" value="coloc" />
-	<option label="cu determinarea subînțeleasă" value="coloc" />
-	<option label="cu forma negativă a expr." value="coloc" />
-	<option label="cu parafrazarea expr." value="coloc" />
-	<option label="cu parafrazarea prov." value="coloc" />
-	<option label="cu topica schimbată" value="coloc" />
-	<option label="despre" value="coloc" />
-	<option label="determină" value="coloc" />
-	<option label="determinat de" value="coloc" />
-	<option label="determinat prin" value="coloc" />
-	<option label="în componența unor" value="coloc" />
-	<option label="în concurență cu" value="coloc" />
-	<option label="în construcția" value="coloc" />
-	<option label="în construcții" value="coloc" />
-	<option label="în construcții cu" value="coloc" />
-	<option label="în construcțiile" value="coloc" />
-	<option label="în corelație cu" value="coloc" />
-	<option label="în corelație cu el însuși" value="coloc" />
-	<option label="în expr." value="coloc" />
-	<option label="în forma" value="coloc" />
-	<option label="în forme compuse" value="coloc" />
-	<option label="în formele" value="coloc" />
-	<option label="în formule" value="coloc" />
-	<option label="în formule de" value="coloc" />
-	<option label="în loc și în expr." value="coloc" />
-	<option label="în loc. adj." value="loc. adj." />
-	<option label="în loc. adv." value="loc. adv." />
-	<option label="în loc. conj." value="loc. conj." />
-	<option label="în loc. prep." value="loc. prep." />
-	<option label="în loc. vb." value="loc. vb." />
-	<option label="în prov." value="proverb" />
-	<option label="în prov. și în zic." value="coloc" />
-	<option label="în sint." value="coloc" />
-	<option label="în zic. și în expr." value="coloc" />
-	<option label="indică" value="coloc" />
-	<option label="întărit prin" value="coloc" />
-	<option label="precedă" value="coloc" />
-	<option label="precedă noțiuni temporale" value="coloc" />
-	<option label="precedă ultimul termen al unei enumerări" value="coloc" />
-	<option label="precedat de" value="coloc" />
-	<option label="precedat de calificative" value="coloc" />
-	<option label="precedat de complementul" value="coloc" />
-	<option label="urmat de complementul" value="coloc" />
-	<option label="precedat de corelativele" value="coloc" />
-	<option label="precedat de determinarea" value="coloc" />
-	<option label="precedat de determinări" value="coloc" />
-	<option label="precedat de determinări care" value="coloc" />
-	<option label="precedat de determinări introduse prin" value="coloc" />
-	<option label="precedat de determinările" value="coloc" />
-	<option label="precedat de nume de identificare" value="coloc" />
-	<option label="precedat de o comparație" value="coloc" />
-	<option label="precedat de propoziții completive" value="coloc" />
-	<option label="precedat de propoziții completive care" value="coloc" />
-	<option label="precedat de propoziții finale care" value="coloc" />
-	<option label="precedat de propoziții finale" value="coloc" />
-	<option label="precedat de propoziții negative" value="coloc" />
-	<option label="precedat de propoziții negative care" value="coloc" />
-	<option label="prin analogie cu" value="coloc" />
-	<option label="repetat" value="coloc" />
-	<option label="și în sint." value="coloc" />
-	<option label="urmând după s. determinat" value="coloc" />
-	<option label="urmat de" value="coloc" />
-	<option label="urmat de calificative" value="coloc" />
-	<option label="urmat de determinarea" value="coloc" />
-	<option label="urmat de determinări" value="coloc" />
-	<option label="urmat de determinări care" value="coloc" />
-	<option label="urmat de determinări introduse prin" value="coloc" />
-	<option label="urmat de determinările" value="coloc" />
-	<option label="urmat de nume de identificare" value="coloc" />
-	<option label="urmat de o comparație" value="coloc" />
-	<option label="urmat de propoziții completive" value="coloc" />
-	<option label="urmat de propoziții completive care precizează"
-		value="coloc" />
-	<option label="urmat de propoziții completive introduse prin conj."
-		value="coloc" />
-	<option label="urmat de propoziții finale" value="coloc" />
-	<option label="urmat de propoziții finale care precizează"
-		value="coloc" />
-	<option label="urmat de propoziții finale introduse prin conj."
-		value="coloc" />
-	<option label="urmat de propoziții negative" value="coloc" />
-	<option label="urmat de propoziții negative care precizează"
-		value="coloc" />
-	<option label="urmat de propoziții negative introduse prin conj."
-		value="coloc" />
-	<option label="urmează după s. determinat" value="coloc" />
+	<option label="regional" value="geo"/>
+	<option label="Ban." value="geo"/>
+	<option label="Bucov." value="geo"/>
+	<option label="Criș." value="geo"/>
+	<option label="Dobr." value="geo"/>
+	<option label="Maram." value="geo"/>
+	<option label="Mold." value="geo"/>
+	<option label="Munt." value="geo"/>
+	<option label="Olt." value="geo"/>
+	<option label="Transilv." value="geo"/>
+	<option label="prin.Ban." value="geo"/>
+	<option label="prin.Bucov." value="geo"/>
+	<option label="prin.Criș." value="geo"/>
+	<option label="prin.Dobr." value="geo"/>
+	<option label="prin.Maram." value="geo"/>
+	<option label="prin.Mold." value="geo"/>
+	<option label="prin.Munt." value="geo"/>
+	<option label="prin.Olt." value="geo"/>
+	<option label="prin.Transilv." value="geo"/>
+	<option label="în.Ban." value="geo"/>
+	<option label="în.Bucov." value="geo"/>
+	<option label="în.Criș." value="geo"/>
+	<option label="în.Dobr." value="geo"/>
+	<option label="în.Maram." value="geo"/>
+	<option label="în.Mold." value="geo"/>
+	<option label="în.Munt." value="geo"/>
+	<option label="în.Olt." value="geo"/>
+	<option label="în.Transilv." value="geo"/>
+	<option label="Bucov." value="geo"/>
+	<option label="Criș." value="geo"/>
+	<option label="în.nordul" value="geo"/>
+	<option label="în.sudul" value="geo"/>
+	<option label="în.estul" value="geo"/>
+	<option label="în.vestul" value="geo"/>
+	<option label="în.sud-vestul" value="geo"/>
+	<option label="în.sud-estul" value="geo"/>
+	<option label="în.nord-vestul" value="geo"/>
+	<option label="în.nord-estul" value="geo"/>
+	<option label="prin.nordul" value="geo"/>
+	<option label="prin.sudul" value="geo"/>
+	<option label="prin.estul" value="geo"/>
+	<option label="prin.vestul" value="geo"/>
+	<option label="prin.sud-vestul" value="geo"/>
+	<option label="prin.sud-estul" value="geo"/>
+	<option label="prin.nord-vestul" value="geo"/>
+	<option label="prin.nord-estul" value="geo"/>
+	<option label="în.Țările.române." value="geo"/>
+	<option label="din.Austria" value="geo"/>
+	<option label="învechit" value="time"/>
+	<option label="ieșit.din.uz" value="time"/>
+	<option label="astăzi" value="time"/>
+	<option label="în.Antichitate" value="time"/>
+	<option label="în.capitalism" value="time"/>
+	<option label="în.socialism" value="time"/>
+	<option label="în.Evul.Mediu" value="time"/>
+	<option label="la.sfârșitul.Evului.Mediu" value="time"/>
+	<option label="în.monarhiile.constituționale" value="time"/>
+	<option label="în.organizarea" value="time"/>
+	<option label="A..plast." value="dom"/>
+	<option label="Aeron." value="dom"/>
+	<option label="Agric." value="dom"/>
+	<option label="Agron." value="dom"/>
+	<option label="Anat." value="dom"/>
+	<option label="Apic." value="dom"/>
+	<option label="Arheol." value="dom"/>
+	<option label="Arhit." value="dom"/>
+	<option label="Astron." value="dom"/>
+	<option label="Biochim." value="dom"/>
+	<option label="Biol." value="dom"/>
+	<option label="Bis." value="dom"/>
+	<option label="Bot." value="dom"/>
+	<option label="Chim." value="dom"/>
+	<option label="Ciber." value="dom"/>
+	<option label="Cinem." value="dom"/>
+	<option label="Comerț" value="dom"/>
+	<option label="Constr." value="dom"/>
+	<option label="Contab." value="dom"/>
+	<option label="Cosm." value="dom"/>
+	<option label="Cosmol." value="dom"/>
+	<option label="Culgh." value="dom"/>
+	<option label="Culin." value="dom"/>
+	<option label="Ec." value="dom"/>
+	<option label="Ec..pol." value="dom"/>
+	<option label="Electron." value="dom"/>
+	<option label="Electrotehn." value="dom"/>
+	<option label="Entom." value="dom"/>
+	<option label="Farm." value="dom"/>
+	<option label="Farmac." value="dom"/>
+	<option label="Fil." value="dom"/>
+	<option label="Filoz./Filos." value="dom"/>
+	<option label="Fin." value="dom"/>
+	<option label="Fiz." value="dom"/>
+	<option label="Fiziol." value="dom"/>
+	<option label="Fon." value="dom"/>
+	<option label="Fonol." value="dom"/>
+	<option label="Fot." value="dom"/>
+	<option label="Genet." value="dom"/>
+	<option label="Geogr." value="dom"/>
+	<option label="Geol." value="dom"/>
+	<option label="Geom." value="dom"/>
+	<option label="Gram." value="dom"/>
+	<option label="Hot." value="dom"/>
+	<option label="Iht." value="dom"/>
+	<option label="Ind." value="dom"/>
+	<option label="Inform." value="dom"/>
+	<option label="Ist." value="dom"/>
+	<option label="Jur." value="dom"/>
+	<option label="Lingv." value="dom"/>
+	<option label="Lit." value="dom"/>
+	<option label="Log." value="dom"/>
+	<option label="Mar." value="dom"/>
+	<option label="Mat." value="dom"/>
+	<option label="Mec." value="dom"/>
+	<option label="Med." value="dom"/>
+	<option label="Med..pop." value="dom"/>
+	<option label="Med..vet." value="dom"/>
+	<option label="Met." value="dom"/>
+	<option label="Meteor." value="dom"/>
+	<option label="Mil." value="dom"/>
+	<option label="Mil." value="dom"/>
+	<option label="Min." value="dom"/>
+	<option label="Mineral." value="dom"/>
+	<option label="Mitol." value="dom"/>
+	<option label="Muz." value="dom"/>
+	<option label="Nav." value="dom"/>
+	<option label="Numism." value="dom"/>
+	<option label="Opt." value="dom"/>
+	<option label="Ornit." value="dom"/>
+	<option label="Paleogr." value="dom"/>
+	<option label="Pict." value="dom"/>
+	<option label="Poligr." value="dom"/>
+	<option label="Psih." value="dom"/>
+	<option label="Radiofon." value="dom"/>
+	<option label="Rel." value="dom"/>
+	<option label="Statis." value="dom"/>
+	<option label="Silv." value="dom"/>
+	<option label="Șt..jur." value="dom"/>
+	<option label="Șt..nat." value="dom"/>
+	<option label="Tehn." value="dom"/>
+	<option label="Telec." value="dom"/>
+	<option label="Teol." value="dom"/>
+	<option label="Text." value="dom"/>
+	<option label="Tipogr." value="dom"/>
+	<option label="Top." value="dom"/>
+	<option label="TV." value="dom"/>
+	<option label="Urban." value="dom"/>
+	<option label="Zool." value="dom"/>
+	<option label="argotic" value="register style"/>
+	<option label="arhaic" value="register style"/>
+	<option label="ca.epitet.pe.lângă" value="register style"/>
+	<option label="creație.populară" value="register style"/>
+	<option label="depreciativ" value="register style"/>
+	<option label="emfatic" value="register style"/>
+	<option label="eufemistic" value="register style"/>
+	<option label="exclamativ" value="register style"/>
+	<option label="familiar" value="register style"/>
+	<option label="fig." value="register style"/>
+	<option label="figurat" value="register style"/>
+	<option label="glumeț" value="register style"/>
+	<option label="în.argoul" value="register style"/>
+	<option label="în.basme" value="register style"/>
+	<option label="în.basme.și.superstiții" value="register style"/>
+	<option label="în.cântece.de.leagăn" value="register style"/>
+	<option label="în.colinde" value="register style"/>
+	<option label="în.concepțiile.religioase" value="register style"/>
+	<option label="în.credințele.mistice" value="register style"/>
+	<option label="în.credințele.populare" value="register style"/>
+	<option label="în.credințele.religioase" value="register style"/>
+	<option label="în.descântece" value="register style"/>
+	<option label="în.descântece.și.superstiții" value="register style"/>
+	<option label="în.ghicitori" value="register style"/>
+	<option label="în.imprecații" value="register style"/>
+	<option label="în.invocații" value="register style"/>
+	<option label="în.limba.literară" value="register style"/>
+	<option label="în.limba.veche" value="register style"/>
+	<option label="în.limbajul" value="register style"/>
+	<option label="în.poezia.populară" value="register style"/>
+	<option label="în.practicile.religioase" value="register style"/>
+	<option label="în.predicile.bazate.pe.superstiții" value="register style"/>
+	<option label="în.stilul" value="register style"/>
+	<option label="în.supestiții" value="register style"/>
+	<option label="în.textele" value="register style"/>
+	<option label="ironic" value="register style"/>
+	<option label="literar" value="register style"/>
+	<option label="livresc" value="register style"/>
+	<option label="peiorativ" value="register style"/>
+	<option label="personificat" value="register style"/>
+	<option label="poetic" value="register style"/>
+	<option label="popular" value="register style"/>
+	<option label="prin.exagerare" value="register style"/>
+	<option label="adesea" value="plev"/>
+	<option label="de.obicei" value="plev"/>
+	<option label="mai.ales" value="plev"/>
+	<option label="uneori" value="plev"/>
+	<option label="neobișnuit" value="plev"/>
+	<option label="rar" value="plev"/>
+	<option label="curent" value="plev"/>
+	<option label="mai.rar" value="plev"/>
+	<option label="franțuzism" value="lang"/>
+	<option label="germanism" value="lang"/>
+	<option label="italienism" value="lang"/>
+	<option label="grecism" value="lang"/>
+	<option label="maghiarism" value="lang"/>
+	<option label="latinism" value="lang"/>
+	<option label="sârbism" value="lang"/>
+	<option label="slavonism" value="lang"/>
+	<option label="turcism" value="lang"/>
+	<option label="adjectival" value="gram"/>
+	<option label="adverbial" value="gram"/>
+	<option label="artic." value="gram"/>
+	<option label="cu.aglutinarea.art..pos." value="gram"/>
+	<option label="cu.pron..postpuse" value="gram"/>
+	<option label="cu.schimbare.de.suf." value="gram"/>
+	<option label="cu.valoare" value="gram"/>
+	<option label="folosit.și.absol" value="gram"/>
+	<option label="imper..lui" value="gram"/>
+	<option label="impers." value="gram"/>
+	<option label="invar." value="gram"/>
+	<option label="la.comparativ" value="gram"/>
+	<option label="la.f." value="gram"/>
+	<option label="la.f..pl." value="gram"/>
+	<option label="la.f..sg." value="gram"/>
+	<option label="la.imper." value="gram"/>
+	<option label="la.m." value="gram"/>
+	<option label="la.m..pl." value="gram"/>
+	<option label="la.m..sg." value="gram"/>
+	<option label="la.n." value="gram"/>
+	<option label="la.n..sg." value="gram"/>
+	<option label="la.pers..1" value="gram"/>
+	<option label="la.pers..2" value="gram"/>
+	<option label="la.pers..3" value="gram"/>
+	<option label="la.pl." value="gram"/>
+	<option label="la.pl..cu.valoare.de.sg." value="gram"/>
+	<option label="la.sg." value="gram"/>
+	<option label="la.sg..cu.sens.colectiv" value="gram"/>
+	<option label="la.sg..cu.sens.de.pl." value="gram"/>
+	<option label="la.superlativ" value="gram"/>
+	<option label="la.voc." value="gram"/>
+	<option label="pl..lui" value="gram"/>
+	<option label="substantivat" value="gram"/>
+	<option label="complementul.indică" value="obj"/>
+	<option label="cu.complement.intern" value="obj"/>
+	<option label="cu.subiectul.....sau.un.echivalent.al.acestuia" value="subj"/>
+	<option label="cu.subiectul.neexprimat,.subînțelegându-se" value="subj"/>
+	<option label="cu.subiectul.personificat" value="subj"/>
+	<option label="cu.subiectul.personificat" value="subj"/>
+	<option label="cu.subiectului.exprimat.sau.subînțeles" value="subj"/>
+	<option label="subiect.gramatical.sau.logic" value="subj"/>
+	<option label="subiectul.este" value="subj"/>
+	<option label="subiectul.indică" value="subj"/>
+	<option label="atestat.prima.dată.în" value="hint"/>
+	<option label="atestat.prima.dată.la" value="hint"/>
+	<option label="ca.apelativ" value="hint"/>
+	<option label="ca.epitet" value="hint"/>
+	<option label="ca.s..pr." value="hint"/>
+	<option label="ca.termen.de" value="hint"/>
+	<option label="ca.termen.tehnic" value="hint"/>
+	<option label="cea.mai.veche.atestare.ar.data" value="hint"/>
+	<option label="creație.personală" value="hint"/>
+	<option label="creație.spontană" value="hint"/>
+	<option label="cu.aluzie.la" value="hint"/>
+	<option label="cu.echivalente.ale.acestora" value="hint"/>
+	<option label="cu.echivalente.ale.acestuia" value="hint"/>
+	<option label="cu.elipsa" value="hint"/>
+	<option label="cu.nuanță" value="hint"/>
+	<option label="cu.sens" value="hint"/>
+	<option label="cu.ortografie.etimologică" value="hint"/>
+	<option label="cu.sensul" value="hint"/>
+	<option label="cu.un.echivalent.al.acestora" value="hint"/>
+	<option label="despre" value="hint"/>
+	<option label="din.necesități.prozodice" value="hint"/>
+	<option label="după.ortografia.germ." value="hint"/>
+	<option label="eliptic" value="hint"/>
+	<option label="folosit.independent" value="hint"/>
+	<option label="folosit.la.adresa" value="hint"/>
+	<option label="folosit.pentru.a.contrazice.categoric.pe.vorbitor" value="hint"/>
+	<option label="folosit.pleonastic" value="hint"/>
+	<option label="folosit.pleonastic.pe.lângă" value="hint"/>
+	<option label="formă.coruptă" value="hint"/>
+	<option label="formă.greşită" value="hint"/>
+	<option label="formă.latinizantă" value="hint"/>
+	<option label="formă.prescurtată" value="hint"/>
+	<option label="greșit.în.dicționare" value="hint"/>
+	<option label="impropriu" value="hint"/>
+	<option label="în.comparații" value="hint"/>
+	<option label="în.dialog" value="hint"/>
+	<option label="în.dicționarele.din.trecut" value="hint"/>
+	<option label="în.enumerări" value="hint"/>
+	<option label="în.filozofia" value="hint"/>
+	<option label="în.formă.prescurtată" value="hint"/>
+	<option label="în.forme.compuse,.așezat.între" value="hint"/>
+	<option label="în.opoziție.cu" value="hint"/>
+	<option label="în.textele" value="hint"/>
+	<option label="între.articol.şi.numeral.intervine.art..nehot." value="hint"/>
+	<option label="la" value="hint"/>
+	<option label="la.jocul.de" value="hint"/>
+	<option label="la.unele.jocuri.de" value="hint"/>
+	<option label="la.unele.sporturi" value="hint"/>
+	<option label="nedefinit.mai.îndeaproape" value="hint"/>
+	<option label="pleonastic" value="hint"/>
+	<option label="precizat.prin" value="hint"/>
+	<option label="prin.adaptare.la.sistemul.fonetic.popular" value="hint"/>
+	<option label="prin.antiteză" value="hint"/>
+	<option label="prin.confuzie" value="hint"/>
+	<option label="prin.confuzie.cu" value="hint"/>
+	<option label="prin.haplologie" value="hint"/>
+	<option label="prin.metateză" value="hint"/>
+	<option label="prin.sincopare" value="hint"/>
+	<option label="probabil.din.necesități.prozodice" value="hint"/>
+	<option label="pronunțat.cu" value="hint"/>
+	<option label="scris.într-un.singur.cuvânt" value="hint"/>
+	<option label="suspect" value="hint"/>
+	<option label="construit.cu" value="coloc"/>
+	<option label="construit.cu.corelativele" value="coloc"/>
+	<option label="cu.determinarea.subînțeleasă" value="coloc"/>
+	<option label="cu.forma.negativă.a.expr." value="coloc"/>
+	<option label="cu.parafrazarea.expr." value="coloc"/>
+	<option label="cu.parafrazarea.prov." value="coloc"/>
+	<option label="cu.topica.schimbată" value="coloc"/>
+	<option label="despre" value="coloc"/>
+	<option label="determină" value="coloc"/>
+	<option label="determinat.de" value="coloc"/>
+	<option label="determinat.prin" value="coloc"/>
+	<option label="în.componența.unor" value="coloc"/>
+	<option label="în.concurență.cu" value="coloc"/>
+	<option label="în.construcția" value="coloc"/>
+	<option label="în.construcții" value="coloc"/>
+	<option label="în.construcții.cu" value="coloc"/>
+	<option label="în.construcțiile" value="coloc"/>
+	<option label="în.corelație.cu" value="coloc"/>
+	<option label="în.corelație.cu.el.însuși" value="coloc"/>
+	<option label="în.expr." value="coloc"/>
+	<option label="în.forma" value="coloc"/>
+	<option label="în.forme.compuse" value="coloc"/>
+	<option label="în.formele" value="coloc"/>
+	<option label="în.formule" value="coloc"/>
+	<option label="în.formule.de" value="coloc"/>
+	<option label="în.loc.și.în.expr." value="coloc"/>
+	<option label="în.loc..adj." value="loc. adj."/>
+	<option label="în.loc..adv." value="loc. adv."/>
+	<option label="în.loc..conj." value="loc. conj."/>
+	<option label="în.loc..prep." value="loc. prep."/>
+	<option label="în.loc..vb." value="loc. vb."/>
+	<option label="în.prov." value="proverb"/>
+	<option label="în.prov..și.în.zic." value="coloc"/>
+	<option label="în.sint." value="coloc"/>
+	<option label="în.zic..și.în.expr." value="coloc"/>
+	<option label="indică" value="coloc"/>
+	<option label="întărit.prin" value="coloc"/>
+	<option label="precedă" value="coloc"/>
+	<option label="precedă.noțiuni.temporale" value="coloc"/>
+	<option label="precedă.ultimul.termen.al.unei.enumerări" value="coloc"/>
+	<option label="precedat.de" value="coloc"/>
+	<option label="precedat.de.calificative" value="coloc"/>
+	<option label="precedat.de.complementul" value="coloc"/>
+	<option label="urmat.de.complementul" value="coloc"/>
+	<option label="precedat.de.corelativele" value="coloc"/>
+	<option label="precedat.de.determinarea" value="coloc"/>
+	<option label="precedat.de.determinări" value="coloc"/>
+	<option label="precedat.de.determinări.care" value="coloc"/>
+	<option label="precedat.de.determinări.introduse.prin" value="coloc"/>
+	<option label="precedat.de.determinările" value="coloc"/>
+	<option label="precedat.de.nume.de.identificare" value="coloc"/>
+	<option label="precedat.de.o.comparație" value="coloc"/>
+	<option label="precedat.de.propoziții.completive" value="coloc"/>
+	<option label="precedat.de.propoziții.completive.care" value="coloc"/>
+	<option label="precedat.de.propoziții.finale.care" value="coloc"/>
+	<option label="precedat.de.propoziții.finale" value="coloc"/>
+	<option label="precedat.de.propoziții.negative" value="coloc"/>
+	<option label="precedat.de.propoziții.negative.care" value="coloc"/>
+	<option label="prin.analogie.cu" value="coloc"/>
+	<option label="repetat" value="coloc"/>
+	<option label="și.în.sint." value="coloc"/>
+	<option label="urmând.după.s..determinat" value="coloc"/>
+	<option label="urmat.de" value="coloc"/>
+	<option label="urmat.de.calificative" value="coloc"/>
+	<option label="urmat.de.determinarea" value="coloc"/>
+	<option label="urmat.de.determinări" value="coloc"/>
+	<option label="urmat.de.determinări.care" value="coloc"/>
+	<option label="urmat.de.determinări.introduse.prin" value="coloc"/>
+	<option label="urmat.de.determinările" value="coloc"/>
+	<option label="urmat.de.nume.de.identificare" value="coloc"/>
+	<option label="urmat.de.o.comparație" value="coloc"/>
+	<option label="urmat.de.propoziții.completive" value="coloc"/>
+	<option label="urmat.de.propoziții.completive.care.precizează" value="coloc"/>
+	<option label="urmat.de.propoziții.completive.introduse.prin.conj." value="coloc"/>
+	<option label="urmat.de.propoziții.finale" value="coloc"/>
+	<option label="urmat.de.propoziții.finale.care.precizează" value="coloc"/>
+	<option label="urmat.de.propoziții.finale.introduse.prin.conj." value="coloc"/>
+	<option label="urmat.de.propoziții.negative" value="coloc"/>
+	<option label="urmat.de.propoziții.negative.care.precizează" value="coloc"/>
+	<option label="urmat.de.propoziții.negative.introduse.prin.conj." value="coloc"/>
+	<option label="urmează.după.s..determinat" value="coloc"/>
 </datalist>
