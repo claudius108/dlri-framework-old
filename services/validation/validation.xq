@@ -12,7 +12,7 @@ return
 	(
 	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
 	    ,
-	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "validate/oxygen-render.css&quot;")}
+	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "services/validation/oxygen-render.css&quot;")}
 	    ,
 	    <html>
 	        <head>
