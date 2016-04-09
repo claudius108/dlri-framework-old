@@ -714,7 +714,7 @@ ua:action(
     map { 
         "name" := "Căutare"       
     },   
-    oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; biblio:run($currentElementLocation)")
+    oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'services/bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; biblio:run($currentElementLocation)")
 ),
 ua:action(
     "changedValueAttrForFormElement",
