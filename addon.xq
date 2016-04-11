@@ -2877,6 +2877,7 @@ ua:template("grammatical-information-for-verb-tns",
             <option label="perf. c." value="perf. c." />
             <option label="m. m. perf." value="m. m. perf." />
             <option label="viit." value="viit." />
+            <option label="aor." value="aor." />
         </select>
     </template>
 ),
