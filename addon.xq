@@ -714,7 +714,7 @@ ua:action(
     map { 
         "name" := "Căutare"       
     },   
-    oxy:execute-xquery-script("import module namespace biblio = 'http://dlri.ro/ns/biblio/' at 'services/bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; biblio:run($currentElementLocation)")
+    oxy:execute-xquery-script("import module namespace bibliographic-references = 'http://dlri.ro/ns/bibliographic-references/' at 'services/bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; bibliographic-references:run($currentElementLocation)")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -2108,6 +2108,7 @@ ua:template("usg-before",
         Indicații privind folosirea:&amp;nbsp;
 		<datalist xmlns="http://www.w3.org/1999/xhtml" id="usage-options">
 			<option label="regional" value="geo"/>
+			<option label="regional" value="geo"/>
 			<option label="Ban." value="geo"/>
 			<option label="Bucov." value="geo"/>
 			<option label="Criș." value="geo"/>
@@ -2500,6 +2501,7 @@ ua:template("usg-before",
 			<option label="urmat.de.propoziții.negative.care.precizează" value="coloc"/>
 			<option label="urmat.de.propoziții.negative.introduse.prin.conj." value="coloc"/>
 			<option label="urmează.după.s..determinat" value="coloc"/>
+			<option label="dial." value="geo."/>
 		</datalist>
         <input data-ua-ref="{@value}" size="30" list="usage-options" />
         <input data-ua-ref="{text()}" size="22" />      
