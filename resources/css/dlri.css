@@ -28,7 +28,7 @@ TEI:before {
     color: blue;
 }
 
-title, author, editor, syll, quote, xr, stress, usg, term, def, form[type = 'main'] > orth,
+title, author, editor, syll, quote, stress, usg, term, def, form[type = 'main'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
 note, form[type='articulation'] > term, bibl > citedRange, bibl > date {
@@ -85,14 +85,6 @@ hi[rend = 'bold'] {
 
 etym > idno {
 	display: inline;
-}
-
-xr > * {
-	display: block;
-}
-
-xr > * > * {
-	display: inline-block;
 }
 
 usg {

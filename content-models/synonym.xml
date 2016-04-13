@@ -1,3 +1,1 @@
-<xr xmlns="http://www.tei-c.org/ns/1.0" type="syn">
-	<ptr target="unknown" />
-</xr>
+<ptr xmlns="http://www.tei-c.org/ns/1.0" type="syn" target="unknown" />

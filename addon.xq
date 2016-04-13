@@ -100,26 +100,24 @@ declare variable $sense-template as element() :=
     </sense>
 ;
 
+declare variable $ptr-template as element() :=
+	<input data-ua-ref="{@target}" size="22" />
+;
+
 declare variable $term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
 
 declare variable $analogy-template as element() :=
-    <xr xmlns="http://www.tei-c.org/ns/1.0" type="analog">
-        <ptr target="unknown" />
-    </xr>
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="analog" target="unknown" />
 ;
 
 declare variable $association-template as element() :=
-    <xr xmlns="http://www.tei-c.org/ns/1.0" type="asoc">
-        <ptr target="unknown" />
-    </xr>
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="asoc" target="unknown" />
 ;
 
 declare variable $antonym-template as element() :=
-    <xr xmlns="http://www.tei-c.org/ns/1.0" type="antonim">
-        <ptr target="unknown" />
-    </xr>
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="antonim" target="unknown" />
 ;
 
 declare variable $collocations-template as element() :=
@@ -167,7 +165,7 @@ ua:action(
         "name" := "Definiție",
         "smallIconPath" := "${framework}/resources/images/add.png"
     },   
-    insert node $def-template after (following-sibling::xr | .)[last()]
+    insert node $def-template after (following-sibling::ptr | .)[last()]
 ),
 ua:action(
     "deleteDefElement",
@@ -175,7 +173,7 @@ ua:action(
         "name" := "Ștergere definiție",
         "smallIconPath" := "${framework}/resources/images/delete.png"
     },   
-    delete nodes (following-sibling::xr | .)
+    delete nodes (following-sibling::ptr | .)
 ),
 ua:action(
     "insertCitElement",
@@ -321,11 +319,11 @@ ua:action(
         "smallIconPath" := "${framework}/resources/images/add.png"        
     },   
     (
-        if (local-name() = 'xr')
+        if (local-name() = 'ptr')
         then insert node $analogy-template after .
         else (),
         if (local-name() = 'def')
-        then insert node $analogy-template after (following-sibling::xr[@type = ('analog', 'syn')] | .)[last()]
+        then insert node $analogy-template after (following-sibling::ptr[@type = ('analog', 'syn')] | .)[last()]
         else ()
      )    
 ),
@@ -336,11 +334,11 @@ ua:action(
         "smallIconPath" := "${framework}/resources/images/add.png"
     },
     (
-        if (local-name() = 'xr')
+        if (local-name() = 'ptr')
         then insert node $association-template after .
         else (),
         if (local-name() = 'def')
-        then insert node $association-template after (following-sibling::xr[@type = ('analog', 'syn', 'asoc')] | .)[last()]
+        then insert node $association-template after (following-sibling::ptr[@type = ('analog', 'syn', 'asoc')] | .)[last()]
         else ()
      )     
 ),
@@ -351,11 +349,11 @@ ua:action(
         "smallIconPath" := "${framework}/resources/images/add.png"
     },
     (
-        if (local-name() = 'xr')
+        if (local-name() = 'ptr')
         then insert node $antonym-template after .
         else (),
         if (local-name() = 'def')
-        then insert node $antonym-template after (following-sibling::xr[@type = ('analog', 'syn', 'asoc', 'antonim')] | .)[last()]
+        then insert node $antonym-template after (following-sibling::ptr[@type = ('analog', 'syn', 'asoc', 'antonim')] | .)[last()]
         else ()
      )     
 ),
@@ -364,7 +362,7 @@ ua:action(
     map { 
         "name" := "Trimitere"        
     },   
-    insert node doc('content-models/reference.xml') after (usg | xr[@type = 'trimitere'] | def)[last()]
+    insert node doc('content-models/reference.xml') after (usg | ptr[@type = 'trimitere'] | def)[last()]
 ),
 ua:action(
     "addGramGrp",
@@ -698,16 +696,6 @@ ua:action(
         "accelerator" := "ctrl B"        
     },   
     replace node . with <hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold">{.}</hi>
-),
-ua:action(
-    "derivationBaseAnnotator",
-    map { 
-        "name" := "Bază de derivare"      
-    },   
-    replace node . with
-        <xr xmlns="http://www.tei-c.org/ns/1.0" type="derivation-base">
-            <ptr target="unknown" />
-        </xr>
 ),
 ua:action(
     "searchBibliographicReference",
@@ -1336,38 +1324,63 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information']:be
 
 ua:template("trimitere-before",
     <template>
-        Trimitere (cuvânt titlu | nr. ordine omonim | nr. ordine sens)&amp;nbsp;
+        Trimitere&amp;nbsp;
+        {
+            $ptr-template
+        }
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("xr[type = 'trimitere']:before"), "trimitere-before"),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimitere-before"),
+
+ua:template("syn-before",
+    <template>
+        Sinonim&amp;nbsp;
+        {
+            $ptr-template
+        }        
+        <button onclick="{oxy:execute-action-by-name('insertSynonym')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />                
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'syn']:before"), "syn-before"),
 
 ua:template("analog-before",
     <template>
-        Analogie (cuvânt titlu | nr. ordine omonim | nr. ordine sens)&amp;nbsp;
+        Analogie&amp;nbsp;
+        {
+            $ptr-template
+        }        
         <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("xr[type = 'analog']:before"), "analog-before"),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'analog']:before"), "analog-before"),
 
 ua:template("asoc-before",
     <template>
-        Asociație (cuvânt titlu | nr. ordine omonim | nr. ordine sens)&amp;nbsp;
+        Asociație&amp;nbsp;
+        {
+            $ptr-template
+        }        
         <button onclick="{oxy:execute-action-by-name('insertAssociation')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("xr[type = 'asoc']:before"), "asoc-before"),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'asoc']:before"), "asoc-before"),
 
 ua:template("antonim-before",
     <template>
-        În  opoziţie cu (cuvânt titlu | nr. ordine omonim | nr. ordine sens)&amp;nbsp;
+        În  opoziţie cu&amp;nbsp;
+        {
+            $ptr-template
+        }        
         <button onclick="{oxy:execute-action-by-name('insertAntonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("xr[type = 'antonim']:before"), "antonim-before"),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-before"),
 
 ua:template("etym-before",
     <template>
@@ -2085,23 +2098,6 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
-
-ua:template("xr-syn-before",
-    <template>
-        Sinonim (cuvânt titlu | nr. ordine omonim | nr. ordine sens)&amp;nbsp;
-        <button onclick="{oxy:execute-action-by-name('insertSynonym')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />                
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("xr[type = 'syn']:before"), "xr-syn-before"),
-
-ua:template("xr-before",
-    <template>
-        <input data-ua-ref="{@target}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("xr > ptr:before"), "xr-before"),
 
 ua:template("usg-before",
     <template>
