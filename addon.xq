@@ -100,10 +100,6 @@ declare variable $sense-template as element() :=
     </sense>
 ;
 
-declare variable $ptr-template as element() :=
-	<input data-ua-ref="{@target}" size="22" />
-;
-
 declare variable $term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
@@ -698,11 +694,18 @@ ua:action(
     replace node . with <hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold">{.}</hi>
 ),
 ua:action(
-    "searchBibliographicReference",
+    "searchBibliographicReferences",
     map { 
         "name" := "Căutare"       
     },   
     oxy:execute-xquery-script("import module namespace bibliographic-references = 'http://dlri.ro/ns/bibliographic-references/' at 'services/bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; bibliographic-references:run($currentElementLocation)")
+),
+ua:action(
+    "searchHeadwordReferences",
+    map { 
+        "name" := "Căutare"       
+    },   
+    oxy:execute-xquery-script("import module namespace headword-references = 'http://dlri.ro/ns/headword-references/' at 'services/headword-references/get-headword-references.xq'; declare variable $currentElementLocation external; headword-references:run($currentElementLocation)")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -1325,9 +1328,11 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information']:be
 ua:template("trimitere-before",
     <template>
         Trimitere&amp;nbsp;
-        {
-            $ptr-template
-        }
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -1336,9 +1341,11 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimit
 ua:template("syn-before",
     <template>
         Sinonim&amp;nbsp;
-        {
-            $ptr-template
-        }        
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
         <button onclick="{oxy:execute-action-by-name('insertSynonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />                
@@ -1349,9 +1356,11 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'syn']:before"), "syn-before")
 ua:template("analog-before",
     <template>
         Analogie&amp;nbsp;
-        {
-            $ptr-template
-        }        
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />    
         <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
@@ -1361,9 +1370,11 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'analog']:before"), "analog-be
 ua:template("asoc-before",
     <template>
         Asociație&amp;nbsp;
-        {
-            $ptr-template
-        }        
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />     
         <button onclick="{oxy:execute-action-by-name('insertAssociation')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
@@ -1373,9 +1384,11 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'asoc']:before"), "asoc-before
 ua:template("antonim-before",
     <template>
         În  opoziţie cu&amp;nbsp;
-        {
-            $ptr-template
-        }        
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />       
         <button onclick="{oxy:execute-action-by-name('insertAntonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
@@ -2550,11 +2563,11 @@ ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-before"),
 
 ua:template("bibl-ptr-before",
     <template>
-        <datalist id="bibliographic-entries">
+        <datalist id="bibliographic-references">
             <option label="" value=""/>
         </datalist>
-        <input data-ua-ref="{@target}" size="40" list="bibliographic-entries" />
-        <button onclick="{oxy:xquery('searchBibliographicReference')}" style="background-color: transparent;" />
+        <input data-ua-ref="{@target}" size="40" list="bibliographic-references" />
+        <button onclick="{oxy:xquery('searchBibliographicReferences')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > ptr:before"), "bibl-ptr-before"),
