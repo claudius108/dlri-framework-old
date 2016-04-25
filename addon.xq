@@ -3551,30 +3551,6 @@ ua:template("def",
 ),
 ua:attach-template(ua-dt:css-selector("def"), "def"),
 
-ua:template("rich-textarea-dialog",
-    <template>
-        <dialog style="width: 600px; height: 320px;" title="Introducere date pentru conexiunea la server" data-ua-type="modal">
-            <table>
-                <tr>
-                    <td>Nume de utilizator</td>
-                    <td>
-                        <input />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Parola</td>
-                    <td>
-                        <input type="password" />
-                    </td>
-                </tr>
-            </table>
-            <textarea cols="70" rows="10">Lorem ipsum dolor sit amet,....</textarea>
-            <button data-ua-ref="" onclick="OxygenAddonBuilder.closeDialogWindow();">Close</button>
-        </dialog>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("entry:before"), "rich-textarea-dialog"),
-
 ua:template("entry-form-main-before",
     <template>
         Cuvânt titlu*:&amp;nbsp;
@@ -3590,7 +3566,6 @@ ua:template("entry-form-main-before",
         }
         \00000ANumăr ordine omonime:&amp;nbsp;
         <input data-ua-ref="{@n}" size="2" />
-        <button onclick="{ua:show-template('rich-textarea-dialog')}">Show HTML2JavaFX dialog</button>        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("entry > form[type = 'main'] > orth:before"), "entry-form-main-before"),
