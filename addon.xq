@@ -1257,7 +1257,15 @@ ua:action(
     },   
     (insert node $term-template as last into ., replace value of node term[last()]/@type with 'translation')
 ),
-
+ua:action(
+    "addFirstEtymologicalNote",
+    map { 
+        "name" := "Notă"        
+    },   
+    (
+    	insert node doc('content-models/note.xml') as last into .
+    )
+),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
     map {
@@ -1402,6 +1410,8 @@ ua:template("etym-before",
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
+        <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />
+        
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
