@@ -1266,6 +1266,26 @@ ua:action(
     	insert node doc('content-models/note.xml') as last into .
     )
 ),
+ua:action(
+    "addEtymologicalNote",
+    map { 
+        "name" := "Adaugă notă",
+        "smallIconPath" := "${framework}/resources/images/add.png"
+    },   
+    (
+    	insert node doc('content-models/note.xml') after .
+    )
+),
+ua:action(
+    "editEtymologicalNote",
+    map { 
+        "name" := "Editează notă",
+        "smallIconPath" := "${framework}/resources/images/edit.png"
+    },   
+    (
+    	insert node doc('content-models/note.xml') after .
+    )
+),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
     map {
@@ -1410,8 +1430,7 @@ ua:template("etym-before",
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />
-        
+        <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
@@ -1634,9 +1653,6 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element a
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template"),
-
-
-
 
 ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
@@ -2121,6 +2137,16 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
+
+ua:template("etym-note-before",
+    <template>
+		Notă&amp;nbsp;
+		<button onclick="{oxy:execute-action-by-name('addEtymologicalNote')}" style="background-color: transparent;" />
+		<button onclick="{oxy:execute-action-by-name('editEtymologicalNote')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-before"),
 
 ua:template("usg-before",
     <template>
