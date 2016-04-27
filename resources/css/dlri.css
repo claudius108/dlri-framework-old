@@ -140,3 +140,7 @@ bibl {
 bibl > * {
 	display: inline-block;
 }
+
+etym > note > * {
+    display: none;
+}
