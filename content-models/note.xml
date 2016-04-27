@@ -1,6 +1,5 @@
 <note xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
-	<idno type="aditional-info" />
+	<idno type="aditional-info" n="" />
 	<certainty cert="unknown" locus="value" />
-	<idno type="etymological-note-type" />
 	<term />
 </note>
