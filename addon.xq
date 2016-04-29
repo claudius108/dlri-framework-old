@@ -1282,9 +1282,7 @@ ua:action(
         "name" := "Editează notă",
         "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    (
-    	insert node doc('content-models/note.xml') after .
-    )
+    oxy:execute-action-by-class('ro.dlri.oxygen.plugin.OpenFileInNewTabOperation')
 ),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
@@ -2147,6 +2145,17 @@ ua:template("etym-note-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-before"),
+
+ua:template("etym-note-idno1-before",
+    <template>
+        <select data-ua-ref="{@type}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="cf." value="cf." />
+            <option label="cf. și" value="cf. și" />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > note > idno:nth-of-type(1):before"), "etym-note-idno1-before"),
 
 ua:template("usg-before",
     <template>
