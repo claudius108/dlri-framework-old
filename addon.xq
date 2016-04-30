@@ -1253,7 +1253,7 @@ ua:action(
 ua:action(
     "addEtymonTranslation",
     map { 
-        "name" := "Traducere etimon"        
+        "name" := "Traducere etimon"
     },   
     (insert node $term-template as last into ., replace value of node term[last()]/@type with 'translation')
 ),
@@ -1282,7 +1282,7 @@ ua:action(
         "name" := "Editează notă",
         "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    oxy:execute-action-by-class('ro.dlri.oxygen.plugin.OpenFileInNewTabOperation')
+    oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
 ),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
@@ -2136,7 +2136,7 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
 
-ua:template("etym-note-before",
+ua:template("etym-note-template",
     <template>
 		Notă&amp;nbsp;
 		<button onclick="{oxy:execute-action-by-name('addEtymologicalNote')}" style="background-color: transparent;" />
@@ -2144,18 +2144,53 @@ ua:template("etym-note-before",
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-before"),
+ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template"),
 
-ua:template("etym-note-idno1-before",
+ua:template("etym-note-idno1-template",
     <template>
-        <select data-ua-ref="{@type}" contenteditable="false">
+        <select data-ua-ref="{@n}" contenteditable="false">
             <option label="" value="unknown" />
             <option label="cf." value="cf." />
             <option label="cf. și" value="cf. și" />
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > note > idno:nth-of-type(1):before"), "etym-note-idno1-before"),
+ua:attach-template(ua-dt:css-selector("note > idno:nth-of-type(1):before"), "etym-note-idno1-template"),
+
+ua:template("etym-note-certainty-template",
+    <template>
+        Probabilitate etimologie&amp;nbsp;
+        <select data-ua-ref="{@cert}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="probabil" value="low" />
+            <option label="sigur" value="high" />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note > certainty"), "etym-note-certainty-template"),
+
+ua:template("etym-edited-note-template",
+    <template>
+    	Tip&amp;nbsp;
+        <select data-ua-ref="{@type}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="traducere.etimon" value="traducere.etimon" />
+            <option label="traducere.cuvânt.bază" value="traducere.cuvânt.bază" />
+            <option label="explicații.etimon" value="explicații.etimon" />
+            <option label="trimitere.(cf.)" value="trimitere.(cf.)" />
+            <option label="trimitere.intrare" value="trimitere.intrare" />
+            <option label="nume.propriu" value="nume.propriu" />
+            <option label="indicații.gramaticale" value="indicații.gramaticale" />
+            <option label="indicație.folosire" value="indicație.folosire" />
+            <option label="model.etimon" value="model.etimon" />
+            <option label="izvor" value="izvor" />
+            <option label="note.suplimentare" value="note.suplimentare" />            
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
+
+
 
 ua:template("usg-before",
     <template>
