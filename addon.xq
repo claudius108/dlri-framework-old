@@ -1242,6 +1242,22 @@ ua:action(
         else ()
     )
 ),
+
+ua:action(
+    "changedTypeAttrForNoteElement",
+    map { 
+        "name" := "changedTypeAttrForNoteElement"
+    }, 
+    (
+        if (@type = 'traducere.etimon')
+        then (
+                delete nodes ./child::term[1],
+                insert node $term-template after ./child::term[1]/following-sibling::*
+        )
+        else ()
+    )
+),
+
 ua:action(
     "deleteContaminationElement",
     map { 
@@ -1324,6 +1340,13 @@ ua:connect-observer("changedTargetAttrForPtrElementObserver", ua-dt:xpath-select
     map {
         "attributes" := "true",
         "attributeFilter" := "['target']"}
+),
+
+ua:observer("changedTypeAttrForNoteElementObserver", "changedTypeAttrForNoteElement"),
+ua:connect-observer("changedTypeAttrForNoteElementObserver", ua-dt:xpath-selector('//note'),
+    map {
+        "attributes" := "true",
+        "attributeFilter" := "['type']"}
 ),
 
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
@@ -2159,7 +2182,7 @@ ua:attach-template(ua-dt:css-selector("note > idno:nth-of-type(1):before"), "ety
 
 ua:template("etym-note-certainty-template",
     <template>
-        Probabilitate etimologie&amp;nbsp;
+        Probabilitate&amp;nbsp;
         <select data-ua-ref="{@cert}" contenteditable="false">
             <option label="" value="unknown" />
             <option label="probabil" value="low" />
@@ -2190,7 +2213,12 @@ ua:template("etym-edited-note-template",
 ),
 ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
 
-
+ua:template("etym-note-term-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note > term"), "etym-note-term-template"),
 
 ua:template("usg-before",
     <template>
