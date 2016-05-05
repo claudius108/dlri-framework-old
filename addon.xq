@@ -1249,12 +1249,33 @@ ua:action(
         "name" := "changedTypeAttrForNoteElement"
     }, 
     (
-        if (@type = 'traducere.etimon')
+        if (@type = 'unknown')
         then (
-                delete nodes ./child::term[1],
-                insert node $term-template after ./child::term[1]/following-sibling::*
+        	delete nodes ./child::term[1]/following-sibling::*
         )
         else ()
+        ,    
+        if (@type = 'traducere.etimon')
+        then (
+                delete nodes ./child::term[1]/following-sibling::*,
+                insert node $term-template after ./child::term[1]
+        )
+        else ()
+        ,    
+        if (@type = 'traducere.cuvânt.bază')
+        then (
+                delete nodes ./child::term[1]/following-sibling::*,
+                insert node $term-template after ./child::term[1]
+        )
+        else ()
+        ,    
+        if (@type = 'explicații.etimon')
+        then (
+                delete nodes ./child::term[1]/following-sibling::*,
+                insert node doc('content-models/idno.xml') after ./child::term[1],
+                replace value of node @type with 'etymon-explanation-type'
+        )
+        else ()        
     )
 ),
 
@@ -1271,7 +1292,10 @@ ua:action(
     map { 
         "name" := "Traducere etimon"
     },   
-    (insert node $term-template as last into ., replace value of node term[last()]/@type with 'translation')
+    (
+    	insert node $term-template as last into .,
+    	replace value of node term[last()]/@type with 'translation'
+    )
 ),
 ua:action(
     "addFirstEtymologicalNote",
@@ -2190,7 +2214,7 @@ ua:template("etym-note-certainty-template",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note > certainty"), "etym-note-certainty-template"),
+ua:attach-template(ua-dt:css-selector("note > certainty:before"), "etym-note-certainty-template"),
 
 ua:template("etym-edited-note-template",
     <template>
@@ -2213,12 +2237,32 @@ ua:template("etym-edited-note-template",
 ),
 ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
 
-ua:template("etym-note-term-template",
+ua:template("etym-note-term1-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note > term"), "etym-note-term-template"),
+ua:attach-template(ua-dt:css-selector("note > term:nth-of-type(1):before"), "etym-note-term1-template"),
+
+ua:template("etym-note-traducere.etimon-term-template",
+    <template>
+    	Traducere etimon&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'traducere.etimon'] > term:nth-of-type(2):before"), "etym-note-traducere.etimon-term-template"),
+
+ua:template("etym-note-traducere.cuvânt.bază-term-template",
+    <template>
+    	Traducere cuvânt bază&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'traducere.cuvânt.bază'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
+
+
+
+
 
 ua:template("usg-before",
     <template>
