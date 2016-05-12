@@ -380,14 +380,7 @@ ua:action(
     map { 
         "name" := "Accentuare"        
     },
-    (
-        if (local-name(.) = 'TEI')
-        then (insert node doc('content-models/accentuation.xml') after //entry/sense[last()])
-        else (),
-        if (local-name(.) != 'TEI')
-        then (insert node doc('content-models/accentuation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr)[last()])
-        else ()
-    )
+    oxy:execute-xquery-update-script("if (local-name(.) = 'TEI') then (insert node doc('content-models/accentuation.xml') after //entry/sense[last()]) else insert node doc('content-models/accentuation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr)[last()]")
 ),
 ua:action(
     "addAccentuationSection",
@@ -1247,11 +1240,13 @@ ua:action(
     "changedTypeAttrForNoteElement",
     map { 
         "name" := "changedTypeAttrForNoteElement"
-    }, 
+    },
+
     (
-        if (@type = 'unknown')
+        if (@type = ('unknown', 'explicații.etimon'))
         then (
-        	delete nodes ./child::term[1]/following-sibling::*
+        	delete nodes ./child::term[1]/following-sibling::*,
+        	replace value of node . with 'unknown'
         )
         else ()
         ,    
@@ -1269,13 +1264,48 @@ ua:action(
         )
         else ()
         ,    
-        if (@type = 'explicații.etimon')
+        if (@type = 'trimitere.-cf.')
         then (
-                delete nodes ./child::term[1]/following-sibling::*,
-                insert node doc('content-models/idno.xml') after ./child::term[1],
-                replace value of node @type with 'etymon-explanation-type'
+                replace value of node ./@subtype with 'unknown'
         )
         else ()        
+    )
+    
+),
+
+ua:action(
+    "changedSubtypeAttrForNoteElement",
+    map { 
+        "name" := "changedSubtypeAttrForNoteElement"
+    }, 
+    (
+        if (@subtype = ('unknown', 'apropiat.de.cuv..rom..terminate.în', 'diminutiv.al.lui', 'cu.schimbare.de.suf.', 'prin.accidente.fonetice-afereză', 'prin.accidente.fonetice-anaptixă',
+        'prin.accidente.fonetice-apocopă', 'prin.accidente.fonetice-elidare', 'prin.accidente.fonetice-epenteză', 'prin.accidente.fonetice-metateză', 'prin.accidente.fonetice-propagare',
+        'prin.accidente.fonetice-proteză', 'prin.accidente.fonetice-sincopă', 'prin.accidente.fonetice-sinereză', 'prin.apropiere.de', 'prin.analogie.cu', 'prin.analogie.cu.cuvinte.de.origine',
+        'prin.analogie.cu.cuvinte.de.tipul', 'prin.contaminare.cu', 'după.modelul', 'după.modelul.lui', 'variantă.a.lui', 'prin.falsă.analiză', 'refăcut.după', 'adaptat.după', 'din.latina.clasică.pentru.et..*',
+        'cuvânt.din.care.provine.etimonul,.atestat.pentru.et..*', 'după', 'prin.filieră', 'cu.reduplicarea.consoanei', 'imper..lui', 'aor..lui', 'voc..lui', 'pl..lui', 'acuz.', 'la.scriitorii.mai.vechi.din', 
+        'sub.influența.lui', 'dial.', 'prin.reduplicare', 'part..lui', 'prin.apropiere.de.cuv..formate.cu.suf.', 'prin.analogie.cu', 'prin.analogie.cu.cuvinte.de.origine', 'prin.analogie.cu.cuvinte.de.tipul',
+        'prin.etimologie.populară', 's..pr.', 'numele.științific.al', 'la', 'mai.vechi', 'var..a.lui', 'de.la.s..pr.', 'în.rom.', 'sg..refăcut.după.pl.', 'numele.topic', 'contaminare.în.care.primul.element.este', 
+        'f..lui', 'numele.ştiințific.al.plantei', 'n..pr.', 'numele.de.localitate', 'numele.sărbătorii.religioase', 'numele.ştiințific.al.planetei', 'prez..ind.', 'prin.analogie.cu.cuvinte.de.origine.….de.tipul.…',
+        'prin.confuzie.cu'))
+        then (
+        	delete nodes ./child::term[1]/following-sibling::*
+        )
+        else ()
+        ,    
+        if (@subtype = ('contaminare.între.….și.…', 'prin.înlocuirea.lui.….cu.…'))
+        then (
+                delete nodes ./child::term[1]/following-sibling::*,
+                insert node $term-template after ./child::term[1]
+        )
+        else () 
+        ,    
+        if (@subtype = ('pentru.explicarea.formei.româneşti', 'pentru.explicarea.formei.românești.cf.'))
+        then (
+                delete nodes ./child::term[1]/following-sibling::*,
+                insert node $bibl-template after ./child::term[1]
+        )
+        else () 
     )
 ),
 
@@ -1377,7 +1407,7 @@ ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kube
 
 ua:template("TEI-before-template",
     <template>
-        <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstArticulationSection')}" style="visibility: {count(//entry/form[@type = 'articulation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
@@ -2193,29 +2223,6 @@ ua:template("etym-note-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template"),
 
-ua:template("etym-note-idno1-template",
-    <template>
-        <select data-ua-ref="{@n}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="cf." value="cf." />
-            <option label="cf. și" value="cf. și" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note > idno:nth-of-type(1):before"), "etym-note-idno1-template"),
-
-ua:template("etym-note-certainty-template",
-    <template>
-        Probabilitate&amp;nbsp;
-        <select data-ua-ref="{@cert}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="probabil" value="low" />
-            <option label="sigur" value="high" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note > certainty:before"), "etym-note-certainty-template"),
-
 ua:template("etym-edited-note-template",
     <template>
     	Tip&amp;nbsp;
@@ -2224,7 +2231,7 @@ ua:template("etym-edited-note-template",
             <option label="traducere.etimon" value="traducere.etimon" />
             <option label="traducere.cuvânt.bază" value="traducere.cuvânt.bază" />
             <option label="explicații.etimon" value="explicații.etimon" />
-            <option label="trimitere.(cf.)" value="trimitere.(cf.)" />
+            <option label="trimitere.-cf." value="trimitere.-cf." />
             <option label="trimitere.intrare" value="trimitere.intrare" />
             <option label="nume.propriu" value="nume.propriu" />
             <option label="indicații.gramaticale" value="indicații.gramaticale" />
@@ -2233,6 +2240,17 @@ ua:template("etym-edited-note-template",
             <option label="izvor" value="izvor" />
             <option label="note.suplimentare" value="note.suplimentare" />            
         </select>
+        <select data-ua-ref="{@n}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="cf." value="cf." />
+            <option label="cf. și" value="cf. și" />
+        </select>
+        Probabilitate&amp;nbsp;
+        <select data-ua-ref="{@cert}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="probabil" value="low" />
+            <option label="sigur" value="high" />
+        </select>        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
@@ -2259,6 +2277,26 @@ ua:template("etym-note-traducere.cuvânt.bază-term-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'traducere.cuvânt.bază'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
+
+
+ua:template("etym-note-după.modelul-term-template",
+    <template>
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" /> 
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[subtype ~= 'după.modelul'] > term:nth-of-type(1):before, note[subtype ~= 'prin.filieră'] > term:nth-of-type(1):before, 
+note[subtype ~= 'la.scriitorii.mai.vechi.din'] > term:nth-of-type(1):before, note[subtype = 'prin.analogie.cu.cuvinte.de.origine.….de.tipul.…'] > term:nth-of-type(1):before"), "etym-note-după.modelul-term-template"),
+
+ua:template("etym-note-prin.înlocuirea.lui.….cu.…-term-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[subtype = 'contaminare.între.….și.…'] > term:nth-of-type(2):before, note[subtype = 'prin.înlocuirea.lui.….cu.…'] > term:nth-of-type(2):before"), "etym-note-prin.înlocuirea.lui.….cu.…-term-template"),
+
 
 
 
@@ -3340,7 +3378,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
+        <button onclick="{oxy:xquery-update('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
