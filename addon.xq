@@ -380,7 +380,7 @@ ua:action(
     map { 
         "name" := "Accentuare"        
     },
-    oxy:execute-xquery-update-script("if (local-name(.) = 'TEI') then (insert node doc('content-models/accentuation.xml') after //entry/sense[last()]) else insert node doc('content-models/accentuation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr)[last()]")
+	oxy:execute-xquery-update-script("resources/xquery/addFirstAccentuationSection.xq")    
 ),
 ua:action(
     "addAccentuationSection",
@@ -769,8 +769,8 @@ ua:action(
     }, 
     (
         if (@value = ('adj.-empty', 'adj.-pos.', 'adj.-inter.-rel.', 'adj.-dem.', 'adj.-nehot.', 'art.-adj.', 'art.-hot.', 'art.-nehot.',
-            'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-(folosit şi absol.)', 'vb.-absol.',
-            'vb.-fact.', 'vb.-intranz.', 'vb.-refl.', 'vb.-refl. impers.', 'vb.-refl. pos.', 'vb.-refl. recipr.', 'vb.-refl. unipers.',
+            'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-absol.',
+            'vb.-fact.', 'vb.-intranz.', 'vb.-refl.', 'vb.-refl. impers.', 'vb.-refl. pas.', 'vb.-refl. recipr.', 'vb.-refl. unipers.',
             'vb.-tranz.', 'vb.-tranz. fact.', 'vb.-intranz. şi refl.'))
         then ()
         else (),            
@@ -963,12 +963,11 @@ ua:action(
                 replace value of node ./following-sibling::*[5]/@type with 'alternative-contamination-element'
         )
         else (),
-        if (@type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*')
+        if (@type = 'cuvântul.titlu-etimon.neatestat(reconstruit)')
         then (
                 delete nodes ./following-sibling::*[position() > 1],
                 insert node $term-template after ./following-sibling::*[1],
-                replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
-                replace value of node ./following-sibling::*[2]/@xml:lang with 'v. sl.'
+                replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (),       
         if (@type = 'cuvântul.titlu-element.extern-trimitere')
@@ -1038,7 +1037,7 @@ ua:action(
                     'cuvântul.titlu-formație.internă-format.după',
                     'cuvântul.titlu-formație.internă-denumire.comercială',
                     'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
-                    'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)',
+                    'cuvântul.titlu-etimon.neatestat(reconstruit)',
                     'cuvântul.titlu-element.extern-calc',
                     'cuvântul.titlu-element.necunoscut',
                     'variantă-directă-etimon.variantă-atestat',
@@ -1243,72 +1242,88 @@ ua:action(
     },
 
     (
-        if (@type = ('unknown', 'explicații.etimon'))
+        if (@type = ('unknown', 'explicații.etimon-apropiat.de.cuv..rom..terminate.în', 'explicații.etimon-diminutiv.al.lui', 'explicații.etimon-cu.schimbare.de.suf.',
+        'explicații.etimon-prin.accidente.fonetice-afereză', 'explicații.etimon-prin.accidente.fonetice-anaptixă', 'explicații.etimon-prin.accidente.fonetice-apocopă',
+        'explicații.etimon-prin.accidente.fonetice-elidare', 'explicații.etimon-prin.accidente.fonetice-epenteză', 'explicații.etimon-prin.accidente.fonetice-metateză',
+        'explicații.etimon-prin.accidente.fonetice-propagare', 'explicații.etimon-prin.accidente.fonetice-proteză', 'explicații.etimon-prin.accidente.fonetice-sincopă',
+        'explicații.etimon-prin.accidente.fonetice-sinereză', 'explicații.etimon-prin.apropiere.de', 'explicații.etimon-prin.analogie.cu', 'explicații.etimon-după.modelul',
+        'explicații.etimon-prin.analogie.cu.cuvinte.de.origine', 'explicații.etimon-prin.analogie.cu.cuvinte.de.tipul', 'explicații.etimon-prin.contaminare.cu',
+        'explicații.etimon-după.modelul.lui', 'explicații.etimon-variantă.a.lui', 'explicații.etimon-prin.falsă.analiză', 'explicații.etimon-refăcut.după',
+        'explicații.etimon-adaptat.după', 'explicații.etimon-din.latina.clasică.pentru.et..*', 'explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*',
+        'explicații.etimon-după', 'explicații.etimon-prin.filieră', 'explicații.etimon-cu.reduplicarea.consoanei', 'explicații.etimon-imper..lui', 'explicații.etimon-aor..lui',
+        'explicații.etimon-voc..lui', 'explicații.etimon-pl..lui', 'explicații.etimon-acuz.', 'explicații.etimon-la.scriitorii.mai.vechi.din', 'explicații.etimon-sub.influența.lui',
+        'explicații.etimon-dial.', 'explicații.etimon-prin.reduplicare', 'explicații.etimon-part..lui', 'explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf.',
+        'explicații.etimon-prin.analogie.cu', 'explicații.etimon-prin.analogie.cu.cuvinte.de.origine', 'explicații.etimon-prin.analogie.cu.cuvinte.de.tipul',
+        'explicații.etimon-prin.etimologie.populară', 'explicații.etimon-s..pr.', 'explicații.etimon-numele.științific.al', 'explicații.etimon-la', 'explicații.etimon-mai.vechi',
+        'explicații.etimon-var..a.lui', 'explicații.etimon-de.la.s..pr.', 'explicații.etimon-în.rom.', 'explicații.etimon-sg..refăcut.după.pl.', 'explicații.etimon-numele.topic',
+        'explicații.etimon-contaminare.în.care.primul.element.este', 'explicații.etimon-f..lui', 'explicații.etimon-numele.ştiințific.al.plantei', 'explicații.etimon-n..pr.',
+        'explicații.etimon-numele.de.localitate', 'explicații.etimon-numele.sărbătorii.religioase', 'explicații.etimon-numele.ştiințific.al.planetei', 'explicații.etimon-prez..ind.',
+        'explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…', 'explicații.etimon-prin.confuzie.cu', 'model.etimon', 'note.suplimentare'))
         then (
-        	delete nodes ./child::term[1]/following-sibling::*,
-        	replace value of node . with 'unknown'
+        	delete nodes child::*,
+        	insert node $term-template as first into .
         )
         else ()
         ,    
-        if (@type = 'traducere.etimon')
+        if (@type = ('traducere.etimon', 'traducere.cuvânt.bază', 'explicații.etimon-contaminare.între.….și.…', 'explicații.etimon-prin.înlocuirea.lui.….cu.…',
+        'nume.propriu'))
         then (
-                delete nodes ./child::term[1]/following-sibling::*,
-                insert node $term-template after ./child::term[1]
+            delete nodes child::*,
+            insert node $term-template as first into .,
+            insert node $term-template after ./child::term[1]
         )
         else ()
         ,    
-        if (@type = 'traducere.cuvânt.bază')
+        if (@type = 'trimitere.(cf.)')
         then (
-                delete nodes ./child::term[1]/following-sibling::*,
-                insert node $term-template after ./child::term[1]
-        )
-        else ()
-        ,    
-        if (@type = 'trimitere.-cf.')
-        then (
-                replace value of node ./@subtype with 'unknown'
-        )
-        else ()        
-    )
-    
-),
-
-ua:action(
-    "changedSubtypeAttrForNoteElement",
-    map { 
-        "name" := "changedSubtypeAttrForNoteElement"
-    }, 
-    (
-        if (@subtype = ('unknown', 'apropiat.de.cuv..rom..terminate.în', 'diminutiv.al.lui', 'cu.schimbare.de.suf.', 'prin.accidente.fonetice-afereză', 'prin.accidente.fonetice-anaptixă',
-        'prin.accidente.fonetice-apocopă', 'prin.accidente.fonetice-elidare', 'prin.accidente.fonetice-epenteză', 'prin.accidente.fonetice-metateză', 'prin.accidente.fonetice-propagare',
-        'prin.accidente.fonetice-proteză', 'prin.accidente.fonetice-sincopă', 'prin.accidente.fonetice-sinereză', 'prin.apropiere.de', 'prin.analogie.cu', 'prin.analogie.cu.cuvinte.de.origine',
-        'prin.analogie.cu.cuvinte.de.tipul', 'prin.contaminare.cu', 'după.modelul', 'după.modelul.lui', 'variantă.a.lui', 'prin.falsă.analiză', 'refăcut.după', 'adaptat.după', 'din.latina.clasică.pentru.et..*',
-        'cuvânt.din.care.provine.etimonul,.atestat.pentru.et..*', 'după', 'prin.filieră', 'cu.reduplicarea.consoanei', 'imper..lui', 'aor..lui', 'voc..lui', 'pl..lui', 'acuz.', 'la.scriitorii.mai.vechi.din', 
-        'sub.influența.lui', 'dial.', 'prin.reduplicare', 'part..lui', 'prin.apropiere.de.cuv..formate.cu.suf.', 'prin.analogie.cu', 'prin.analogie.cu.cuvinte.de.origine', 'prin.analogie.cu.cuvinte.de.tipul',
-        'prin.etimologie.populară', 's..pr.', 'numele.științific.al', 'la', 'mai.vechi', 'var..a.lui', 'de.la.s..pr.', 'în.rom.', 'sg..refăcut.după.pl.', 'numele.topic', 'contaminare.în.care.primul.element.este', 
-        'f..lui', 'numele.ştiințific.al.plantei', 'n..pr.', 'numele.de.localitate', 'numele.sărbătorii.religioase', 'numele.ştiințific.al.planetei', 'prez..ind.', 'prin.analogie.cu.cuvinte.de.origine.….de.tipul.…',
-        'prin.confuzie.cu'))
-        then (
-        	delete nodes ./child::term[1]/following-sibling::*
-        )
-        else ()
-        ,    
-        if (@subtype = ('contaminare.între.….și.…', 'prin.înlocuirea.lui.….cu.…'))
-        then (
-                delete nodes ./child::term[1]/following-sibling::*,
-                insert node $term-template after ./child::term[1]
+            delete nodes child::*,
+            insert node doc('content-models/usg.xml') as first into .,
+            insert node $term-template after ./child::usg,
+            insert node $term-template after ./child::term
         )
         else () 
         ,    
-        if (@subtype = ('pentru.explicarea.formei.româneşti', 'pentru.explicarea.formei.românești.cf.'))
+        if (@type = ('explicații.etimon-pentru.explicarea.formei.româneşti', 'explicații.etimon-pentru.explicarea.formei.românești.cf.'))
         then (
-                delete nodes ./child::term[1]/following-sibling::*,
-                insert node $bibl-template after ./child::term[1]
+            delete nodes child::*,
+            insert node $term-template as first into .,
+            insert node $bibl-template after ./child::term[1]
+        )
+        else ()
+        ,    
+        if (@type = 'indicații.gramaticale')
+        then (
+            delete nodes child::*,
+            insert node doc('content-models/grammatical-information.xml') as first into .,
+            insert node $term-template after ./child::form
+        )
+        else ()
+        ,    
+        if (@type = 'izvor')
+        then (
+            delete nodes child::*,
+            insert node $bibl-template as first into .,
+            insert node $term-template after ./child::bibl
         )
         else () 
+        ,    
+        if (@type = 'indicație.folosire')
+        then (
+            delete nodes child::*,
+            insert node doc('content-models/usg.xml') as first into .,
+            insert node $term-template after ./child::usg
+        )
+        else () 
+        ,    
+        if (@type = 'trimitere.intrare')
+        then (
+            delete nodes child::*,
+            insert node $term-template as first into .,
+            insert node doc('content-models/ptr.xml') after ./child::term
+        )
+        else ()                  
     )
 ),
-
 ua:action(
     "deleteContaminationElement",
     map { 
@@ -1556,8 +1571,7 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul.titlu-formație.internă-format.după" value="cuvântul.titlu-formație.internă-format.după" />
             <option label="cuvântul.titlu-formație.internă-denumire.comercială" value="cuvântul.titlu-formație.internă-denumire.comercială" />
             <option label="cuvântul.titlu-element.extern-împrumut-etimon.sigur" value="cuvântul.titlu-element.extern-împrumut-etimon.sigur" />
-            <option label="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)" value="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)" />
-            <option label="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*" value="cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*" />
+            <option label="cuvântul.titlu-etimon.neatestat(reconstruit)" value="cuvântul.titlu-etimon.neatestat(reconstruit)" />
             <option label="cuvântul.titlu-element.extern-calc" value="cuvântul.titlu-element.extern-calc" />
             <option label="cuvântul.titlu-element.extern-trimitere" value="cuvântul.titlu-element.extern-trimitere" />
             <option label="cuvântul.titlu-element.necunoscut" value="cuvântul.titlu-element.necunoscut" />
@@ -1840,25 +1854,18 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-De la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-De la-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-De la-template"),
 
-ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)-term",
+ua:template("cuvântul.titlu-etimon.neatestat(reconstruit)-term",
     <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }
-        &amp;nbsp;etimon neatestat (necunoscut)&amp;nbsp;
+        etimon neatestat&amp;nbsp;
+        <select data-ua-ref="{@xml:lang}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="lat*" value="lat*" />
+            <option label="v. sl.*" value="v. sl.*" />            
+        </select>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(necunoscut)-term"),
-
-ua:template("cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*-term",
-    <template>
-        etimon neatestat (reconstruit) v. sl. *&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.neatestat(reconstruit)-etimon.neatestat(reconstruit).v.sl.*-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat(reconstruit)-term"),
 
 ua:template("cuvântul.titlu-formație.internă-trimitere-Din-template",
     <template>
@@ -2225,21 +2232,6 @@ ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template
 
 ua:template("etym-edited-note-template",
     <template>
-    	Tip&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="traducere.etimon" value="traducere.etimon" />
-            <option label="traducere.cuvânt.bază" value="traducere.cuvânt.bază" />
-            <option label="explicații.etimon" value="explicații.etimon" />
-            <option label="trimitere.-cf." value="trimitere.-cf." />
-            <option label="trimitere.intrare" value="trimitere.intrare" />
-            <option label="nume.propriu" value="nume.propriu" />
-            <option label="indicații.gramaticale" value="indicații.gramaticale" />
-            <option label="indicație.folosire" value="indicație.folosire" />
-            <option label="model.etimon" value="model.etimon" />
-            <option label="izvor" value="izvor" />
-            <option label="note.suplimentare" value="note.suplimentare" />            
-        </select>
         <select data-ua-ref="{@n}" contenteditable="false">
             <option label="" value="unknown" />
             <option label="cf." value="cf." />
@@ -2250,7 +2242,88 @@ ua:template("etym-edited-note-template",
             <option label="" value="unknown" />
             <option label="probabil" value="low" />
             <option label="sigur" value="high" />
-        </select>        
+        </select> 
+    	Tip&amp;nbsp;
+        <select data-ua-ref="{@type}" contenteditable="false">
+            <option label="" value="unknown" />
+            <option label="traducere.etimon" value="traducere.etimon" />
+            <option label="traducere.cuvânt.bază" value="traducere.cuvânt.bază" />
+            <option label="explicații.etimon-apropiat.de.cuv..rom..terminate.în" value="explicații.etimon-apropiat.de.cuv..rom..terminate.în" />
+            <option label="explicații.etimon-diminutiv.al.lui" value="explicații.etimon-diminutiv.al.lui" />
+            <option label="explicații.etimon-cu.schimbare.de.suf." value="explicații.etimon-cu.schimbare.de.suf." />
+            <option label="explicații.etimon-prin.accidente.fonetice-afereză" value="explicații.etimon-prin.accidente.fonetice-afereză" />
+            <option label="explicații.etimon-prin.accidente.fonetice-anaptixă" value="explicații.etimon-prin.accidente.fonetice-anaptixă" />
+            <option label="explicații.etimon-prin.accidente.fonetice-apocopă" value="explicații.etimon-prin.accidente.fonetice-apocopă" />
+            <option label="explicații.etimon-prin.accidente.fonetice-elidare" value="explicații.etimon-prin.accidente.fonetice-elidare" />            
+            <option label="explicații.etimon-prin.accidente.fonetice-epenteză" value="explicații.etimon-prin.accidente.fonetice-epenteză" />
+            <option label="explicații.etimon-prin.accidente.fonetice-metateză" value="explicații.etimon-prin.accidente.fonetice-metateză" />
+            <option label="explicații.etimon-prin.accidente.fonetice-propagare" value="explicații.etimon-prin.accidente.fonetice-propagare" />
+            <option label="explicații.etimon-prin.accidente.fonetice-proteză" value="explicații.etimon-prin.accidente.fonetice-proteză" />
+            <option label="explicații.etimon-prin.accidente.fonetice-sincopă" value="explicații.etimon-prin.accidente.fonetice-sincopă" />
+            <option label="explicații.etimon-prin.accidente.fonetice-sinereză" value="explicații.etimon-prin.accidente.fonetice-sinereză" />
+            <option label="explicații.etimon-prin.apropiere.de" value="explicații.etimon-prin.apropiere.de" />
+            <option label="explicații.etimon-prin.analogie.cu" value="explicații.etimon-prin.analogie.cu" />
+            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" />
+            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" value="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" />
+            <option label="explicații.etimon-prin.contaminare.cu" value="explicații.etimon-prin.contaminare.cu" />
+            <option label="explicații.etimon-după.modelul" value="explicații.etimon-după.modelul" />
+            <option label="explicații.etimon-după.modelul.lui" value="explicații.etimon-după.modelul.lui" />
+            <option label="explicații.etimon-variantă.a.lui" value="explicații.etimon-variantă.a.lui" />
+            <option label="explicații.etimon-prin.falsă.analiză" value="explicații.etimon-prin.falsă.analiză" />
+            <option label="explicații.etimon-refăcut.după" value="explicații.etimon-refăcut.după" />
+            <option label="explicații.etimon-adaptat.după" value="explicații.etimon-adaptat.după" />
+            <option label="explicații.etimon-din.latina.clasică.pentru.et..*" value="explicații.etimon-din.latina.clasică.pentru.et..*" />
+            <option label="explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*" value="explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*" />
+            <option label="explicații.etimon-pentru.explicarea.formei.româneşti" value="explicații.etimon-pentru.explicarea.formei.româneşti" />
+            <option label="explicații.etimon-după" value="explicații.etimon-după" />
+            <option label="explicații.etimon-prin.filieră" value="explicații.etimon-prin.filieră" />
+            <option label="explicații.etimon-cu.reduplicarea.consoanei" value="explicații.etimon-cu.reduplicarea.consoanei" />
+            <option label="explicații.etimon-imper..lui" value="explicații.etimon-imper..lui" />
+            <option label="explicații.etimon-aor..lui" value="explicații.etimon-aor..lui" />
+            <option label="explicații.etimon-voc..lui" value="explicații.etimon-voc..lui" />
+            <option label="explicații.etimon-pl..lui" value="explicații.etimon-pl..lui" />
+            <option label="explicații.etimon-acuz." value="explicații.etimon-acuz." />
+            <option label="explicații.etimon-la.scriitorii.mai.vechi.din" value="explicații.etimon-la.scriitorii.mai.vechi.din" />
+            <option label="explicații.etimon-sub.influența.lui" value="explicații.etimon-sub.influența.lui" />
+            <option label="explicații.etimon-dial." value="explicații.etimon-dial." />
+            <option label="explicații.etimon-prin.reduplicare" value="explicații.etimon-prin.reduplicare" />
+            <option label="explicații.etimon-part..lui" value="explicații.etimon-part..lui" />
+            <option label="explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf." value="explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf." />
+            <option label="explicații.etimon-prin.analogie.cu" value="explicații.etimon-prin.analogie.cu" />
+            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" />
+            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" value="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" />
+            <option label="explicații.etimon-prin.etimologie.populară" value="explicații.etimon-prin.etimologie.populară" />
+            <option label="explicații.etimon-s..pr." value="explicații.etimon-s..pr." />
+            <option label="explicații.etimon-numele.științific.al" value="explicații.etimon-numele.științific.al" />
+            <option label="explicații.etimon-la" value="explicații.etimon-la" />
+            <option label="explicații.etimon-mai.vechi" value="explicații.etimon-mai.vechi" />
+            <option label="explicații.etimon-var..a.lui" value="explicații.etimon-var..a.lui" />
+            <option label="explicații.etimon-de.la.s..pr." value="explicații.etimon-de.la.s..pr." />
+            <option label="explicații.etimon-în.rom." value="explicații.etimon-în.rom." />
+            <option label="explicații.etimon-sg..refăcut.după.pl." value="explicații.etimon-sg..refăcut.după.pl." />
+            <option label="explicații.etimon-numele.topic" value="explicații.etimon-numele.topic" />
+            <option label="explicații.etimon-contaminare.în.care.primul.element.este" value="explicații.etimon-contaminare.în.care.primul.element.este" />
+            <option label="explicații.etimon-contaminare.între.….și.…" value="explicații.etimon-contaminare.între.….și.…" />
+            <option label="explicații.etimon-f..lui" value="explicații.etimon-f..lui" />
+            <option label="explicații.etimon-numele.ştiințific.al.plantei" value="explicații.etimon-numele.ştiințific.al.plantei" />
+            <option label="explicații.etimon-n..pr." value="explicații.etimon-n..pr." />
+            <option label="explicații.etimon-numele.de.localitate" value="explicații.etimon-numele.de.localitate" />
+            <option label="explicații.etimon-numele.sărbătorii.religioase" value="explicații.etimon-numele.sărbătorii.religioase" />
+            <option label="explicații.etimon-numele.ştiințific.al.planetei" value="explicații.etimon-numele.ştiințific.al.planetei" />
+            <option label="explicații.etimon-pentru.explicarea.formei.românești.cf." value="explicații.etimon-pentru.explicarea.formei.românești.cf." />
+            <option label="explicații.etimon-prez..ind." value="explicații.etimon-prez..ind." />
+            <option label="explicații.etimon-rin.înlocuirea.lui.….cu.…" value="explicații.etimon-prin.înlocuirea.lui.….cu.…" />
+            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…" />
+            <option label="explicații.etimon-prin.confuzie.cu" value="explicații.etimon-prin.confuzie.cu" />
+            <option label="trimitere.(cf.)" value="trimitere.(cf.)" />
+            <option label="trimitere.intrare" value="trimitere.intrare" />
+            <option label="nume.propriu" value="nume.propriu" />
+            <option label="indicații.gramaticale" value="indicații.gramaticale" />
+            <option label="indicație.folosire" value="indicație.folosire" />
+            <option label="model.etimon" value="model.etimon" />
+            <option label="izvor" value="izvor" />
+            <option label="note.suplimentare" value="note.suplimentare" />            
+        </select>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
@@ -2278,8 +2351,7 @@ ua:template("etym-note-traducere.cuvânt.bază-term-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'traducere.cuvânt.bază'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
 
-
-ua:template("etym-note-după.modelul-term-template",
+ua:template("etym-note-languages-term-template",
     <template>
         {
             $languages-template
@@ -2287,16 +2359,63 @@ ua:template("etym-note-după.modelul-term-template",
         <input data-ua-ref="{text()}" size="22" /> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[subtype ~= 'după.modelul'] > term:nth-of-type(1):before, note[subtype ~= 'prin.filieră'] > term:nth-of-type(1):before, 
-note[subtype ~= 'la.scriitorii.mai.vechi.din'] > term:nth-of-type(1):before, note[subtype = 'prin.analogie.cu.cuvinte.de.origine.….de.tipul.…'] > term:nth-of-type(1):before"), "etym-note-după.modelul-term-template"),
+ua:attach-template(ua-dt:css-selector("note[type = 'explicații.etimon-după.modelul'] > term:nth-of-type(1):before, note[type = 'explicații.etimon-prin.filieră'] > term:nth-of-type(1):before, 
+note[type ~= 'explicații.etimon-la.scriitorii.mai.vechi.din'] > term:nth-of-type(1):before, note[type = 'explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…'] > term:nth-of-type(1):before,
+note[type = 'trimitere.(cf.)'] > term:nth-of-type(1):before"), "etym-note-languages-term-template"),
 
-ua:template("etym-note-prin.înlocuirea.lui.….cu.…-term-template",
+ua:template("etym-note-term2-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[subtype = 'contaminare.între.….și.…'] > term:nth-of-type(2):before, note[subtype = 'prin.înlocuirea.lui.….cu.…'] > term:nth-of-type(2):before"), "etym-note-prin.înlocuirea.lui.….cu.…-term-template"),
+ua:attach-template(ua-dt:css-selector("note[type = 'explicații.etimon-contaminare.între.….și.…'] > term:nth-of-type(2):before,
+note[type = 'explicații.etimon-prin.înlocuirea.lui.….cu.…'] > term:nth-of-type(2):before,
+note[type = 'trimitere.(cf.)'] > term:nth-of-type(2):before"), "etym-note-term2-template"),
 
+ua:template("etym-note-trimitere.(cf.)-term2-template",
+    <template>
+        traducere&amp;nbsp;   
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'trimitere.(cf.)'] > term:nth-of-type(2):before"), "etym-note-trimitere.(cf.)-term2-template"),
+
+ua:template("etym-note-nume.propriu-term1-template",
+    <template>
+    	De la numele propriu&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" /> 
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'nume.propriu'] > term:nth-of-type(1):before"), "etym-note-nume.propriu-term1-template"),
+
+ua:template("etym-note-nume.propriu-term2-template",
+    <template>
+    	&amp;nbsp;+ suf.&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" /> 
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'nume.propriu'] > term:nth-of-type(2):before"), "etym-note-nume.propriu-term2-template"),
+
+ua:template("etym-note-izvor-term-template",
+    <template>
+    	Explicații din izvor&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'izvor'] > term:nth-of-type(1):before"), "etym-note-izvor-term-template"),
+
+ua:template("etym-note-trimitere.intrare-ptr-template",
+    <template>
+        Nr. omonim&amp;nbsp;
+        <input data-ua-ref="{@subtype}" size="3" />
+        Nr. sens&amp;nbsp;
+        <input data-ua-ref="{@type}" size="3" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'trimitere.intrare'] > ptr:before"), "etym-note-trimitere.intrare-ptr-template"),
 
 
 
@@ -3018,13 +3137,12 @@ ua:template("pos-vb-subc-before",
         Diateză:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="(folosit şi absol.)" value="vb.-(folosit şi absol.)" />
             <option label="absol." value="vb.-absol." />
             <option label="fact." value="vb.-fact." />
             <option label="intranz." value="vb.-intranz." />
             <option label="refl." value="vb.-refl." />
             <option label="refl. impers." value="vb.-refl. impers." />
-            <option label="refl. pos." value="vb.-refl. pos." />
+            <option label="refl. pas." value="vb.-refl. pas." />
             <option label="refl. recipr." value="vb.-refl. recipr." />
             <option label="refl. unipers." value="vb.-refl. unipers." />
             <option label="tranz." value="vb.-tranz." />
