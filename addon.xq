@@ -386,9 +386,9 @@ ua:action(
     "addAccentuationSection",
     map { 
         "name" := "Accentuare",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
-    },   
-    insert node doc('content-models/accentuation.xml') after .
+        "icon" := "../../resources/images/add.png"        
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addAccentuationSection.xq")   
 ),
 ua:action(
     "addFirstArticulationSection",
@@ -3224,7 +3224,7 @@ ua:template("form-accentuation-before",
             <option label="necunoscută" value="unknown-accentuation" />
             <option label="variantă de accentuare" value="accentuation-variant" />
         </select>
-        <button onclick="{oxy:execute-action-by-name('addAccentuationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addAccentuationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />     
     </template>
 ),
