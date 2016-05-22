@@ -839,7 +839,7 @@ ua:action(
         if (@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'high',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -849,7 +849,7 @@ ua:action(
         if (@type = 'cuvântul.titlu-element.moştenit-etimon.neatestat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low',
                 replace value of node ./following-sibling::*[2]/@xml:lang with 'Lat.',
@@ -859,7 +859,7 @@ ua:action(
         if (@type = 'cuvântul.titlu-element.de.substrat')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, doc('content-models/mentioned.xml')) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
             )
@@ -867,7 +867,7 @@ ua:action(
         if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
         then
             (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
@@ -876,7 +876,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
@@ -885,7 +885,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'prefix',
@@ -895,7 +895,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere+cuvânt.bază')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'component-element',
@@ -904,7 +904,7 @@ ua:action(
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază+element.de.compunere')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
@@ -913,7 +913,7 @@ ua:action(
         else (),              
         if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'base',
@@ -922,7 +922,7 @@ ua:action(
         else (),
         if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'latin-base',
@@ -931,7 +931,7 @@ ua:action(
         else (),
         if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-bază',
@@ -940,21 +940,21 @@ ua:action(
         else (),    
         if (@type = 'cuvântul.titlu-formație.internă-trimitere-V.')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'low'
              )
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes doc('content-models/ptr.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
              )
         else (),
         if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
         then (
-               delete nodes ./following-sibling::*[position() > 1],
+               delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes ($term-template, $term-template, $term-template, $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown',                
                 replace value of node ./following-sibling::*[2]/@type with 'contaminated-element',
@@ -965,21 +965,21 @@ ua:action(
         else (),
         if (@type = 'cuvântul.titlu-etimon.neatestat(reconstruit)')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (),       
         if (@type = 'cuvântul.titlu-element.extern-trimitere')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node doc('content-models/mentioned.xml') after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'              
              )
         else (),    
         if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf.izvor')
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes (doc('content-models/ptr.xml'), $bibl-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'                
              )
@@ -991,7 +991,7 @@ ua:action(
             )
         )
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert nodes (doc('content-models/ptr.xml'), $term-template) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'                
              )
@@ -1005,7 +1005,7 @@ ua:action(
             )
         )
         then (
-               delete nodes ./following-sibling::*[position() > 1],
+               delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                insert node $term-template after ./following-sibling::*[1],
                replace value of node ./following-sibling::*[1]/@cert with 'unknown',               
                replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
@@ -1053,21 +1053,21 @@ ua:action(
                 )
         )
         then (
-                delete nodes ./following-sibling::*[position() > 1],
+                delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node $term-template after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (),         
         if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf.cuvânt'))
         then (
-            delete nodes ./following-sibling::*[position() > 1],
+            delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node doc('content-models/ptr.xml') after ./following-sibling::*[1],
             replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (), 
         if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf.izvor'))
         then (
-            delete nodes ./following-sibling::*[position() > 1],
+            delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node $bibl-template after ./following-sibling::*[1],
             replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
@@ -1093,7 +1093,7 @@ ua:action(
             )
         )
         then (
-            delete nodes ./following-sibling::*[position() > 1],
+            delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             replace value of node ./following-sibling::*[1]/@cert with 'unknown'
         )
         else (), 
