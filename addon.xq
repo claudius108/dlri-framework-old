@@ -1981,10 +1981,8 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-eleme
 ua:template("etym-certainty-template",
     <template>
         Probabilitate etimologie&amp;nbsp;
-        <select data-ua-ref="{@cert}" contenteditable="false">
-        	<option label="sigur" value="high" />
-            <option label="probabil" value="low" />
-        </select>
+        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
+        <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > certainty"), "etym-certainty-template"),
@@ -2237,11 +2235,8 @@ ua:template("etym-edited-note-template",
             <option label="cf. și" value="cf. și" />
         </select>
         Probabilitate&amp;nbsp;
-        <select data-ua-ref="{@cert}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="probabil" value="low" />
-            <option label="sigur" value="high" />
-        </select> 
+        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
+        <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>
     	Tip&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false">
             <option label="" value="unknown" />
