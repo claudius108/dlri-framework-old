@@ -1610,7 +1610,7 @@ ua:template("etym-idno-first-of-type",
             <option label="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.cuvânt" />
             <option label="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" value="una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf.izvor" />
         </datalist>
-        <input data-ua-ref="{@type}" size="80" list="etym-options" />        
+        <input data-ua-ref="{@type}" size="80" list="etym-options" />               
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
@@ -2411,15 +2411,11 @@ ua:template("etym-note-trimitere.intrare-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'trimitere.intrare'] > ptr:before"), "etym-note-trimitere.intrare-ptr-template"),
 
-
-
-
-
 ua:template("usg-before",
     <template>
         Indicații privind folosirea:&amp;nbsp;
 		<datalist xmlns="http://www.w3.org/1999/xhtml" id="usage-options">
-			<option label="regional" value="geo"/>
+			<option label="" value="unknown"/>
 			<option label="regional" value="geo"/>
 			<option label="Ban." value="geo"/>
 			<option label="Bucov." value="geo"/>
@@ -2631,7 +2627,7 @@ ua:template("usg-before",
 			<option label="adverbial" value="gram"/>
 			<option label="artic." value="gram"/>
 			<option label="cu.aglutinarea.art..pos." value="gram"/>
-			<option label="cu.pron..postpuse" value="gram"/>
+			<option label="cu.pron." value="gram"/>
 			<option label="cu.schimbare.de.suf." value="gram"/>
 			<option label="cu.valoare" value="gram"/>
 			<option label="folosit.și.absol" value="gram"/>
@@ -2814,6 +2810,15 @@ ua:template("usg-before",
 			<option label="urmat.de.propoziții.negative.introduse.prin.conj." value="coloc"/>
 			<option label="urmează.după.s..determinat" value="coloc"/>
 			<option label="dial." value="geo."/>
+			<option label="abstr." value="sem"/>
+			<option label="concr." value="sem"/>
+			<option label="fig." value="sem"/>
+			<option label="p..anal." value="sem"/>
+			<option label="p..anal..cu" value="sem"/>
+			<option label="p..ext." value="sem"/>
+			<option label="p.gener." value="sem"/>
+			<option label="p..restr." value="sem"/>
+			<option label="p..spec." value="sem"/>
 		</datalist>
         <input data-ua-ref="{@value}" size="30" list="usage-options" />
         <input data-ua-ref="{text()}" size="22" />      
