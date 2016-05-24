@@ -94,7 +94,6 @@ declare variable $sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
         <idno n="" type="level-label" />
         <idno n="tip-unitate-semantică-subsumată" type="unknown" />
-        <idno n="tip-proces-semantic" type="unknown" />
         {$def-template}
         {$cit-template}
     </sense>
@@ -130,22 +129,6 @@ declare variable $collocations-template as element() :=
         <option label="loc. prep." value="prepositional-locution" />
         <option label="loc. conj." value="conjunctional-locution" />
         <option label="loc. vb." value="verbal-locution" />
-    </select>
-;
-
-declare variable $semantical-process-template as element() :=
-    <select data-ua-ref="{@type}" style="width: 22px;" contenteditable="false">
-        <option label="" value="unknown" />
-        <option label="abstr." value="abstr." />
-        <option label="concr." value="concr." />
-        <option label="fig." value="fig." />
-        <option label="p. analogie" value="p.-analogie" />
-        <option label="p. analogie cu" value="p.-analogie-cu" />
-        <option label="p. ext." value="p.-ext." />
-        <option label="p. gener." value="p.-gener." />
-        <option label="p. restr." value="p.-restr." />
-        <option label="p. spec." value="p.-spec." />
-        <option label="prin lărgirea sensului" value="prin-lărgirea-sensului" />
     </select>
 ;
 
@@ -3729,16 +3712,6 @@ ua:template("form-unitate-semantică-subsumată",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
-
-ua:template("idno-proces-semantic",
-    <template>
-        Procese semantice:&amp;nbsp;
-        {
-            $semantical-process-template
-        } 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("idno[n = 'tip-proces-semantic']"), "idno-proces-semantic"),
 
 ua:template("author-before",
     <template>
