@@ -674,7 +674,7 @@ ua:action(
     map { 
         "name" := "Căutare"       
     },   
-    oxy:execute-xquery-script("import module namespace bibliographic-references = 'http://dlri.ro/ns/bibliographic-references/' at 'services/bibliographic-references/get-bibliographic-references.xq'; declare variable $currentElementLocation external; bibliographic-references:run($currentElementLocation)")
+    oxy:execute-xquery-script("resources/xquery/get-bibliographic-references.xq")
 ),
 ua:action(
     "searchHeadwordReferences",
