@@ -681,7 +681,7 @@ ua:action(
     map { 
         "name" := "Căutare"       
     },   
-    oxy:execute-xquery-script("import module namespace headword-references = 'http://dlri.ro/ns/headword-references/' at 'services/headword-references/get-headword-references.xq'; declare variable $currentElementLocation external; headword-references:run($currentElementLocation)")
+    oxy:execute-xquery-script("resources/xquery/get-headword-references.xq")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -1201,24 +1201,6 @@ ua:action(
     )
 ),
 ua:action(
-    "changedTargetAttrForPtrElement",
-    map { 
-        "name" := "changedTargetAttrForPtrElement"
-    }, 
-    (
-        if (contains(@target, ' = '))
-        then (
-                replace value of node ./@target with for $a in ./@target return substring-before($a, ' =')
-        )
-        else ()
-        ,
-        if (not(contains(@target, ' = ')))
-        then ()
-        else ()
-    )
-),
-
-ua:action(
     "changedTypeAttrForNoteElement",
     map { 
         "name" := "changedTypeAttrForNoteElement"
@@ -1385,13 +1367,6 @@ ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selecto
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
-),
-
-ua:observer("changedTargetAttrForPtrElementObserver", "changedTargetAttrForPtrElement"),
-ua:connect-observer("changedTargetAttrForPtrElementObserver", ua-dt:xpath-selector('//ptr'),
-    map {
-        "attributes" := "true",
-        "attributeFilter" := "['target']"}
 ),
 
 ua:observer("changedTypeAttrForNoteElementObserver", "changedTypeAttrForNoteElement"),
