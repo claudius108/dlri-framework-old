@@ -26,7 +26,7 @@ declare function dlri-views:get-entry($entry-url as xs:string) as node() {
 };
 
 declare function dlri-views:get-page-title($entry as node()) as node() {
-    let $title := data($entry//tei:form[@type = 'main']/tei:orth)
+    let $title := data($entry/tei:form[@type = 'main']/tei:orth)
     return
         <title>
             {
@@ -174,19 +174,22 @@ declare function local:usg($node as node()) as item()+ {
   )
 };
 
-(
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
-    ,
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/oxygen-render.css&quot;")}
-    ,    
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/render-entry.css&quot;")}
-    ,
-    <html>
-        <head>
-            {dlri-views:get-page-title(/)}
-        </head>
-        <body>
-            {for $node in /node() return local:dispatch($node)}     
-        </body>
-    </html>
-)
+let $entry := /*//tei:entry
+
+return
+	(
+	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
+	    ,
+	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/oxygen-render.css&quot;")}
+	    ,    
+	    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/render-entry.css&quot;")}
+	    ,
+	    <html>
+	        <head>
+	            {dlri-views:get-page-title($entry)}
+	        </head>
+	        <body>{$entry/local-name()}
+	            {for $node in $entry return local:dispatch($node)}     
+	        </body>
+	    </html>
+	)
