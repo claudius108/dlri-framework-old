@@ -1,5 +1,5 @@
 <select xmlns="http://www.w3.org/1999/xhtml" data-ua-ref="{@xml:lang}" contenteditable="false">
-    <option xml:id="" label="" value="" />
+    <option xml:id="unknown" label="" value="unknown" />
     <option xml:id="sq" label="alb." value="sq" />
     <option xml:id="rup" label="arom." value="rup" />
     <option xml:id="bg" label="bg." value="bg" />
@@ -44,5 +44,5 @@
     <option xml:id="rom" label="ţig." value="rom" />
     <option xml:id="uk" label="ucr." value="uk" />
     <option xml:id="dlm-x-vegliot" label="vegl." value="dlm-x-vegliot" />
-    <option xml:id="" label="v. sl." value="v. sl." />            
+    <option xml:id="v. sl." label="v. sl." value="v. sl." />            
 </select>
