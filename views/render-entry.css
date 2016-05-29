@@ -7,7 +7,31 @@
  *
  */
 
-.headword, .sense-level, .bold {
+body {
+	column-count: 2;
+}
+
+span:empty {
+	display: none;
+}
+
+div.headword, div.gramGrp, div.sense-level1-first {
+	display: inline;
+}
+
+div.cit-container {
+	display: block;
+}
+
+div.gramGrp > span, span.lang, span.term {
+	margin-left: 5px;
+}
+
+span.sense-level {
+  margin-right: 5px;
+}
+	
+div.headword > span:first-of-type, span.sense-level, .bold {
   font-weight: bold;
 }
 

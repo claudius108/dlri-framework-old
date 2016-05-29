@@ -1489,8 +1489,8 @@ ua:template("etym-idno-first-of-type",
         \00000A Etimologie pentru&amp;nbsp;
         <datalist id="etym-options">
             <option label="" value="unknown" />
-            <option label="cuvântul.titlu-element.moştenit-etimon.atestat" value="cuvântul.titlu-element.moştenit-etimon.atestat" />
-            <option label="cuvântul.titlu-element.moştenit-etimon.neatestat" value="cuvântul.titlu-element.moştenit-etimon.neatestat" />
+            <option label="cuvântul.titlu-element.moştenit-etimon.atestat" value="id1" />
+            <option label="cuvântul.titlu-element.moştenit-etimon.neatestat" value="id17" />
             <option label="cuvântul.titlu-element.de.substrat" value="cuvântul.titlu-element.de.substrat" />
             <option label="cuvântul.titlu-formație.internă-derivat-cu.prefix" value="cuvântul.titlu-formație.internă-derivat-cu.prefix" />
             <option label="cuvântul.titlu-formație.internă-derivat-cu.sufix" value="cuvântul.titlu-formație.internă-derivat-cu.sufix" />
