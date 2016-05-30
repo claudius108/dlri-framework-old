@@ -149,8 +149,8 @@ declare function dlri-views:usg($node) {
 	
 	return
 		switch($value)
-		case "complementul.indică"
-		return "Complementul indică " || $node/text()[1]
+		case "complementul.indică" return "Complementul indică " || $node/text()[1]
+		case "Text." return $value
 		default return ()
 };
 
@@ -159,29 +159,63 @@ declare function dlri-views:def($node) {
 };
 
 declare function dlri-views:cit($node) {
-  let $bibl := $node/tei:bibl
+	let $bibl := $node/tei:bibl
+	
+	let $quote := dlri-views:bibl-quote($node/tei:quote/text())
+	let $ptr := dlri-views:bibl-ptr($bibl/tei:ptr/@target)
+	let $date := dlri-views:bibl-date($bibl/tei:date/text())
+	let $citedRange := dlri-views:bibl-citedRange($bibl/tei:citedRange/text())
+  	let $content :=
+		(
+			$date
+			,
+			$ptr
+			,
+			$citedRange
+			,
+			$quote
+		) 
+	let $delimiter :=
+		if (ends-with($content[last()]/text(), ".")) then "" else "." 	
   
-  return
-    (
-    	<span class="bibl-ref-id">{$bibl/tei:date}</span>
-    	(:,
-    	<span class="quote">{concat(' ', $node/tei:quote)}</span>
-    	:)
-    	,
-    	<span class="bibl-ref-id">{substring-after($bibl/tei:ptr/@target, '| ')}</span>
-    	,
-    	dlri-views:bibl-citedRange($bibl/tei:citedRange)
-    )
+	return ($content, $delimiter)
 };
 
-declare function dlri-views:bibl-citedRange($node as node()) as node() {
-    <span class="bibl-ref-id">{concat(', ', $node, '.')}</span>
+declare function dlri-views:bibl-quote($content) {
+	if ($content != '') then <span class="bibl-quote">: {$content}</span> else ()
 };
 
-declare function dlri-views:etym($node as node()) as node()* {
+declare function dlri-views:bibl-ptr($content) {
+	if ($content != '') then <span class="bibl-ptr">{substring-after($content, '| ')}</span> else ()
+};
+
+declare function dlri-views:bibl-date($content) {
+	if ($content != '') then <span class="bibl-date">{$content}</span> else ()
+};
+
+declare function dlri-views:bibl-citedRange($content) {
+    if ($content != '') then concat(', ', $content) else ()
+};
+
+declare function dlri-views:grammatical-information($node) {
+	let $type := $node/tei:idno/@type
+	
+	return
+	    <div class="grammatical-information">
+	    	{
+				switch($type)
+				case "grammatical-information-type-for-vb"
+				return concat($node/tei:form/tei:tns/@value, ' ', $node/tei:form/tei:mood/@value)
+				default return ()   	
+	    	}
+	    	<span>: {$node/tei:form/tei:form/text()}</span>
+	    </div>
+};
+
+declare function dlri-views:etym($node) {
 	let $language-code := data($node/tei:term[1]/@xml:lang)
 	let $language := data($language-codes//html:option[@xml:id = $language-code]/@label)
-	
+		
 	return
 	    <div class="etym">
 	    	{
@@ -222,6 +256,9 @@ declare function dlri-views:etym($node as node()) as node()* {
             	,
             	for $sense in $entry/tei:sense[position() > 1]
             	return dlri-views:sense($sense, "")
+            	,
+            	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
+            	return dlri-views:grammatical-information($grammatical-information)
             	,
             	dlri-views:etym($entry/tei:etym)
             }     

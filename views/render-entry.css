@@ -23,7 +23,11 @@ div.cit-container {
 	display: block;
 }
 
-div.gramGrp > span, span.lang, span.term {
+div.cit-container > span {
+	display: inline;
+}
+
+div.gramGrp > span, span.lang, span.term, span.bibl-date {
 	margin-left: 5px;
 }
 
@@ -41,9 +45,9 @@ div.headword > span:first-of-type, span.sense-level, .bold {
 }
 
 .spacing, .analog, .asoc, .trimitere {
-  letter-spacing:0.3em;
+  letter-spacing: 0.3em;
 }
 
-.quote {
+span.bibl-quote {
   font-style: italic;
 }            
