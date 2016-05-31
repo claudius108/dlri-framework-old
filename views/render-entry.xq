@@ -11,18 +11,18 @@ declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
 declare variable $language-codes := doc("../resources/controlled-vocabularies/languages.xml");
 
-declare function dlri-views:dispatch($node as node()) as item()* {
+declare function dlri-views:dispatch($node) {
     typeswitch($node)
         case text() return $node
         case element(tei:hi) return dlri-views:hi($node)
         default return dlri-views:passthru($node)
 };
 
-declare function dlri-views:passthru($nodes as node()*) as item()* {
+declare function dlri-views:passthru($nodes) {
     for $node in $nodes/node() return dlri-views:dispatch($node)
 };
 
-declare function dlri-views:form($node as node()) as item()* {
+declare function dlri-views:form($node) {
 	let $type := $node/@type
 	
 	return
@@ -31,18 +31,18 @@ declare function dlri-views:form($node as node()) as item()* {
 		   default return ()
 };
 
-declare function dlri-views:form-phrase($node as node()) as item()+ {
+declare function dlri-views:form-phrase($node) {
   (
     <span class="spacing">Expr.</span>,
     dlri-views:passthru($node)
   )
 };
 
-declare function dlri-views:hi($node as node()) as node() {
+declare function dlri-views:hi($node) {
   <span class="{$node/@rend}">{$node/text()}</span>
 };
 
-declare function local:dispatch($node as node()) as item()* {
+declare function local:dispatch($node) {
     typeswitch($node)
         case text() return $node
         case element(tei:usg) return local:usg($node)
@@ -51,15 +51,15 @@ declare function local:dispatch($node as node()) as item()* {
         default return local:passthru($node)
 };
 
-declare function local:passthru($nodes as node()*) as item()* {
+declare function local:passthru($nodes) {
     for $node in $nodes/node() return local:dispatch($node)
 };
 
-declare function local:process-sense-content($node as element(tei:sense)) as item()* {
+declare function local:process-sense-content($node as element(tei:sense)) {
   local:passthru($node)
 };
 
-declare function local:xr-synonym($node as node()) as item()+ {
+declare function local:xr-synonym($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'syn']) eq 0) then ";" else ", ",
     local:passthru($node),
@@ -67,7 +67,7 @@ declare function local:xr-synonym($node as node()) as item()+ {
   )
 };
 
-declare function local:xr-analogy($node as node()) as item()+ {
+declare function local:xr-analogy($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'analog']) eq 0) then "V. " else ", ",
     local:passthru($node),
@@ -75,7 +75,7 @@ declare function local:xr-analogy($node as node()) as item()+ {
   )
 };
 
-declare function local:xr-association($node as node()) as item()+ {
+declare function local:xr-association($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'asoc']) eq 0) then "Cf. " else ", ",
     local:passthru($node),
@@ -83,7 +83,7 @@ declare function local:xr-association($node as node()) as item()+ {
   )
 };
 
-declare function local:usg($node as node()) as item()+ {
+declare function local:usg($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'syn']) eq 0) then " (" else ", ",
     local:passthru($node),
@@ -96,20 +96,20 @@ declare function local:usg($node as node()) as item()+ {
 
 
 
-declare function dlri-views:get-entry-title($entry as node()) as xs:string {
+declare function dlri-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'main']/tei:orth)
     
     return if ($title != '') then $title else ' '
 };
 
-declare function dlri-views:headword($node as node()) as item()+ {
+declare function dlri-views:headword($node) {
 	<div class="headword">
 		<span>{$entry-title}</span>
 	  	<span class="superscript">{data($node/tei:orth/@n)}</span>
 	</div>
 };
 
-declare function dlri-views:gramGrp($node as node()) as node() {
+declare function dlri-views:gramGrp($node) {
     <div class="gramGrp">
     	<span>{data($node/tei:pos/@value)}</span>
     	<span>{data($node/tei:iType/@value)}</span>
@@ -124,9 +124,9 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 	            (
 	                <span class="sense-level">{data($node/tei:idno[1]/@n)}</span>
 	                ,
-	                <span>({string-join(dlri-views:usg($node/tei:usg), ',')})</span>
+	                <span>{dlri-views:usg($node/tei:usg)}</span>
 	                ,
-	                <span>{dlri-views:def($node/tei:def)}.</span>
+	                <span>{dlri-views:def($node/tei:def/text())}.</span>
 	            )
 	        }
 	    </div>
@@ -134,28 +134,33 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 	    <div class="cit-container">
 	    	{
 	    		(
-	    			if ($node/tei:cit[1]/tei:bibl/@type = 'cf.') then "Cf. " else ""
-	    			,
 		            for $cit in $node/tei:cit
-		            return dlri-views:cit($cit)
+		            let $preceding-delimiter := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
+		            let $delimiter := if ($preceding-delimiter != 'cf.') then "Cf." else ""
+		            
+		            return ($delimiter, dlri-views:cit($cit))
 		        )
 	        }
 	    </div>
 	)
 };
 
-declare function dlri-views:usg($node) {
-	let $value := $node/@value
-	
-	return
-		switch($value)
-		case "complementul.indică" return "Complementul indică " || $node/text()[1]
-		case "Text." return $value
-		default return ()
+declare function dlri-views:usg($nodes) {
+	let $result :=
+		for $usg in $nodes
+		return
+			let $value := $usg/@value
+			
+			return
+				switch($value)
+				case "complementul.indică" return "Complementul indică " || $usg/text()[1]
+				default return $value
+				
+	return if (empty($result)) then () else concat("(", string-join($result, ','), ")")
 };
 
-declare function dlri-views:def($node) {
-    <span>{concat(' ', $node)}</span>
+declare function dlri-views:def($content) {
+    <span>{concat(' ', $content)}</span>
 };
 
 declare function dlri-views:cit($node) {
@@ -198,7 +203,7 @@ declare function dlri-views:bibl-citedRange($content) {
 };
 
 declare function dlri-views:grammatical-information($node) {
-	let $type := $node/tei:idno/@type
+	let $type := $node/tei:idno[1]/@type
 	
 	return
 	    <div class="grammatical-information">
@@ -260,7 +265,8 @@ declare function dlri-views:etym($node) {
             	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
             	return dlri-views:grammatical-information($grammatical-information)
             	,
-            	dlri-views:etym($entry/tei:etym)
+            	for $etym in $entry/tei:etym
+            	return dlri-views:etym($etym)
             }     
         </body>
     </html>
