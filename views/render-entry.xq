@@ -114,6 +114,7 @@ declare function dlri-views:gramGrp($node) {
     	<span>{data($node/tei:pos/@value)}</span>
     	<span>{data($node/tei:iType/@value)}</span>
     	<span>{data($node/tei:subc/@value)}</span>
+    	<span>{data($node/tei:gen/@value)}</span>
     </div>
 };
 
@@ -126,7 +127,7 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 	                ,
 	                <span>{dlri-views:usg($node/tei:usg)}</span>
 	                ,
-	                <span>{dlri-views:def($node/tei:def/text())}.</span>
+	                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}.</span>
 	            )
 	        }
 	    </div>
@@ -159,17 +160,25 @@ declare function dlri-views:usg($nodes) {
 	return if (empty($result)) then () else concat("(", string-join($result, ','), ")")
 };
 
-declare function dlri-views:def($content) {
-    <span>{concat(' ', $content)}</span>
+declare function dlri-views:def($definitions, $synonyms) {
+	let $definition-content :=
+		for $definition in $definitions
+		return $definition/text()
+	let $synonym-content :=
+		for $synonym in $synonyms
+		return $synonym/@target
+	let $content := ($definition-content, $synonym-content)
+		
+	return <span>{string-join($content, "; ")}</span>
 };
 
 declare function dlri-views:cit($node) {
 	let $bibl := $node/tei:bibl
 	
-	let $quote := dlri-views:bibl-quote($node/tei:quote/text())
-	let $ptr := dlri-views:bibl-ptr($bibl/tei:ptr/@target)
-	let $date := dlri-views:bibl-date($bibl/tei:date/text())
-	let $citedRange := dlri-views:bibl-citedRange($bibl/tei:citedRange/text())
+	let $quote := dlri-views:bibl-quote(normalize-space($node/tei:quote/text()))
+	let $ptr := dlri-views:bibl-ptr(data($bibl/tei:ptr/@target))
+	let $date := dlri-views:bibl-date($bibl/tei:date/text() || "")
+	let $citedRange := dlri-views:bibl-citedRange($bibl/tei:citedRange/text() || "")
   	let $content :=
 		(
 			$date
@@ -180,14 +189,13 @@ declare function dlri-views:cit($node) {
 			,
 			$quote
 		) 
-	let $delimiter :=
-		if (ends-with($content[last()]/text(), ".")) then "" else "." 	
+	let $delimiter := if (ends-with($content[last()]/text(), ".")) then "" else "." 	
   
 	return ($content, $delimiter)
 };
 
 declare function dlri-views:bibl-quote($content) {
-	if ($content != '') then <span class="bibl-quote">: {$content}</span> else ()
+	if (empty($content)) then () else <span class="bibl-quote">: {$content}</span>
 };
 
 declare function dlri-views:bibl-ptr($content) {
