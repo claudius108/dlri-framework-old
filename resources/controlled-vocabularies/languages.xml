@@ -22,7 +22,7 @@
     <option xml:id="la-x-medieval" label="lat. mediev." value="la-x-medieval" />
     <option xml:id="hu" label="magh." value="hu" />
     <option xml:id="ruq" label="megl." value="ruq" />
-    <option xml:id="grc" label="m. gr." value="grc" />
+    <option xml:id="gre" label="m. gr." value="gre" />
     <option xml:id="el" label="ngr." value="el" />
     <option xml:id="pl" label="pol." value="pl" />
     <option xml:id="pt" label="port." value="pt" />

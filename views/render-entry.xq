@@ -127,7 +127,7 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 	                ,
 	                <span>{dlri-views:usg($node/tei:usg)}</span>
 	                ,
-	                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}.</span>
+	                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
 	            )
 	        }
 	    </div>
@@ -136,13 +136,18 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 	    	{
 	    		(
 		            for $cit in $node/tei:cit
-		            let $preceding-delimiter := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
-		            let $delimiter := if ($preceding-delimiter != 'cf.') then "Cf." else ""
+		            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
+		            let $current-type := data($cit/tei:bibl/@type)
+		            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
+		            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
 		            
 		            return ($delimiter, dlri-views:cit($cit))
 		        )
 	        }
 	    </div>
+	    ,
+	    for $sense in $node/tei:sense
+	    return dlri-views:sense($sense, "")
 	)
 };
 
@@ -168,8 +173,9 @@ declare function dlri-views:def($definitions, $synonyms) {
 		for $synonym in $synonyms
 		return $synonym/@target
 	let $content := ($definition-content, $synonym-content)
+	let $content := if (empty($content)) then () else <span>{string-join($content, "; ")}.</span>
 		
-	return <span>{string-join($content, "; ")}</span>
+	return $content
 };
 
 declare function dlri-views:cit($node) {
@@ -195,7 +201,7 @@ declare function dlri-views:cit($node) {
 };
 
 declare function dlri-views:bibl-quote($content) {
-	if (empty($content)) then () else <span class="bibl-quote">: {$content}</span>
+	if ($content != '') then <span class="bibl-quote">: {$content}</span> else ()
 };
 
 declare function dlri-views:bibl-ptr($content) {
@@ -210,42 +216,70 @@ declare function dlri-views:bibl-citedRange($content) {
     if ($content != '') then concat(', ', $content) else ()
 };
 
+declare function dlri-views:writing-form($node) {
+    <div class="writing-form">− Scris și: {$node/tei:oVar/text()}.</div>
+};
+
+declare function dlri-views:pronunciation-form($node) {
+    <div class="pronunciation-form">− Pronunțat: {$node/tei:pVar/text()}.</div>
+};
 declare function dlri-views:grammatical-information($node) {
-	let $type := $node/tei:idno[1]/@type
+	let $type := $node/tei:form/@type
 	
 	return
 	    <div class="grammatical-information">
 	    	{
 				switch($type)
-				case "grammatical-information-type-for-vb"
+				case "grammatical-information-for-verb"
 				return concat($node/tei:form/tei:tns/@value, ' ', $node/tei:form/tei:mood/@value)
+				case "grammatical-information-for-plural"
+				return "− Pl."
 				default return ()   	
 	    	}
-	    	<span>: {$node/tei:form/tei:form/text()}</span>
+	    	<span>: {normalize-space($node/tei:form/string())}.</span>
 	    </div>
 };
 
-declare function dlri-views:etym($node) {
-	let $language-code := data($node/tei:term[1]/@xml:lang)
-	let $language := data($language-codes//html:option[@xml:id = $language-code]/@label)
-		
-	return
-	    <div class="etym">
-	    	{
-				if (starts-with($node/tei:idno[1]/@type, 'cuvântul.titlu-element.extern'))
-				then
-					(
-						<span>− Din</span>
-						,
-						<span class="lang">{$language}</span>
-						,
-						<span class="term">{$node/tei:term[1]/text()}</span>
-						,
-						<span>.</span>
-					)
-				else ()    	
-	    	}
-	    </div>
+declare function dlri-views:etym($nodes) {
+    <div class="etym">
+    	{
+    		(
+				for $node in $nodes
+				
+				return
+					let $language-code := data($node/tei:term[1]/@xml:lang)
+					let $language := data($language-codes//html:option[@xml:id = $language-code]/@label)
+						
+					return
+			
+					    		(
+									if (starts-with($node/tei:idno[1]/@type, 'cuvântul.titlu-element.extern'))
+									then
+										(
+											<span>− Din</span>
+											,
+											<span class="lang">{$language}</span>
+											,
+											<span class="term">{$node/tei:term[1]/text()}</span>
+										)
+									else ()
+									,
+									if ($node/tei:idno[1]/@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
+									then
+										(
+											", "
+											,
+											<span class="lang">{$language}</span>											
+											,
+											<span class="term">{$node/tei:term[1]/text()}</span>
+										)
+									else ()
+								)
+				,
+				"."
+			)
+    	}
+    </div>
 };
 
 (
@@ -270,11 +304,16 @@ declare function dlri-views:etym($node) {
             	for $sense in $entry/tei:sense[position() > 1]
             	return dlri-views:sense($sense, "")
             	,
+            	for $writing-form in $entry/tei:form[@type = 'writing']
+            	return dlri-views:writing-form($writing-form)
+            	,   
+            	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
+            	return dlri-views:pronunciation-form($pronunciation-form)
+            	,               	         	
             	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
             	return dlri-views:grammatical-information($grammatical-information)
             	,
-            	for $etym in $entry/tei:etym
-            	return dlri-views:etym($etym)
+            	dlri-views:etym($entry/tei:etym)
             }     
         </body>
     </html>

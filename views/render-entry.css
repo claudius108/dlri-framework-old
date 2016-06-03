@@ -35,7 +35,7 @@ span.sense-level {
   margin-right: 5px;
 }
 	
-div.headword > span:first-of-type, span.sense-level, .bold {
+div.headword > span:first-of-type, span.sense-level, .bold, span.term {
   font-weight: bold;
 }
 
