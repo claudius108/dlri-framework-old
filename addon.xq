@@ -2149,16 +2149,7 @@ ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
             <option label="împrumut savant din greacă" value="împrumut savant din greacă" />
         </select>        
         &amp;nbsp;etimon sigur&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $gr-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.sigur'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.sigur-template"),
