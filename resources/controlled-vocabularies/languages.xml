@@ -1,48 +1,48 @@
-<select xmlns="http://www.w3.org/1999/xhtml" data-ua-ref="{@xml:lang}" contenteditable="false">
-    <option xml:id="unknown" label="" value="unknown" />
-    <option xml:id="sq" label="alb." value="sq" />
-    <option xml:id="rup" label="arom." value="rup" />
-    <option xml:id="bg" label="bg." value="bg" />
-    <option xml:id="ca" label="cat." value="ca" />
-    <option xml:id="cs" label="ceh." value="cs" />
-    <option xml:id="hr" label="cr." value="hr" />
-    <option xml:id="dlm" label="dalm." value="dlm" />
-    <option xml:id="he" label="ebr." value="he" />
-    <option xml:id="rm-puter-vallader" label="engad." value="rm-puter-vallader" />
-    <option xml:id="en" label="engl." value="en" />
-    <option xml:id="eo" label="esper." value="eo" />
-    <option xml:id="fr" label="fr." value="fr" />
-    <option xml:id="fur" label="friul." value="fur" />
-    <option xml:id="de" label="germ." value="de" />
-    <option xml:id="grc" label="gr." value="grc" />
-    <option xml:id="ruo" label="istr." value="ruo" />
-    <option xml:id="it" label="it." value="it" />
-    <option xml:id="la" label="lat." value="la" />
-    <option xml:id="la-x-popular" label="lat. pop." value="la-x-popular" />
-    <option xml:id="la-x-medieval" label="lat. mediev." value="la-x-medieval" />
-    <option xml:id="hu" label="magh." value="hu" />
-    <option xml:id="ruq" label="megl." value="ruq" />
-    <option xml:id="gre" label="m. gr." value="gre" />
-    <option xml:id="el" label="ngr." value="el" />
-    <option xml:id="pl" label="pol." value="pl" />
-    <option xml:id="pt" label="port." value="pt" />
-    <option xml:id="roa" label="prov." value="roa" />
-    <option xml:id="rm" label="retorom." value="rm" />
-    <option xml:id="ro" label="rom." value="ro" />
-    <option xml:id="ru" label="rus." value="ru" />
-    <option xml:id="sxu" label="săs." value="sxu" />
-    <option xml:id="sc" label="sard." value="sc" />
-    <option xml:id="sr" label="sb." value="sr" />
-    <option xml:id="scn" label="sicil." value="scn" />
+<select>
+    <option xml:id="" label="" value="" />
+    <option xml:id="alb" label="alb." value="alb." />
+    <option xml:id="rup" label="arom." value="arom." />
+    <option xml:id="bul" label="bg." value="bg." />
+    <option xml:id="cat" label="cat." value="cat." />
+    <option xml:id="cze" label="ceh." value="ceh." />
+    <option xml:id="hrv" label="cr." value="cr." />
+    <option xml:id="dlm" label="dalm." value="dalm." />
+    <option xml:id="heb" label="ebr." value="ebr." />
+    <option xml:id="" label="engad." value="engad." />
+    <option xml:id="eng" label="engl." value="engl." />
+    <option xml:id="epo" label="esper." value="esper." />
+    <option xml:id="epo" label="fr." value="fr." />
+    <option xml:id="fur" label="friul." value="friul." />
+    <option xml:id="ger" label="germ." value="germ." />
+    <option xml:id="gre" label="gr." value="gr." />
+    <option xml:id="ruo" label="istr." value="istr." />
+    <option xml:id="ruo" label="it." value="it." />
+    <option xml:id="lat" label="lat." value="lat." />
+    <option xml:id="" label="lat. pop." value="lat. pop." />
+    <option xml:id="" label="lat. mediev." value="lat. mediev." />
+    <option xml:id="lat" label="magh." value="magh." />
+    <option xml:id="ruq" label="megl." value="megl." />
+    <option xml:id="" label="m. gr." value="m. gr." />
+    <option xml:id="gre" label="ngr." value="ngr." />
+    <option xml:id="pol" label="pol." value="pol." />
+    <option xml:id="por" label="port." value="port." />
+    <option xml:id="" label="prov." value="prov." />
+    <option xml:id="" label="retorom." value="retorom." />
+    <option xml:id="" label="rom." value="rom." />
+    <option xml:id="rus" label="rus." value="rus." />
+    <option xml:id="" label="săs." value="săs." />
+    <option xml:id="srd" label="sard." value="sard." />
+    <option xml:id="srp" label="sb." value="sb." />
+    <option xml:id="scn" label="sicil." value="sicil." />
     <option xml:id="" label="sl." value="sl." />
     <option xml:id="" label="slavon." value="slavon." />
-    <option xml:id="sl" label="slov." value="sl" />
-    <option xml:id="es" label="sp." value="es" />
-    <option xml:id="tt" label="tăt." value="tt" />
-    <option xml:id="tr" label="tc." value="tr" />
-    <option xml:id="tr-x-dialect" label="tc. dial." value="tr-x-dialect" />
-    <option xml:id="rom" label="ţig." value="rom" />
-    <option xml:id="uk" label="ucr." value="uk" />
-    <option xml:id="dlm-x-vegliot" label="vegl." value="dlm-x-vegliot" />
-    <option xml:id="v. sl." label="v. sl." value="v. sl." />            
+    <option xml:id="slv" label="slov." value="slov." />
+    <option xml:id="spa" label="sp." value="sp." />
+    <option xml:id="tat" label="tăt." value="tăt." />
+    <option xml:id="tur" label="tc." value="tc." />
+    <option xml:id="" label="tc. dial." value="tc. dial." />
+    <option xml:id="" label="ţig." value="ţig." />
+    <option xml:id="ukr" label="ucr." value="ucr." />
+    <option xml:id="" label="vegl." value="vegl." />
+    <option xml:id="" label="v. sl." value="v. sl." />            
 </select>

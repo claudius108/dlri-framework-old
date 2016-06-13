@@ -24,17 +24,29 @@
 				<version>1.0</version>
 				<executions>
 					<execution>
-						<id>download-language-codes</id>
+						<id>download-languages-controlled-vocabulary</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>download-single</goal>
 						</goals>
 						<configuration>
 							<url>https://cdn.rawgit.com</url>
-							<fromFile>claudius108/code-tables/master/languages.xml</fromFile>
+							<fromFile>lingv-ro/controlled-vocabularies/master/languages.xml</fromFile>
 							<toDir>${basedir}/resources/controlled-vocabularies</toDir>
 						</configuration>
 					</execution>
+					<execution>
+						<id>download-scripts-controlled-vocabulary</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>download-single</goal>
+						</goals>
+						<configuration>
+							<url>https://cdn.rawgit.com</url>
+							<fromFile>lingv-ro/controlled-vocabularies/master/scripts.properties</fromFile>
+							<toDir>${basedir}/resources/controlled-vocabularies</toDir>
+						</configuration>
+					</execution>					
 				</executions>
 			</plugin>
 		</plugins>

@@ -3800,16 +3800,7 @@ ua:attach-template(ua-dt:css-selector("def"), "def"),
 ua:template("entry-form-main-before",
     <template>
         Cuvânt titlu*:&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "700",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-majuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
         <input data-ua-ref="{@n}" size="2" />
     </template>
