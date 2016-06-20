@@ -1997,16 +1997,7 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'prefix']"), "etym-ter
 ua:template("etym-term-base",
     <template>
         &amp;nbsp;Cuvânt de bază&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $gr-minuscule
-                }            
-            ))
-        }
+		<input data-ua-ref="{text()}" size="40" />
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
         <button onclick="{oxy:execute-action-by-name('insertBaseWord')}" style="background-color: transparent;" />
@@ -3163,7 +3154,7 @@ ua:template("graphic-variant-orth-before",
         <input data-ua-ref="{text()}" size="40" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant'] > orth:before"), "graphic-variant-orth-before"),
+ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant'] > orth"), "graphic-variant-orth-before"),
 
 ua:template("form-accentuation-before",
     <template>
@@ -3805,7 +3796,7 @@ ua:template("entry-form-main-before",
         <input data-ua-ref="{@n}" size="2" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("entry > form[type = 'main'] > orth:before"), "entry-form-main-before"),
+ua:attach-template(ua-dt:css-selector("entry > form[type = 'main'] > orth"), "entry-form-main-before"),
 
 ua:template("sense-form-before",
     <template>

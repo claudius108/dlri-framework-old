@@ -24,7 +24,7 @@
 		<body>
 			<entry>
 				<form type="main">
-					<orth n="" />
+					<orth xml:lang="ro-x-accent-upcase-vowels" n="" />
 					<syll />
 					<pron />
 				</form>
