@@ -3749,7 +3749,7 @@ ua:template("change",
 ),
 ua:attach-template(ua-dt:css-selector("change"), "change"),
 
-ua:template("entry-form-main-after",
+ua:template("entry-form-headword-after",
     <template>
         {
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
@@ -3763,7 +3763,7 @@ ua:template("entry-form-main-after",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("entry > form[type = 'main']:after"), "entry-form-main-after"),
+ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword']:after"), "entry-form-headword-after"),
 
 ua:template("syll",
     <template>
@@ -3788,7 +3788,7 @@ ua:template("def",
 ),
 ua:attach-template(ua-dt:css-selector("def"), "def"),
 
-ua:template("entry-form-main-before",
+ua:template("entry-form-headword-before",
     <template>
         Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
@@ -3796,7 +3796,7 @@ ua:template("entry-form-main-before",
         <input data-ua-ref="{@n}" size="2" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("entry > form[type = 'main'] > orth"), "entry-form-main-before"),
+ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"), "entry-form-headword-before"),
 
 ua:template("sense-form-before",
     <template>

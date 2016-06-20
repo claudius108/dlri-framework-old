@@ -23,7 +23,7 @@
 	<text>
 		<body>
 			<entry>
-				<form type="main">
+				<form type="headword">
 					<orth xml:lang="ro-x-accent-upcase-vowels" n="" />
 					<syll />
 					<pron />

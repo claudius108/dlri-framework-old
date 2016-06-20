@@ -97,7 +97,7 @@ declare function local:usg($node) {
 
 
 declare function dlri-views:get-entry-title($entry) {
-    let $title := data($entry/tei:form[@type = 'main']/tei:orth)
+    let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
     return if ($title != '') then $title else ' '
 };
@@ -295,7 +295,7 @@ declare function dlri-views:etym($nodes) {
         </head>
         <body>
             {
-            	dlri-views:headword($entry/tei:form[@type = 'main'])
+            	dlri-views:headword($entry/tei:form[@type = 'headword'])
             	,
             	dlri-views:gramGrp($entry/tei:gramGrp)
             	,

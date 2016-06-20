@@ -28,14 +28,14 @@ TEI:before {
     color: blue;
 }
 
-title, author, editor, syll, quote, stress, usg, term, def, form[type = 'main'] > orth,
+title, author, editor, syll, quote, stress, usg, term, def, form[type = 'headword'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
 note, form[type='articulation'] > term, bibl > citedRange, bibl > date {
 	visibility: "-oxy-collapse-text";
 }
 
-oxy|comment, form[type = 'main'] > syll, titleStmt > title, publicationStmt, publicationStmt > *, sourceDesc, sourceDesc > * {
+oxy|comment, form[type = 'headword'] > syll, titleStmt > title, publicationStmt, publicationStmt > *, sourceDesc, sourceDesc > * {
 	display: none !important;
 }
 
@@ -60,13 +60,13 @@ entry>form,teiHeader,entry>gramGrp, etym {
 	margin-bottom: 20px;
 }
 
-orth,form[type = 'main'] > pron,def,cit,entry>form[type = 'main'] {
+orth,form[type = 'headword'] > pron,def,cit,entry>form[type = 'headword'] {
 	width: 1000px;
 	background-color: #d8d8d8;
 	margin-top: 5px;
 }
 
-form[type = 'main'] > pron {
+form[type = 'headword'] > pron {
 	display: none;
 }
 

@@ -23,7 +23,7 @@ declare function dlri-views:get-entry($entry-url as xs:string) as node() {
 };
 
 declare function dlri-views:get-page-title($entry as node()) as node() {
-  <title>{data($entry/tei:form[@type = 'main']/tei:orth)}</title>
+  <title>{data($entry/tei:form[@type = 'headword']/tei:orth)}</title>
 };
 
 declare function dlri-views:sense($node as element(tei:sense), $content as item()*) as element()+ {
@@ -40,11 +40,11 @@ declare function dlri-views:sense($node as element(tei:sense), $content as item(
 
 declare function dlri-views:orth($node as node()) as item()* {
   switch ($node/parent::tei:form/@type)
-    case "main" return dlri-views:orth-main($node)
+    case "headword" return dlri-views:orth-headword($node)
     default return ()
 };
 
-declare function dlri-views:orth-main($node as node()) as node()+ {
+declare function dlri-views:orth-headword($node as node()) as node()+ {
   (
     <span class="headword">{data($node)}</span>,
     <span class="superscript">{data($node/@n)}</span>,
