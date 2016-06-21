@@ -946,7 +946,7 @@ ua:action(
                 replace value of node ./following-sibling::*[5]/@type with 'alternative-contamination-element'
         )
         else (),
-        if (@type = 'cuvântul.titlu-etimon.neatestat(reconstruit)')
+        if (@type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)')
         then (
                 delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
                 insert node $term-template after ./following-sibling::*[1],
@@ -1020,7 +1020,7 @@ ua:action(
                     'cuvântul.titlu-formație.internă-format.după',
                     'cuvântul.titlu-formație.internă-denumire.comercială',
                     'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
-                    'cuvântul.titlu-etimon.neatestat(reconstruit)',
+                    'cuvântul.titlu-etimon.neatestat.(reconstruit)',
                     'cuvântul.titlu-element.extern-calc',
                     'cuvântul.titlu-element.necunoscut',
                     'variantă-directă-etimon.variantă-atestat',
@@ -1529,7 +1529,7 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul.titlu-formație.internă-format.după" value="cuvântul.titlu-formație.internă-format.după" />
             <option label="cuvântul.titlu-formație.internă-denumire.comercială" value="cuvântul.titlu-formație.internă-denumire.comercială" />
             <option label="cuvântul.titlu-element.extern-împrumut-etimon.sigur" value="cuvântul.titlu-element.extern-împrumut-etimon.sigur" />
-            <option label="cuvântul.titlu-etimon.neatestat(reconstruit)" value="cuvântul.titlu-etimon.neatestat(reconstruit)" />
+            <option label="cuvântul.titlu-etimon.neatestat.(reconstruit)" value="cuvântul.titlu-etimon.neatestat.(reconstruit)" />
             <option label="cuvântul.titlu-element.extern-calc" value="cuvântul.titlu-element.extern-calc" />
             <option label="cuvântul.titlu-element.extern-trimitere" value="cuvântul.titlu-element.extern-trimitere" />
             <option label="cuvântul.titlu-element.necunoscut" value="cuvântul.titlu-element.necunoscut" />
@@ -1812,18 +1812,18 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-De la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-De la-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-De la-template"),
 
-ua:template("cuvântul.titlu-etimon.neatestat(reconstruit)-term",
+ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
         etimon neatestat&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
             <option label="" value="unknown" />
-            <option label="lat*" value="lat*" />
-            <option label="v. sl.*" value="v. sl.*" />            
+            <option label="lat*" value="la" />
+            <option label="v. sl." value="v. sl." />            
         </select>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat(reconstruit)-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat.(reconstruit)-term"),
 
 ua:template("cuvântul.titlu-formație.internă-trimitere-Din-template",
     <template>
