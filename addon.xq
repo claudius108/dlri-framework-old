@@ -394,15 +394,7 @@ ua:action(
     map { 
         "name" := "Pronunțare"       
     },
-    (
-        if (local-name() = 'TEI')
-        then (insert node doc('content-models/pronunciation.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] | form[@type = 'articulation'])[last()])
-        else (),
-        if (local-name() != 'TEI')
-        then (insert node doc('content-models/pronunciation.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
-            accentuation-variant ', @type)])[last()])
-        else ()
-     )
+    oxy:execute-xquery-update-script("resources/xquery/addFirstPronunciationSection.xq")
 ),
 ua:action(
     "addPronunciationSection",
@@ -1383,7 +1375,7 @@ ua:template("TEI-before-template",
     <template>
         <button onclick="{oxy:xquery-update('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update('addFirstArticulationSection')}" style="visibility: {count(//entry/form[@type = 'articulation']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
@@ -3440,7 +3432,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
+        <button onclick="{oxy:xquery-update('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
