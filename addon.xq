@@ -175,9 +175,8 @@ ua:action(
     "addFirstLexicalVariant",
     map { 
         "name" := "Variantă lexicală"        
-    },   
-    insert node $lexical-variant-section-template after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
-    form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'])[last()]
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/addFirstLexicalVariant.xq")  
 ),
 ua:action(
     "addLexicalVariant",
@@ -416,20 +415,7 @@ ua:action(
     map { 
         "name" := "Indicații gramaticale"        
     },
-    (
-        if (local-name() = 'TEI')
-        then (
-            insert node doc('content-models/grammatical-information.xml') after //entry/(sense | form[contains(' unknown-accentuation accentuation-variant ', @type)] |
-            form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()]
-        )
-        else (),
-        if (local-name() != 'TEI')
-        then (
-            insert node doc('content-models/grammatical-information.xml') after (form[type = 'lexical-variant'] | gramGrp | usg | ptr | form[contains(' unknown-accentuation
-            accentuation-variant ', @type)] | form[@type = 'pronunciation'] | form[@type = 'writing'] | form[@type = 'abbreviation'])[last()]
-        )
-        else ()
-    )
+    oxy:execute-xquery-update-script("resources/xquery/addFirstGrammaticalInformationSection.xq")
 ),
 ua:action(
     "addGrammaticalInformationSection",
@@ -1360,8 +1346,8 @@ ua:template("TEI-before-template",
         <button onclick="{oxy:xquery-update('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:execute-action-by-name('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
@@ -3417,7 +3403,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:xquery-update('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
+        <button onclick="{oxy:xquery-update('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
     </template>
 ),
