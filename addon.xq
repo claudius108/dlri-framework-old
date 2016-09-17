@@ -151,7 +151,7 @@ ua:action(
     "deleteDefElement",
     map { 
         "name" := "Ștergere definiție",
-        "smallIconPath" := "${framework}/resources/images/delete.png"
+        "smallIconPath" := "../../resources/images/delete.png"
     },   
     delete nodes (following-sibling::ptr | .)
 ),
@@ -164,12 +164,12 @@ ua:action(
     insert node $cit-template after .
 ),
 ua:action(
-    "deleteElement",
+    "deleteCurrentElement",
     map { 
         "name" := "Ștergere",
-        "smallIconPath" := "${framework}/resources/images/delete.png"       
+        "smallIconPath" := "../../resources/images/delete.png"       
     },   
-    delete node .
+    oxy:execute-xquery-update-script("resources/xquery/deleteCurrentElement.xq")
 ),
 ua:action(
     "addFirstLexicalVariant",
@@ -200,7 +200,7 @@ ua:action(
         "name" := "Redactor",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node doc('content-models/author.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/insertAuthorElement.xq")
 ),
 ua:action(
     "insertEditorElement",
@@ -208,7 +208,7 @@ ua:action(
         "name" := "Revizor",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node doc('content-models/editor.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/insertEditorElement.xq")
 ),
 ua:action(
     "insertFirstUsgElement",
@@ -1254,7 +1254,7 @@ ua:action(
     "deleteContaminationElement",
     map { 
         "name" := "Ștergere",
-        "smallIconPath" := "${framework}/resources/images/delete.png"        
+        "smallIconPath" := "../../resources/images/delete.png"        
     },   
     delete nodes (. | preceding-sibling::term[1])
 ),
@@ -1356,7 +1356,7 @@ ua:template("grammatical-information-form",
     <template>
         Indicații gramaticale
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000A
     </template>
 ),
@@ -1370,7 +1370,7 @@ ua:template("trimitere-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimitere-before"),
@@ -1384,7 +1384,7 @@ ua:template("syn-before",
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
         <button onclick="{oxy:execute-action-by-name('insertSynonym')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />                
     </template>
 ),
@@ -1399,7 +1399,7 @@ ua:template("analog-before",
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />    
         <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'analog']:before"), "analog-before"),
@@ -1413,7 +1413,7 @@ ua:template("asoc-before",
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />     
         <button onclick="{oxy:execute-action-by-name('insertAssociation')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'asoc']:before"), "asoc-before"),
@@ -1427,7 +1427,7 @@ ua:template("antonim-before",
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />       
         <button onclick="{oxy:execute-action-by-name('insertAntonym')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-before"),
@@ -1440,7 +1440,7 @@ ua:template("etym-before",
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
@@ -1633,7 +1633,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.la
         }
         <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:execute-action-by-name('insertAddedBase')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină'] ~ term:not( :first-of-type):after"), "cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-not-first-of-type-template"),
@@ -1657,12 +1657,12 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element a
         }
         <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:execute-action-by-name('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template"),
 
-ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" /></template>),
+ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
 
 ua:template("variantă-directă-singular.refăcut.după.pluralul-template",
@@ -1834,7 +1834,7 @@ ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template"),
@@ -1853,7 +1853,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'unul.sau.mai.multe.sensuri-sensul-'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-*-ptr-template"),
@@ -1966,7 +1966,7 @@ ua:template("etym-term-base",
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
         <button onclick="{oxy:execute-action-by-name('insertBaseWord')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 1};" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'base']"), "etym-term-base"),
@@ -1978,7 +1978,7 @@ ua:template("etym-term-multiple-base",
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
         <button onclick="{oxy:execute-action-by-name('insertBaseWord')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 2};" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 2};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'multiple-base']"), "etym-term-multiple-base"),
@@ -2126,7 +2126,7 @@ ua:template("etym-note-template",
 		Notă&amp;nbsp;
 		<button onclick="{oxy:execute-action-by-name('addEtymologicalNote')}" style="background-color: transparent;" />
 		<button onclick="{oxy:execute-action-by-name('editEtymologicalNote')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template"),
@@ -2746,7 +2746,7 @@ ua:attach-template(ua-dt:css-selector("pc:before"), "pc"),
 ua:template("usg-after",
     <template>
         <button onclick="{oxy:execute-action-by-name('insertUsgElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("usg:after"), "usg-after"),
@@ -2811,7 +2811,7 @@ ua:template("cit-not-first-of-type-before",
         {
             ua:get-template('cit-before')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:not( :first-of-type):before'), "cit-not-first-of-type-before"),
@@ -2820,7 +2820,7 @@ ua:template("gramGrp-before",
     <template>
         Categorie gramaticală:
         <button onclick="{oxy:execute-action-by-name('addGramGrp')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = 'sense' or count(parent::*/gramGrp) > 1};" />        
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = 'sense' or count(parent::*/gramGrp) > 1};" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("gramGrp:before"), "gramGrp-before"),
@@ -3059,7 +3059,7 @@ ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:before"), "pos-vb
 ua:template("multiple-form-bibl-after",
     <template>
         <button onclick="{oxy:execute-action-by-name('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation'] > bibl:after, form[type = 'accentuation-variant'] > bibl:after, form[type = 'pronunciation'] > bibl:after, form[type = 'writing'] > bibl:after, form[type = 'grammatical-information-for-plural'] > bibl:after, form[type = 'grammatical-information-for-case'] > bibl:after, form[type = 'grammatical-information-for-verb'] > bibl:after, form[type = 'details-for-grammatical-information-for-verb'] > bibl:after, form[type = 'lexical-variant-section'] > bibl:after"), "multiple-form-bibl-after"),
@@ -3128,7 +3128,7 @@ ua:template("form-accentuation-before",
             <option label="variantă de accentuare" value="accentuation-variant" />
         </select>
         <button onclick="{oxy:xquery-update('addAccentuationSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />     
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation']:before, form[type = 'accentuation-variant']:before"), "form-accentuation-before")
@@ -3137,7 +3137,7 @@ ua:template("form-articulation-before",
     <template>
         Articulat&amp;nbsp;
         <button onclick="{oxy:execute-action-by-name('addArticulationSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />     
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'articulation']:before"), "form-articulation-before")
@@ -3173,7 +3173,7 @@ ua:template("form-pronunciation-before",
     <template>
         Pronunțare
         <button onclick="{oxy:execute-action-by-name('addPronunciationSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000AIndicaţie de silabaţie
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
@@ -3203,7 +3203,7 @@ ua:template("form-pronunciation-syll",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('addSyllabationElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > syll"), "form-pronunciation-syll"),
@@ -3222,7 +3222,7 @@ ua:template("form-pronunciation-pron",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('addPronElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pron"), "form-pronunciation-pron"),
@@ -3241,7 +3241,7 @@ ua:template("form-pronunciation-pVar",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('addPVarElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pVar"), "form-pronunciation-pVar"),
@@ -3250,7 +3250,7 @@ ua:template("form-writing-before",
     <template>
         Scriere
         <button onclick="{oxy:execute-action-by-name('addWritingSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" data-showIcon="false" />
     </template>
@@ -3261,7 +3261,7 @@ ua:template("form-abbreviation-before",
     <template>
         Abreviere
         <button onclick="{oxy:execute-action-by-name('addAbbreviationSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstoVarElement')}" style="visibility: {count(oVar) = 0};" data-showIcon="false" />
     </template>
 ),
@@ -3280,7 +3280,7 @@ ua:template("form-abbreviation-oVar",
         {
             ua:get-template('multiple-form-oVar')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'abbreviation'] > oVar"), "form-abbreviation-oVar"),
@@ -3320,7 +3320,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-plural-gen-after",
     <template>
         <button onclick="{oxy:execute-action-by-name('addGenElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > gen:after"), "form-grammatical-information-for-plural-gen-after"),
@@ -3369,7 +3369,7 @@ ua:template("form-grammatical-information-for-verb-stress",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('insertStressElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb'] > stress"), "form-grammatical-information-for-verb-stress"),
@@ -3396,7 +3396,7 @@ ua:template("form-lexical-variant-section-before",
     <template>
         Variantă lexicală&amp;nbsp;
         <button onclick="{oxy:xquery-update('addLexicalVariant')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
@@ -3456,7 +3456,7 @@ ua:template("form-multiple-ptr-after",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > ptr:after, form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
@@ -3492,7 +3492,7 @@ ua:template("form-lexical-variant-section-ptr-after",
             ))
         }
         <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section'] > ptr:after"), "form-lexical-variant-section-ptr-after"),
@@ -3502,7 +3502,7 @@ ua:template("graphic-variant-not-first-of-type-before",
         {
             ua:get-template('graphic-variant-before')
         }    
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant']:not( :first-of-type):before"), "graphic-variant-not-first-of-type-before"),
@@ -3525,7 +3525,7 @@ ua:template("form-grammatical-information-for-plural-not-first-of-type-before",
         {
             ua:get-template('form-grammatical-information-for-plural-before')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural']:not( :first-of-type):before "), "form-grammatical-information-for-plural-not-first-of-type-before"),
@@ -3546,7 +3546,7 @@ ua:template("form-grammatical-information-for-case-not-first-of-type-before",
         {
             ua:get-template('form-grammatical-information-for-case-before')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />       
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />       
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case']:not( :first-of-type):before"), "form-grammatical-information-for-case-not-first-of-type-before"),
@@ -3571,7 +3571,7 @@ ua:template("form-grammatical-information-for-gender-not-first-of-type-before",
         {
             ua:get-template('form-grammatical-information-for-gender-before')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />       
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />       
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender']:not( :first-of-type):before"), "form-grammatical-information-for-gender-not-first-of-type-before"),
@@ -3592,7 +3592,7 @@ ua:template("form-grammatical-information-for-verb-not-first-of-type-before",
         {
             ua:get-template('form-grammatical-information-for-verb-before')
         }
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb']:not( :first-of-type):before"), "form-grammatical-information-for-verb-not-first-of-type-before"),
@@ -3667,8 +3667,8 @@ ua:template("author-before",
             <option label="Vasileanu Monica" value="monica.vasileanu" />
             <option label="Vasilescu Florin" value="FlorinV" />
         </select>
-        <button onclick="{oxy:execute-action-by-name('insertAuthorElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
+        <button onclick="{oxy:xquery-update('insertAuthorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("author:before"), "author-before"),
@@ -3679,8 +3679,8 @@ ua:template("editor-before",
         <select data-ua-ref="{text()}" contenteditable="false">
             <option label="guest" value="guest" />
         </select>
-        <button onclick="{oxy:execute-action-by-name('insertEditorElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent; visibility: {count(parent::*/editor) > 1};" />
+        <button onclick="{oxy:xquery-update('insertEditorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/editor) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("editor:before"), "editor-before"),

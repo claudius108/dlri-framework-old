@@ -1,6 +1,9 @@
 @charset "utf-8";
+@deleteCurrentElement: oxy_action(name, "Ștergere", icon, "../../resources/images/delete.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/deleteCurrentElement.xq");
 @addFirstLexicalVariant: oxy_action(name, "Variantă lexicală", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/addFirstLexicalVariant.xq");
 @addLexicalVariant: oxy_action(name, "Variantă lexicală", icon, "../../resources/images/add.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/addLexicalVariant.xq");
+@insertAuthorElement: oxy_action(name, "Redactor", icon, "../../resources/images/add.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/insertAuthorElement.xq");
+@insertEditorElement: oxy_action(name, "Revizor", icon, "../../resources/images/add.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/insertEditorElement.xq");
 @addFirstAccentuationSection: oxy_action(name, "Accentuare", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/addFirstAccentuationSection.xq");
 @addAccentuationSection: oxy_action(name, "Accentuare", icon, "../../resources/images/add.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/addAccentuationSection.xq");
 @addFirstArticulationSection: oxy_action(name, "Articulare", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/addFirstArticulationSection.xq");
