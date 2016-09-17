@@ -453,15 +453,8 @@ ua:action(
     "addFirstPronElement",
     map { 
         "name" := "Pron. cuvânt străin"       
-    },   
-    (
-        if (count(syll) = 0)
-        then (insert node doc('content-models/pron.xml') as first into .)
-        else (),
-        if (count(syll) gt 0)
-        then (insert node doc('content-models/pron.xml') after syll[last()])
-        else ()
-    )      
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstPronElement.xq")   
 ),
 ua:action(
     "addPronElement",
@@ -3180,8 +3173,8 @@ ua:template("form-pronunciation-before",
             <option label="bisilabic" value="bisyllabic" />
             <option label="trisilabic" value="trisyllabic" />
         </select>
-        <button onclick="{oxy:xquery-update('addFirstSyllabationElement')}" />
-        <button onclick="{oxy:execute-action-by-name('addFirstPronElement')}" />
+        <button onclick="{oxy:xquery-update('addFirstSyllabationElement')}" style="visibility: {count(syll) = 0};" />
+        <button onclick="{oxy:xquery-update('addFirstPronElement')}" style="visibility: {count(pron) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstPVarElement')}" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
