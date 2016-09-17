@@ -221,7 +221,7 @@ declare function dlri-views:writing-form($node) {
 };
 
 declare function dlri-views:pronunciation-form($node) {
-    <div class="pronunciation-form">− Pronunțat: {$node/tei:pVar/text()}.</div>
+    <div class="pronunciation-form">− Pronunțat: {$node/tei:pRef/text()}.</div>
 };
 declare function dlri-views:grammatical-information($node) {
 	let $type := $node/tei:form/@type
