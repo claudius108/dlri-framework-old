@@ -397,13 +397,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addPronunciationSection.xq")
 ),
 ua:action(
-    "addAbbreviationSection",
-    map { 
-        "name" := "Abreviere"
-    },   
-    insert node doc('content-models/accentuation.xml') after //entry/(sense | form[@type = 'lexical-variant-section'])[last()]
-),
-ua:action(
     "addFirstGrammaticalInformationSection",
     map { 
         "name" := "Indicații gramaticale"        
@@ -416,16 +409,7 @@ ua:action(
         "name" := "Indicații gramaticale",
         "smallIconPath" := "../../resources/images/add.png"       
     },
-    (
-        if (local-name() = 'form' and @type = 'grammatical-information')
-        then (
-            insert node doc('content-models/grammatical-information.xml') after .
-        )
-        else (),
-        if (local-name() = 'etym')
-        then (insert node doc('content-models/grammatical-information.xml') after (term | ptr)[last()])
-        else ()
-    )    
+    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationSection.xq")
 ),
 ua:action(
     "addFirstSyllabationElement",
@@ -484,8 +468,8 @@ ua:action(
     map { 
         "name" := "Scriere",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    insert node doc('content-models/writing.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addWritingSection.xq")
 ),
 ua:action(
     "addFirstAbbreviationSection",
@@ -499,8 +483,8 @@ ua:action(
     map { 
         "name" := "Abreviere",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    insert node doc('content-models/abbreviation.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addAbbreviationSection.xq")
 ),
 ua:action(
     "addGrammaticalInformationForPluralSection",
@@ -1334,7 +1318,7 @@ ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
 ua:template("grammatical-information-form",
     <template>
         Indicații gramaticale
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addGrammaticalInformationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000A
     </template>
@@ -1416,7 +1400,7 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
+        <button onclick="{oxy:xquery-update('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
@@ -3228,7 +3212,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pRef"), "f
 ua:template("form-writing-before",
     <template>
         Scriere
-        <button onclick="{oxy:execute-action-by-name('addWritingSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addWritingSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" data-showIcon="false" />
@@ -3239,7 +3223,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'writing']:before"), "form-wr
 ua:template("form-abbreviation-before",
     <template>
         Abreviere
-        <button onclick="{oxy:execute-action-by-name('addAbbreviationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addAbbreviationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstoVarElement')}" style="visibility: {count(oVar) = 0};" data-showIcon="false" />
     </template>
