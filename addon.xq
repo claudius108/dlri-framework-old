@@ -143,7 +143,7 @@ ua:action(
     "insertDefElement",
     map { 
         "name" := "Definiție",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     insert node $def-template after (following-sibling::ptr | .)[last()]
 ),
@@ -159,7 +159,7 @@ ua:action(
     "insertCitElement",
     map { 
         "name" := "Atestare",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     insert node $cit-template after .
 ),
@@ -182,15 +182,15 @@ ua:action(
     "addLexicalVariant",
     map { 
         "name" := "Variantă lexicală",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node $lexical-variant-section-template after .
+    oxy:execute-xquery-update-script("resources/xquery/addLexicalVariant.xq")
 ),
 ua:action(
     "addEtymElement",
     map { 
         "name" := "Etimologie",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/etym.xml') after .
 ),
@@ -198,7 +198,7 @@ ua:action(
     "insertAuthorElement",
     map { 
         "name" := "Redactor",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/author.xml') after .
 ),
@@ -206,7 +206,7 @@ ua:action(
     "insertEditorElement",
     map { 
         "name" := "Revizor",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/editor.xml') after .
 ),
@@ -234,7 +234,7 @@ ua:action(
     "insertUsgElement",
     map { 
         "name" := "Indicație folosire",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/usg.xml') after .
 ),
@@ -242,7 +242,7 @@ ua:action(
     "insertFirstBiblElement",
     map { 
         "name" := "Izvor",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     (
         if (count(syll | pron | pVar | usg | gen | case | ptr | mood | tns
@@ -272,7 +272,7 @@ ua:action(
     "insertBiblElement",
     map { 
         "name" := "Izvor",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     (
         if (count(parent::*/(stress | oVar)) > 0)
@@ -287,7 +287,7 @@ ua:action(
     "insertSynonym",
     map { 
         "name" := "Sinonim",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     insert node doc('content-models/synonym.xml') after .
 ),
@@ -295,7 +295,7 @@ ua:action(
     "insertAnalogy",
     map { 
         "name" := "Analogie",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     (
         if (local-name() = 'ptr')
@@ -310,7 +310,7 @@ ua:action(
     "insertAssociation",
     map { 
         "name" := "Asociație",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },
     (
         if (local-name() = 'ptr')
@@ -325,7 +325,7 @@ ua:action(
     "insertAntonym",
     map { 
         "name" := "Antonim",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },
     (
         if (local-name() = 'ptr')
@@ -347,7 +347,7 @@ ua:action(
     "addGramGrp",
     map { 
         "name" := "Cat. gram.",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },
     (
         if (local-name() = 'sense')
@@ -369,7 +369,7 @@ ua:action(
     "addAccentuationSection",
     map { 
         "name" := "Accentuare",
-        "icon" := "../../resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },
     oxy:execute-xquery-update-script("resources/xquery/addAccentuationSection.xq")   
 ),
@@ -384,7 +384,7 @@ ua:action(
     "addArticulationSection",
     map { 
         "name" := "Articulare",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/articulation.xml') after .
 ),
@@ -399,7 +399,7 @@ ua:action(
     "addPronunciationSection",
     map { 
         "name" := "Pronunțare",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/pronunciation.xml') after .
 ),
@@ -421,7 +421,7 @@ ua:action(
     "addGrammaticalInformationSection",
     map { 
         "name" := "Indicații gramaticale",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },
     (
         if (local-name() = 'form' and @type = 'grammatical-information')
@@ -445,7 +445,7 @@ ua:action(
     "addSyllabationElement",
     map { 
         "name" := "Silabație hiat",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/syll.xml') after .
 ),
@@ -467,7 +467,7 @@ ua:action(
     "addPronElement",
     map { 
         "name" := "Pron. cuvânt străin",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/pron.xml') after .
 ),
@@ -489,7 +489,7 @@ ua:action(
     "addPVarElement",
     map { 
         "name" := "Pronunţat şi",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/pVar.xml') after .
 ),
@@ -504,7 +504,7 @@ ua:action(
     "addWritingSection",
     map { 
         "name" := "Scriere",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/writing.xml') after .
 ),
@@ -519,7 +519,7 @@ ua:action(
     "addAbbreviationSection",
     map { 
         "name" := "Abreviere",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/abbreviation.xml') after .
 ),
@@ -527,7 +527,7 @@ ua:action(
     "addGrammaticalInformationForPluralSection",
     map { 
         "name" := "Plural",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/grammatical-information-for-plural.xml') after .
 ),
@@ -542,7 +542,7 @@ ua:action(
     "addGenElement",
     map { 
         "name" := "Gen",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/gen.xml') after .
 ),
@@ -564,7 +564,7 @@ ua:action(
     "insertSenseNumber",
     map { 
         "name" := "Nr. de sens",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/sense-number-pointer.xml') after .
 ),
@@ -572,7 +572,7 @@ ua:action(
     "addGrammaticalInformationForCaseSection",
     map { 
         "name" := "Plural",
-        "smallIconPath" := "${framework}/resources/images/add.png"        
+        "smallIconPath" := "../../resources/images/add.png"        
     },   
     insert node doc('content-models/grammatical-information-for-case.xml') after .
 ),
@@ -580,7 +580,7 @@ ua:action(
     "addGrammaticalInformationForVerbSection",
     map { 
         "name" := "Verb",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     insert node doc('content-models/grammatical-information-for-verb.xml') after .
 ),
@@ -595,7 +595,7 @@ ua:action(
     "insertStressElement",
     map { 
         "name" := "Var. acc.",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/stress.xml') after .
 ),
@@ -610,7 +610,7 @@ ua:action(
     "insertoVarElement",
     map { 
         "name" := "Var. de scriere",
-        "smallIconPath" := "${framework}/resources/images/add.png"       
+        "smallIconPath" := "../../resources/images/add.png"       
     },   
     insert node doc('content-models/oVar.xml') after .
 ),
@@ -618,7 +618,7 @@ ua:action(
     "addGrammaticalInformationForGenderSection",
     map { 
         "name" := "Gen",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     insert node doc('content-models/grammatical-information-for-gender.xml') after .
 ),
@@ -1106,7 +1106,7 @@ ua:action(
     "insertBaseWord",
     map { 
         "name" := "insertBaseWord",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     }, 
     (
         insert node $term-template after .
@@ -1118,7 +1118,7 @@ ua:action(
     "insertAlternativeEtymon",
     map { 
         "name" := "Etimon alternativ",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },
     (
         insert nodes ($term-template, $term-template) after .
@@ -1132,7 +1132,7 @@ ua:action(
     "insertAddedBase",
     map { 
         "name" := "insertAddedBase",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     }, 
     (
         insert node $term-template after .
@@ -1144,7 +1144,7 @@ ua:action(
     "insertTermElementOfTypeElementAdăugat",
     map { 
         "name" := "insertTermElementOfTypeElementAdăugat",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     }, 
     (
         insert node $term-template after .
@@ -1281,7 +1281,7 @@ ua:action(
     "addEtymologicalNote",
     map { 
         "name" := "Adaugă notă",
-        "smallIconPath" := "${framework}/resources/images/add.png"
+        "smallIconPath" := "../../resources/images/add.png"
     },   
     (
     	insert node doc('content-models/note.xml') after .
@@ -3395,7 +3395,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'details-for-grammatical-info
 ua:template("form-lexical-variant-section-before",
     <template>
         Variantă lexicală&amp;nbsp;
-        <button onclick="{oxy:execute-action-by-name('addLexicalVariant')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addLexicalVariant')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('deleteElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
