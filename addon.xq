@@ -439,7 +439,7 @@ ua:action(
     map { 
         "name" := "Silabație hiat"        
     },   
-    insert node doc('content-models/syll.xml') as first into .
+    oxy:execute-xquery-update-script("resources/xquery/addFirstSyllabationElement.xq")
 ),
 ua:action(
     "addSyllabationElement",
@@ -447,7 +447,7 @@ ua:action(
         "name" := "Silabație hiat",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node doc('content-models/syll.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addSyllabationElement.xq")
 ),
 ua:action(
     "addFirstPronElement",
@@ -3180,7 +3180,7 @@ ua:template("form-pronunciation-before",
             <option label="bisilabic" value="bisyllabic" />
             <option label="trisilabic" value="trisyllabic" />
         </select>
-        <button onclick="{oxy:execute-action-by-name('addFirstSyllabationElement')}" />
+        <button onclick="{oxy:xquery-update('addFirstSyllabationElement')}" />
         <button onclick="{oxy:execute-action-by-name('addFirstPronElement')}" />
         <button onclick="{oxy:execute-action-by-name('addFirstPVarElement')}" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
@@ -3202,7 +3202,7 @@ ua:template("form-pronunciation-syll",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('addSyllabationElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addSyllabationElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
