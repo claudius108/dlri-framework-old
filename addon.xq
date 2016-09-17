@@ -192,7 +192,7 @@ ua:action(
         "name" := "Etimologie",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node doc('content-models/etym.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addEtymElement.xq")
 ),
 ua:action(
     "insertAuthorElement",
@@ -386,7 +386,7 @@ ua:action(
         "name" := "Articulare",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
-    insert node doc('content-models/articulation.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addArticulationSection.xq")
 ),
 ua:action(
     "addFirstPronunciationSection",
@@ -401,7 +401,7 @@ ua:action(
         "name" := "Pronunțare",
         "smallIconPath" := "../../resources/images/add.png"       
     },   
-    insert node doc('content-models/pronunciation.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addPronunciationSection.xq")
 ),
 ua:action(
     "addAbbreviationSection",
@@ -1434,7 +1434,7 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-
 
 ua:template("etym-before",
     <template>
-        <button onclick="{oxy:execute-action-by-name('addEtymElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
@@ -3136,7 +3136,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation']:befor
 ua:template("form-articulation-before",
     <template>
         Articulat&amp;nbsp;
-        <button onclick="{oxy:execute-action-by-name('addArticulationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addArticulationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />     
     </template>
 ),
@@ -3172,7 +3172,7 @@ ua:attach-template(ua-dt:css-selector("stress"), "stress"),
 ua:template("form-pronunciation-before",
     <template>
         Pronunțare
-        <button onclick="{oxy:execute-action-by-name('addPronunciationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addPronunciationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000AIndicaţie de silabaţie
         <select data-ua-ref="{@value}" contenteditable="false">
