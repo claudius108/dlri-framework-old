@@ -4,4 +4,4 @@ import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
-insert node $lexical-variant-section-template after .
+insert node $dlri:lexical-variant-section-template after .
