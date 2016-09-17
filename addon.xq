@@ -216,15 +216,15 @@ ua:action(
         "name" := "Indicație folosire"       
     },   
     (
-        if (count(def | orth | ref | syll | pron | pVar | number | case | mood | tns | per
+        if (count(def | orth | ref | syll | pron | pRef | number | case | mood | tns | per
                     | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar
                     | form[@type = 'lexical-variant']) = 0)
         then (insert node doc('content-models/usg.xml') as first into .)
         else (),
-        if (count(def | orth | ref | syll | pron | pVar | number | case | mood | tns | per
+        if (count(def | orth | ref | syll | pron | pRef | number | case | mood | tns | per
                     | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar
                     | form[@type = 'lexical-variant']) gt 0)
-        then (insert node doc('content-models/usg.xml') after (def | orth | ref | syll | pron | pVar | number | case | mood | tns | per
+        then (insert node doc('content-models/usg.xml') after (def | orth | ref | syll | pron | pRef | number | case | mood | tns | per
                     | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar
                     | form[@type = 'lexical-variant'])[last()])
         else ()
@@ -245,7 +245,7 @@ ua:action(
         "smallIconPath" := "../../resources/images/add.png"       
     },   
     (
-        if (count(syll | pron | pVar | usg | gen | case | ptr | mood | tns
+        if (count(syll | pron | pRef | usg | gen | case | ptr | mood | tns
                         | per | form[@type = 'details-for-grammatical-information-for-verb']
                         | stress | oVar | form[@type = 'flexionar-variant']
                         | form[contains(' unknown-accentuation accentuation-variant ', @type)]
@@ -253,13 +253,13 @@ ua:action(
                         | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'] | mentioned) = 0)
         then (insert node $bibl-template as first into .)
         else (),
-        if (count(syll | pron | pVar | usg | gen | case | ptr | mood | tns
+        if (count(syll | pron | pRef | usg | gen | case | ptr | mood | tns
                         | per | form[@type = 'details-for-grammatical-information-for-verb']
                         | stress | oVar | form[@type = 'flexionar-variant']
                         | form[contains(' unknown-accentuation accentuation-variant ', @type)]
                         | form[@type = 'pronunciation'] | form[@type = 'writing']
                         | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'] | mentioned) gt 0)
-                        then (insert node $bibl-template after (syll | pron | pVar | usg | gen | case | ptr | mood | tns
+                        then (insert node $bibl-template after (syll | pron | pRef | usg | gen | case | ptr | mood | tns
                         | per | form[@type = 'details-for-grammatical-information-for-verb']
                         | stress | oVar | form[@type = 'flexionar-variant']
                         | form[contains(' unknown-accentuation accentuation-variant ', @type)]
@@ -454,7 +454,7 @@ ua:action(
     map { 
         "name" := "Pron. cuvânt străin"       
     },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstPronElement.xq")   
+    oxy:execute-xquery-update-script("resources/xquery/addFirstPronElement.xq")
 ),
 ua:action(
     "addPronElement",
@@ -462,24 +462,17 @@ ua:action(
         "name" := "Pron. cuvânt străin",
         "smallIconPath" := "../../resources/images/add.png"       
     },   
-    insert node doc('content-models/pron.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addPronElement.xq")
 ),
 ua:action(
-    "addFirstPVarElement",
+    "addFirstPronunciationReferenceElement",
     map { 
         "name" := "Pronunţat şi"       
-    },   
-    (
-        if (count(syll | pron) = 0)
-        then (insert node doc('content-models/pVar.xml') as first into .)
-        else (),
-        if (count(syll | pron) gt 0)
-        then (insert node doc('content-models/pVar.xml') after (syll | pron)[last()])
-        else ()
-    )      
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstPronunciationReferenceElement.xq")
 ),
 ua:action(
-    "addPVarElement",
+    "addPronunciationReferenceElement",
     map { 
         "name" := "Pronunţat şi",
         "smallIconPath" := "../../resources/images/add.png"       
@@ -3175,7 +3168,7 @@ ua:template("form-pronunciation-before",
         </select>
         <button onclick="{oxy:xquery-update('addFirstSyllabationElement')}" style="visibility: {count(syll) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstPronElement')}" style="visibility: {count(pron) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstPVarElement')}" />
+        <button onclick="{oxy:xquery-update('addFirstPronunciationReferenceElement')}" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
     </template>
@@ -3214,7 +3207,7 @@ ua:template("form-pronunciation-pron",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('addPronElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addPronElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3233,7 +3226,7 @@ ua:template("form-pronunciation-pVar",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('addPVarElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:execute-action-by-name('addPronunciationReferenceElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
