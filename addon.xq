@@ -477,7 +477,7 @@ ua:action(
         "name" := "Pronunţat şi",
         "smallIconPath" := "../../resources/images/add.png"       
     },   
-    insert node doc('content-models/pVar.xml') after .
+    oxy:execute-xquery-update-script("resources/xquery/addPronunciationReferenceElement.xq")
 ),
 ua:action(
     "addFirstWritingSection",
@@ -3168,7 +3168,7 @@ ua:template("form-pronunciation-before",
         </select>
         <button onclick="{oxy:xquery-update('addFirstSyllabationElement')}" style="visibility: {count(syll) = 0};" />
         <button onclick="{oxy:xquery-update('addFirstPronElement')}" style="visibility: {count(pron) = 0};" />
-        <button onclick="{oxy:xquery-update('addFirstPronunciationReferenceElement')}" />
+        <button onclick="{oxy:xquery-update('addFirstPronunciationReferenceElement')}" style="visibility: {count(pRef) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
     </template>
@@ -3213,7 +3213,7 @@ ua:template("form-pronunciation-pron",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pron"), "form-pronunciation-pron"),
 
-ua:template("form-pronunciation-pVar",
+ua:template("form-pronunciation-pRef",
     <template>
         Pronunţat şi&amp;nbsp;
         {
@@ -3226,11 +3226,11 @@ ua:template("form-pronunciation-pVar",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('addPronunciationReferenceElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addPronunciationReferenceElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pVar"), "form-pronunciation-pVar"),
+ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pRef"), "form-pronunciation-pRef"),
 
 ua:template("form-writing-before",
     <template>

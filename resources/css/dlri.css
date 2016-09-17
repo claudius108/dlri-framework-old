@@ -30,7 +30,7 @@ TEI:before {
 
 title, author, editor, syll, quote, stress, usg, term, def, form[type = 'headword'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pVar, case, form[type='details-for-grammatical-information-for-verb'],
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
 note, form[type='articulation'] > term, bibl > citedRange, bibl > date {
 	visibility: "-oxy-collapse-text";
 }
