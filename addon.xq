@@ -349,14 +349,7 @@ ua:action(
         "name" := "Cat. gram.",
         "smallIconPath" := "../../resources/images/add.png"        
     },
-    (
-        if (local-name() = 'sense')
-        then insert node $gramGrp-template as first into .
-        else (),
-        if (local-name() != 'sense')
-        then insert node $gramGrp-template after .
-        else ()
-     )
+    oxy:execute-xquery-update-script("resources/xquery/addGramGrp.xq")
 ),
 ua:action(
     "addFirstAccentuationSection",
@@ -2805,7 +2798,7 @@ ua:attach-template(ua-dt:css-selector('cit:not( :first-of-type):before'), "cit-n
 ua:template("gramGrp-before",
     <template>
         Categorie gramaticală:
-        <button onclick="{oxy:execute-action-by-name('addGramGrp')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addGramGrp')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('deleteCurrentElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = 'sense' or count(parent::*/gramGrp) > 1};" />        
     </template>
 ),
@@ -3585,7 +3578,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("sense-currentEdited-value-before",
     <template>
-        <button onclick="{oxy:execute-action-by-name('addGramGrp')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update('addGramGrp')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertReference')}" />     
     </template>
 ),
