@@ -491,8 +491,8 @@ ua:action(
     map { 
         "name" := "Plural",
         "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    insert node doc('content-models/grammatical-information-for-plural.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForPluralSection.xq")
 ),
 ua:action(
     "addFirstGenElement",
@@ -536,8 +536,8 @@ ua:action(
     map { 
         "name" := "Plural",
         "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    insert node doc('content-models/grammatical-information-for-case.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForCaseSection.xq")   
 ),
 ua:action(
     "addGrammaticalInformationForVerbSection",
@@ -3474,7 +3474,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant']:not( :firs
 ua:template("form-grammatical-information-for-plural-before",
     <template>
         \00000AIndicaţii pentru plural
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
@@ -3496,7 +3496,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-case-before",
     <template>
         \00000AIndicaţii pentru caz
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>         
