@@ -493,8 +493,8 @@ ua:action(
     map { 
         "name" := "Gen",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    insert node doc('content-models/gen.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addGenElement.xq")
 ),
 ua:action(
     "insertFirstSenseNumber",
@@ -3269,7 +3269,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("form-grammatical-information-for-plural-gen-after",
     <template>
-        <button onclick="{oxy:execute-action-by-name('addGenElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('addGenElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
