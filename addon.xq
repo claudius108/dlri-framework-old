@@ -119,8 +119,8 @@ ua:action(
     map { 
         "name" := "Definiție",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
-    insert node $def-template after (following-sibling::ptr | .)[last()]
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertDefElement.xq")   
 ),
 ua:action(
     "deleteDefElement",
@@ -3643,7 +3643,7 @@ ua:template("def",
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
         <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
-        <button onclick="{oxy:execute-action-by-name('insertDefElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertDefElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteDefElement')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};" />
     </template>
 ),

@@ -26,3 +26,7 @@ declare variable $dlri:association-template as element() :=
 declare variable $dlri:antonym-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" type="antonim" target="unknown" />
 ;
+
+declare variable $dlri:def-template as element() :=
+    <def xmlns="http://www.tei-c.org/ns/1.0" n="" />
+;
