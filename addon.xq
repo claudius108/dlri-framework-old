@@ -91,10 +91,6 @@ declare variable $term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
 
-declare variable $antonym-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="antonim" target="unknown" />
-;
-
 declare variable $collocations-template as element() :=
     <select data-ua-ref="{@type}" style="width: 40px;" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
         <option label="proverb" value="proverb" />
@@ -279,14 +275,7 @@ ua:action(
         "name" := "Antonim",
         "smallIconPath" := "../../resources/images/add.png"
     },
-    (
-        if (local-name() = 'ptr')
-        then insert node $antonym-template after .
-        else (),
-        if (local-name() = 'def')
-        then insert node $antonym-template after (following-sibling::ptr[@type = ('analog', 'syn', 'asoc', 'antonim')] | .)[last()]
-        else ()
-     )     
+    oxy:execute-xquery-update-script("resources/xquery/insertAntonym.xq")
 ),
 ua:action(
     "insertReference",
@@ -1334,7 +1323,7 @@ ua:template("antonim-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />       
-        <button onclick="{oxy:execute-action-by-name('insertAntonym')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertAntonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3651,7 +3640,7 @@ ua:template("def",
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertAntonym')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
         <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
         <button onclick="{oxy:execute-action-by-name('insertDefElement')}" style="background-color: transparent;" />
