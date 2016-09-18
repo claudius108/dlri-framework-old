@@ -74,19 +74,6 @@ declare variable $cit-template as element() :=
     </cit>
 ;
 
-declare variable $gramGrp-template as element() :=
-   <gramGrp xmlns="http://www.tei-c.org/ns/1.0">
-       <pos value="" />
-   </gramGrp>
-;
-
-declare variable $lexical-variant-section-template as element() :=
-<form xmlns="http://www.tei-c.org/ns/1.0" type="lexical-variant-section">
-        <form type="lexical-variant" />
-        {$gramGrp-template}
-    </form>
-;
-
 declare variable $def-template as element() :=
     <def xmlns="http://www.tei-c.org/ns/1.0" n="" />
 ;
@@ -102,10 +89,6 @@ declare variable $sense-template as element() :=
 
 declare variable $term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
-;
-
-declare variable $analogy-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="analog" target="unknown" />
 ;
 
 declare variable $association-template as element() :=
@@ -277,22 +260,14 @@ ua:action(
         "smallIconPath" := "../../resources/images/add.png"
     }, 
     oxy:execute-xquery-update-script("resources/xquery/insertSynonym.xq")  
-    insert node doc('content-models/synonym.xml') after .
 ),
 ua:action(
     "insertAnalogy",
     map { 
         "name" := "Analogie",
         "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    (
-        if (local-name() = 'ptr')
-        then insert node $analogy-template after .
-        else (),
-        if (local-name() = 'def')
-        then insert node $analogy-template after (following-sibling::ptr[@type = ('analog', 'syn')] | .)[last()]
-        else ()
-     )    
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertAnalogy.xq")  
 ),
 ua:action(
     "insertAssociation",
@@ -1342,7 +1317,7 @@ ua:template("analog-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />    
-        <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3685,7 +3660,7 @@ ua:template("def",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAssociation')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAntonym')}" data-showIcon="false" />
         \00000A

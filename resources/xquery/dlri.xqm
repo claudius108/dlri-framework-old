@@ -14,3 +14,7 @@ declare variable $dlri:lexical-variant-section-template as element() :=
         {$dlri:gramGrp-template}
     </form>
 ;
+
+declare variable $dlri:analogy-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" type="analog" target="unknown" />
+;
