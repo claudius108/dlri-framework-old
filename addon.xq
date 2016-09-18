@@ -275,7 +275,8 @@ ua:action(
     map { 
         "name" := "Sinonim",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertSynonym.xq")  
     insert node doc('content-models/synonym.xml') after .
 ),
 ua:action(
@@ -508,8 +509,8 @@ ua:action(
     map { 
         "name" := "Nr. de sens",
         "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    insert node doc('content-models/sense-number-pointer.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertSenseNumber.xq")
 ),
 ua:action(
     "addGrammaticalInformationForCaseSection",
@@ -1326,7 +1327,7 @@ ua:template("syn-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
-        <button onclick="{oxy:execute-action-by-name('insertSynonym')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertSynonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />                
     </template>
@@ -1776,7 +1777,7 @@ ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
+        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -1795,7 +1796,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
+        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3434,7 +3435,7 @@ ua:template("form-lexical-variant-section-ptr-after",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('insertSenseNumber')}" style="background-color: transparent;" />        
+        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3683,7 +3684,7 @@ ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 ua:template("def",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertSynonym')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAnalogy')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAssociation')}" data-showIcon="false" />
         <button onclick="{oxy:execute-action-by-name('insertAntonym')}" data-showIcon="false" />
