@@ -968,7 +968,7 @@ ua:action(
     map { 
         "name" := "Cf."
     }, 
-    insert node doc('content-models/mentioned.xml') after term
+    oxy:execute-xquery-update-script("resources/xquery/insertCfElements.xq") 
 ),
 ua:action(
     "insertBaseWord",
@@ -1303,10 +1303,10 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-
 ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addEtymElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
+        <button onclick="{oxy:xquery-update-action('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
