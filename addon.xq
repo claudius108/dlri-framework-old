@@ -127,8 +127,8 @@ ua:action(
     map { 
         "name" := "Ștergere definiție",
         "smallIconPath" := "../../resources/images/delete.png"
-    },   
-    delete nodes (following-sibling::ptr | .)
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/deleteDefElement.xq")  
 ),
 ua:action(
     "insertCitElement",
@@ -3644,7 +3644,7 @@ ua:template("def",
         \00000A
         <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
         <button onclick="{oxy:execute-action-by-name('insertDefElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteDefElement')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};" />
+        <button onclick="{oxy:xquery-update-action('deleteDefElement')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("def"), "def"),
