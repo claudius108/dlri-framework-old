@@ -205,30 +205,8 @@ ua:action(
     map { 
         "name" := "Izvor",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    (
-        if (count(syll | pron | pRef | usg | gen | case | ptr | mood | tns
-                        | per | form[@type = 'details-for-grammatical-information-for-verb']
-                        | stress | oVar | form[@type = 'flexionar-variant']
-                        | form[contains(' unknown-accentuation accentuation-variant ', @type)]
-                        | form[@type = 'pronunciation'] | form[@type = 'writing']
-                        | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'] | mentioned) = 0)
-        then (insert node $bibl-template as first into .)
-        else (),
-        if (count(syll | pron | pRef | usg | gen | case | ptr | mood | tns
-                        | per | form[@type = 'details-for-grammatical-information-for-verb']
-                        | stress | oVar | form[@type = 'flexionar-variant']
-                        | form[contains(' unknown-accentuation accentuation-variant ', @type)]
-                        | form[@type = 'pronunciation'] | form[@type = 'writing']
-                        | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'] | mentioned) gt 0)
-                        then (insert node $bibl-template after (syll | pron | pRef | usg | gen | case | ptr | mood | tns
-                        | per | form[@type = 'details-for-grammatical-information-for-verb']
-                        | stress | oVar | form[@type = 'flexionar-variant']
-                        | form[contains(' unknown-accentuation accentuation-variant ', @type)]
-                        | form[@type = 'pronunciation'] | form[@type = 'writing']
-                        | form[@type = 'abbreviation'] | form[@type = 'grammatical-information'] | mentioned)[last()])
-        else ()
-    )      
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xq")   
 ),
 ua:action(
     "insertBiblElement",
@@ -1326,7 +1304,7 @@ ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
@@ -3074,7 +3052,7 @@ ua:template("form-pronunciation-before",
         <button onclick="{oxy:xquery-update-action('addFirstPronElement')}" style="visibility: {count(pron) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstPronunciationReferenceElement')}" style="visibility: {count(pRef) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation']:before"), "form-pronunciation-before"),
@@ -3142,7 +3120,7 @@ ua:template("form-writing-before",
         <button onclick="{oxy:xquery-update-action('addWritingSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" data-showIcon="false" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'writing']:before"), "form-writing-before"),
@@ -3294,7 +3272,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section']:before"), "form-lexical-variant-section-before"),
@@ -3405,7 +3383,7 @@ ua:template("form-grammatical-information-for-plural-before",
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural']:before"), "form-grammatical-information-for-plural-before"),
@@ -3426,7 +3404,7 @@ ua:template("form-grammatical-information-for-case-before",
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>         
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>         
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case']:before"), "form-grammatical-information-for-case-before"),
@@ -3472,7 +3450,7 @@ ua:template("form-grammatical-information-for-verb-before",
         <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstStressElement')}" style="visibility: {count(stress) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb']:before"), "form-grammatical-information-for-verb-before"),
