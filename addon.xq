@@ -500,15 +500,8 @@ ua:action(
     "insertFirstSenseNumber",
     map { 
         "name" := "Nr. de sens"       
-    },   
-    (
-        if (count(usg | gen | case | form[@type = 'details-for-grammatical-information-for-verb'] | gramGrp | form[@type = 'lexical-variant']) = 0)
-        then (insert node doc('content-models/sense-number-pointer.xml') as first into .)
-        else (),
-        if (count(usg | gen | case | form[@type = 'details-for-grammatical-information-for-verb'] | gramGrp | form[@type = 'lexical-variant']) gt 0)
-        then (insert node doc('content-models/sense-number-pointer.xml') after (usg | gen | case | form[@type = 'details-for-grammatical-information-for-verb'] | gramGrp | form[@type = 'lexical-variant'])[last()])
-        else ()
-    )      
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstSenseNumber.xq")  
 ),
 ua:action(
     "insertSenseNumber",
@@ -3348,7 +3341,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:xquery-update-action('addLexicalVariant')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
@@ -3464,7 +3457,7 @@ ua:template("form-grammatical-information-for-plural-before",
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
     </template>
 ),
@@ -3485,7 +3478,7 @@ ua:template("form-grammatical-information-for-case-before",
         \00000AIndicaţii pentru caz
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>         
     </template>
 ),
