@@ -486,7 +486,7 @@ ua:action(
     map { 
         "name" := "Gen"        
     },   
-    insert node doc('content-models/gen.xml') after (number | usg | gramGrp | ptr)[last()]
+    oxy:execute-xquery-update-script("resources/xquery/addFirstGenElement.xq")
 ),
 ua:action(
     "addGenElement",
@@ -3463,7 +3463,7 @@ ua:template("form-grammatical-information-for-plural-before",
         \00000AIndicaţii pentru plural
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:execute-action-by-name('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
     </template>
