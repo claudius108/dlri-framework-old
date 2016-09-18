@@ -235,15 +235,8 @@ ua:action(
     map { 
         "name" := "Izvor",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    (
-        if (count(parent::*/(stress | oVar)) > 0)
-        then (insert node $bibl-template after parent::*/(stress | usg | oVar)[last()])
-        else (),
-        if (count(parent::*/(stress | oVar)) = 0)
-        then (insert node $bibl-template after .)
-        else ()
-    )      
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertBiblElement.xq")    
 ),
 ua:action(
     "insertSynonym",
@@ -2955,7 +2948,7 @@ ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:before"), "pos-vb
 
 ua:template("multiple-form-bibl-after",
     <template>
-        <button onclick="{oxy:execute-action-by-name('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3061,7 +3054,7 @@ ua:template("stress",
         }
         \00000A
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="visibility: {count(following-sibling::usg) = 0};" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertBiblElement')}" style="visibility: {count(following-sibling::bibl) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="visibility: {count(following-sibling::bibl) = 0};" data-showIcon="false" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("stress"), "stress"),
