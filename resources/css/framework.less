@@ -89,8 +89,8 @@ bibl:before{content: "Izvor: " oxy_editor(type, combo, edit, "@type", values, "u
 bibl > ptr:before{content: oxy_editor(type, text, edit, "@target", values, @bibliographic-references, columns, 40, hasMultipleValues, false)  oxy_editor(type, button, action, @searchBibliographicReferences, transparent, true);}
 bibl > date:before{content: oxy_editor(type, text, edit, "#text", columns, 10);}
 bibl > citedRange:before{content: oxy_editor(type, text, edit, "#text", columns, 10);}
-cit:before{content: "Atestare:" oxy_editor(type, button, actionID, "insertCitElement", transparent, true);}
-cit:not( :first-of-type):before{content: "Atestare:" oxy_editor(type, button, actionID, "insertCitElement", transparent, true)  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true);}
+cit:before{content: "Atestare:" oxy_editor(type, button, action, @insertCitElement, transparent, true);}
+cit:not( :first-of-type):before{content: "Atestare:" oxy_editor(type, button, action, @insertCitElement, transparent, true)  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true);}
 gramGrp:before{content: "Categorie gramaticală:" oxy_editor(type, button, action, @addGramGrp, transparent, true)  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true, visible, oxy_xpath("local-name(parent::*) = 'sense' or count(parent::*/gramGrp) > 1"));}
 pos:before{content: "\00000AParte de vorbire*: " oxy_editor(type, combo, edit, "@value", values, ",adj.,adv.,art.,conj.,interj.,num.,prep.,pron.,s.,subst.,vb.", labels, ",adj.,adv.,art.,conj.,interj.,num.,prep.,pron.,s.,subst.,vb.", columns, 22, editable, false);}
 gen:before{content: "Gen: " oxy_editor(type, combo, edit, "@value", values, ",f.,m.,m. şi f.", labels, ",f.,m.,m. şi f.", columns, 22, editable, false);}

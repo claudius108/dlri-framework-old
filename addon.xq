@@ -135,8 +135,8 @@ ua:action(
     map { 
         "name" := "Atestare",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
-    insert node $cit-template after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertCitElement.xq")
 ),
 ua:action(
     "deleteCurrentElement",
@@ -2698,7 +2698,7 @@ ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRa
 ua:template("cit-before",
     <template>
         Atestare:
-        <button onclick="{oxy:execute-action-by-name('insertCitElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertCitElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:before'), "cit-before"),

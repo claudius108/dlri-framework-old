@@ -30,3 +30,18 @@ declare variable $dlri:antonym-template as element() :=
 declare variable $dlri:def-template as element() :=
     <def xmlns="http://www.tei-c.org/ns/1.0" n="" />
 ;
+
+declare variable $dlri:bibl-template as element() :=
+    <bibl xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
+        <ptr target="unknown" />
+        <date />
+        <citedRange />
+    </bibl>
+;
+
+declare variable $dlri:cit-template as element() :=
+    <cit xmlns="http://www.tei-c.org/ns/1.0">
+        <quote />
+        {$dlri:bibl-template}
+    </cit>
+;
