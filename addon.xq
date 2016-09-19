@@ -456,8 +456,8 @@ ua:action(
     "insertFirstStressElement",
     map { 
         "name" := "Var. acc."      
-    },   
-    insert node doc('content-models/stress.xml') after form[@type = 'details-for-grammatical-information-for-verb']
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstStressElement.xq")   
 ),
 ua:action(
     "insertStressElement",
@@ -3423,7 +3423,7 @@ ua:template("form-grammatical-information-for-verb-before",
     <template>
         \00000AIndicaţii pentru verb
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstStressElement')}" style="visibility: {count(stress) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstStressElement')}" style="visibility: {count(stress) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
     </template>
