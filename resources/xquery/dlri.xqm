@@ -45,3 +45,7 @@ declare variable $dlri:cit-template as element() :=
         {$dlri:bibl-template}
     </cit>
 ;
+
+declare variable $dlri:term-template as element() :=
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
+;

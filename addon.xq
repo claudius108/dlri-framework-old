@@ -1130,11 +1130,8 @@ ua:action(
     "addEtymonTranslation",
     map { 
         "name" := "Traducere etimon"
-    },   
-    (
-    	insert node $term-template as last into .,
-    	replace value of node term[last()]/@type with 'translation'
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addEtymonTranslation.xq")    
 ),
 ua:action(
     "addFirstEtymologicalNote",
