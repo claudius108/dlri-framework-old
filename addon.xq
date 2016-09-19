@@ -147,13 +147,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/deleteCurrentElement.xq")
 ),
 ua:action(
-    "addFirstLexicalVariant",
-    map { 
-        "name" := "Variantă lexicală"        
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/addFirstLexicalVariant.xq")  
-),
-ua:action(
     "addLexicalVariant",
     map { 
         "name" := "Variantă lexicală",
@@ -186,27 +179,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertEditorElement.xq")
 ),
 ua:action(
-    "insertFirstUsgElement",
-    map { 
-        "name" := "Indicație folosire"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xq")
-),
-ua:action(
     "insertUsgElement",
     map { 
         "name" := "Indicație folosire",
         "smallIconPath" := "../../resources/images/add.png"        
     }, 
     oxy:execute-xquery-update-script("resources/xquery/insertUsgElement.xq")  
-),
-ua:action(
-    "insertFirstBiblElement",
-    map { 
-        "name" := "Izvor",
-        "smallIconPath" := "../../resources/images/add.png"       
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xq")   
 ),
 ua:action(
     "insertBiblElement",
@@ -249,26 +227,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertAntonym.xq")
 ),
 ua:action(
-    "insertReference",
-    map { 
-        "name" := "Trimitere"        
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertReference.xq")  
-),
-ua:action(
     "addGramGrp",
     map { 
         "name" := "Cat. gram.",
         "smallIconPath" := "../../resources/images/add.png"        
     },
     oxy:execute-xquery-update-script("resources/xquery/addGramGrp.xq")
-),
-ua:action(
-    "addFirstAccentuationSection",
-    map { 
-        "name" := "Accentuare"        
-    },
-	oxy:execute-xquery-update-script("resources/xquery/addFirstAccentuationSection.xq")    
 ),
 ua:action(
     "addAccentuationSection",
@@ -279,26 +243,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addAccentuationSection.xq")   
 ),
 ua:action(
-    "addFirstArticulationSection",
-    map { 
-        "name" := "Articulare"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstArticulationSection.xq")
-),
-ua:action(
     "addArticulationSection",
     map { 
         "name" := "Articulare",
         "smallIconPath" := "../../resources/images/add.png"        
     },   
     oxy:execute-xquery-update-script("resources/xquery/addArticulationSection.xq")
-),
-ua:action(
-    "addFirstPronunciationSection",
-    map { 
-        "name" := "Pronunțare"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstPronunciationSection.xq")
 ),
 ua:action(
     "addPronunciationSection",
@@ -309,26 +259,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addPronunciationSection.xq")
 ),
 ua:action(
-    "addFirstGrammaticalInformationSection",
-    map { 
-        "name" := "Indicații gramaticale"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstGrammaticalInformationSection.xq")
-),
-ua:action(
     "addGrammaticalInformationSection",
     map { 
         "name" := "Indicații gramaticale",
         "smallIconPath" := "../../resources/images/add.png"       
     },
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationSection.xq")
-),
-ua:action(
-    "addFirstSyllabationElement",
-    map { 
-        "name" := "Silabație hiat"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addFirstSyllabationElement.xq")
 ),
 ua:action(
     "addSyllabationElement",
@@ -339,26 +275,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addSyllabationElement.xq")
 ),
 ua:action(
-    "addFirstPronElement",
-    map { 
-        "name" := "Pron. cuvânt străin"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstPronElement.xq")
-),
-ua:action(
     "addPronElement",
     map { 
         "name" := "Pron. cuvânt străin",
         "smallIconPath" := "../../resources/images/add.png"       
     },   
     oxy:execute-xquery-update-script("resources/xquery/addPronElement.xq")
-),
-ua:action(
-    "addFirstPronunciationReferenceElement",
-    map { 
-        "name" := "Pronunţat şi"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstPronunciationReferenceElement.xq")
 ),
 ua:action(
     "addPronunciationReferenceElement",
@@ -369,26 +291,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addPronunciationReferenceElement.xq")
 ),
 ua:action(
-    "addFirstWritingSection",
-    map { 
-        "name" := "Scriere"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstWritingSection.xq")
-),
-ua:action(
     "addWritingSection",
     map { 
         "name" := "Scriere",
         "smallIconPath" := "../../resources/images/add.png"       
     },
     oxy:execute-xquery-update-script("resources/xquery/addWritingSection.xq")
-),
-ua:action(
-    "addFirstAbbreviationSection",
-    map { 
-        "name" := "Abreviere"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstAbbreviationSection.xq")
 ),
 ua:action(
     "addAbbreviationSection",
@@ -407,26 +315,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForPluralSection.xq")
 ),
 ua:action(
-    "addFirstGenElement",
-    map { 
-        "name" := "Gen"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addFirstGenElement.xq")
-),
-ua:action(
     "addGenElement",
     map { 
         "name" := "Gen",
         "smallIconPath" := "../../resources/images/add.png"       
     },
     oxy:execute-xquery-update-script("resources/xquery/addGenElement.xq")
-),
-ua:action(
-    "insertFirstSenseNumber",
-    map { 
-        "name" := "Nr. de sens"       
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstSenseNumber.xq")  
 ),
 ua:action(
     "insertSenseNumber",
@@ -453,26 +347,12 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForVerbSection.xq")   
 ),
 ua:action(
-    "insertFirstStressElement",
-    map { 
-        "name" := "Var. acc."      
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstStressElement.xq")   
-),
-ua:action(
     "insertStressElement",
     map { 
         "name" := "Var. acc.",
         "smallIconPath" := "../../resources/images/add.png"       
     },
     oxy:execute-xquery-update-script("resources/xquery/insertStressElement.xq") 
-),
-ua:action(
-    "insertFirstoVarElement",
-    map { 
-        "name" := "Var. de scriere"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstoVarElement.xq")   
 ),
 ua:action(
     "insertoVarElement",
@@ -491,12 +371,64 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForGenderSection.xq")   
 ),
 ua:action(
-    "boldAnnotator",
+    "insertBaseWord",
     map { 
-        "name" := "Bold",
-        "accelerator" := "ctrl B"        
+        "name" := "insertBaseWord",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
+),
+ua:action(
+    "insertAlternativeEtymon",
+    map { 
+        "name" := "Etimon alternativ",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertAlternativeEtymon.xq")
+),
+ua:action(
+    "insertAddedBase",
+    map { 
+        "name" := "insertAddedBase",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertAddedBase.xq") 
+),
+ua:action(
+    "insertTermElementOfTypeElementAdăugat",
+    map { 
+        "name" := "insertTermElementOfTypeElementAdăugat",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertTermElementOfTypeElementAdăugat.xq")  
+),
+ua:action(
+    "addEtymologicalNote",
+    map { 
+        "name" := "Adaugă notă",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addEtymologicalNote.xq")
+),
+ua:action(
+    "editEtymologicalNote",
+    map { 
+        "name" := "Editează notă",
+        "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    replace node . with <hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold">{.}</hi>
+    oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
+),
+
+
+
+
+
+ua:action(
+    "insertFirstBiblElement",
+    map { 
+        "name" := "Izvor"       
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xq")   
 ),
 ua:action(
     "searchBibliographicReferences",
@@ -511,6 +443,55 @@ ua:action(
         "name" := "Căutare"       
     },   
     oxy:execute-xquery-script("resources/xquery/get-headword-references.xq")
+),
+ua:action(
+    "insertFirstUsgElement",
+    map { 
+        "name" := "Indicație folosire"       
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xq")
+),
+ua:action(
+    "addFirstAccentuationSection",
+    map { 
+        "name" := "Accentuare"        
+    },
+	oxy:execute-xquery-update-script("resources/xquery/addFirstAccentuationSection.xq")    
+),
+ua:action(
+    "addFirstPronunciationSection",
+    map { 
+        "name" := "Pronunțare"       
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstPronunciationSection.xq")
+),
+ua:action(
+    "addFirstGrammaticalInformationSection",
+    map { 
+        "name" := "Indicații gramaticale"        
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstGrammaticalInformationSection.xq")
+),
+ua:action(
+    "addFirstWritingSection",
+    map { 
+        "name" := "Scriere"        
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstWritingSection.xq")
+),
+ua:action(
+    "addFirstAbbreviationSection",
+    map { 
+        "name" := "Abreviere"        
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstAbbreviationSection.xq")
+),
+ua:action(
+    "insertFirstSenseNumber",
+    map { 
+        "name" := "Nr. de sens"       
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstSenseNumber.xq")  
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -971,38 +952,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertCfElements.xq") 
 ),
 ua:action(
-    "insertBaseWord",
-    map { 
-        "name" := "insertBaseWord",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
-),
-ua:action(
-    "insertAlternativeEtymon",
-    map { 
-        "name" := "Etimon alternativ",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertAlternativeEtymon.xq")
-),
-ua:action(
-    "insertAddedBase",
-    map { 
-        "name" := "insertAddedBase",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertAddedBase.xq") 
-),
-ua:action(
-    "insertTermElementOfTypeElementAdăugat",
-    map { 
-        "name" := "insertTermElementOfTypeElementAdăugat",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertTermElementOfTypeElementAdăugat.xq")  
-),
-ua:action(
     "changedValueAttrForUsgElement",
     map { 
         "name" := "changedValueAttrForUsgElement"
@@ -1122,22 +1071,6 @@ ua:action(
     },
     oxy:execute-xquery-update-script("resources/xquery/addFirstEtymologicalNote.xq")   
 ),
-ua:action(
-    "addEtymologicalNote",
-    map { 
-        "name" := "Adaugă notă",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addEtymologicalNote.xq")
-),
-ua:action(
-    "editEtymologicalNote",
-    map { 
-        "name" := "Editează notă",
-        "smallIconPath" := "${framework}/resources/images/edit.png"
-    },   
-    oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
-),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
     map {
@@ -1185,12 +1118,12 @@ ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kube
 ua:template("TEI-before-template",
     <template>
         <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(//entry/form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:xquery-update-action('addFirstArticulationSection')}" style="visibility: {count(//entry/form[@type = 'articulation']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstArticulationSection.xq')}" style="visibility: {count(//entry/form[@type = 'articulation']) = 0}; background-color: transparent; color: blue;">Articulare</button>
         <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(//entry/form[@type = 'pronunciation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:xquery-update-action('addFirstLexicalVariant')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xq')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
@@ -1279,7 +1212,7 @@ ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addEtymElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
@@ -3023,11 +2956,11 @@ ua:template("form-pronunciation-before",
             <option label="bisilabic" value="bisyllabic" />
             <option label="trisilabic" value="trisyllabic" />
         </select>
-        <button onclick="{oxy:xquery-update-action('addFirstSyllabationElement')}" style="visibility: {count(syll) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstPronElement')}" style="visibility: {count(pron) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstPronunciationReferenceElement')}" style="visibility: {count(pRef) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstSyllabationElement.xq')}" style="visibility: {count(syll) = 0};">Silabație hiat</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronElement.xq')}" style="visibility: {count(pron) = 0};">Pron. cuvânt străin</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronunciationReferenceElement.xq')}" style="visibility: {count(pRef) = 0};">Pronunţat şi</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation']:before"), "form-pronunciation-before"),
@@ -3094,8 +3027,8 @@ ua:template("form-writing-before",
         Scriere
         <button onclick="{oxy:xquery-update-action('addWritingSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" data-showIcon="false" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'writing']:before"), "form-writing-before"),
@@ -3105,7 +3038,7 @@ ua:template("form-abbreviation-before",
         Abreviere
         <button onclick="{oxy:xquery-update-action('addAbbreviationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('insertFirstoVarElement')}" style="visibility: {count(oVar) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstoVarElement.xq')}" style="visibility: {count(oVar) = 0};">Var. de scriere</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'abbreviation']:before"), "form-abbreviation-before"),
@@ -3247,7 +3180,7 @@ ua:template("form-lexical-variant-section-before",
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section']:before"), "form-lexical-variant-section-before"),
@@ -3356,9 +3289,9 @@ ua:template("form-grammatical-information-for-plural-before",
         \00000AIndicaţii pentru plural
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstGenElement')}" style="visibility: {count(gen) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstGenElement.xq')}" style="visibility: {count(gen) = 0};">Gen</button>
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural']:before"), "form-grammatical-information-for-plural-before"),
@@ -3379,7 +3312,7 @@ ua:template("form-grammatical-information-for-case-before",
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>         
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />         
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case']:before"), "form-grammatical-information-for-case-before"),
@@ -3423,9 +3356,9 @@ ua:template("form-grammatical-information-for-verb-before",
     <template>
         \00000AIndicaţii pentru verb
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('insertFirstStressElement')}" style="visibility: {count(stress) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb']:before"), "form-grammatical-information-for-verb-before"),
@@ -3443,7 +3376,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("sense-currentEdited-value-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" />
-        <button onclick="{oxy:xquery-update-action('insertReference')}" />     
+        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
