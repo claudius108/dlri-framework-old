@@ -252,8 +252,8 @@ ua:action(
     "insertReference",
     map { 
         "name" := "Trimitere"        
-    },   
-    insert node doc('content-models/reference.xml') after (usg | ptr[@type = 'trimitere'] | def)[last()]
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertReference.xq")  
 ),
 ua:action(
     "addGramGrp",
@@ -995,12 +995,8 @@ ua:action(
     map { 
         "name" := "insertAddedBase",
         "smallIconPath" := "../../resources/images/add.png"
-    }, 
-    (
-        insert node $term-template after .
-        ,
-        replace value of node ./following-sibling::*[1]/@type with 'added-base'
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertAddedBase.xq") 
 ),
 ua:action(
     "insertTermElementOfTypeElementAdăugat",
@@ -1487,7 +1483,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.la
             $languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:execute-action-by-name('insertAddedBase')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertAddedBase')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
     </template>
 ),
@@ -3455,7 +3451,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("sense-currentEdited-value-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" />
-        <button onclick="{oxy:execute-action-by-name('insertReference')}" />     
+        <button onclick="{oxy:xquery-update-action('insertReference')}" />     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
