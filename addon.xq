@@ -988,13 +988,7 @@ ua:action(
         "name" := "Etimon alternativ",
         "smallIconPath" := "../../resources/images/add.png"
     },
-    (
-        insert nodes ($term-template, $term-template) after .
-        ,
-        replace value of node ./following-sibling::*[1]/@type with 'contamination-element'
-        ,
-        replace value of node ./following-sibling::*[2]/@type with 'alternative-contamination-element'
-    )
+    oxy:execute-xquery-update-script("resources/xquery/insertAlternativeEtymon.xq")
 ),
 ua:action(
     "insertAddedBase",
@@ -1123,8 +1117,8 @@ ua:action(
     map { 
         "name" := "Ștergere",
         "smallIconPath" := "../../resources/images/delete.png"        
-    },   
-    delete nodes (. | preceding-sibling::term[1])
+    },
+    oxy:execute-xquery-update-script("resources/xquery/deleteContaminationElement.xq")
 ),
 ua:action(
     "addEtymonTranslation",
@@ -1145,10 +1139,8 @@ ua:action(
     map { 
         "name" := "Adaugă notă",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
-    (
-    	insert node doc('content-models/note.xml') after .
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addEtymologicalNote.xq")
 ),
 ua:action(
     "editEtymologicalNote",
@@ -1947,8 +1939,8 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'
 ua:template("alternative-contamination-between",
     <template>
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:execute-action-by-name('insertAlternativeEtymon')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('deleteContaminationElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'alternative-contamination-element']) > 1};" />
+        <button onclick="{oxy:xquery-update-action('insertAlternativeEtymon')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteContaminationElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'alternative-contamination-element']) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'] ~ term[type = 'alternative-contamination-element']"), "alternative-contamination-between"),
@@ -1987,7 +1979,7 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-forma
 ua:template("etym-note-template",
     <template>
 		Notă&amp;nbsp;
-		<button onclick="{oxy:execute-action-by-name('addEtymologicalNote')}" style="background-color: transparent;" />
+		<button onclick="{oxy:xquery-update-action('addEtymologicalNote')}" style="background-color: transparent;" />
 		<button onclick="{oxy:execute-action-by-name('editEtymologicalNote')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
