@@ -449,8 +449,8 @@ ua:action(
     map { 
         "name" := "Verb",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
-    insert node doc('content-models/grammatical-information-for-verb.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForVerbSection.xq")   
 ),
 ua:action(
     "insertFirstStressElement",
@@ -3422,7 +3422,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-verb-before",
     <template>
         \00000AIndicaţii pentru verb
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:execute-action-by-name('insertFirstStressElement')}" style="visibility: {count(stress) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" data-showIcon="false"/>
