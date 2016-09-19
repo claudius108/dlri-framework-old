@@ -464,8 +464,8 @@ ua:action(
     map { 
         "name" := "Var. acc.",
         "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    insert node doc('content-models/stress.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertStressElement.xq") 
 ),
 ua:action(
     "insertFirstoVarElement",
@@ -3211,7 +3211,7 @@ ua:template("form-grammatical-information-for-verb-stress",
                 }            
             ))
         }
-        <button onclick="{oxy:execute-action-by-name('insertStressElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertStressElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
