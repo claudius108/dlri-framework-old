@@ -471,8 +471,8 @@ ua:action(
     "insertFirstoVarElement",
     map { 
         "name" := "Var. de scriere"
-    },   
-    insert node doc('content-models/oVar.xml') after (gramGrp | usg | ptr | gen | bibl | abbr)[last()]
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstoVarElement.xq")   
 ),
 ua:action(
     "insertoVarElement",
@@ -3105,7 +3105,7 @@ ua:template("form-abbreviation-before",
         Abreviere
         <button onclick="{oxy:xquery-update-action('addAbbreviationSection')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:execute-action-by-name('insertFirstoVarElement')}" style="visibility: {count(oVar) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertFirstoVarElement')}" style="visibility: {count(oVar) = 0};" data-showIcon="false" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'abbreviation']:before"), "form-abbreviation-before"),
