@@ -1003,12 +1003,8 @@ ua:action(
     map { 
         "name" := "insertTermElementOfTypeElementAdăugat",
         "smallIconPath" := "../../resources/images/add.png"
-    }, 
-    (
-        insert node $term-template after .
-        ,
-        replace value of node ./following-sibling::*[1]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertTermElementOfTypeElementAdăugat.xq")  
 ),
 ua:action(
     "changedValueAttrForUsgElement",
@@ -1507,7 +1503,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element a
             $languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:execute-action-by-name('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
     </template>
 ),
