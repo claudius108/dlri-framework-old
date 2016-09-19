@@ -487,8 +487,8 @@ ua:action(
     map { 
         "name" := "Gen",
         "smallIconPath" := "../../resources/images/add.png"
-    },   
-    insert node doc('content-models/grammatical-information-for-gender.xml') after .
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForGenderSection.xq")   
 ),
 ua:action(
     "boldAnnotator",
@@ -3404,7 +3404,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-gender-before",
     <template>
         \00000AIndicaţii pentru gen
-        <button onclick="{oxy:execute-action-by-name('addGrammaticalInformationForGenderSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForGenderSection')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender']:before"), "form-grammatical-information-for-gender-before"),
