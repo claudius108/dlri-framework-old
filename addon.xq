@@ -975,12 +975,8 @@ ua:action(
     map { 
         "name" := "insertBaseWord",
         "smallIconPath" := "../../resources/images/add.png"
-    }, 
-    (
-        insert node $term-template after .
-        ,
-        replace value of node ./following-sibling::*[1]/@type with 'base'
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
 ),
 ua:action(
     "insertAlternativeEtymon",
@@ -1812,7 +1808,7 @@ ua:template("etym-term-base",
 		<input data-ua-ref="{text()}" size="40" />
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
-        <button onclick="{oxy:execute-action-by-name('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 1};" />
     </template>
 ),
@@ -1824,7 +1820,7 @@ ua:template("etym-term-multiple-base",
         <input data-ua-ref="{text()}" size="22" />
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
-        <button onclick="{oxy:execute-action-by-name('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 2};" />
     </template>
 ),
