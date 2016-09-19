@@ -1137,10 +1137,8 @@ ua:action(
     "addFirstEtymologicalNote",
     map { 
         "name" := "Notă"        
-    },   
-    (
-    	insert node doc('content-models/note.xml') as last into .
-    )
+    },
+    oxy:execute-xquery-update-script("resources/xquery/addFirstEtymologicalNote.xq")   
 ),
 ua:action(
     "addEtymologicalNote",
@@ -1304,7 +1302,7 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" data-showIcon="false" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
-        <button onclick="{oxy:execute-action-by-name('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
+        <button onclick="{oxy:xquery-update-action('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
