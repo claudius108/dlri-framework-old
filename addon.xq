@@ -192,26 +192,6 @@ ua:action(
     },   
     oxy:execute-xquery-update-script("resources/xquery/deleteCurrentElement.xq")
 ),
-
-
-
-
-ua:action(
-    "insertAuthorElement",
-    map { 
-        "name" := "Redactor",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/insertAuthorElement.xq")
-),
-ua:action(
-    "insertEditorElement",
-    map { 
-        "name" := "Revizor",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/insertEditorElement.xq")
-),
 ua:action(
     "insertUsgElement",
     map { 
@@ -269,30 +249,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addGramGrp.xq")
 ),
 ua:action(
-    "addAccentuationSection",
-    map { 
-        "name" := "Accentuare",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addAccentuationSection.xq")   
-),
-ua:action(
-    "addArticulationSection",
-    map { 
-        "name" := "Articulare",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addArticulationSection.xq")
-),
-ua:action(
-    "addPronunciationSection",
-    map { 
-        "name" := "Pronunțare",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addPronunciationSection.xq")
-),
-ua:action(
     "addGrammaticalInformationSection",
     map { 
         "name" := "Indicații gramaticale",
@@ -300,22 +256,22 @@ ua:action(
     },
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationSection.xq")
 ),
-ua:action(
-    "addSyllabationElement",
-    map { 
-        "name" := "Silabație hiat",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addSyllabationElement.xq")
-),
-ua:action(
-    "addPronElement",
-    map { 
-        "name" := "Pron. cuvânt străin",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addPronElement.xq")
-),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ua:action(
     "addPronunciationReferenceElement",
     map { 
@@ -2868,7 +2824,7 @@ ua:template("form-accentuation-before",
             <option label="necunoscută" value="unknown-accentuation" />
             <option label="variantă de accentuare" value="accentuation-variant" />
         </select>
-        <button onclick="{oxy:xquery-update-action('addAccentuationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addAccentuationSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />     
     </template>
 ),
@@ -2877,7 +2833,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation']:befor
 ua:template("form-articulation-before",
     <template>
         Articulat&amp;nbsp;
-        <button onclick="{oxy:xquery-update-action('addArticulationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addArticulationSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />     
     </template>
 ),
@@ -2913,7 +2869,7 @@ ua:attach-template(ua-dt:css-selector("stress"), "stress"),
 ua:template("form-pronunciation-before",
     <template>
         Pronunțare
-        <button onclick="{oxy:xquery-update-action('addPronunciationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addPronunciationSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000AIndicaţie de silabaţie
         <select data-ua-ref="{@value}" contenteditable="false">
@@ -2943,7 +2899,7 @@ ua:template("form-pronunciation-syll",
                 }            
             ))
         }
-        <button onclick="{oxy:xquery-update-action('addSyllabationElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addSyllabationElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -2962,7 +2918,7 @@ ua:template("form-pronunciation-pron",
                 }            
             ))
         }
-        <button onclick="{oxy:xquery-update-action('addPronElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addPronElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3408,7 +3364,7 @@ ua:template("author-before",
             <option label="Vasileanu Monica" value="monica.vasileanu" />
             <option label="Vasilescu Florin" value="FlorinV" />
         </select>
-        <button onclick="{oxy:xquery-update-action('insertAuthorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertAuthorElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
     </template>
 ),
@@ -3420,7 +3376,7 @@ ua:template("editor-before",
         <select data-ua-ref="{text()}" contenteditable="false">
             <option label="guest" value="guest" />
         </select>
-        <button onclick="{oxy:xquery-update-action('insertEditorElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertEditorElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/editor) > 1};" />
     </template>
 ),
