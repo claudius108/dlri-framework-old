@@ -256,62 +256,6 @@ ua:action(
     },
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationSection.xq")
 ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ua:action(
-    "addPronunciationReferenceElement",
-    map { 
-        "name" := "Pronunţat şi",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    oxy:execute-xquery-update-script("resources/xquery/addPronunciationReferenceElement.xq")
-),
-ua:action(
-    "addWritingSection",
-    map { 
-        "name" := "Scriere",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addWritingSection.xq")
-),
-ua:action(
-    "addAbbreviationSection",
-    map { 
-        "name" := "Abreviere",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addAbbreviationSection.xq")
-),
-ua:action(
-    "addGrammaticalInformationForPluralSection",
-    map { 
-        "name" := "Plural",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForPluralSection.xq")
-),
-ua:action(
-    "addGenElement",
-    map { 
-        "name" := "Gen",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addGenElement.xq")
-),
 ua:action(
     "insertSenseNumber",
     map { 
@@ -320,14 +264,24 @@ ua:action(
     },
     oxy:execute-xquery-update-script("resources/xquery/insertSenseNumber.xq")
 ),
-ua:action(
-    "addGrammaticalInformationForCaseSection",
-    map { 
-        "name" := "Plural",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForCaseSection.xq")   
-),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ua:action(
     "addGrammaticalInformationForVerbSection",
     map { 
@@ -2937,7 +2891,7 @@ ua:template("form-pronunciation-pRef",
                 }            
             ))
         }
-        <button onclick="{oxy:xquery-update-action('addPronunciationReferenceElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addPronunciationReferenceElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -2946,7 +2900,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pRef"), "f
 ua:template("form-writing-before",
     <template>
         Scriere
-        <button onclick="{oxy:xquery-update-action('addWritingSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addWritingSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" />
@@ -2957,7 +2911,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'writing']:before"), "form-wr
 ua:template("form-abbreviation-before",
     <template>
         Abreviere
-        <button onclick="{oxy:xquery-update-action('addAbbreviationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addAbbreviationSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstoVarElement.xq')}" style="visibility: {count(oVar) = 0};">Var. de scriere</button>
     </template>
@@ -3016,7 +2970,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("form-grammatical-information-for-plural-gen-after",
     <template>
-        <button onclick="{oxy:xquery-update-action('addGenElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addGenElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3208,45 +3162,27 @@ ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant']:not( :firs
 ua:template("form-grammatical-information-for-plural-before",
     <template>
         \00000AIndicaţii pentru plural
-        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForPluralSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForPluralSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstGenElement.xq')}" style="visibility: {count(gen) = 0};">Gen</button>
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural']:before"), "form-grammatical-information-for-plural-before"),
 
-ua:template("form-grammatical-information-for-plural-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('form-grammatical-information-for-plural-before')
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural']:not( :first-of-type):before "), "form-grammatical-information-for-plural-not-first-of-type-before"),
-
 ua:template("form-grammatical-information-for-case-before",
     <template>
         \00000AIndicaţii pentru caz
-        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForCaseSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForCaseSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />         
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case']:before"), "form-grammatical-information-for-case-before"),
-
-ua:template("form-grammatical-information-for-case-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('form-grammatical-information-for-case-before')
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />       
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case']:not( :first-of-type):before"), "form-grammatical-information-for-case-not-first-of-type-before"),
 
 ua:template("form-grammatical-information-for-case-case",
     <template>
@@ -3259,19 +3195,10 @@ ua:template("form-grammatical-information-for-gender-before",
     <template>
         \00000AIndicaţii pentru gen
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForGenderSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender']:before"), "form-grammatical-information-for-gender-before"),
-
-ua:template("form-grammatical-information-for-gender-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('form-grammatical-information-for-gender-before')
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />       
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender']:not( :first-of-type):before"), "form-grammatical-information-for-gender-not-first-of-type-before"),
 
 ua:template("form-grammatical-information-for-verb-before",
     <template>
@@ -3280,19 +3207,10 @@ ua:template("form-grammatical-information-for-verb-before",
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb']:before"), "form-grammatical-information-for-verb-before"),
-
-ua:template("form-grammatical-information-for-verb-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('form-grammatical-information-for-verb-before')
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb']:not( :first-of-type):before"), "form-grammatical-information-for-verb-not-first-of-type-before"),
 
 ua:template("sense-currentEdited-value-before",
     <template>
