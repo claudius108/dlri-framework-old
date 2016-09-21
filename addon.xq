@@ -2693,16 +2693,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'articulation'] > term:before
 ua:template("stress",
     <template>
         Variantă de accentuare&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         \00000A
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="visibility: {count(following-sibling::usg) = 0};" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="visibility: {count(following-sibling::bibl) = 0};" data-showIcon="false" />
@@ -2733,16 +2724,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation']:before"), "f
 ua:template("form-pronunciation-syll",
     <template>
         Silabația secvenței cu hiat&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/addSyllabationElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
@@ -2752,16 +2734,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > syll"), "f
 ua:template("form-pronunciation-pron",
     <template>
         Pronunțarea cuvântului titlu străin&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/addPronElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
@@ -2771,16 +2744,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation'] > pron"), "f
 ua:template("form-pronunciation-pRef",
     <template>
         Pronunţat şi&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/addPronunciationReferenceElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
@@ -2899,16 +2863,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-verb-stress",
     <template>
         Variantă de accentuare&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertStressElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
@@ -2918,16 +2873,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-details-for-grammatical-information-for-verb-before",
     <template>
         Formă&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
         \00000A
     </template>
 ),
@@ -2953,16 +2899,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section']:be
 ua:template("form-lexical-variant-before",
     <template>
         \00000AVariantă lexicală
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant']:before"), "form-lexical-variant-before"),
@@ -2980,6 +2917,7 @@ ua:template("form-flexionar-variant",
                 }            
             ))
         }
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'flexionar-variant']"), "form-flexionar-variant"),

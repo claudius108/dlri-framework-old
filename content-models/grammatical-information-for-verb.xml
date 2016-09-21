@@ -2,5 +2,5 @@
 	<mood value="" />
 	<tns value="" />
 	<per value="" />
-	<form type="details-for-grammatical-information-for-verb" />
+	<form xml:lang="ro-x-accent-lowcase-vowels" type="details-for-grammatical-information-for-verb" />
 </form>
