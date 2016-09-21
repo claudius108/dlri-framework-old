@@ -108,11 +108,7 @@ declare variable $collocations-template as element() :=
     </select>
 ;
 
-declare variable $gr-minuscule as xs:string := "α,β,γ,δ,ε,ζ,η,θ,ι,κ,λ,μ,ν,ξ,ο,π,ρ,ς,σ,τ,υ,φ,χ,ψ,ω";
-
 declare variable $ro-vocale-minuscule as xs:string := "á,é,í,ó,ú,ắ,ấ,î́";
-
-declare variable $ro-vocale-majuscule as xs:string := "Á,É,Í,Ó,Ú,Ắ,Ấ,Î";
 
 ua:action(
     "insertFirstBiblElement",
