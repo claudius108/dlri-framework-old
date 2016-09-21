@@ -2900,24 +2900,6 @@ ua:template("form-lexical-variant-before",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant']:before"), "form-lexical-variant-before"),
 
-ua:template("form-flexionar-variant",
-    <template>
-        Var. flexionară&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("ro.kuberam.oxygen.addonBuilder.templates.java.richTextArea.RichTextAreaFormControl",
-                map {
-                    "edit" := "#text",
-                    "cols" := "200",
-                    "rows" := "55",        
-                    "insertChars" := $ro-vocale-minuscule
-                }            
-            ))
-        }
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'flexionar-variant']"), "form-flexionar-variant"),
-
 ua:template("form-multiple-ptr-after",
     <template>
         Număr de sens&amp;nbsp;
