@@ -264,56 +264,6 @@ ua:action(
     },
     oxy:execute-xquery-update-script("resources/xquery/insertSenseNumber.xq")
 ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ua:action(
-    "addGrammaticalInformationForVerbSection",
-    map { 
-        "name" := "Verb",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForVerbSection.xq")   
-),
-ua:action(
-    "insertStressElement",
-    map { 
-        "name" := "Var. acc.",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertStressElement.xq") 
-),
-ua:action(
-    "insertoVarElement",
-    map { 
-        "name" := "Var. de scriere",
-        "smallIconPath" := "../../resources/images/add.png"       
-    },   
-    insert node doc('content-models/oVar.xml') after .
-),
-ua:action(
-    "addGrammaticalInformationForGenderSection",
-    map { 
-        "name" := "Gen",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationForGenderSection.xq")   
-),
 ua:action(
     "insertBaseWord",
     map { 
@@ -323,38 +273,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
 ),
 ua:action(
-    "insertAlternativeEtymon",
-    map { 
-        "name" := "Etimon alternativ",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertAlternativeEtymon.xq")
-),
-ua:action(
-    "insertAddedBase",
-    map { 
-        "name" := "insertAddedBase",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertAddedBase.xq") 
-),
-ua:action(
-    "insertTermElementOfTypeElementAdăugat",
-    map { 
-        "name" := "insertTermElementOfTypeElementAdăugat",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertTermElementOfTypeElementAdăugat.xq")  
-),
-ua:action(
-    "addEtymologicalNote",
-    map { 
-        "name" := "Adaugă notă",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addEtymologicalNote.xq")
-),
-ua:action(
     "editEtymologicalNote",
     map { 
         "name" := "Editează notă",
@@ -362,12 +280,6 @@ ua:action(
     },   
     oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
 ),
-
-
-
-
-
-
 ua:action(
     "changedValueAttrForFormElement",
     map { 
@@ -924,28 +836,6 @@ ua:action(
         else ()                  
     )
 ),
-ua:action(
-    "deleteContaminationElement",
-    map { 
-        "name" := "Ștergere",
-        "smallIconPath" := "../../resources/images/delete.png"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/deleteContaminationElement.xq")
-),
-ua:action(
-    "addEtymonTranslation",
-    map { 
-        "name" := "Traducere etimon"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addEtymonTranslation.xq")    
-),
-ua:action(
-    "addFirstEtymologicalNote",
-    map { 
-        "name" := "Notă"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstEtymologicalNote.xq")   
-),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
     map {
@@ -1089,8 +979,8 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update-action('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addEtymonTranslation')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstEtymologicalNote')}" style="visibility: {count(note) = 0};" />        
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
@@ -1283,7 +1173,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.la
             $languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update-action('insertAddedBase')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertAddedBase.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
     </template>
 ),
@@ -1307,7 +1197,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element a
             $languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update-action('insertTermElementOfTypeElementAdăugat')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertTermElementOfTypeElementAdăugat.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
     </template>
 ),
@@ -1735,8 +1625,8 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'
 ua:template("alternative-contamination-between",
     <template>
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update-action('insertAlternativeEtymon')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteContaminationElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'alternative-contamination-element']) > 1};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertAlternativeEtymon.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/deleteContaminationElement.xq')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'alternative-contamination-element']) > 1};"><img src="../../resources/images/delete.png" /></button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'] ~ term[type = 'alternative-contamination-element']"), "alternative-contamination-between"),
@@ -1775,7 +1665,7 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-forma
 ua:template("etym-note-template",
     <template>
 		Notă&amp;nbsp;
-		<button onclick="{oxy:xquery-update-action('addEtymologicalNote')}" style="background-color: transparent;" />
+		<button onclick="{oxy:xquery-update('resources/xquery/addEtymologicalNote.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
 		<button onclick="{oxy:execute-action-by-name('editEtymologicalNote')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
@@ -3019,7 +2909,7 @@ ua:template("form-grammatical-information-for-verb-stress",
                 }            
             ))
         }
-        <button onclick="{oxy:xquery-update-action('insertStressElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertStressElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
@@ -3194,7 +3084,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-gender-before",
     <template>
         \00000AIndicaţii pentru gen
-        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForGenderSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForGenderSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
@@ -3203,7 +3093,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("form-grammatical-information-for-verb-before",
     <template>
         \00000AIndicaţii pentru verb
-        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationForVerbSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForVerbSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
