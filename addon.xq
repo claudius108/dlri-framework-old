@@ -444,18 +444,16 @@ ua:action(
         then
             (
                 delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
-                insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
+                insert nodes ($term-template, doc('content-models/ptr.xml')) after ./following-sibling::*[1],
                 replace value of node ./following-sibling::*[1]/@cert with 'high',                
-                replace value of node ./following-sibling::*[2]/@type with 'prefix',
-                replace value of node ./following-sibling::*[3]/@type with 'base'
+                replace value of node ./following-sibling::*[2]/@type with 'prefix'
             )
         else (),        
         if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
         then (
                 delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
-                insert nodes ($term-template, $term-template) after ./following-sibling::*[1],
-                replace value of node ./following-sibling::*[1]/@cert with 'high',                
-                replace value of node ./following-sibling::*[2]/@type with 'base',
+                insert nodes (doc('content-models/ptr.xml'), $term-template) after ./following-sibling::*[1],
+                replace value of node ./following-sibling::*[1]/@cert with 'high',
                 replace value of node ./following-sibling::*[3]/@type with 'sufix'
         )
         else (),        
@@ -1507,6 +1505,23 @@ ua:template("etym-term-base",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'base']"), "etym-term-base"),
+
+ua:template("etym-ptr",
+    <template>
+        &amp;nbsp;Cuvânt de bază&amp;nbsp;
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 1};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr"),
+
+
+
 
 ua:template("etym-term-multiple-base",
     <template>
