@@ -34,6 +34,7 @@
 				<sense xml:id="uuid-${uuid}">
 					<idno n="" type="level-label" />
 					<idno n="tip-unitate-semantică-subsumată" type="unknown" />
+					<idno n="tip-proces-semantic" type="unknown" />
 					<def n="" />
 					<cit>
 						<quote />
