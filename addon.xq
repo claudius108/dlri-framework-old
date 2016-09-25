@@ -258,20 +258,16 @@ ua:action(
     },   
     oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
 ),
+
+
+
+
 ua:action(
     "changedValueAttrForFormElement",
     map { 
         "name" := "changedValueAttrForFormElement"
-    }, 
-    (
-        if (@type = 'accentuation-variant')
-        then (insert node doc('content-models/stress.xml') as first into .)
-        else ()
-        ,
-        if (@type = 'unknown-accentuation')
-        then (delete nodes element())
-        else ()        
-    )
+    },
+    oxy:execute-xquery-update-script("actions/changedValueAttrForFormElement.xq")
 ),
 ua:action(
     "changedValueAttrForPosElement",
