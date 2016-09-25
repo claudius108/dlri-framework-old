@@ -740,10 +740,8 @@ ua:action(
     "changedValueAttrForUsgElement",
     map { 
         "name" := "changedValueAttrForUsgElement"
-    }, 
-    (
-        replace value of node ./@type with for $a in ./@value return doc('content-models/usg-datalist.xml')//*[@label = $a]/@value/string()
-    )
+    },
+    oxy:execute-xquery-update-script("actions/changedValueAttrForUsgElement.xq")
 ),
 ua:action(
     "changedTypeAttrForNoteElement",
