@@ -92,25 +92,6 @@ declare variable $term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
 
-declare variable $collocations-template as element() :=
-    <select data-ua-ref="{@type}" style="width: 40px;" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
-        <option label="proverb" value="proverb" />
-        <option label="zicătoare" value="saying" />
-        <option label="cimilitură" value="riddle" />
-        <option label="ghicitoare" value="sibyl" />
-        <option label="sintagmă" value="syntagma" />
-        <option label="expresie" value="phrase" />
-        <option label="compus" value="compound" />
-        <option label="loc. adj." value="adjectival-locution" />
-        <option label="loc. adv." value="adverbial-locution" />
-        <option label="loc. prep." value="prepositional-locution" />
-        <option label="loc. conj." value="conjunctional-locution" />
-        <option label="loc. vb." value="verbal-locution" />
-    </select>
-;
-
-declare variable $ro-vocale-minuscule as xs:string := "á,é,í,ó,ú,ắ,ấ,î́";
-
 ua:action(
     "insertFirstBiblElement",
     map { 
@@ -1521,9 +1502,6 @@ ua:template("etym-ptr",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr"),
-
-
-
 
 ua:template("etym-term-multiple-base",
     <template>
@@ -3057,9 +3035,20 @@ ua:attach-template(ua-dt:css-selector("sense > idno:first-of-type"), "sense-leve
 ua:template("idno-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;        
-        {
-            $collocations-template
-        }
+	    <select data-ua-ref="{@type}" style="width: 40px;" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
+	        <option label="proverb" value="proverb" />
+	        <option label="zicătoare" value="saying" />
+	        <option label="cimilitură" value="riddle" />
+	        <option label="ghicitoare" value="sibyl" />
+	        <option label="sintagmă" value="syntagma" />
+	        <option label="expresie" value="phrase" />
+	        <option label="compus" value="compound" />
+	        <option label="loc. adj." value="adjectival-locution" />
+	        <option label="loc. adv." value="adverbial-locution" />
+	        <option label="loc. prep." value="prepositional-locution" />
+	        <option label="loc. conj." value="conjunctional-locution" />
+	        <option label="loc. vb." value="verbal-locution" />
+	    </select>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
