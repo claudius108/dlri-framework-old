@@ -258,10 +258,6 @@ ua:action(
     },   
     oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
 ),
-
-
-
-
 ua:action(
     "changedValueAttrForFormElement",
     map { 
@@ -269,52 +265,16 @@ ua:action(
     },
     oxy:execute-xquery-update-script("actions/changedValueAttrForFormElement.xq")
 ),
+
+
+
+
 ua:action(
     "changedValueAttrForPosElement",
     map { 
         "name" := "changedValueAttrForPosElement"
-    }, 
-    (
-        if (@value = ('', 'adv.', 'conj.', 'interj.', 'prep.'))
-        then (delete nodes parent::*/element()[position() > 1])
-        else (),
-        if (@value = 'adj.')
-        then
-            (
-                delete nodes parent::*/element()[position() > 1],
-                insert nodes (doc('content-models/subc.xml'), doc('content-models/gen.xml'), doc('content-models/number.xml'),
-                    doc('content-models/case.xml')) as last into parent::*
-            )
-        else (),
-        if (@value = ('art.', 'num.', 'pron.'))
-        then
-            (
-                delete nodes parent::*/element()[position() > 1],
-                insert node doc('content-models/subc.xml') as last into parent::*
-            )
-        else (),
-        if (@value = 's.')
-        then
-            (
-                delete nodes parent::*/element()[position() > 1],
-                insert nodes (doc('content-models/gen.xml'), doc('content-models/number.xml'), doc('content-models/case.xml'), doc('content-models/name.xml')) as last into parent::*
-            )
-        else (),
-        if (@value = 'subst.')
-        then
-            (
-                delete nodes parent::*/element()[position() > 1],
-                insert node doc('content-models/number.xml') as last into parent::*
-            )
-        else (),
-        if (@value = 'vb.')
-        then
-            (
-                delete nodes parent::*/element()[position() > 1],
-                insert nodes (doc('content-models/iType.xml'), doc('content-models/subc.xml')) as last into parent::*
-            )
-        else ()
-    )
+    },
+    oxy:execute-xquery-update-script("actions/changedValueAttrForPosElement.xq")
 ),
 ua:action(
     "changedValueAttrForSubcElement",
