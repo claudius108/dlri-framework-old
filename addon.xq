@@ -279,16 +279,6 @@ ua:action(
     },
     oxy:execute-xquery-update-script("actions/changedValueAttrForSubcElement.xq")
 ),
-
-
-
-
-
-
-
-
-
-
 ua:action(
     "changedTypeAttrForIdnoElement",
     map { 
@@ -296,6 +286,35 @@ ua:action(
     },
     oxy:execute-xquery-update-script("actions/changedTypeAttrForIdnoElement.xq")
 ),
+ua:action(
+    "insertCfElements",
+    map { 
+        "name" := "Cf."
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertCfElements.xq") 
+),
+ua:action(
+    "changedValueAttrForUsgElement",
+    map { 
+        "name" := "changedValueAttrForUsgElement"
+    },
+    oxy:execute-xquery-update-script("actions/changedValueAttrForUsgElement.xq")
+),
+
+
+
+
+
+ua:action(
+    "changedTypeAttrForNoteElement",
+    map { 
+        "name" := "changedTypeAttrForNoteElement"
+    },
+	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
+),
+
+
+
 ua:action(
     "insertSenseElementAsFirstChild",
     map { 
@@ -316,109 +335,6 @@ ua:action(
         insert node $sense-template after .
         ,
         replace value of node ./following-sibling::*[1]/@xml:id with oxy:uuid()
-    )
-),
-ua:action(
-    "insertCfElements",
-    map { 
-        "name" := "Cf."
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertCfElements.xq") 
-),
-ua:action(
-    "changedValueAttrForUsgElement",
-    map { 
-        "name" := "changedValueAttrForUsgElement"
-    },
-    oxy:execute-xquery-update-script("actions/changedValueAttrForUsgElement.xq")
-),
-ua:action(
-    "changedTypeAttrForNoteElement",
-    map { 
-        "name" := "changedTypeAttrForNoteElement"
-    },
-
-    (
-        if (@type = ('unknown', 'explicații.etimon-apropiat.de.cuv..rom..terminate.în', 'explicații.etimon-diminutiv.al.lui', 'explicații.etimon-cu.schimbare.de.suf.',
-        'explicații.etimon-prin.accidente.fonetice-afereză', 'explicații.etimon-prin.accidente.fonetice-anaptixă', 'explicații.etimon-prin.accidente.fonetice-apocopă',
-        'explicații.etimon-prin.accidente.fonetice-elidare', 'explicații.etimon-prin.accidente.fonetice-epenteză', 'explicații.etimon-prin.accidente.fonetice-metateză',
-        'explicații.etimon-prin.accidente.fonetice-propagare', 'explicații.etimon-prin.accidente.fonetice-proteză', 'explicații.etimon-prin.accidente.fonetice-sincopă',
-        'explicații.etimon-prin.accidente.fonetice-sinereză', 'explicații.etimon-prin.apropiere.de', 'explicații.etimon-prin.analogie.cu', 'explicații.etimon-după.modelul',
-        'explicații.etimon-prin.analogie.cu.cuvinte.de.origine', 'explicații.etimon-prin.analogie.cu.cuvinte.de.tipul', 'explicații.etimon-prin.contaminare.cu',
-        'explicații.etimon-după.modelul.lui', 'explicații.etimon-variantă.a.lui', 'explicații.etimon-prin.falsă.analiză', 'explicații.etimon-refăcut.după',
-        'explicații.etimon-adaptat.după', 'explicații.etimon-din.latina.clasică.pentru.et..*', 'explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*',
-        'explicații.etimon-după', 'explicații.etimon-prin.filieră', 'explicații.etimon-cu.reduplicarea.consoanei', 'explicații.etimon-imper..lui', 'explicații.etimon-aor..lui',
-        'explicații.etimon-voc..lui', 'explicații.etimon-pl..lui', 'explicații.etimon-acuz.', 'explicații.etimon-la.scriitorii.mai.vechi.din', 'explicații.etimon-sub.influența.lui',
-        'explicații.etimon-dial.', 'explicații.etimon-prin.reduplicare', 'explicații.etimon-part..lui', 'explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf.',
-        'explicații.etimon-prin.analogie.cu', 'explicații.etimon-prin.analogie.cu.cuvinte.de.origine', 'explicații.etimon-prin.analogie.cu.cuvinte.de.tipul',
-        'explicații.etimon-prin.etimologie.populară', 'explicații.etimon-s..pr.', 'explicații.etimon-numele.științific.al', 'explicații.etimon-la', 'explicații.etimon-mai.vechi',
-        'explicații.etimon-var..a.lui', 'explicații.etimon-de.la.s..pr.', 'explicații.etimon-în.rom.', 'explicații.etimon-sg..refăcut.după.pl.', 'explicații.etimon-numele.topic',
-        'explicații.etimon-contaminare.în.care.primul.element.este', 'explicații.etimon-f..lui', 'explicații.etimon-numele.ştiințific.al.plantei', 'explicații.etimon-n..pr.',
-        'explicații.etimon-numele.de.localitate', 'explicații.etimon-numele.sărbătorii.religioase', 'explicații.etimon-numele.ştiințific.al.planetei', 'explicații.etimon-prez..ind.',
-        'explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…', 'explicații.etimon-prin.confuzie.cu', 'model.etimon', 'note.suplimentare'))
-        then (
-        	delete nodes child::*,
-        	insert node $term-template as first into .
-        )
-        else ()
-        ,    
-        if (@type = ('traducere.etimon', 'traducere.cuvânt.bază', 'explicații.etimon-contaminare.între.….și.…', 'explicații.etimon-prin.înlocuirea.lui.….cu.…',
-        'nume.propriu'))
-        then (
-            delete nodes child::*,
-            insert node $term-template as first into .,
-            insert node $term-template after ./child::term[1]
-        )
-        else ()
-        ,    
-        if (@type = 'trimitere.(cf.)')
-        then (
-            delete nodes child::*,
-            insert node doc('content-models/usg.xml') as first into .,
-            insert node $term-template after ./child::usg,
-            insert node $term-template after ./child::term
-        )
-        else () 
-        ,    
-        if (@type = ('explicații.etimon-pentru.explicarea.formei.româneşti', 'explicații.etimon-pentru.explicarea.formei.românești.cf.'))
-        then (
-            delete nodes child::*,
-            insert node $term-template as first into .,
-            insert node $bibl-template after ./child::term[1]
-        )
-        else ()
-        ,    
-        if (@type = 'indicații.gramaticale')
-        then (
-            delete nodes child::*,
-            insert node doc('content-models/grammatical-information.xml') as first into .,
-            insert node $term-template after ./child::form
-        )
-        else ()
-        ,    
-        if (@type = 'izvor')
-        then (
-            delete nodes child::*,
-            insert node $bibl-template as first into .,
-            insert node $term-template after ./child::bibl
-        )
-        else () 
-        ,    
-        if (@type = 'indicație.folosire')
-        then (
-            delete nodes child::*,
-            insert node doc('content-models/usg.xml') as first into .,
-            insert node $term-template after ./child::usg
-        )
-        else () 
-        ,    
-        if (@type = 'trimitere.intrare')
-        then (
-            delete nodes child::*,
-            insert node $term-template as first into .,
-            insert node doc('content-models/ptr.xml') after ./child::term
-        )
-        else ()                  
     )
 ),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
