@@ -138,6 +138,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/deleteCurrentElement.xq")
 ),
 ua:action(
+    "deleteSenseElement",
+    map { 
+        "name" := "Ștergere",
+        "smallIconPath" := "../../resources/images/delete.png"       
+    },   
+    oxy:execute-xquery-update-script("actions/deleteCurrentElement.xq")
+),
+ua:action(
     "insertUsgElement",
     map { 
         "name" := "Indicație folosire",
