@@ -223,7 +223,7 @@ ua:action(
         "name" := "Editează notă",
         "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation')
+    oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -432,7 +432,7 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
