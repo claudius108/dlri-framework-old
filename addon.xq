@@ -59,39 +59,6 @@ declare variable $languages-template as element() :=
 	</select>
 ;
 
-declare variable $bibl-template as element() :=
-    <bibl xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
-        <ptr target="unknown" />
-        <date />
-        <citedRange />
-    </bibl>
-;
-
-declare variable $cit-template as element() :=
-    <cit xmlns="http://www.tei-c.org/ns/1.0">
-        <quote />
-        {$bibl-template}
-    </cit>
-;
-
-declare variable $def-template as element() :=
-    <def xmlns="http://www.tei-c.org/ns/1.0" n="" />
-;
-
-declare variable $sense-template as element() :=
-    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
-        <idno n="" type="level-label" />
-        <idno n="tip-unitate-semantică-subsumată" type="unknown" />
-        <idno n="tip-proces-semantic" type="unknown" />
-        {$def-template}
-        {$cit-template}
-    </sense>
-;
-
-declare variable $term-template as element() :=
-    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
-;
-
 ua:action(
     "insertFirstBiblElement",
     map { 
@@ -300,11 +267,6 @@ ua:action(
     },
     oxy:execute-xquery-update-script("actions/changedValueAttrForUsgElement.xq")
 ),
-
-
-
-
-
 ua:action(
     "changedTypeAttrForNoteElement",
     map { 
@@ -312,30 +274,19 @@ ua:action(
     },
 	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
 ),
-
-
-
 ua:action(
     "insertSenseElementAsFirstChild",
     map { 
         "name" := "insertSenseElementAsFirstChild"
-    }, 
-    (
-        insert node $sense-template as first into .
-        ,
-        replace value of node *[1]/@xml:id with oxy:uuid()
-    )
+    },
+    oxy:execute-xquery-update-script("actions/insertSenseElementAsFirstChild.xq")
 ),
 ua:action(
     "insertSenseElementAsFollowingSibling",
     map { 
         "name" := "insertSenseElementAsFollowingSibling"
-    }, 
-    (
-        insert node $sense-template after .
-        ,
-        replace value of node ./following-sibling::*[1]/@xml:id with oxy:uuid()
-    )
+    },
+    oxy:execute-xquery-update-script("actions/insertSenseElementAsFollowingSibling.xq")
 ),
 ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
 ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
