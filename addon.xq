@@ -231,7 +231,7 @@ ua:action(
         "name" := "Editează notă",
         "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.OpenFileInNewTabOperation")
+    oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.OpenDocumentFragmentInNewTabOperation")
 ),
 ua:action(
     "changedValueAttrForFormElement",
@@ -821,6 +821,10 @@ ua:template("cuvântul.titlu-element.necunoscut-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.necunoscut'] ~ term"), "cuvântul.titlu-element.necunoscut-template"),
 
+
+
+
+
 ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template",
     <template>
         Număr de sens&amp;nbsp;
@@ -830,7 +834,7 @@ ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/idno[1]/@n, ',')
+                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
                 }            
             ))
         }
@@ -849,7 +853,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
                     "edit" := "@target",
                     "editable" := false,
                     "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/idno[1]/@n, ',')
+                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
                 }            
             ))
         }
@@ -858,6 +862,67 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'unul.sau.mai.multe.sensuri-sensul-'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-*-ptr-template"),
+
+ua:template("form-multiple-ptr-after",
+    <template>
+        Număr de sens&amp;nbsp;
+        {
+            ua:get-template(oxy:get-template("combo",
+                map {
+                    "edit" := "@target",
+                    "editable" := false,
+                    "values" := string-join(//sense/@xml:id, ','),
+                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
+                }            
+            ))
+        }
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > ptr:after, form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
+
+ua:template("form-grammatical-information-for-verb-ptr-after",
+    <template>
+        Număr de sens&amp;nbsp;
+        {
+            ua:get-template(oxy:get-template("combo",
+                map {
+                    "edit" := "@target",
+                    "editable" := false,
+                    "values" := string-join(//sense/@xml:id, ','),
+                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
+                }            
+            ))
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb'] > ptr:after"), "form-grammatical-information-for-verb-ptr-after"),
+
+ua:template("form-lexical-variant-section-ptr-after",
+    <template>
+        Număr de sens&amp;nbsp;
+        {
+            ua:get-template(oxy:get-template("combo",
+                map {
+                    "edit" := "@target",
+                    "editable" := false,
+                    "values" := string-join(//sense/@xml:id, ','),
+                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
+                }            
+            ))
+        }
+        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section'] > ptr:after"), "form-lexical-variant-section-ptr-after"),
+
+
+
+
+
+
+
 
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
     <template>
@@ -2377,60 +2442,6 @@ ua:template("form-lexical-variant-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant']:before"), "form-lexical-variant-before"),
-
-ua:template("form-multiple-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/idno[1]/@n, ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > ptr:after, form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
-
-ua:template("form-grammatical-information-for-verb-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/idno[1]/@n, ',')
-                }            
-            ))
-        }
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb'] > ptr:after"), "form-grammatical-information-for-verb-ptr-after"),
-
-ua:template("form-lexical-variant-section-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(//sense/idno[1]/@n, ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section'] > ptr:after"), "form-lexical-variant-section-ptr-after"),
 
 ua:template("graphic-variant-not-first-of-type-before",
     <template>
