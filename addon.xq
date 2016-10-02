@@ -825,26 +825,8 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-eleme
 
 
 
-ua:template("unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor-template"),
 
-ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
+ua:template("număr-de-sens-template",
     <template>
         Număr de sens&amp;nbsp;
         {
@@ -861,7 +843,11 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'unul.sau.mai.multe.sensuri-sensul-'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-*-ptr-template"),
+ua:attach-template(ua-dt:css-selector("
+etym > idno[type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor'] ~ ptr:after,
+etym > idno[type ^= 'unul.sau.mai.multe.sensuri-sensul-'] ~ ptr:after,
+form[type = 'lexical-variant-section'] > ptr:after,
+form[type = 'grammatical-information-for-plural'] > ptr:after"), "număr-de-sens-template"),
 
 ua:template("form-multiple-ptr-after",
     <template>
@@ -879,7 +865,7 @@ ua:template("form-multiple-ptr-after",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > ptr:after, form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
+ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
 
 ua:template("form-grammatical-information-for-verb-ptr-after",
     <template>
@@ -897,25 +883,6 @@ ua:template("form-grammatical-information-for-verb-ptr-after",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb'] > ptr:after"), "form-grammatical-information-for-verb-ptr-after"),
-
-ua:template("form-lexical-variant-section-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section'] > ptr:after"), "form-lexical-variant-section-ptr-after"),
 
 
 
@@ -2142,7 +2109,15 @@ ua:template("multiple-form-bibl-after",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation'] > bibl:after, form[type = 'accentuation-variant'] > bibl:after, form[type = 'pronunciation'] > bibl:after, form[type = 'writing'] > bibl:after, form[type = 'grammatical-information-for-plural'] > bibl:after, form[type = 'grammatical-information-for-case'] > bibl:after, form[type = 'grammatical-information-for-verb'] > bibl:after, form[type = 'details-for-grammatical-information-for-verb'] > bibl:after, form[type = 'lexical-variant-section'] > bibl:after"), "multiple-form-bibl-after"),
+ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation'] > bibl:after,
+form[type = 'accentuation-variant'] > bibl:after,
+form[type = 'pronunciation'] > bibl:after,
+form[type = 'writing'] > bibl:after,
+form[type = 'grammatical-information-for-plural'] > bibl:after,
+form[type = 'grammatical-information-for-case'] > bibl:after,
+form[type = 'grammatical-information-for-verb'] > bibl:after,
+form[type = 'details-for-grammatical-information-for-verb'] > bibl:after,
+form[type = 'lexical-variant-section'] > bibl:after"), "multiple-form-bibl-after"),
 
 ua:template("multiple-form-oVar",
     <template>
