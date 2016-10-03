@@ -821,14 +821,9 @@ ua:template("cuvântul.titlu-element.necunoscut-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.necunoscut'] ~ term"), "cuvântul.titlu-element.necunoscut-template"),
 
-
-
-
-
-
 ua:template("număr-de-sens-template",
     <template>
-        Număr de sens&amp;nbsp;
+    	Număr de sens&amp;nbsp;
         {
             ua:get-template(oxy:get-template("combo",
                 map {
@@ -843,53 +838,7 @@ ua:template("număr-de-sens-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("
-etym > idno[type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor'] ~ ptr:after,
-etym > idno[type ^= 'unul.sau.mai.multe.sensuri-sensul-'] ~ ptr:after,
-form[type = 'lexical-variant-section'] > ptr:after,
-form[type = 'grammatical-information-for-plural'] > ptr:after"), "număr-de-sens-template"),
-
-ua:template("form-multiple-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case'] > ptr:after"), "form-multiple-ptr-after"),
-
-ua:template("form-grammatical-information-for-verb-ptr-after",
-    <template>
-        Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
-                }            
-            ))
-        }
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-verb'] > ptr:after"), "form-grammatical-information-for-verb-ptr-after"),
-
-
-
-
-
-
-
+ua:attach-template(ua-dt:css-selector("ptr[type = 'sense-number']:after"), "număr-de-sens-template"),
 
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
     <template>
@@ -2477,6 +2426,7 @@ ua:template("form-grammatical-information-for-verb-before",
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
