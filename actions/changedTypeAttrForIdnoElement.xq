@@ -31,9 +31,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node $dlri:term-template after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',
-            replace value of node ./following-sibling::*[2]/@xml:lang with 'la',
-            replace value of node ./following-sibling::*[2]/@type with ''
+            replace value of node parent::*/@cert with 'high',
+            replace value of node ./following-sibling::*[1]/@xml:lang with 'la',
+            replace value of node ./following-sibling::*[1]/@type with ''
         )
     else (),
     if (@type = 'cuvântul.titlu-element.moştenit-etimon.neatestat')
@@ -41,9 +41,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node $dlri:term-template after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'low',
-            replace value of node ./following-sibling::*[2]/@xml:lang with 'la',
-            replace value of node ./following-sibling::*[2]/@type with '' 
+            replace value of node parent::*/@cert with 'low',
+            replace value of node ./following-sibling::*[1]/@xml:lang with 'la',
+            replace value of node ./following-sibling::*[1]/@type with '' 
         )
     else (),        
     if (@type = 'cuvântul.titlu-element.de.substrat')
@@ -51,7 +51,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, doc('../content-models/mentioned.xml')) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'
+            replace value of node parent::*/@cert with 'high'
         )
     else (),  
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
@@ -59,117 +59,117 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, doc('../content-models/ptr.xml')) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'prefix'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'prefix'
         )
     else (),        
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes (doc('../content-models/ptr.xml'), $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',
-            replace value of node ./following-sibling::*[3]/@type with 'sufix'
+            replace value of node parent::*/@cert with 'high',
+            replace value of node ./following-sibling::*[2]/@type with 'sufix'
     )
     else (),        
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'prefix',
-            replace value of node ./following-sibling::*[3]/@type with 'base',
-            replace value of node ./following-sibling::*[4]/@type with 'sufix'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'prefix',
+            replace value of node ./following-sibling::*[2]/@type with 'base',
+            replace value of node ./following-sibling::*[3]/@type with 'sufix'
     )
     else (),        
     if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'component-element',
-            replace value of node ./following-sibling::*[3]/@type with 'base'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'component-element',
+            replace value of node ./following-sibling::*[2]/@type with 'base'
     )
     else (),        
     if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'base',
-            replace value of node ./following-sibling::*[3]/@type with 'component-element'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'base',
+            replace value of node ./following-sibling::*[2]/@type with 'component-element'
     )
     else (),              
     if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'base',
-            replace value of node ./following-sibling::*[3]/@type with 'base'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'base',
+            replace value of node ./following-sibling::*[2]/@type with 'base'
     )
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'latin-base',
-            replace value of node ./following-sibling::*[3]/@type with 'added-base'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'latin-base',
+            replace value of node ./following-sibling::*[2]/@type with 'added-base'
     )
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-bază',
-            replace value of node ./following-sibling::*[3]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-bază',
+            replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
     )
     else (),    
     if (@type = 'cuvântul.titlu-formație.internă-trimitere-V.')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes doc('../content-models/ptr.xml') after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'low'
+            replace value of node parent::*/@cert with 'low'
          )
     else (),        
     if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes doc('../content-models/ptr.xml') after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'
+            replace value of node parent::*/@cert with 'high'
          )
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
     then (
            delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes ($dlri:term-template, $dlri:term-template, $dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high',                
-            replace value of node ./following-sibling::*[2]/@type with 'contaminated-element',
-            replace value of node ./following-sibling::*[3]/@type with 'alternative-contaminated-element',
-            replace value of node ./following-sibling::*[4]/@type with 'contamination-element',
-            replace value of node ./following-sibling::*[5]/@type with 'alternative-contamination-element'
+            replace value of node parent::*/@cert with 'high',                
+            replace value of node ./following-sibling::*[1]/@type with 'contaminated-element',
+            replace value of node ./following-sibling::*[2]/@type with 'alternative-contaminated-element',
+            replace value of node ./following-sibling::*[3]/@type with 'contamination-element',
+            replace value of node ./following-sibling::*[4]/@type with 'alternative-contamination-element'
     )
     else (),
     if (@type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node $dlri:term-template after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'
+            replace value of node parent::*/@cert with 'high'
     )
     else (),       
     if (@type = 'cuvântul.titlu-element.extern-trimitere')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node doc('../content-models/mentioned.xml') after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'              
+            replace value of node parent::*/@cert with 'high'              
          )
     else (),    
     if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor')
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes (doc('../content-models/ptr.xml'), $dlri:bibl-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'                
+            replace value of node parent::*/@cert with 'high'                
          )
     else (),  
     if (@type =
@@ -181,7 +181,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert nodes (doc('../content-models/ptr.xml'), $dlri:term-template) after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'                
+            replace value of node parent::*/@cert with 'high'                
          )
     else (),        
     
@@ -195,8 +195,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
            delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
            insert node $dlri:term-template after ./following-sibling::*[1],
-           replace value of node ./following-sibling::*[1]/@cert with 'high',               
-           replace value of node ./following-sibling::*[2]/@type with 'contamination-element'
+           replace value of node parent::*/@cert with 'high',               
+           replace value of node ./following-sibling::*[1]/@type with 'contamination-element'
     )
     else (),
     if (@cert and @type = 
@@ -221,7 +221,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     )
     then (
         delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
-        replace value of node ./following-sibling::*[1]/@cert with 'high'
+        replace value of node parent::*/@cert with 'high'
     )
     else (),  
     if (@type =
@@ -268,21 +268,21 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
             delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
             insert node $dlri:term-template after ./following-sibling::*[1],
-            replace value of node ./following-sibling::*[1]/@cert with 'high'
+            replace value of node parent::*/@cert with 'high'
     )
     else (),         
     if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
     then (
         delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
         insert node doc('../content-models/ptr.xml') after ./following-sibling::*[1],
-        replace value of node ./following-sibling::*[1]/@cert with 'high'
+        replace value of node parent::*/@cert with 'high'
     )
     else (), 
     if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))
     then (
         delete nodes ./following-sibling::*[position() > 1 and not(local-name() = 'note')],
         insert node $dlri:bibl-template after ./following-sibling::*[1],
-        replace value of node ./following-sibling::*[1]/@cert with 'high'
+        replace value of node parent::*/@cert with 'high'
     )
     else (),                 
     if (@type = 'grammatical-information-type-for-adj-et-al')

@@ -1,4 +1,4 @@
-<etym xmlns="http://www.tei-c.org/ns/1.0">
+<etym xmlns="http://www.tei-c.org/ns/1.0" cert="high">
 	<idno type="unknown" />
 	<certainty cert="high" locus="value" />
 </etym>
