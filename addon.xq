@@ -2059,7 +2059,8 @@ form[type = 'grammatical-information-for-plural'] > bibl:after,
 form[type = 'grammatical-information-for-case'] > bibl:after,
 form[type = 'grammatical-information-for-verb'] > bibl:after,
 form[type = 'details-for-grammatical-information-for-verb'] > bibl:after,
-form[type = 'lexical-variant-section'] > bibl:after"), "multiple-form-bibl-after"),
+form[type = 'lexical-variant-section'] > bibl:after,
+etym > bibl:after"), "multiple-form-bibl-after"),
 
 ua:template("multiple-form-oVar",
     <template>
