@@ -436,8 +436,10 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-
 ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('insertCfElements')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat'};" />
+        Probabilitate etimologie&amp;nbsp;
+        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
+        <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat' and count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
@@ -882,15 +884,6 @@ ua:template("cuvântul.titlu-element.extern-trimitere-mentioned",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-trimitere'] ~ mentioned"), "cuvântul.titlu-element.extern-trimitere-mentioned"),
-
-ua:template("etym-certainty-template",
-    <template>
-        Probabilitate etimologie&amp;nbsp;
-        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
-        <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym"), "etym-certainty-template"),
 
 ua:template("cuvântul.titlu-element.de.substrat-mentioned-etymon",
     <template>
