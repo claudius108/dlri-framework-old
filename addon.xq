@@ -1748,7 +1748,7 @@ ua:template("quote",
 ),
 ua:attach-template(ua-dt:css-selector("quote"), "quote"),
 
-ua:template("bibl-before",
+ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false" style="width: 5px;">
@@ -1760,7 +1760,15 @@ ua:template("bibl-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-before"),
+ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-template"),
+
+ua:template("bibl-buttons-template",
+    <template>
+        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after"), "bibl-buttons-template"),
 
 ua:template("bibl-ptr-before",
     <template>
@@ -2044,23 +2052,6 @@ ua:template("pos-vb-subc-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:before"), "pos-vb-subc-before"),
-
-ua:template("multiple-form-bibl-after",
-    <template>
-        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'unknown-accentuation'] > bibl:after,
-form[type = 'accentuation-variant'] > bibl:after,
-form[type = 'pronunciation'] > bibl:after,
-form[type = 'writing'] > bibl:after,
-form[type = 'grammatical-information-for-plural'] > bibl:after,
-form[type = 'grammatical-information-for-case'] > bibl:after,
-form[type = 'grammatical-information-for-verb'] > bibl:after,
-form[type = 'details-for-grammatical-information-for-verb'] > bibl:after,
-form[type = 'lexical-variant-section'] > bibl:after,
-etym > bibl:after"), "multiple-form-bibl-after"),
 
 ua:template("multiple-form-oVar",
     <template>
