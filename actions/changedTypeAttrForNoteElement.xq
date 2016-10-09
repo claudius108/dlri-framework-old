@@ -65,7 +65,7 @@ import module namespace dlri = "http://dlri.ro/ns/dlri/" at "../resources/xquery
     ,    
     if (@type = 'trimitere.intrare')
     then (
-        insert nodes ($dlri:term-template, doc('../content-models/ptr.xml')) as first into .
+        insert nodes ($dlri:term-template, $dlri:ptr-template) as first into .
     )
     else ()                  
 )

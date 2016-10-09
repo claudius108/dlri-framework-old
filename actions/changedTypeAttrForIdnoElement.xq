@@ -73,7 +73,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 				copy $template := $dlri:term-template
 				modify replace value of node $template/@type with 'prefix'
 				return $template
-			return insert nodes ($processed-template, doc('../content-models/ptr.xml')) after .
+			return insert nodes ($processed-template, $dlri:ptr-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
 	    then
@@ -81,7 +81,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 				copy $template := $dlri:term-template
 				modify replace value of node $template/@type with 'sufix'
 				return $template
-			return insert nodes (doc('../content-models/ptr.xml'), $processed-template) after .
+			return insert nodes ($dlri:ptr-template, $processed-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
 	    then
@@ -93,7 +93,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 				copy $template := $dlri:term-template
 				modify replace value of node $template/@type with 'sufix'
 				return $template
-	        return insert nodes ($processed-template-1, doc('../content-models/ptr.xml'), $processed-template-2) after .
+	        return insert nodes ($processed-template-1, $dlri:ptr-template, $processed-template-2) after .
 	    else (), 
 	    
 	    
@@ -147,12 +147,12 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),    
 	    if (@type = 'cuvântul.titlu-formație.internă-trimitere-V.')
 	    then (
-	            insert nodes doc('../content-models/ptr.xml') after ./following-sibling::*[1]
+	            insert nodes $dlri:ptr-template after ./following-sibling::*[1]
 	         )
 	    else (),        
 	    if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
 	    then (
-	            insert nodes doc('../content-models/ptr.xml') after ./following-sibling::*[1]
+	            insert nodes $dlri:ptr-template after ./following-sibling::*[1]
 	         )
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
@@ -176,7 +176,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),    
 	    if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor')
 	    then (
-	            insert nodes (doc('../content-models/ptr.xml'), $dlri:bibl-template) after ./following-sibling::*[1]
+	            insert nodes ($dlri:ptr-template, $dlri:bibl-template) after ./following-sibling::*[1]
 	         )
 	    else (),  
 	    if (@type =
@@ -186,7 +186,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        )
 	    )
 	    then (
-	            insert nodes (doc('../content-models/ptr.xml'), $dlri:term-template) after ./following-sibling::*[1]
+	            insert nodes ($dlri:ptr-template, $dlri:term-template) after ./following-sibling::*[1]
 	         )
 	    else (),        
 	    if (@type = 
@@ -269,7 +269,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),         
 	    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
 	    then (
-	        insert node doc('../content-models/ptr.xml') after ./following-sibling::*[1]
+	        insert node $dlri:ptr-template after ./following-sibling::*[1]
 	    )
 	    else (), 
 	    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))

@@ -38,6 +38,10 @@ declare variable $dlri:term-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" />
 ;
 
+declare variable $dlri:ptr-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" target="unknown" />
+;
+
 declare variable $dlri:sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
         <idno n="" type="level-label" />
