@@ -963,7 +963,7 @@ ua:template("etym-ptr-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr-template"),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'base']"), "etym-ptr-template"),
 
 ua:template("etym-term-sufix",
     <template>

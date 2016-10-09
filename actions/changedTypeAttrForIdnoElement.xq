@@ -47,8 +47,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 			let $processed-template :=
 				copy $template := $dlri:term-template
 				modify (
-					replace value of node $template/@xml:lang with 'la',
-					replace value of node $template/@type with ''
+					replace value of node $template/@xml:lang with 'la'
 				)
 				return $template
 			return insert node $processed-template after .	            
@@ -58,8 +57,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 			let $processed-template :=
 				copy $template := $dlri:term-template
 				modify (
-					replace value of node $template/@xml:lang with 'la',
-					replace value of node $template/@type with ''
+					replace value of node $template/@xml:lang with 'la'
 				)
 				return $template
 			return insert node $processed-template after . 
@@ -119,9 +117,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
 	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'base',
-	            replace value of node ./following-sibling::*[2]/@type with 'component-element'
+	            insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
 	    )
 	    else (),              
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
