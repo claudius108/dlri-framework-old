@@ -1,9 +1,11 @@
 xquery version "3.0";
 
+import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
+
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
 let $processed-template :=
-	copy $template := doc('../../content-models/ptr.xml')
+	copy $template := $dlri:ptr-template
 	modify replace value of node $template//@type with 'asoc'
 	return $template
 
