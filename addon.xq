@@ -934,6 +934,8 @@ ua:template("etym-term-prefix",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'prefix']"), "etym-term-prefix"),
 
+
+
 ua:template("etym-term-base",
     <template>
         &amp;nbsp;Cuvânt de bază&amp;nbsp;
@@ -946,7 +948,10 @@ ua:template("etym-term-base",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'base']"), "etym-term-base"),
 
-ua:template("etym-ptr",
+
+
+
+ua:template("etym-ptr-template",
     <template>
         &amp;nbsp;Cuvânt de bază&amp;nbsp;
 	    <datalist id="headword-references">
@@ -958,19 +963,7 @@ ua:template("etym-ptr",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr"),
-
-ua:template("etym-term-multiple-base",
-    <template>
-        &amp;nbsp;Cuvânt de bază&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 2};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'multiple-base']"), "etym-term-multiple-base"),
+ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr-template"),
 
 ua:template("etym-term-sufix",
     <template>

@@ -69,32 +69,54 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),  
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
 	    then
-	        (
-	            insert nodes ($dlri:term-template, doc('../content-models/ptr.xml')) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'prefix'
-	        )
-	    else (),        
+			let $processed-template :=
+				copy $template := $dlri:term-template
+				modify replace value of node $template/@type with 'prefix'
+				return $template
+			return insert nodes ($processed-template, doc('../content-models/ptr.xml')) after .
+	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
-	    then (
-	            insert nodes (doc('../content-models/ptr.xml'), $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[2]/@type with 'sufix'
-	    )
-	    else (),        
+	    then
+			let $processed-template :=
+				copy $template := $dlri:term-template
+				modify replace value of node $template/@type with 'sufix'
+				return $template
+			return insert nodes (doc('../content-models/ptr.xml'), $processed-template) after .
+	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
-	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'prefix',
-	            replace value of node ./following-sibling::*[2]/@type with 'base',
-	            replace value of node ./following-sibling::*[3]/@type with 'sufix'
-	    )
-	    else (),        
+	    then
+			let $processed-template-1 :=
+				copy $template := $dlri:term-template
+				modify replace value of node $template/@type with 'prefix'
+				return $template
+			let $processed-template-2 :=
+				copy $template := $dlri:term-template
+				modify replace value of node $template/@type with 'sufix'
+				return $template
+	        return insert nodes ($processed-template-1, doc('../content-models/ptr.xml'), $processed-template-2) after .
+	    else (), 
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	           
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
 	            replace value of node ./following-sibling::*[1]/@type with 'component-element',
 	            replace value of node ./following-sibling::*[2]/@type with 'base'
 	    )
-	    else (),        
+	    else (),
+	    
+	    
+	    
+	    
+	    
+	    
+	            
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
