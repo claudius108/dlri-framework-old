@@ -104,24 +104,13 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    
 	           
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
-	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'component-element',
-	            replace value of node ./following-sibling::*[2]/@type with 'base'
-	    )
+	    then insert nodes ($dlri:ptr-component-element-template, $dlri:ptr-base-template) after .
 	    else (),
-	    
-	    
-	    
-	    
-	    
-	    
-	            
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
 	    then (
 	            insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
 	    )
-	    else (),              
+	    else (),   
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
@@ -129,6 +118,11 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            replace value of node ./following-sibling::*[2]/@type with 'base'
 	    )
 	    else (),
+	    
+	    
+	    
+	    
+	    
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],

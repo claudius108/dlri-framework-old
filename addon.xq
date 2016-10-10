@@ -950,14 +950,22 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'base']"), "etym-term-
 
 
 
-
-ua:template("etym-ptr-template",
+ua:template("ptr-template",
     <template>
 	    <datalist id="headword-references">
 	        <option label="" value=""/>
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("ptr"), "ptr-template"),
+
+ua:template("etym-ptr-template",
+    <template>
+        {
+            ua:get-template('ptr-template')
+        }
         <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 1};" />
     </template>
@@ -966,13 +974,23 @@ ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr-template"),
 
 ua:template("ptr-base-template",
     <template>
-        &amp;nbsp;Cuvânt de bază&amp;nbsp;
+        Cuvânt de bază&amp;nbsp;
         {
             ua:get-template('etym-ptr-template')
         }
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'base']"), "ptr-base-template"),
+
+ua:template("ptr-component-element-template",
+    <template>
+        Element de compunere&amp;nbsp;
+        {
+            ua:get-template('etym-ptr-template')
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']"), "ptr-component-element-template"),
 
 ua:template("etym-term-sufix",
     <template>
@@ -981,16 +999,6 @@ ua:template("etym-term-sufix",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix"),
-
-ua:template("etym-term-component-element",
-    <template>
-        Element de compunere&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'component-element']"), "etym-term-component-element"),
 
 ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
     <template>

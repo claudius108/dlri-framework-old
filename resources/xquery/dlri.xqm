@@ -54,6 +54,10 @@ declare variable $dlri:ptr-base-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="base" subtype="unknown" target="unknown" />
 ;
 
+declare variable $dlri:ptr-component-element-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="component-element" subtype="unknown" target="unknown" />
+;
+
 declare variable $dlri:sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
         <idno n="" type="level-label" />
