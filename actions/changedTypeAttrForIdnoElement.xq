@@ -26,7 +26,36 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         delete nodes ./following-sibling::*
     )
     else (),
-    
+    if (@type = 'grammatical-information-type-for-adj-et-al')
+    then (
+        delete nodes ./following-sibling::*,
+        insert node doc('../content-models/idno.xml') after .
+    )
+    else (),
+    if (@type = 'grammatical-information-type-for-vb')
+    then (
+        delete nodes ./following-sibling::*,
+        insert node doc('../content-models/grammatical-information-for-verb.xml') after .
+    )
+    else (),
+    if (@type = 'grammatical-information-subtype-for-pl')
+    then (
+        delete nodes ./following-sibling::*,
+        insert node doc('../content-models/grammatical-information-for-plural.xml') after .
+    )
+    else (),        
+    if (@type = 'grammatical-information-subtype-for-case')
+    then (
+        delete nodes ./following-sibling::*,
+        insert node doc('../content-models/grammatical-information-for-case.xml') after .
+    )
+    else (),
+    if (@type = 'grammatical-information-subtype-for-gender')
+    then (
+            delete nodes ./following-sibling::*,
+            insert node doc('../content-models/grammatical-information-for-gender.xml') after .
+    )
+    else (),    
     
     
     
@@ -42,56 +71,29 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     		then 'low'
     		else 'high'
     	return replace value of node parent::*/@cert with $cert-value,     
-	    if (@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
+	    if (@type = (
+	    	'cuvântul.titlu-element.moştenit-etimon.atestat',
+	    	'cuvântul.titlu-element.moştenit-etimon.neatestat'
+	    	)
+	    )
 	    then
 			let $processed-template :=
 				copy $template := $dlri:term-template
-				modify (
-					replace value of node $template/@xml:lang with 'la'
-				)
+				modify replace value of node $template/@xml:lang with 'la'
 				return $template
 			return insert node $processed-template after .	            
-	    else (),
-	    if (@type = 'cuvântul.titlu-element.moştenit-etimon.neatestat')
-	    then
-			let $processed-template :=
-				copy $template := $dlri:term-template
-				modify (
-					replace value of node $template/@xml:lang with 'la'
-				)
-				return $template
-			return insert node $processed-template after . 
-	    else (),        
+	    else (),       
 	    if (@type = 'cuvântul.titlu-element.de.substrat')
-	    then insert nodes ($dlri:term-template, doc('../content-models/mentioned.xml')) after ./following-sibling::*[1]  
+	    then insert nodes ($dlri:term-template, doc('../content-models/mentioned.xml')) after .  
 	    else (),  
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
-	    then
-			let $processed-template :=
-				copy $template := $dlri:term-template
-				modify replace value of node $template/@type with 'prefix'
-				return $template
-			return insert nodes ($processed-template, $dlri:ptr-template) after .
+	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
-	    then
-			let $processed-template :=
-				copy $template := $dlri:term-template
-				modify replace value of node $template/@type with 'sufix'
-				return $template
-			return insert nodes ($dlri:ptr-template, $processed-template) after .
+	    then insert nodes ($dlri:ptr-base-template, $dlri:term-sufix-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
-	    then
-			let $processed-template-1 :=
-				copy $template := $dlri:term-template
-				modify replace value of node $template/@type with 'prefix'
-				return $template
-			let $processed-template-2 :=
-				copy $template := $dlri:term-template
-				modify replace value of node $template/@type with 'sufix'
-				return $template
-	        return insert nodes ($processed-template-1, $dlri:ptr-template, $processed-template-2) after .
+	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-template, $dlri:term-sufix-template) after .
 	    else (), 
 	    
 	    
@@ -273,40 +275,5 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        insert node $dlri:bibl-template after ./following-sibling::*[1]
 	    )
 	    else ()
-	 ),
-    
-    
-    
-    
-    
-    if (@type = 'grammatical-information-type-for-adj-et-al')
-    then (
-        delete nodes ./following-sibling::*,
-        insert node doc('../content-models/idno.xml') after .
-    )
-    else (),
-    if (@type = 'grammatical-information-type-for-vb')
-    then (
-        delete nodes ./following-sibling::*,
-        insert node doc('../content-models/grammatical-information-for-verb.xml') after .
-    )
-    else (),
-    if (@type = 'grammatical-information-subtype-for-pl')
-    then (
-        delete nodes ./following-sibling::*,
-        insert node doc('../content-models/grammatical-information-for-plural.xml') after .
-    )
-    else (),        
-    if (@type = 'grammatical-information-subtype-for-case')
-    then (
-        delete nodes ./following-sibling::*,
-        insert node doc('../content-models/grammatical-information-for-case.xml') after .
-    )
-    else (),
-    if (@type = 'grammatical-information-subtype-for-gender')
-    then (
-            delete nodes ./following-sibling::*,
-            insert node doc('../content-models/grammatical-information-for-gender.xml') after .
-    )
-    else ()
+	 )
 )
