@@ -924,15 +924,21 @@ ua:template("cuvântul.titlu-element.moştenit-etimon.neatestat-etymon",
 ),
 ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.moştenit-etimon.neatestat'] ~ term"), "cuvântul.titlu-element.moştenit-etimon.neatestat-etymon"),
 
-ua:template("etym-term-prefix",
+ua:template("etym-term-prefix-template",
     <template>
         Prefix&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'prefix']"), "etym-term-prefix"),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'prefix']"), "etym-term-prefix-template"),
 
-
+ua:template("etym-term-sufix-template",
+    <template>
+        Sufix&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix-template"),
 
 
 
@@ -947,10 +953,10 @@ ua:template("etym-term-base",
         &amp;nbsp;Nr. omonim&amp;nbsp;
         <input data-ua-ref="{@subtype}" size="3" />
         <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base']) > 1};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'base-word']) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'base']"), "etym-term-base"),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'base-word']"), "etym-term-base"),
 
 
 
@@ -976,15 +982,23 @@ ua:template("etym-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr-template"),
 
-ua:template("ptr-base-template",
+ua:template("cuvântul.titlu-formație.internă-derivat-template",
     <template>
         Cuvânt de bază&amp;nbsp;
         {
-            ua:get-template('etym-ptr-template')
+            ua:get-template('ptr-template')
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'base']"), "ptr-base-template"),
+ua:attach-template(ua-dt:css-selector("idno[type ^= 'cuvântul.titlu-formație.internă-derivat-'] ~ ptr"), "cuvântul.titlu-formație.internă-derivat-template"),
+
+
+
+
+
+
+
+
 
 ua:template("ptr-component-element-template",
     <template>
@@ -997,14 +1011,6 @@ ua:template("ptr-component-element-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']"), "ptr-component-element-template"),
-
-ua:template("etym-term-sufix",
-    <template>
-        Sufix&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix"),
 
 ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
     <template>

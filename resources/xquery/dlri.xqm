@@ -50,8 +50,8 @@ declare variable $dlri:ptr-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" target="unknown" />
 ;
 
-declare variable $dlri:ptr-base-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="base" subtype="unknown" target="unknown" />
+declare variable $dlri:ptr-base-word-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="base-word" subtype="unknown" target="unknown" />
 ;
 
 declare variable $dlri:ptr-component-element-template as element() :=

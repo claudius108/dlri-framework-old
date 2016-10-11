@@ -87,13 +87,13 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    then insert nodes ($dlri:term-template, $dlri:term-template) after .  
 	    else (),  
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
-	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-template) after .
+	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-word-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
-	    then insert nodes ($dlri:ptr-base-template, $dlri:term-sufix-template) after .
+	    then insert nodes ($dlri:ptr-base-word-template, $dlri:term-sufix-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
-	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-template, $dlri:term-sufix-template) after .
+	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-word-template, $dlri:term-sufix-template) after .
 	    else (), 
 	    
 	    
@@ -104,7 +104,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    
 	           
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
-	    then insert nodes ($dlri:ptr-component-element-template, $dlri:ptr-base-template) after .
+	    then insert nodes ($dlri:ptr-component-element-template, $dlri:ptr-base-word-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
 	    then (
@@ -114,8 +114,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'base',
-	            replace value of node ./following-sibling::*[2]/@type with 'base'
+	            replace value of node ./following-sibling::*[1]/@type with 'base-word',
+	            replace value of node ./following-sibling::*[2]/@type with 'base-word'
 	    )
 	    else (),
 	    
