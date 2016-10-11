@@ -84,7 +84,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 			return insert node $processed-template after .	            
 	    else (),       
 	    if (@type = 'cuvântul.titlu-element.de.substrat')
-	    then insert nodes ($dlri:term-template, doc('../content-models/mentioned.xml')) after .  
+	    then insert nodes ($dlri:term-template, $dlri:term-template) after .  
 	    else (),  
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
 	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-template) after .

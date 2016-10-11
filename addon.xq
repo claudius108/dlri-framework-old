@@ -885,7 +885,15 @@ ua:template("cuvântul.titlu-element.extern-trimitere-mentioned",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-trimitere'] ~ mentioned"), "cuvântul.titlu-element.extern-trimitere-mentioned"),
 
-ua:template("cuvântul.titlu-element.de.substrat-mentioned-etymon",
+ua:template("cuvântul.titlu-element.de.substrat-term-1-etymon",
+    <template>
+        El. de substrat&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term:nth-of-type(1):before"), "cuvântul.titlu-element.de.substrat-term-1-etymon"),
+
+ua:template("cuvântul.titlu-element.de.substrat-term-2-template",
     <template>
         Cf.&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
@@ -894,20 +902,10 @@ ua:template("cuvântul.titlu-element.de.substrat-mentioned-etymon",
             <option label="lituan." value="lt" />
             <option label="v. sl." value="v. sl." />            
         </select>
-        {
-            ua:get-template("etym-mentioned")
-        }
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ mentioned"), "cuvântul.titlu-element.de.substrat-mentioned-etymon"),
-
-ua:template("cuvântul.titlu-element.de.substrat-term-etymon",
-    <template>
-        El. de substrat&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term"), "cuvântul.titlu-element.de.substrat-term-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term:nth-of-type(2):before"), "cuvântul.titlu-element.de.substrat-term-2-template"),
 
 ua:template("cuvântul.titlu-element.moştenit-etimon.atestat-etymon",
     <template>
@@ -933,6 +931,12 @@ ua:template("etym-term-prefix",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'prefix']"), "etym-term-prefix"),
+
+
+
+
+
+
 
 
 
@@ -986,8 +990,10 @@ ua:template("ptr-component-element-template",
     <template>
         Element de compunere&amp;nbsp;
         {
-            ua:get-template('etym-ptr-template')
+            ua:get-template('ptr-template')
         }
+        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'component-element']) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']"), "ptr-component-element-template"),
