@@ -226,6 +226,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
 ),
 ua:action(
+    "insertComponentElement",
+    map { 
+        "name" := "insertComponentElement",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertComponentElement.xq") 
+),
+ua:action(
     "editEtymologicalNote",
     map { 
         "name" := "Editează notă",
@@ -620,27 +628,6 @@ ua:template("cuvântul.titlu-formație.internă-denumire.comercială-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-denumire.comercială'] ~ term"), "cuvântul.titlu-formație.internă-denumire.comercială-template"),
 
-ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-first-of-type-template",
-    <template>
-        lat.
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină'] ~ term:first-of-type:after"), "cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-first-of-type-template"),
-
-ua:template("cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-not-first-of-type-template",
-    <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertAddedBase.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term) >= 3};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină'] ~ term:not( :first-of-type):after"), "cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină-term-not-first-of-type-template"),
-
 ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-bază-template",
     <template>
         Limba&amp;nbsp;
@@ -940,6 +927,54 @@ ua:template("etym-term-sufix-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix-template"),
 
+ua:template("ptr-template",
+    <template>
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("ptr"), "ptr-template"),
+
+ua:template("ptr-base-word-template",
+    <template>
+        Cuvânt de bază&amp;nbsp;
+        {
+            ua:get-template('ptr-template')
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'base-word']"), "ptr-base-word-template"),
+
+ua:template("cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template",
+    <template>
+    	Cuvânt de bază&amp;nbsp;
+        {
+            ua:get-template('ptr-template')
+        }
+        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază'] ~ ptr"), "cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template"),
+
+ua:template("latin-base-template",
+    <template>
+        lat.
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("term[type = 'latin-base']:after"), "latin-base-template"),
+
+ua:template("added-base-template",
+    <template>
+        +&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("ptr[type = 'added-base']"), "added-base-template"),
 
 
 
@@ -960,38 +995,6 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'base-word']"), "etym-
 
 
 
-ua:template("ptr-template",
-    <template>
-	    <datalist id="headword-references">
-	        <option label="" value=""/>
-	    </datalist>
-	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
-	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("ptr"), "ptr-template"),
-
-ua:template("etym-ptr-template",
-    <template>
-        {
-            ua:get-template('ptr-template')
-        }
-        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 1};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > ptr"), "etym-ptr-template"),
-
-ua:template("cuvântul.titlu-formație.internă-derivat-template",
-    <template>
-        Cuvânt de bază&amp;nbsp;
-        {
-            ua:get-template('ptr-template')
-        }
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("idno[type ^= 'cuvântul.titlu-formație.internă-derivat-'] ~ ptr"), "cuvântul.titlu-formație.internă-derivat-template"),
-
 
 
 
@@ -1006,11 +1009,16 @@ ua:template("ptr-component-element-template",
         {
             ua:get-template('ptr-template')
         }
-        <button onclick="{oxy:xquery-update-action('insertBaseWord')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertComponentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'component-element']) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']"), "ptr-component-element-template"),
+
+
+
+
+
 
 ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
     <template>
@@ -2539,6 +2547,7 @@ ua:template("author-before",
             <option label="Popuşoi Carolina" value="vozduh" />
             <option label="Pătrașcu Mădălin" value="madalin.patrascu" />
             <option label="Sterian Florin" value="FlorinSterian" />
+            <option label="Ștefănescu Maria" value="Maria.Stefanescu" />
             <option label="Tamba Isabella" value="isabelle.tamba" />
             <option label="Teste" value="tests" />
             <option label="Trif Radu-Nicolae" value="Radu" />

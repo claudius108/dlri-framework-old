@@ -76,12 +76,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    	'cuvântul.titlu-element.moştenit-etimon.neatestat'
 	    	)
 	    )
-	    then
-			let $processed-template :=
-				copy $template := $dlri:term-template
-				modify replace value of node $template/@xml:lang with 'la'
-				return $template
-			return insert node $processed-template after .	            
+	    then insert node $dlri:term-la-template after .	            
 	    else (),       
 	    if (@type = 'cuvântul.titlu-element.de.substrat')
 	    then insert nodes ($dlri:term-template, $dlri:term-template) after .  
@@ -95,28 +90,14 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
 	    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-word-template, $dlri:term-sufix-template) after .
 	    else (), 
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	           
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
 	    then insert nodes ($dlri:ptr-component-element-template, $dlri:ptr-base-word-template) after .
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
-	    then (
-	            insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
-	    )
-	    else (),   
+	    then insert nodes ($dlri:ptr-base-word-template, $dlri:ptr-component-element-template) after .
+	    else (), 
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
-	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'base-word',
-	            replace value of node ./following-sibling::*[2]/@type with 'base-word'
-	    )
+	    then insert nodes ($dlri:ptr-base-word-template, $dlri:ptr-base-word-template) after ./following-sibling::*[1]
 	    else (),
 	    
 	    
@@ -124,12 +105,22 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    
 	    
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
-	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],
-	            replace value of node ./following-sibling::*[1]/@type with 'latin-base',
-	            replace value of node ./following-sibling::*[2]/@type with 'added-base'
-	    )
+	    then
+			let $processed-template-1 :=
+				copy $template := $dlri:term-la-template
+				modify replace value of node $template/@type with 'latin-base'
+				return $template
+			let $processed-template-2 :=
+				copy $template := $dlri:ptr-template
+				modify replace value of node $template/@type with 'added-base'
+				return $template				
+			return insert nodes ($processed-template-1, $processed-template-2) after .
 	    else (),
+	    
+	    
+	    
+	    
+	    
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after ./following-sibling::*[1],

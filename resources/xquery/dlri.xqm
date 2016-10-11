@@ -46,6 +46,10 @@ declare variable $dlri:term-sufix-template as element() :=
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="sufix" subtype="unknown" />
 ;
 
+declare variable $dlri:term-la-template as element() :=
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="la" type="unknown" subtype="unknown" />
+;
+
 declare variable $dlri:ptr-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" target="unknown" />
 ;
