@@ -291,6 +291,16 @@ ua:action(
 	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
 ),
 ua:action(
+    "changedLangAttrForPtrElement",
+    map { 
+        "name" := "changedLangAttrForPtrElement"
+    },
+	oxy:execute-xquery-update-script("actions/changedLangAttrForPtrElement.xq")
+),
+
+
+
+ua:action(
     "insertSenseElementAsFirstChild",
     map { 
         "name" := "insertSenseElementAsFirstChild"
@@ -344,6 +354,13 @@ ua:connect-observer("changedTypeAttrForNoteElementObserver", ua-dt:xpath-selecto
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
+),
+
+ua:observer("changedLangAttrForPtrElementObserver", "changedLangAttrForPtrElement"),
+ua:connect-observer("changedLangAttrForPtrElementObserver", ua-dt:xpath-selector('//ptr'),
+    map {
+        "attributes" := "true",
+        "attributeFilter" := "['xml:lang']"}
 ),
 
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
