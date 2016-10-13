@@ -177,6 +177,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        (
 	        	'',
 	            'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
+	            'cuvântul.titlu-formație.internă-denumire.comercială',
 	            'variantă-directă-cu.schimbare.de.suf.',
 	            'variantă-directă-refăcut.după.forma.articulată',
 	            'variantă-directă-refăcut.după.sg..art.',
@@ -212,7 +213,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
 	                'cuvântul.titlu-formație.internă-din.formulă.de.urare',
 	                'cuvântul.titlu-formație.internă-format.după',
-	                'cuvântul.titlu-formație.internă-denumire.comercială',
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
 	                'cuvântul.titlu-element.extern-calc',

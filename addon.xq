@@ -628,13 +628,6 @@ ua:template("cuvântul.titlu-formație.internă-format.după-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-format.după'] ~ term"), "cuvântul.titlu-formație.internă-format.după-template"),
 
-ua:template("cuvântul.titlu-formație.internă-denumire.comercială-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-denumire.comercială'] ~ term"), "cuvântul.titlu-formație.internă-denumire.comercială-template"),
-
 ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-bază-template",
     <template>
         Limba&amp;nbsp;
