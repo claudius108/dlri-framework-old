@@ -201,7 +201,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            (
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*',
-	                'cuvântul.titlu-formație.internă-prescurtare',
 	                'cuvântul.titlu-formație.internă-calc',
 	                'cuvântul.titlu-formație.internă-onomatopee',
 	                'cuvântul.titlu-formație.internă-contragere',
@@ -240,6 +239,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
+	            'cuvântul.titlu-formație.internă-prescurtare',                
 
 	            'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                
                 'cuvântul.titlu-formație.internă-format.după'
