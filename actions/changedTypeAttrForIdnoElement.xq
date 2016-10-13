@@ -178,9 +178,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        	'',
 	            'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
 	            'cuvântul.titlu-formație.internă-denumire.comercială',
-	            'variantă-directă-cu.schimbare.de.suf.',
-	            'variantă-directă-refăcut.după.forma.articulată',
-	            'variantă-directă-refăcut.după.sg..art.',
 	            'variantă-directă-sg..refăcut.după.plural',
 	            'variantă-directă-prin.etimologie.populară',
 	            'variantă-directă-prin.accidente.fonetice-afereză',
@@ -192,7 +189,10 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            'variantă-directă-prin.accidente.fonetice-elidare',
 	            'variantă-directă-prin.accidente.fonetice-metateză',
 	            'variantă-directă-prin.accidente.fonetice-propagare',
-	            'variantă-directă-prin.accidente.fonetice-sinereză'
+	            'variantă-directă-prin.accidente.fonetice-sinereză',
+	            'variantă-directă-refăcut.după.forma.articulată',
+	            'variantă-directă-refăcut.după.sg..art.',	            
+	            'variantă-directă-cu.schimbare.de.suf.'
 	        )
 	    )
 	    then ()
@@ -212,7 +212,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-formație.spontană.de.la',
 	                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
 	                'cuvântul.titlu-formație.internă-din.formulă.de.urare',
-	                'cuvântul.titlu-formație.internă-format.după',
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
 	                'cuvântul.titlu-element.extern-calc',
@@ -241,7 +240,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
-                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei'	    		
+                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
+                'cuvântul.titlu-formație.internă-format.după'
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))

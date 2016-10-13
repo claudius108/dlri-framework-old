@@ -619,15 +619,6 @@ ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-din.formulă.de.urare'] ~ term"), "cuvântul.titlu-formație.internă-din.formulă.de.urare-template"),
 
-ua:template("cuvântul.titlu-formație.internă-format.după-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-format.după'] ~ term"), "cuvântul.titlu-formație.internă-format.după-template"),
-
 ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-bază-template",
     <template>
         Limba&amp;nbsp;
