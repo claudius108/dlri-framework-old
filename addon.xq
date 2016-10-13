@@ -748,18 +748,6 @@ ua:template("cuvântul.titlu-formație.internă-izolare-term",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-izolare-'] ~ term"), "cuvântul.titlu-formație.internă-izolare-term"),
-        
-ua:template("cuvântul.titlu-formație.internă-trimitere-V.-template",
-    <template>
-        V.&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        Nr. sens&amp;nbsp;
-        <input data-ua-ref="{@type}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-trimitere-V.'] ~ ptr"), "cuvântul.titlu-formație.internă-trimitere-V.-template"),
 
 ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-template",
     <template>
