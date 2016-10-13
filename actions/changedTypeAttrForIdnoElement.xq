@@ -230,17 +230,17 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            insert node $dlri:term-template after .
 	    )
 	    else (),         
-	    if (@type = ('cuvântul.titlu-formație.internă-trimitere-V.',
-	    		'cuvântul.titlu-formație.internă-derivat.regresiv',
-	    		'cuvântul.titlu-formație.internă-derivat.postverbal',
+	    if (@type = (
+	    		'cuvântul.titlu-formație.internă-trimitere-V.',
 	    		'cuvântul.titlu-formație.internă-trimitere-Cf.',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
-	            'cuvântul.titlu-formație.internă-prescurtare',                
-
+	            'cuvântul.titlu-formație.internă-prescurtare', 
+				'cuvântul.titlu-formație.internă-derivat.regresiv',
+	    		'cuvântul.titlu-formație.internă-derivat.postverbal',
 	            'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                
                 'cuvântul.titlu-formație.internă-format.după'
 	    	)

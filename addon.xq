@@ -465,7 +465,7 @@ ua:template("etym-before",
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat' and count(bibl) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(form[@type = 'grammatical-information']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
@@ -723,17 +723,6 @@ ua:template("cuvântul.titlu-formație.internă-izolare-term",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-izolare-'] ~ term"), "cuvântul.titlu-formație.internă-izolare-term"),
 
-ua:template("cuvântul.titlu-formație.internă-trimitere-De la-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        Nr. sens&amp;nbsp;
-        <input data-ua-ref="{@type}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-De la-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-De la-template"),
-
 ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
         etimon neatestat&amp;nbsp;
@@ -746,17 +735,6 @@ ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat.(reconstruit)-term"),
-
-ua:template("cuvântul.titlu-formație.internă-trimitere-Din-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        Nr. sens&amp;nbsp;
-        <input data-ua-ref="{@type}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-trimitere-Din-'] ~ term"), "cuvântul.titlu-formație.internă-trimitere-Din-template"),
 
 ua:template("cuvântul.titlu-element.extern-calc-template",
     <template>
@@ -1804,7 +1782,7 @@ ua:template("gramGrp-before",
     <template>
         Categorie gramaticală:
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = 'sense' or count(parent::*/gramGrp) > 1};" />        
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = ('sense', 'etym') or count(parent::*/gramGrp) > 1};" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("gramGrp:before"), "gramGrp-before"),
