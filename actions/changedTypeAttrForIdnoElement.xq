@@ -197,11 +197,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),  
 	    if (@type =
 	            (
-	                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
-	                'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
-	                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
-	                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
-	                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*',
 	                'cuvântul.titlu-formație.internă-prescurtare',
@@ -241,7 +236,12 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@type = ('cuvântul.titlu-formație.internă-trimitere-V.',
 	    		'cuvântul.titlu-formație.internă-derivat.regresiv',
 	    		'cuvântul.titlu-formație.internă-derivat.postverbal',
-	    		'cuvântul.titlu-formație.internă-trimitere-Cf.'
+	    		'cuvântul.titlu-formație.internă-trimitere-Cf.',
+                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
+                'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
+                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
+                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
+                'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei'	    		
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
