@@ -176,6 +176,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@cert and @type = 
 	        (
 	        	'',
+	            'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
 	            'variantă-directă-cu.schimbare.de.suf.',
 	            'variantă-directă-refăcut.după.forma.articulată',
 	            'variantă-directă-refăcut.după.sg..art.',
@@ -206,7 +207,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
 	                'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                    
-	                'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
 	                'cuvântul.titlu-formație.internă-formație.onomatopeică',
 	                'cuvântul.titlu-formație.internă-formație.spontană.de.la',
 	                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
