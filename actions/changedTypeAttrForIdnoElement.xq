@@ -128,11 +128,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	            replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
 	    )
 	    else (),    
-	    if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
-	    then (
-	            insert nodes $dlri:ptr-template after .
-	         )
-	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template, $dlri:term-template, $dlri:term-template) after .,
@@ -245,7 +240,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),         
 	    if (@type = ('cuvântul.titlu-formație.internă-trimitere-V.',
 	    		'cuvântul.titlu-formație.internă-derivat.regresiv',
-	    		'cuvântul.titlu-formație.internă-derivat.postverbal'
+	    		'cuvântul.titlu-formație.internă-derivat.postverbal',
+	    		'cuvântul.titlu-formație.internă-trimitere-Cf.'
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
