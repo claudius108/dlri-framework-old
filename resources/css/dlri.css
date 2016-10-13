@@ -100,7 +100,7 @@ quote {
 	height: 200px;
 }
 
-entry>gramGrp>* {
+gramGrp > * {
 	display: inline-block;
 	margin-right: 10px;
 }
