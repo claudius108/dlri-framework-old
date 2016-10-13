@@ -207,7 +207,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-contragere',
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
-	                'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                    
 	                'cuvântul.titlu-formație.internă-formație.onomatopeică',
 	                'cuvântul.titlu-formație.internă-formație.spontană.de.la',
 	                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
@@ -241,6 +240,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
                 'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
+
+	            'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',                
                 'cuvântul.titlu-formație.internă-format.după'
 	    	)
 	    	or 
