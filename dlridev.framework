@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<serialized version="18.0" xml:space="preserve">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><serialized version="18.0" xml:space="preserve">
 	<serializableOrderedMap>
 		<entry>
 			<String>document.types</String>
 			<documentTypeDescriptor-array>
 				<documentTypeDescriptor>
 					<field name="extensionPatch">
-						<null />
+						<null/>
 					</field>
 					<field name="name">
 						<String>dlridev</String>
 					</field>
 					<field name="schemaDescriptor">
-						<null />
+						<null/>
 					</field>
 					<field name="classpath">
 						<String-array>
@@ -22,7 +21,7 @@
 						<String>${framework}/java/addon-builder.jar</String></String-array>
 					</field>
 					<field name="parentClassLoaderID">
-						<null />
+						<null/>
 					</field>
 					<field name="authorExtensionDescriptor">
 						<authorExtension>
@@ -33,7 +32,7 @@
 											<String>${framework}/resources/css/framework.less</String>
 										</field>
 										<field name="title">
-											<String />
+											<String/>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -44,7 +43,7 @@
 											<String>${framework}/resources/css/dlri.css</String>
 										</field>
 										<field name="title">
-											<String />
+											<String/>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -55,7 +54,7 @@
 											<String>${framework}/resources/css/sense.css</String>
 										</field>
 										<field name="title">
-											<String />
+											<String/>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -71,98 +70,23 @@
 							</field>
 							<field name="actionDescriptors">
 								
-							<action-array><action><field name="id"><String>deleteSenseElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>Ștergere</String></field><field name="description"><String /></field><field
-	name="smallIconPath"><String>../../resources/images/delete.png</String></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/deleteCurrentElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>editEtymologicalNote</String></field><field name="accelerator"><String /></field><field
-	name="accessKey"><String /></field><field name="name"><String>Editează notă</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String>${framework}/resources/images/edit.png</String></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map /></field><field
-	name="operationID"><String>ro.kuberam.oxygen.addonBuilder.operations.OpenDocumentFragmentInNewTabOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedValueAttrForFormElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedValueAttrForFormElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForFormElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedValueAttrForPosElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedValueAttrForPosElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForPosElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedValueAttrForSubcElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedValueAttrForSubcElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForSubcElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedTypeAttrForIdnoElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedTypeAttrForIdnoElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForIdnoElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedValueAttrForUsgElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedValueAttrForUsgElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForUsgElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedTypeAttrForNoteElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedTypeAttrForNoteElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForNoteElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>changedLangAttrForPtrElement</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>changedLangAttrForPtrElement</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/changedLangAttrForPtrElement.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>insertSenseElementAsFirstChild</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>insertSenseElementAsFirstChild</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFirstChild.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field
-	name="id"><String>insertSenseElementAsFollowingSibling</String></field><field
-	name="accelerator"><String /></field><field name="accessKey"><String /></field><field
-	name="name"><String>insertSenseElementAsFollowingSibling</String></field><field
-	name="description"><String /></field><field name="smallIconPath"><String /></field><field
-	name="largeIconPath"><String /></field><field name="actionModes"><actionMode-array><actionMode><field
-	name="xpathCondition"><String /></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFollowingSibling.xq</String></entry></map></field><field
-	name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action></action-array></field>
+							<action-array><action><field name="id"><String>deleteSenseElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>Ștergere</String></field><field name="description"><String/></field><field name="smallIconPath"><String>../../resources/images/delete.png</String></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/deleteCurrentElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>editEtymologicalNote</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>Editează notă</String></field><field name="description"><String/></field><field name="smallIconPath"><String>${framework}/resources/images/edit.png</String></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map/></field><field name="operationID"><String>ro.kuberam.oxygen.addonBuilder.operations.OpenDocumentFragmentInNewTabOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForFormElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForFormElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForFormElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForPosElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForPosElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForPosElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForSubcElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForSubcElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForSubcElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedTypeAttrForIdnoElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedTypeAttrForIdnoElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForIdnoElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForUsgElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForUsgElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForUsgElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedTypeAttrForNoteElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedTypeAttrForNoteElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForNoteElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedLangAttrForPtrElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedLangAttrForPtrElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedLangAttrForPtrElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>insertSenseElementAsFirstChild</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>insertSenseElementAsFirstChild</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFirstChild.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>insertSenseElementAsFollowingSibling</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>insertSenseElementAsFollowingSibling</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFollowingSibling.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action></action-array></field>
 							<field name="menubarDescriptor">
 								<menu>
 									<field name="label">
 										<String>Menu</String>
 									</field>
 									<field name="accessKey">
-										<null />
+										<null/>
 									</field>
 									<field name="iconPath">
-										<null />
+										<null/>
 									</field>
 									<field name="menuEntriesDescriptorList">
-										<menuEntry-array />
+										<menuEntry-array/>
 									</field>
 									<field name="context">
-										<null />
+										<null/>
 									</field>
 								</menu>
 							</field>
@@ -172,16 +96,16 @@
 										<String>Contextual menu</String>
 									</field>
 									<field name="accessKey">
-										<null />
+										<null/>
 									</field>
 									<field name="iconPath">
-										<null />
+										<null/>
 									</field>
 									<field name="menuEntriesDescriptorList">
-										<menuEntry-array />
+										<menuEntry-array/>
 									</field>
 									<field name="context">
-										<null />
+										<null/>
 									</field>
 								</menu>
 							</field>
@@ -194,55 +118,55 @@
 										<Integer>2</Integer>
 									</field>
 									<field name="largeIconPath">
-										<null />
+										<null/>
 									</field>
 									<field name="smallIconPath">
-										<null />
+										<null/>
 									</field>
 									<field name="toolbarEntriesDescriptorList">
-										<toolbarEntry-array />
+										<toolbarEntry-array/>
 									</field>
 								</toolbar>
 							</field>
 							<field name="additionalToolbarsDescriptors">
-								<null />
+								<null/>
 							</field>
 							<field name="contextualItems">
 								<contextProvider>
 									<field name="items">
-										<contextItem-array />
+										<contextItem-array/>
 									</field>
 									<field name="removeItems">
-										<null />
+										<null/>
 									</field>
 								</contextProvider>
 							</field>
 							<field name="tableSupportClassName">
-								<null />
+								<null/>
 							</field>
 							<field name="tableCellSeparatorSupportClassName">
-								<null />
+								<null/>
 							</field>
 							<field name="tableColWidthSupportClassName">
-								<null />
+								<null/>
 							</field>
 							<field name="customReferencesResolver">
-								<null />
+								<null/>
 							</field>
 							<field name="editPropertiesHandler">
-								<null />
+								<null/>
 							</field>
 							<field name="authorExtensionStateListener">
 								
 							<String>AuthorExtensionStateListener</String></field>
 							<field name="attributesRecognizer">
-								<null />
+								<null/>
 							</field>
 							<field name="authorActionEventHandler">
-								<null />
+								<null/>
 							</field>
 							<field name="authorImageDecorator">
-								<null />
+								<null/>
 							</field>
 						</authorExtension>
 					</field>
@@ -252,10 +176,10 @@
 						</String-array>
 					</field>
 					<field name="xmlCatalogs">
-						<String-array />
+						<String-array/>
 					</field>
 					<field name="description">
-						<String />
+						<String/>
 					</field>
 					<field name="doctypeRules">
 						<documentTypeRule-array>
@@ -273,7 +197,7 @@
 									<String>*</String>
 								</field>
 								<field name="javaRuleClass">
-									<String />
+									<String/>
 								</field>
 								<field name="attributeLocalName">
 									<String>*</String>
@@ -288,16 +212,16 @@
 						</documentTypeRule-array>
 					</field>
 					<field name="scenarios">
-						<scenario-array />
+						<scenario-array/>
 					</field>
 					<field name="validationScenarios">
-						<validationScenario-array />
+						<validationScenario-array/>
 					</field>
 					<field name="defaultValidationScenarios">
-						<null />
+						<null/>
 					</field>
 					<field name="defaultTransformationScenarios">
-						<null />
+						<null/>
 					</field>
 					<field name="extensionsBundleClassName">
 						
@@ -309,37 +233,37 @@
 						<String>Author</String>
 					</field>
 					<field name="elementLocatorExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="schemaManagerFilterExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="authorSWTDndExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="textSWTDndExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="authorSwingDndExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="cssStylesFilterExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="attributesValueEditor">
-						<null />
+						<null/>
 					</field>
 					<field name="priority">
 						<Integer>4</Integer>
 					</field>
 					<field name="xmlNodeCustomizerExtension">
-						<null />
+						<null/>
 					</field>
 					<field name="externalObjectInsertionHandler">
-						<null />
+						<null/>
 					</field>
 					<field name="customAttributeValueEditor">
-						<null />
+						<null/>
 					</field>
 				</documentTypeDescriptor>
 			</documentTypeDescriptor-array>
