@@ -609,16 +609,6 @@ ua:template("cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la'] ~ term"), "cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-template"),
 
-ua:template("cuvântul.titlu-formație.internă-contragere-template",
-    <template>
-        Contras din&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contragere'] ~ term"), "cuvântul.titlu-formație.internă-contragere-template"),
-
 ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
     <template>
         Din formulă de urare&amp;nbsp;

@@ -185,7 +185,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*',
 	                'cuvântul.titlu-formație.internă-calc',
-	                'cuvântul.titlu-formație.internă-contragere',
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
 	                'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
 	                'cuvântul.titlu-formație.internă-formație.onomatopeică',
@@ -227,7 +226,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-format.după',
                 'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
                 'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este',
-                'cuvântul.titlu-formație.internă-onomatopee'
+                'cuvântul.titlu-formație.internă-onomatopee',
+                'cuvântul.titlu-formație.internă-contragere'
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
