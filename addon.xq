@@ -226,6 +226,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertBaseWord.xq") 
 ),
 ua:action(
+    "insertPtrElement",
+    map { 
+        "name" := "insertPtrElement",
+        "smallIconPath" := "../../resources/images/add.png"
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertPtrElement.xq") 
+),
+ua:action(
     "insertComponentElement",
     map { 
         "name" := "insertComponentElement",
@@ -993,46 +1001,27 @@ ua:template("cuvântul.titlu-formație.internă-derivat.postverbal-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat.postverbal'] ~ term"), "cuvântul.titlu-formație.internă-derivat.postverbal-template"),
 
-ua:template("contamination-element",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'contamination-element']"), "contamination-element"),
-
-ua:template("contaminated-element",
+ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template",
     <template>
         Contaminare între&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
+        {
+            ua:get-template('ptr-template')
+        }
+        \00000Aşi&amp;nbsp;
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element']"), "contaminated-element"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:nth-of-type(1)"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template"),
 
-ua:template("alternative-contaminated-element",
+ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template",
     <template>
-        <input data-ua-ref="{text()}" size="22" />
+        {
+            ua:get-template('ptr-template')
+        }
+        <button onclick="{oxy:xquery-update-action('insertPtrElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'alternative-contaminated-element']"), "alternative-contaminated-element"),
-
-ua:template("contamination-between",
-    <template>
-        &amp;nbsp;şi&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'] ~ term[type = 'contamination-element']"), "contamination-between"),
-
-ua:template("alternative-contamination-between",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertAlternativeEtymon.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update('resources/xquery/deleteContaminationElement.xq')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'alternative-contamination-element']) > 1};"><img src="../../resources/images/delete.png" /></button>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'contaminated-element'] ~ term[type = 'alternative-contamination-element']"), "alternative-contamination-between"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:not( :first-of-type)"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template"),
 
 ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
     <template>
