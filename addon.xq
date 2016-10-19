@@ -2505,8 +2505,8 @@ ua:template("entry-form-headword-after",
                 map {
                     "edit" := "#text",
                     "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
-                    "width" := "1100",
-                    "height" := "350"
+                    "treeWidth" := "1100",
+                    "treeHeight" := "350"
                 }            
             ))
         }
