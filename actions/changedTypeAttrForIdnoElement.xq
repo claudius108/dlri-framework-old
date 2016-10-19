@@ -186,8 +186,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*',
 	                'cuvântul.titlu-formație.internă-calc',
 	                'cuvântul.titlu-formație.internă-formație.onomatopeică',
-	                'cuvântul.titlu-formație.internă-formație.spontană.de.la',
-	                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
 	                'cuvântul.titlu-formație.internă-din.formulă.de.urare',
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
@@ -227,7 +225,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
                 'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este',
                 'cuvântul.titlu-formație.internă-onomatopee',
-                'cuvântul.titlu-formație.internă-contragere'
+                'cuvântul.titlu-formație.internă-contragere',
+	            'cuvântul.titlu-formație.internă-formație.spontană.de.la',
+                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la'	            
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))

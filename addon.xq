@@ -589,26 +589,6 @@ ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-formație.onomatopeică'] ~ term"), "cuvântul.titlu-formație.internă-formație.onomatopeică-template"),
 
-ua:template("cuvântul.titlu-formație.internă-formație.spontană.de.la-template",
-    <template>
-        Formaţie spontană de la&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-formație.spontană.de.la'] ~ term"), "cuvântul.titlu-formație.internă-formație.spontană.de.la-template"),
-
-ua:template("cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-template",
-    <template>
-        Prin figură etimologică de la&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la'] ~ term"), "cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la-template"),
-
 ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
     <template>
         Din formulă de urare&amp;nbsp;
