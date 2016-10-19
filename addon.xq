@@ -2504,9 +2504,9 @@ ua:template("entry-form-headword-after",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
+                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
                     "width" := "1100",
-                    "height" := "350",
-                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))"
+                    "height" := "350"
                 }            
             ))
         }
