@@ -1,11 +1,11 @@
 <select>
-    <option xml:id="" label="" value="" />
+    <option xml:id="id" label="" value="" />
     <option xml:id="sq" label="alb." value="sq" />
-    <option xml:id="rup" label="arom." value="rup" />
+    <option xml:id="rup" label="ar." value="rup" />
     <option xml:id="bg" label="bg." value="bg" />
     <option xml:id="ca" label="cat." value="ca" />
     <option xml:id="cs" label="ceh." value="cs" />
-    <option xml:id="hr" label="cr." value="hr" />
+    <option xml:id="cs" label="ceh." value="cs" />
     <option xml:id="dlm" label="dalm." value="dlm" />
     <option xml:id="he" label="ebr." value="he" />
     <option xml:id="rm-puter-vallader" label="engad." value="rm-puter-vallader" />
@@ -15,15 +15,15 @@
     <option xml:id="fur" label="friul." value="fur" />
     <option xml:id="de" label="germ." value="de" />
     <option xml:id="grc" label="gr." value="grc" />
-    <option xml:id="ruo" label="istr." value="ruo" />
+    <option xml:id="ruo" label="ir." value="ruo" />
     <option xml:id="it" label="it." value="it" />
     <option xml:id="la" label="lat." value="la" />
     <option xml:id="la-x-popular" label="lat. pop." value="la-x-popular" />
     <option xml:id="la-x-medieval" label="lat. mediev." value="la-x-medieval" />
     <option xml:id="lt" label="lituan." value="lt" />
     <option xml:id="hu" label="magh." value="hu" />
-    <option xml:id="ruq" label="megl." value="ruq" />
-    <option xml:id="gre" label="m. gr." value="gre" />
+    <option xml:id="ruq" label="mr." value="ruq" />
+    <option xml:id="gre" label="gr. bizant." value="gre" />
     <option xml:id="el" label="ngr." value="el" />
     <option xml:id="pl" label="pol." value="pl" />
     <option xml:id="pt" label="port." value="pt" />

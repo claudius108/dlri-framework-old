@@ -712,15 +712,6 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-templat
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una.sau.mai.multe.variante.lexicale-'][type $= '-trimitere-cf..cuvânt'] ~ ptr"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-izolare-term",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-formație.internă-izolare-'] ~ term"), "cuvântul.titlu-formație.internă-izolare-term"),
-
 ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
         etimon neatestat&amp;nbsp;
