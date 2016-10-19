@@ -1,4 +1,4 @@
-<serialized version="18.0" xml:space="preserve">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><serialized version="18.0" xml:space="preserve">
 	<serializableOrderedMap>
 		<entry>
 			<String>document.types</String>
@@ -18,7 +18,7 @@
 							<String>${framework}/java/addon-builder-plugin.jar</String>
 							<String>${framework}/java/framework.jar</String>
 							<String>${oxygenInstallDir}/jre/lib/jfxrt.jar</String>
-						<String>${framework}/java/addon-builder.jar</String></String-array>
+						</String-array>
 					</field>
 					<field name="parentClassLoaderID">
 						<null/>
@@ -224,7 +224,7 @@
 						<null/>
 					</field>
 					<field name="extensionsBundleClassName">						
-					<String>dlridev.ExtensionsBundle</String></field>
+					<null/></field>
 					<field name="useImposedInitialPage">
 						<Boolean>true</Boolean>
 					</field>
