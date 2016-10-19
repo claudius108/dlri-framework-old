@@ -624,14 +624,6 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-forma
 ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
 
-ua:template("variantă-directă-prin.apropiere.de-template",
-    <template>
-        Prin apropiere de&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.apropiere.de'] ~ term"), "variantă-directă-prin.apropiere.de-template")
-,
 ua:template("variantă-directă-prin.derivare.cu.suf.-template",
     <template>
         Limba&amp;nbsp;
@@ -651,14 +643,6 @@ ua:template("variantă-directă-sub.influența-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sub.influența'] ~ term"), "variantă-directă-sub.influența-template")
-,
-ua:template("variantă-directă-etimologie.populară.prin.apropiere.de-template",
-    <template>
-        Etimologie populară prin apropiere de&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-etimologie.populară.prin.apropiere.de'] ~ term"), "variantă-directă-etimologie.populară.prin.apropiere.de-template")
 ,
 ua:template("variantă-directă-din.lat.-template",
     <template>

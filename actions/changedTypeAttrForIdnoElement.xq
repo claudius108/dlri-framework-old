@@ -186,10 +186,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
 	                'cuvântul.titlu-element.extern-calc',
-	                'variantă-directă-prin.apropiere.de',
 	                'variantă-directă-prin.derivare.cu.suf.',
 	                'variantă-directă-sub.influența',
-	                'variantă-directă-etimologie.populară.prin.apropiere.de',
 	                'variantă-directă-din.lat.',
 	                'variantă-directă-derivat.regresiv.de.la',
 	                'variantă-directă-prin.confuzie.cu'
@@ -222,7 +220,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
                 'variantă-directă-etimon.variantă-atestat',
                 'variantă-directă-etimon.variantă-reconstruit',
-                'variantă-directă-singular.refăcut.după.pluralul'                
+                'variantă-directă-singular.refăcut.după.pluralul',
+                'variantă-directă-prin.apropiere.de',
+                'variantă-directă-etimologie.populară.prin.apropiere.de'                
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
