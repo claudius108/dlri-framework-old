@@ -156,6 +156,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        	'',
 	            'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
 	            'cuvântul.titlu-formație.internă-denumire.comercială',
+                'cuvântul.titlu-element.necunoscut',
 	            'variantă-directă-sg..refăcut.după.plural',
 	            'variantă-directă-prin.etimologie.populară',
 	            'variantă-directă-prin.accidente.fonetice-afereză',
@@ -185,10 +186,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
 	                'cuvântul.titlu-element.extern-calc',
-	                'cuvântul.titlu-element.necunoscut',
-	                'variantă-directă-etimon.variantă-atestat',
-	                'variantă-directă-etimon.variantă-reconstruit',                
-	                'variantă-directă-singular.refăcut.după.pluralul',
 	                'variantă-directă-prin.apropiere.de',
 	                'variantă-directă-prin.derivare.cu.suf.',
 	                'variantă-directă-sub.influența',
@@ -222,7 +219,10 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-onomatopee',
                 'cuvântul.titlu-formație.internă-contragere',
 	            'cuvântul.titlu-formație.internă-formație.spontană.de.la',
-                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la'	            
+                'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
+                'variantă-directă-etimon.variantă-atestat',
+                'variantă-directă-etimon.variantă-reconstruit',
+                'variantă-directă-singular.refăcut.după.pluralul'                
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))

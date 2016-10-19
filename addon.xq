@@ -624,14 +624,6 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-forma
 ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" /></template>),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
 
-ua:template("variantă-directă-singular.refăcut.după.pluralul-template",
-    <template>
-        Sg. refăcut după pluralul&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-singular.refăcut.după.pluralul'] ~ term"), "variantă-directă-singular.refăcut.după.pluralul-template")
-,
 ua:template("variantă-directă-prin.apropiere.de-template",
     <template>
         Prin apropiere de&amp;nbsp;
@@ -717,13 +709,6 @@ ua:template("cuvântul.titlu-element.extern-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-calc'] ~ term"), "cuvântul.titlu-element.extern-calc-template"),
-
-ua:template("cuvântul.titlu-element.necunoscut-template",
-    <template>
-        Et. nec.
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.necunoscut'] ~ term"), "cuvântul.titlu-element.necunoscut-template"),
 
 ua:template("număr-de-sens-template",
     <template>
