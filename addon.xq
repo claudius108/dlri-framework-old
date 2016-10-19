@@ -694,12 +694,13 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una.sau.mai.multe.va
 ,
 ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
-        etimon neatestat&amp;nbsp;
+        Limba&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
             <option label="" value="unknown" />
             <option label="lat*" value="la" />
             <option label="v. sl." value="v. sl." />            
         </select>
+        etimon neatestat (necunoscut)&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),

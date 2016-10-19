@@ -130,11 +130,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),    
 	    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
 	    then insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
-	    else (),
-	    if (@type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)')
-	    then (
-	            insert node $dlri:term-template after .
-	    )
 	    else (),       
 	    if (@type = 'cuvântul.titlu-element.extern-trimitere')
 	    then (
