@@ -9,4 +9,7 @@ let $processed-term-template :=
 	modify replace value of node $template/@type with 'translation'
 	return $template
 
-return insert node $processed-term-template as last into .
+return
+	if (tei:note)
+	then insert node $processed-term-template before tei:note[1]
+	else insert node $processed-term-template as last into .

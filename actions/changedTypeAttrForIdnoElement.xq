@@ -56,10 +56,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             insert node doc('../content-models/grammatical-information-for-gender.xml') after .
     )
     else (),    
-    
-    
-    
-    
     (
     	delete nodes ./following-sibling::*[not(local-name() = 'note')],
     	let $cert-value :=
@@ -99,11 +95,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
 	    then insert nodes ($dlri:ptr-base-word-template, $dlri:ptr-base-word-template) after .
 	    else (),
-	    
-	    
-	    
-	    
-	    
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
 	    then
 			let $processed-template-1 :=
@@ -116,11 +107,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 				return $template				
 			return insert nodes ($processed-template-1, $processed-template-2) after .
 	    else (),
-	    
-	    
-	    
-	    
-	    
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
 	    then (
 	            insert nodes ($dlri:term-template, $dlri:term-template) after .,
