@@ -1116,16 +1116,6 @@ ua:template("etym-note-izvor-term-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'izvor'] > term:nth-of-type(1):before"), "etym-note-izvor-term-template"),
 
-ua:template("etym-note-trimitere.intrare-ptr-template",
-    <template>
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        Nr. sens&amp;nbsp;
-        <input data-ua-ref="{@type}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'trimitere.intrare'] > ptr:before"), "etym-note-trimitere.intrare-ptr-template"),
-
 ua:template("usg-before",
     <template>
         Indicații privind folosirea:&amp;nbsp;
