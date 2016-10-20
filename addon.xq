@@ -1633,7 +1633,7 @@ ua:template("bibl-ptr-before",
         <button onclick="{oxy:xquery('searchBibliographicReferences')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("bibl > ptr:before"), "bibl-ptr-before"),
+ua:attach-template(ua-dt:css-selector("bibl > ptr"), "bibl-ptr-before"),
 
 ua:template("bibl-date-before",
     <template>
