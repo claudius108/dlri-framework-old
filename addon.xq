@@ -467,7 +467,7 @@ ua:template("etym-before",
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat' and count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(gramGrp) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'una.sau.mai.multe.variante.lexicale-')] or count(term[@type = 'translation']) = 0};">Traducere etimon</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
@@ -564,17 +564,6 @@ ua:template("etym-idno-first-of-type",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
 
-ua:template("variantă-directă-etimon variantă-*-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-        Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-        Nr. sens&amp;nbsp;
-        <input data-ua-ref="{@type}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon variantă-'] ~ term"), "variantă-directă-etimon variantă-*-template"),
-
 ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template",
     <template>
         Formaţie onomatopeică&amp;nbsp;
@@ -615,8 +604,14 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element a
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template"),
 
-ua:template("translation", <template>Traducere etimon <input data-ua-ref="{text()}" size="22" /><button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" /></template>),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation"),
+ua:template("translation-template",
+	<template>
+		Traducere etimon&amp;nbsp;
+		<input data-ua-ref="{text()}" size="22" />
+		<button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+	</template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation-template"),
 
 ua:template("variantă-directă-prin.derivare.cu.suf.-template",
     <template>

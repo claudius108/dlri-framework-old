@@ -215,14 +215,14 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-contragere',
 	            'cuvântul.titlu-formație.internă-formație.spontană.de.la',
                 'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
-                'variantă-directă-etimon.variantă-atestat',
-                'variantă-directă-etimon.variantă-reconstruit',
                 'variantă-directă-singular.refăcut.după.pluralul',
                 'variantă-directă-prin.apropiere.de',
                 'variantă-directă-etimologie.populară.prin.apropiere.de'                
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
+	    	or
+	    	starts-with(@type, 'variantă-directă-etimon.variantă')
 	    )
 	    then (
 	        insert node $dlri:ptr-template after .
