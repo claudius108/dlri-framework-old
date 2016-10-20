@@ -131,11 +131,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
 	    then insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
 	    else (),       
-	    if (@type = 'cuvântul.titlu-element.extern-trimitere')
-	    then (
-	            insert node doc('../content-models/mentioned.xml') after .
-	         )
-	    else (),    
 	    if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor')
 	    then (
 	            insert nodes ($dlri:ptr-template, $dlri:bibl-template) after .
@@ -190,7 +185,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'variantă-directă-sub.influența',
 	                'variantă-directă-din.lat.',
 	                'variantă-directă-derivat.regresiv.de.la',
-	                'variantă-directă-prin.confuzie.cu'
+	                'variantă-directă-prin.confuzie.cu',
+	                'cuvântul.titlu-element.extern-trimitere-Cf.',
+	                'cuvântul.titlu-element.extern-trimitere-După'
 	            )
 	    )
 	    then (

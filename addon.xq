@@ -278,13 +278,6 @@ ua:action(
     oxy:execute-xquery-update-script("actions/changedTypeAttrForIdnoElement.xq")
 ),
 ua:action(
-    "insertCfElements",
-    map { 
-        "name" := "Cf."
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertCfElements.xq") 
-),
-ua:action(
     "changedValueAttrForUsgElement",
     map { 
         "name" := "changedValueAttrForUsgElement"
@@ -528,7 +521,8 @@ ua:template("etym-idno-first-of-type",
             <option label="cuvântul.titlu-element.extern-împrumut-etimon.sigur" value="cuvântul.titlu-element.extern-împrumut-etimon.sigur" />
             <option label="cuvântul.titlu-etimon.neatestat.(reconstruit)" value="cuvântul.titlu-etimon.neatestat.(reconstruit)" />
             <option label="cuvântul.titlu-element.extern-calc" value="cuvântul.titlu-element.extern-calc" />
-            <option label="cuvântul.titlu-element.extern-trimitere" value="cuvântul.titlu-element.extern-trimitere" />
+            <option label="cuvântul.titlu-element.extern-trimitere-Cf." value="cuvântul.titlu-element.extern-trimitere-Cf." />
+            <option label="cuvântul.titlu-element.extern-trimitere-După" value="cuvântul.titlu-element.extern-trimitere-După" />
             <option label="cuvântul.titlu-element.necunoscut" value="cuvântul.titlu-element.necunoscut" />
             <option label="unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor" value="unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor" />
             <option label="unul.sau.mai.multe.sensuri-sensul-cf..etimon" value="unul.sau.mai.multe.sensuri-sensul-cf..etimon" />
@@ -735,26 +729,16 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..și.etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template"),
 
-ua:template("etym-mentioned",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > mentioned"), "etym-mentioned"),
-
-ua:template("cuvântul.titlu-element.extern-trimitere-mentioned",
+ua:template("cuvântul.titlu-element.extern-trimitere-template",
     <template>
         Limba&amp;nbsp;
         {
             $languages-template
         }
-        &amp;nbsp;Cf.&amp;nbsp;
-        {
-            ua:get-template("etym-mentioned")
-        }
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-trimitere'] ~ mentioned"), "cuvântul.titlu-element.extern-trimitere-mentioned"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-element.extern-trimitere'] ~ term"), "cuvântul.titlu-element.extern-trimitere-template"),
 
 ua:template("cuvântul.titlu-element.de.substrat-term-1-etymon",
     <template>
