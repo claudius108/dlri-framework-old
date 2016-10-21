@@ -51,15 +51,15 @@ declare variable $dlri:term-la-template as element() :=
 ;
 
 declare variable $dlri:ptr-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unknown" subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unknown" subtype="unknown" target="unknown" />
 ;
 
 declare variable $dlri:ptr-base-word-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="base-word" subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="base-word" subtype="unknown" target="unknown" />
 ;
 
 declare variable $dlri:ptr-component-element-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="component-element" subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="component-element" subtype="unknown" target="unknown" />
 ;
 
 declare variable $dlri:sense-template as element() :=

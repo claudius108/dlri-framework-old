@@ -292,11 +292,11 @@ ua:action(
 	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
 ),
 ua:action(
-    "changedLangAttrForPtrElement",
+    "changedLangAttrForTermElement",
     map { 
-        "name" := "changedLangAttrForPtrElement"
+        "name" := "changedLangAttrForTermElement"
     },
-	oxy:execute-xquery-update-script("actions/changedLangAttrForPtrElement.xq")
+	oxy:execute-xquery-update-script("actions/changedLangAttrForTermElement.xq")
 ),
 
 
@@ -357,8 +357,8 @@ ua:connect-observer("changedTypeAttrForNoteElementObserver", ua-dt:xpath-selecto
         "attributeFilter" := "['type']"}
 ),
 
-ua:observer("changedLangAttrForPtrElementObserver", "changedLangAttrForPtrElement"),
-ua:connect-observer("changedLangAttrForPtrElementObserver", ua-dt:xpath-selector('//ptr'),
+ua:observer("changedLangAttrForTermElementObserver", "changedLangAttrForTermElement"),
+ua:connect-observer("changedLangAttrForTermElementObserver", ua-dt:xpath-selector('//term'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['xml:lang']"}
