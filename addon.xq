@@ -247,7 +247,7 @@ ua:action(
         "name" := "Editează notă",
         "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
-    oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.OpenDocumentFragmentInNewTabOperation")
+    oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation")
 ),
 ua:action(
     "changedValueAttrForFormElement",
