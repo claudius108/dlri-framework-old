@@ -24,6 +24,19 @@
 				<version>1.0</version>
 				<executions>
 					<execution>
+						<id>get-etymology-types</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>download-single</goal>
+						</goals>
+						<configuration>
+							<url>http://188.212.37.221:8080</url>
+							<fromFile>apps/dlri-app/services/etymology-types/get-etymology-types.xql</fromFile>
+							<toFile>${basedir}/resources/css/datalists/etym-options.less</toFile>
+						</configuration>
+					</execution>
+									
+					<execution>
 						<id>download-languages-controlled-vocabulary</id>
 						<phase>prepare-package</phase>
 						<goals>
