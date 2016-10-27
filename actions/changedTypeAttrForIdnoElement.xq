@@ -55,7 +55,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             delete nodes ./following-sibling::*,
             insert node doc('../content-models/grammatical-information-for-gender.xml') after .
     )
-    else (),    
+    else (),
+    
     (
     	delete nodes ./following-sibling::*[not(local-name() = 'note')],
     	let $cert-value :=
@@ -66,7 +67,11 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     		)
     		then 'low'
     		else 'high'
-    	return replace value of node parent::*/@cert with $cert-value,     
+    	return
+    		if (parent::*/@cert)
+    		then replace value of node parent::*/@cert with $cert-value
+    		else ()   	
+    	,
 	    if (@type = (
 	    	'cuvântul.titlu-element.moştenit-etimon.atestat',
 	    	'cuvântul.titlu-element.moştenit-etimon.neatestat'
@@ -219,5 +224,5 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	        insert node $dlri:bibl-template after .
 	    )
 	    else ()
-	 )
+	)
 )
