@@ -9,7 +9,7 @@ declare variable $frameworkDirPath external;
 declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/controlled-vocabularies/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
-(: download the controlled vocabulary with etymology types :)
+(: process the controlled vocabulary for etymology types :)
 let $etymology-types :=
 	for $concept in doc($ontology-github-url || "/etymology-types.rdf")//skos:Concept
 	return $concept/skos:prefLabel/text()
@@ -28,7 +28,7 @@ let $processed-etymology-types :=
 		""
 	)
 
-(: download the controlled vocabulary with languages :)
+(: process the controlled vocabulary for languages :)
 let $languages :=
 	<select>
 		{
@@ -37,6 +37,16 @@ let $languages :=
 		}
 	</select>		
 
+(: process the controlled vocabulary for special characters :)
+let $special-characters :=
+	(
+		<properties>
+			{
+				for $concept in doc($ontology-github-url || "/special-characters.rdf")//skos:Concept
+				return <entry key="{$concept/skos:notation}">{$concept/skos:definition/text()}</entry>		
+			}		
+		</properties>
+	)
 
 return (
 	file:write-text(file:path-to-native($frameworkDirPath || "/resources/css/datalists/etymology-types.less"), $processed-etymology-types)
@@ -49,4 +59,13 @@ return (
 		  <output:indent value="yes" />
 		</output:serialization-parameters>		
 	)
+	,
+	file:write(
+		file:path-to-native($frameworkDirPath || "/target/special-characters.xml"),
+		$special-characters,
+		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+		  <output:indent value="yes" />
+		  <output:doctype-system value="http://java.sun.com/dtd/properties.dtd" />
+		</output:serialization-parameters>		
+	)	
 )
