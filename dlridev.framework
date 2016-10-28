@@ -223,8 +223,9 @@
 					<field name="defaultTransformationScenarios">
 						<null/>
 					</field>
-					<field name="extensionsBundleClassName">						
-					<String>dlridev.ExtensionsBundle</String></field>
+					<field name="extensionsBundleClassName">
+						<null/>
+					</field>
 					<field name="useImposedInitialPage">
 						<Boolean>true</Boolean>
 					</field>
