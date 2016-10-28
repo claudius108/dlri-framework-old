@@ -28,4 +28,8 @@ let $processed-etymology-types :=
 		""
 	)
 
-return file:write-text(file:path-to-native($frameworkDirPath || "/resources/css/datalists/etymology-types.less"), $processed-etymology-types)
+let $languages
+
+return (
+	file:write-text(file:path-to-native($frameworkDirPath || "/resources/css/datalists/etymology-types.less"), $processed-etymology-types)
+)
