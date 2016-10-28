@@ -9,7 +9,7 @@ declare namespace html = "http://www.w3.org/1999/xhtml";
 declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework(dlri)}");
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
-declare variable $language-codes := doc("../resources/controlled-vocabularies/languages.xml");
+declare variable $language-codes := doc("../resources/ontology/languages.html");
 
 declare function dlri-views:dispatch($node) {
     typeswitch($node)
@@ -248,7 +248,7 @@ declare function dlri-views:etym($nodes) {
 				
 				return
 					let $language-code := data($node/tei:term[1]/@xml:lang)
-					let $language := data($language-codes//html:option[@xml:id = $language-code]/@label)
+					let $language := data($language-codes//html:option[@value = $language-code]/@label)
 						
 					return
 			
