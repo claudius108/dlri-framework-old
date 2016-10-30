@@ -1,10 +1,16 @@
 xquery version "3.0";
 
 declare namespace file = "http://expath.org/ns/file";
+declare namespace arch = "http://expath.org/ns/archive";
+declare namespace bin = "http://expath.org/ns/binary";
+
 declare namespace skos = "http://www.w3.org/2004/02/skos/core#"; 
 
 declare variable $pluginInstallDirPath external;
 declare variable $frameworkDirPath external;
+
+declare variable $frameworkJavaDirPath := file:path-to-native($frameworkDirPath || "/java");
+declare variable $frameworkJarPath := file:path-to-native($frameworkJavaDirPath || "/framework.jar");
 
 declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/controlled-vocabularies/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
@@ -60,12 +66,20 @@ return (
 		</output:serialization-parameters>		
 	)
 	,
-	file:write(
-		file:path-to-native($frameworkDirPath || "/target/special-characters.xml"),
-		$special-characters,
-		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-		  <output:indent value="yes" />
-		  <output:doctype-system value="http://java.sun.com/dtd/properties.dtd" />
-		</output:serialization-parameters>		
-	)	
+	file:write-binary(
+		$frameworkJarPath,	
+		arch:update(
+			file:read-binary($frameworkJarPath),
+			"special-characters.xml",
+			bin:encode-string(
+				serialize(
+					$special-characters,
+					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+					  <output:indent value="yes" />
+					  <output:doctype-system value="http://java.sun.com/dtd/properties.dtd" />
+					</output:serialization-parameters>
+				)
+			)
+		)
+	)
 )
