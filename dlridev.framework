@@ -1,4 +1,5 @@
-<serialized version="18.0" xml:space="preserve">
+<?xml version="1.0" encoding="UTF-8"?>
+<serialized version="18.1" xml:space="preserve">
 	<serializableOrderedMap>
 		<entry>
 			<String>document.types</String>
@@ -8,7 +9,7 @@
 						<null/>
 					</field>
 					<field name="name">
-						<String>dlridev</String>
+						<String>dlri</String>
 					</field>
 					<field name="schemaDescriptor">
 						<null/>
@@ -32,7 +33,7 @@
 											<String>${framework}/resources/css/framework.less</String>
 										</field>
 										<field name="title">
-											<String/>
+											<String></String>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -43,7 +44,7 @@
 											<String>${framework}/resources/css/dlri.css</String>
 										</field>
 										<field name="title">
-											<String/>
+											<String></String>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -54,7 +55,7 @@
 											<String>${framework}/resources/css/sense.css</String>
 										</field>
 										<field name="title">
-											<String/>
+											<String></String>
 										</field>
 										<field name="alternate">
 											<Boolean>false</Boolean>
@@ -69,8 +70,510 @@
 								<Boolean>false</Boolean>
 							</field>
 							<field name="actionDescriptors">
-								
-							<action-array><action><field name="id"><String>deleteSenseElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>Ștergere</String></field><field name="description"><String/></field><field name="smallIconPath"><String>../../resources/images/delete.png</String></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/deleteCurrentElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>editEtymologicalNote</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>Editează notă</String></field><field name="description"><String/></field><field name="smallIconPath"><String>${framework}/resources/images/edit.png</String></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map/></field><field name="operationID"><String>ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForFormElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForFormElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForFormElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForPosElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForPosElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForPosElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForSubcElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForSubcElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForSubcElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedTypeAttrForIdnoElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedTypeAttrForIdnoElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForIdnoElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedValueAttrForUsgElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedValueAttrForUsgElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedValueAttrForUsgElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedTypeAttrForNoteElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedTypeAttrForNoteElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedTypeAttrForNoteElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>changedLangAttrForTermElement</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>changedLangAttrForTermElement</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/changedLangAttrForTermElement.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>insertSenseElementAsFirstChild</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>insertSenseElementAsFirstChild</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFirstChild.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action><action><field name="id"><String>insertSenseElementAsFollowingSibling</String></field><field name="accelerator"><String/></field><field name="accessKey"><String/></field><field name="name"><String>insertSenseElementAsFollowingSibling</String></field><field name="description"><String/></field><field name="smallIconPath"><String/></field><field name="largeIconPath"><String/></field><field name="actionModes"><actionMode-array><actionMode><field name="xpathCondition"><String/></field><field name="argValues"><map><entry><String>script</String><String>actions/insertSenseElementAsFollowingSibling.xq</String></entry></map></field><field name="operationID"><String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String></field></actionMode></actionMode-array></field></action></action-array></field>
+								<action-array>
+									<action>
+										<field name="id">
+											<String>deleteSenseElement</String>
+										</field>
+										<field name="name">
+											<String>Ștergere</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String>../../resources/images/delete.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/deleteCurrentElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>editEtymologicalNote</String>
+										</field>
+										<field name="name">
+											<String>Editează notă</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/resources/images/edit.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap/>
+													</field>
+													<field name="operationID">
+														<String>ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedValueAttrForFormElement</String>
+										</field>
+										<field name="name">
+											<String>changedValueAttrForFormElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedValueAttrForFormElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedValueAttrForPosElement</String>
+										</field>
+										<field name="name">
+											<String>changedValueAttrForPosElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedValueAttrForPosElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedValueAttrForSubcElement</String>
+										</field>
+										<field name="name">
+											<String>changedValueAttrForSubcElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedValueAttrForSubcElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedTypeAttrForIdnoElement</String>
+										</field>
+										<field name="name">
+											<String>changedTypeAttrForIdnoElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedTypeAttrForIdnoElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedValueAttrForUsgElement</String>
+										</field>
+										<field name="name">
+											<String>changedValueAttrForUsgElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedValueAttrForUsgElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedTypeAttrForNoteElement</String>
+										</field>
+										<field name="name">
+											<String>changedTypeAttrForNoteElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedTypeAttrForNoteElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>changedLangAttrForTermElement</String>
+										</field>
+										<field name="name">
+											<String>changedLangAttrForTermElement</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/changedLangAttrForTermElement.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>insertSenseElementAsFirstChild</String>
+										</field>
+										<field name="name">
+											<String>insertSenseElementAsFirstChild</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/insertSenseElementAsFirstChild.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>insertSenseElementAsFollowingSibling</String>
+										</field>
+										<field name="name">
+											<String>insertSenseElementAsFollowingSibling</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>actions/insertSenseElementAsFollowingSibling.xq</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+								</action-array>
+							</field>
 							<field name="menubarDescriptor">
 								<menu>
 									<field name="label">
@@ -157,8 +660,8 @@
 								<null/>
 							</field>
 							<field name="authorExtensionStateListener">
-								
-							<String>AuthorExtensionStateListener</String></field>
+								<String>AuthorExtensionStateListener</String>
+							</field>
 							<field name="attributesRecognizer">
 								<null/>
 							</field>
@@ -179,7 +682,7 @@
 						<String-array/>
 					</field>
 					<field name="description">
-						<String/>
+						<String></String>
 					</field>
 					<field name="doctypeRules">
 						<documentTypeRule-array>
@@ -197,7 +700,7 @@
 									<String>*</String>
 								</field>
 								<field name="javaRuleClass">
-									<String/>
+									<String></String>
 								</field>
 								<field name="attributeLocalName">
 									<String>*</String>
@@ -254,7 +757,7 @@
 						<null/>
 					</field>
 					<field name="priority">
-						<Integer>4</Integer>
+						<Integer>5</Integer>
 					</field>
 					<field name="xmlNodeCustomizerExtension">
 						<null/>
