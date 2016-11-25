@@ -12,7 +12,7 @@ declare variable $frameworkDirPath external;
 declare variable $frameworkJavaDirPath := file:path-to-native($frameworkDirPath || "/java");
 declare variable $frameworkJarPath := file:path-to-native($frameworkJavaDirPath || "/framework.jar");
 
-declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/controlled-vocabularies/master";
+declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
 (: process the controlled vocabulary for etymology types :)
@@ -53,6 +53,7 @@ let $special-characters :=
 			}		
 		</properties>
 	)
+
 
 return (
 	file:write-text(file:path-to-native($frameworkDirPath || "/resources/css/datalists/etymology-types.less"), $processed-etymology-types)
