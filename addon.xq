@@ -548,14 +548,6 @@ ua:template("variantă-directă-din.lat.-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-din.lat.'] ~ term"), "variantă-directă-din.lat.-template")
 ,
-ua:template("variantă-directă-prin.confuzie.cu-template",
-    <template>
-        Prin confuzie cu&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.confuzie.cu'] ~ term"), "variantă-directă-prin.confuzie.cu-template")
-,
 ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-template",
     <template>
         Cf.&amp;nbsp;
