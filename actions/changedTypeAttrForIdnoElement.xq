@@ -164,7 +164,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),  
 	    if (@type =
 	            (
-	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
 	                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*',
 	                'cuvântul.titlu-formație.internă-calc',
 	                'cuvântul.titlu-formație.internă-formație.onomatopeică',
@@ -207,7 +206,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'variantă-directă-etimologie.populară.prin.apropiere.de',
                 'variantă-directă-derivat.regresiv.de.la',
                 'variantă-directă-prin.confuzie.cu',
-                'variantă-directă-sub.influența'
+                'variantă-directă-sub.influența',
+                'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat'
 	    	)
 	    	or 
 	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
