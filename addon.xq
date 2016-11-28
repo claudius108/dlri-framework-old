@@ -532,18 +532,6 @@ ua:template("translation-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation-template"),
 
-ua:template("variantă-directă-prin.derivare.cu.suf.-template",
-    <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }    
-        Prin derivare cu sufix&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-prin.derivare.cu.suf.'] ~ term"), "variantă-directă-prin.derivare.cu.suf.-template")
-,
 ua:template("variantă-directă-sub.influența-template",
     <template>
         Sub influenţa&amp;nbsp;

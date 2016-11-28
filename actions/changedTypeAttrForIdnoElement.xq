@@ -172,7 +172,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
 	                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
 	                'cuvântul.titlu-element.extern-calc',
-	                'variantă-directă-prin.derivare.cu.suf.',
 	                'variantă-directă-sub.influența',
 	                'variantă-directă-din.lat.',
 	                'variantă-directă-prin.confuzie.cu',
