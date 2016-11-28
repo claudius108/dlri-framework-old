@@ -532,14 +532,6 @@ ua:template("translation-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'translation']"), "translation-template"),
 
-ua:template("variantă-directă-sub.influența-template",
-    <template>
-        Sub influenţa&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sub.influența'] ~ term"), "variantă-directă-sub.influența-template")
-,
 ua:template("variantă-directă-din.lat.-template",
     <template>
         Din lat.&amp;nbsp;
