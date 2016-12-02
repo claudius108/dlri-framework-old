@@ -208,13 +208,16 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
                 'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*'
 	    	)
-	    	or 
-	    	(starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
 	    	or
 	    	starts-with(@type, 'variantă-directă-etimon.variantă')
 	    )
 	    then (
 	        insert node $dlri:ptr-template after .
+	    )
+	    else (), 
+	    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
+	    then (
+	        insert nodes ($dlri:term-una.sau.mai.multe.variante.lexicale-template, $dlri:ptr-una.sau.mai.multe.variante.lexicale-cf.-template) after .
 	    )
 	    else (), 
 	    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))

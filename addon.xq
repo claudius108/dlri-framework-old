@@ -59,6 +59,58 @@ declare variable $languages-template as element() :=
 	</select>
 ;
 
+declare variable $target-languages-template as element() :=
+	<select data-ua-ref="{@targetLang}" contenteditable="false">
+	    <option xml:id="id" label="" value="" />
+	    <option xml:id="sq" label="alb." value="sq" />
+	    <option xml:id="rup" label="ar." value="rup" />
+	    <option xml:id="bg" label="bg." value="bg" />
+	    <option xml:id="ca" label="cat." value="ca" />
+	    <option xml:id="cs" label="ceh." value="cs" />
+	    <option xml:id="cs" label="ceh." value="cs" />
+	    <option xml:id="dlm" label="dalm." value="dlm" />
+	    <option xml:id="he" label="ebr." value="he" />
+	    <option xml:id="rm-puter-vallader" label="engad." value="rm-puter-vallader" />
+	    <option xml:id="en" label="engl." value="en" />
+	    <option xml:id="eo" label="esper." value="eo" />
+	    <option xml:id="fr" label="fr." value="fr" />
+	    <option xml:id="fur" label="friul." value="fur" />
+	    <option xml:id="de" label="germ." value="de" />
+	    <option xml:id="grc" label="gr." value="grc" />
+	    <option xml:id="ruo" label="ir." value="ruo" />
+	    <option xml:id="it" label="it." value="it" />
+	    <option xml:id="la" label="lat." value="la" />
+	    <option xml:id="la-x-popular" label="lat. pop." value="la-x-popular" />
+	    <option xml:id="la-x-medieval" label="lat. mediev." value="la-x-medieval" />
+	    <option xml:id="lt" label="lituan." value="lt" />
+	    <option xml:id="hu" label="magh." value="hu" />
+	    <option xml:id="ruq" label="mr." value="ruq" />
+	    <option xml:id="gre" label="gr. bizant." value="gre" />
+	    <option xml:id="el" label="ngr." value="el" />
+	    <option xml:id="pl" label="pol." value="pl" />
+	    <option xml:id="pt" label="port." value="pt" />
+	    <option xml:id="roa" label="prov." value="roa" />
+	    <option xml:id="rm" label="retorom." value="rm" />
+	    <option xml:id="ro" label="rom." value="ro" />
+	    <option xml:id="ru" label="rus." value="ru" />
+	    <option xml:id="sxu" label="săs." value="sxu" />
+	    <option xml:id="sc" label="sard." value="sc" />
+	    <option xml:id="sr" label="sb." value="sr" />
+	    <option xml:id="scn" label="sicil." value="scn" />
+	    <option xml:id="" label="sl." value="sl." />
+	    <option xml:id="" label="slavon." value="slavon." />
+	    <option xml:id="sl" label="slov." value="sl" />
+	    <option xml:id="es" label="sp." value="es" />
+	    <option xml:id="tt" label="tăt." value="tt" />
+	    <option xml:id="tr" label="tc." value="tr" />
+	    <option xml:id="tr-x-dialect" label="tc. dial." value="tr-x-dialect" />
+	    <option xml:id="rom" label="ţig." value="rom" />
+	    <option xml:id="uk" label="ucr." value="uk" />
+	    <option xml:id="dlm-x-vegliot" label="vegl." value="dlm-x-vegliot" />
+	    <option xml:id="" label="v. sl." value="v. sl." />            
+	</select>
+;
+
 ua:action(
     "insertFirstBiblElement",
     map { 
@@ -275,7 +327,7 @@ ua:action(
     map { 
         "name" := "changedTypeAttrForIdnoElement"
     },
-    oxy:execute-xquery-update-script("actions/changedTypeAttrForIdnoElement.xq")
+    oxy:execute-xquery-update-script("actions/changed-type-attr-of-idno-element.xql")
 ),
 ua:action(
     "changedValueAttrForUsgElement",
@@ -540,14 +592,34 @@ ua:template("variantă-directă-din.lat.-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-din.lat.'] ~ term"), "variantă-directă-din.lat.-template")
 ,
-ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-template",
+ua:template("una.sau.mai.multe.variante.lexicale-term-template",
     <template>
-        Cf.&amp;nbsp;
-        <input data-ua-ref="{text()}" size="5" />
+        Pentru&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-term-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'una.sau.mai.multe.variante.lexicale']) > 1}" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'una.sau.mai.multe.variante.lexicale-'][type $= '-trimitere-cf..cuvânt'] ~ ptr"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-template")
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'una.sau.mai.multe.variante.lexicale']"), "una.sau.mai.multe.variante.lexicale-term-template")
 ,
+ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template",
+    <template>
+        cf.&amp;nbsp;
+        {
+            $target-languages-template
+        }        
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
+,
+
+
+
+
+
 ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
         Limba&amp;nbsp;
