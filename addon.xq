@@ -344,11 +344,11 @@ ua:action(
 	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
 ),
 ua:action(
-    "changedLangAttrForTermElement",
+    "changedTargetLangAttrOfPtrElement",
     map { 
-        "name" := "changedLangAttrForTermElement"
+        "name" := "changedTargetLangAttrOfPtrElement"
     },
-	oxy:execute-xquery-update-script("actions/changedLangAttrForTermElement.xq")
+	oxy:execute-xquery-update-script("actions/changed-targetLang-attr-of-ptr-element.xql")
 ),
 
 
@@ -373,47 +373,41 @@ ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selecto
         "attributes" := "true",
         "attributeFilter" := "['type']"}
 ),
-
 ua:observer("changedValueAttrForSubcElementObserver", "changedValueAttrForSubcElement"),
 ua:connect-observer("changedValueAttrForSubcElementObserver", ua-dt:xpath-selector('//subc'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-
 ua:observer("changedValueAttrForPosElementObserver", "changedValueAttrForPosElement"),
 ua:connect-observer("changedValueAttrForPosElementObserver", ua-dt:xpath-selector('//pos'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-
 ua:observer("changedValueAttrForFormElementObserver", "changedValueAttrForFormElement"),
 ua:connect-observer("changedValueAttrForFormElementObserver", ua-dt:xpath-selector('//form'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
 ),
-
 ua:observer("changedValueAttrForUsgElementObserver", "changedValueAttrForUsgElement"),
 ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selector('//usg'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-
 ua:observer("changedTypeAttrForNoteElementObserver", "changedTypeAttrForNoteElement"),
 ua:connect-observer("changedTypeAttrForNoteElementObserver", ua-dt:xpath-selector('//note'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
 ),
-
-ua:observer("changedLangAttrForTermElementObserver", "changedLangAttrForTermElement"),
-ua:connect-observer("changedLangAttrForTermElementObserver", ua-dt:xpath-selector('//term'),
+ua:observer("changedTargetLangAttrOfPtrElementObserver", "changedTargetLangAttrOfPtrElement"),
+ua:connect-observer("changedTargetLangAttrOfPtrElementObserver", ua-dt:xpath-selector('//ptr'),
     map {
         "attributes" := "true",
-        "attributeFilter" := "['xml:lang']"}
+        "attributeFilter" := "['targetLang']"}
 ),
 
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
