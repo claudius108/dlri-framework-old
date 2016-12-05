@@ -302,46 +302,46 @@ ua:action(
     oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation")
 ),
 ua:action(
-    "changedValueAttrForFormElement",
+    "changedValueAttrOfFormElement",
     map { 
-        "name" := "changedValueAttrForFormElement"
+        "name" := "changedValueAttrOfFormElement"
     },
-    oxy:execute-xquery-update-script("actions/changedValueAttrForFormElement.xq")
+    oxy:execute-xquery-update-script("actions/changed-value-attr-of-form-element.xql")
 ),
 ua:action(
-    "changedValueAttrForPosElement",
+    "changedValueAttrOfPosElement",
     map { 
-        "name" := "changedValueAttrForPosElement"
+        "name" := "changedValueAttrOfPosElement"
     },
-    oxy:execute-xquery-update-script("actions/changedValueAttrForPosElement.xq")
+    oxy:execute-xquery-update-script("actions/changed-value-attr-of-pos-element.xql")
 ),
 ua:action(
-    "changedValueAttrForSubcElement",
+    "changedValueAttrOfSubcElement",
     map { 
-        "name" := "changedValueAttrForSubcElement"     
+        "name" := "changedValueAttrOfSubcElement"     
     },
-    oxy:execute-xquery-update-script("actions/changedValueAttrForSubcElement.xq")
+    oxy:execute-xquery-update-script("actions/changed-value-attr-of-subc-element.xql")
 ),
 ua:action(
-    "changedTypeAttrForIdnoElement",
+    "changedTypeAttrOfIdnoElement",
     map { 
-        "name" := "changedTypeAttrForIdnoElement"
+        "name" := "changedTypeAttrOfIdnoElement"
     },
     oxy:execute-xquery-update-script("actions/changed-type-attr-of-idno-element.xql")
 ),
 ua:action(
-    "changedValueAttrForUsgElement",
+    "changedValueAttrOfUsgElement",
     map { 
-        "name" := "changedValueAttrForUsgElement"
+        "name" := "changedValueAttrOfUsgElement"
     },
-    oxy:execute-xquery-update-script("actions/changedValueAttrForUsgElement.xq")
+    oxy:execute-xquery-update-script("actions/changed-value-attr-of-usg-element.xql")
 ),
 ua:action(
-    "changedTypeAttrForNoteElement",
+    "changedTypeAttrOfNoteElement",
     map { 
-        "name" := "changedTypeAttrForNoteElement"
+        "name" := "changedTypeAttrOfNoteElement"
     },
-	oxy:execute-xquery-update-script("actions/changedTypeAttrForNoteElement.xq")
+	oxy:execute-xquery-update-script("actions/changed-type-attr-of-note-element.xql")
 ),
 ua:action(
     "changedTargetLangAttrOfPtrElement",
@@ -367,38 +367,38 @@ ua:action(
     },
     oxy:execute-xquery-update-script("actions/insertSenseElementAsFollowingSibling.xq")
 ),
-ua:observer("changedTypeAttrForIdnoElementObserver", "changedTypeAttrForIdnoElement"),
-ua:connect-observer("changedTypeAttrForIdnoElementObserver", ua-dt:xpath-selector('//idno'),
+ua:observer("changedTypeAttrOfIdnoElementObserver", "changedTypeAttrOfIdnoElement"),
+ua:connect-observer("changedTypeAttrOfIdnoElementObserver", ua-dt:xpath-selector('//idno'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
 ),
-ua:observer("changedValueAttrForSubcElementObserver", "changedValueAttrForSubcElement"),
-ua:connect-observer("changedValueAttrForSubcElementObserver", ua-dt:xpath-selector('//subc'),
+ua:observer("changedValueAttrOfSubcElementObserver", "changedValueAttrOfSubcElement"),
+ua:connect-observer("changedValueAttrOfSubcElementObserver", ua-dt:xpath-selector('//subc'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-ua:observer("changedValueAttrForPosElementObserver", "changedValueAttrForPosElement"),
-ua:connect-observer("changedValueAttrForPosElementObserver", ua-dt:xpath-selector('//pos'),
+ua:observer("changedValueAttrOfPosElementObserver", "changedValueAttrOfPosElement"),
+ua:connect-observer("changedValueAttrOfPosElementObserver", ua-dt:xpath-selector('//pos'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-ua:observer("changedValueAttrForFormElementObserver", "changedValueAttrForFormElement"),
-ua:connect-observer("changedValueAttrForFormElementObserver", ua-dt:xpath-selector('//form'),
+ua:observer("changedValueAttrOfFormElementObserver", "changedValueAttrOfFormElement"),
+ua:connect-observer("changedValueAttrOfFormElementObserver", ua-dt:xpath-selector('//form'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
 ),
-ua:observer("changedValueAttrForUsgElementObserver", "changedValueAttrForUsgElement"),
-ua:connect-observer("changedValueAttrForUsgElementObserver", ua-dt:xpath-selector('//usg'),
+ua:observer("changedValueAttrOfUsgElementObserver", "changedValueAttrOfUsgElement"),
+ua:connect-observer("changedValueAttrOfUsgElementObserver", ua-dt:xpath-selector('//usg'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['value']"}
 ),
-ua:observer("changedTypeAttrForNoteElementObserver", "changedTypeAttrForNoteElement"),
-ua:connect-observer("changedTypeAttrForNoteElementObserver", ua-dt:xpath-selector('//note'),
+ua:observer("changedTypeAttrOfNoteElementObserver", "changedTypeAttrOfNoteElement"),
+ua:connect-observer("changedTypeAttrOfNoteElementObserver", ua-dt:xpath-selector('//note'),
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
