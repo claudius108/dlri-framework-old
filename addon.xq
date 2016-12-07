@@ -604,11 +604,26 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-tem
         }        
         <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
 ,
+ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-template",
+    <template>
+        cf.&amp;nbsp;
+        {
+            $languages-template
+        }        
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-term-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-template")
+,
+
+
 
 
 

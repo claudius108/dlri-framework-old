@@ -54,6 +54,10 @@ declare variable $dlri:term-una.sau.mai.multe.variante.lexicale-template as elem
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale" subtype="unknown" />
 ;
 
+declare variable $dlri:term-una.sau.mai.multe.variante.lexicale-cf.-template as element() :=
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale-cf." subtype="unknown" />
+;
+
 declare variable $dlri:ptr-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unknown" subtype="unknown" target="unknown" />
 ;
