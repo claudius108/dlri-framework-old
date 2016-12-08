@@ -350,9 +350,13 @@ ua:action(
     },
 	oxy:execute-xquery-update-script("actions/changed-targetLang-attr-of-ptr-element.xql")
 ),
-
-
-
+ua:action(
+    "changedLangAttrOfTermElement",
+    map { 
+        "name" := "changedLangAttrOfTermElement"
+    },
+	oxy:execute-xquery-update-script("actions/changed-lang-attr-of-term-element.xql")
+),
 ua:action(
     "insertSenseElementAsFirstChild",
     map { 
@@ -409,7 +413,12 @@ ua:connect-observer("changedTargetLangAttrOfPtrElementObserver", ua-dt:xpath-sel
         "attributes" := "true",
         "attributeFilter" := "['targetLang']"}
 ),
-
+ua:observer("changedLangAttrOfTermElementObserver", "changedLangAttrOfTermElement"),
+ua:connect-observer("changedLangAttrOfTermElementObserver", ua-dt:xpath-selector('//term'),
+    map {
+        "attributes" := "true",
+        "attributeFilter" := "['xml:lang']"}
+),
 ua:add-event-listener($ua:document, "load", oxy:execute-action-by-class('ro.kuberam.oxygen.addonBuilder.actions.KeepAuthorView')),
 
 ua:template("TEI-before-template",
