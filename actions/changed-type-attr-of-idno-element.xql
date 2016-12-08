@@ -222,7 +222,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (), 
 	    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))
 	    then (
-	        insert node $dlri:bibl-template after .
+	        insert nodes ($dlri:term-una.sau.mai.multe.variante.lexicale-template, $dlri:bibl-template) after .
 	    )
 	    else ()
 	)
