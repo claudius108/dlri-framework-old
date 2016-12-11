@@ -767,15 +767,15 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-tem
         cf.&amp;nbsp;
         {
             $target-languages-template
-        }        
+        }
         {
             ua:get-template('ptr-template')
-        }
+        }        
         <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']:after"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
 ,
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template",
     <template>
@@ -889,7 +889,7 @@ ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.mul
         \00000Aşi&amp;nbsp;
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:nth-of-type(1)"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:nth-of-type(1):after"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template"),
 
 ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template",
     <template>
@@ -900,7 +900,7 @@ ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.mul
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:not( :first-of-type)"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:not( :first-of-type):after"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template"),
 
 ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
     <template>
