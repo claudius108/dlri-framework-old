@@ -605,19 +605,6 @@ ua:template("una.sau.mai.multe.variante.lexicale-term-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'una.sau.mai.multe.variante.lexicale']"), "una.sau.mai.multe.variante.lexicale-term-template")
 ,
-ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template",
-    <template>
-        cf.&amp;nbsp;
-        {
-            $target-languages-template
-        }        
-        <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
-,
 ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-template",
     <template>
         cf.&amp;nbsp;
@@ -631,13 +618,6 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-te
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-template")
 ,
-
-
-
-
-
-
-
 ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
     <template>
         Limba&amp;nbsp;
@@ -681,8 +661,8 @@ ua:template("număr-de-sens-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'sense-number']:after"), "număr-de-sens-template"),
-
+ua:attach-template(ua-dt:css-selector("ptr[type = 'sense-number']:after"), "număr-de-sens-template")
+,
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
     <template>
         Cf.&amp;nbsp;
@@ -769,8 +749,8 @@ ua:template("etym-term-sufix-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix-template"),
-
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'sufix']"), "etym-term-sufix-template")
+,
 ua:template("ptr-template",
     <template>
 	    <datalist id="headword-references">
@@ -780,8 +760,48 @@ ua:template("ptr-template",
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr"), "ptr-template"),
-
+ua:attach-template(ua-dt:css-selector("ptr:after"), "ptr-template")
+,
+ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template",
+    <template>
+        cf.&amp;nbsp;
+        {
+            $target-languages-template
+        }        
+        {
+            ua:get-template('ptr-template')
+        }
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-una.sau.mai.multe.variante.lexicale-cf.-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'una.sau.mai.multe.variante.lexicale-cf.']) > 1}" />        
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
+,
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template",
+    <template>
+    	Număr de sens&amp;nbsp;
+        {
+            ua:get-template('ptr-template')
+        }
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon']) > 1};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon']:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template")
+,
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template",
+    <template>
+    	Cf.&amp;nbsp;
+        {
+            $target-languages-template
+        }
+        {
+            ua:get-template('ptr-template')
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template")
+,
 ua:template("ptr-base-word-template",
     <template>
         Cuvânt de bază&amp;nbsp;
@@ -790,8 +810,8 @@ ua:template("ptr-base-word-template",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'base-word']"), "ptr-base-word-template"),
-
+ua:attach-template(ua-dt:css-selector("ptr[type = 'base-word']:after"), "ptr-base-word-template")
+,
 ua:template("cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template",
     <template>
     	Cuvânt de bază&amp;nbsp;
@@ -802,8 +822,8 @@ ua:template("cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază'] ~ ptr"), "cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template"),
-
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază'] ~ ptr:after"), "cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template")
+,
 ua:template("latin-base-template",
     <template>
         lat.
@@ -830,7 +850,7 @@ ua:template("ptr-component-element-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'component-element']) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']"), "ptr-component-element-template"),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']:after"), "ptr-component-element-template"),
 
 ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
     <template>

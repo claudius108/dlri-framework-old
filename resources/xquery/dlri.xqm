@@ -66,6 +66,14 @@ declare variable $dlri:ptr-una.sau.mai.multe.variante.lexicale-cf.-template as e
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="una.sau.mai.multe.variante.lexicale-cf." subtype="unknown" target="unknown" />
 ;
 
+declare variable $dlri:ptr-unul.sau.mai.multe.sensuri-sensul-cf..etimon-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unul.sau.mai.multe.sensuri-sensul-cf..etimon" subtype="unknown" target="unknown" />
+;
+
+declare variable $dlri:ptr-unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf." subtype="unknown" target="unknown" />
+;
+
 declare variable $dlri:ptr-base-word-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="base-word" subtype="unknown" target="unknown" />
 ;
