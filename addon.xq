@@ -789,7 +789,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul']:after"), "unul.sau.mai.multe.sensuri-sensul-*-ptr-template")
 ,
-ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template",
     <template>
     	Cf.&amp;nbsp;
         {
@@ -800,7 +800,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template")
 ,
 ua:template("ptr-base-word-template",
     <template>

@@ -15,10 +15,10 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 		return replace node . with $processed-template
 	else ()
 	,
-	if (@type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.' and @targetLang != 'ro')
+	if (@type = 'unul.sau.mai.multe.sensuri-sensul-cf.' and @targetLang != 'ro')
 	then
 		let $processed-template :=
-			copy $template := $dlri:term-unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-template
+			copy $template := $dlri:term-unul.sau.mai.multe.sensuri-sensul-cf.-template
 			modify replace value of node $template/@xml:lang with ./@targetLang
 			return $template
 			
