@@ -777,17 +777,17 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-tem
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']:after"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
 ,
-ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-*-ptr-template",
     <template>
     	Număr de sens&amp;nbsp;
         {
             ua:get-template('ptr-template')
         }
-        <button onclick="{oxy:xquery-update('resources/xquery/insert-unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon']) > 1};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-unul.sau.mai.multe.sensuri-sensul-ptr-template.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr[@type = 'unul.sau.mai.multe.sensuri-sensul']) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon']:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul']:after"), "unul.sau.mai.multe.sensuri-sensul-*-ptr-template")
 ,
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-cf.-ptr-template",
     <template>
