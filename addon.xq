@@ -554,30 +554,6 @@ ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-din.formulă.de.urare'] ~ term"), "cuvântul.titlu-formație.internă-din.formulă.de.urare-template"),
 
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-bază-template",
-    <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-bază-template"),
-
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template",
-    <template>
-        Limba&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertTermElementOfTypeElementAdăugat.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/term[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']) >= 2};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-compus-format.din'] ~ term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-term-element adăugat-template"),
-
 ua:template("translation-template",
 	<template>
 		Traducere etimon&amp;nbsp;
@@ -802,6 +778,62 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template")
 ,
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-ptr-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $target-languages-template
+        }
+        {
+            ua:get-template('ptr-template')
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-bază-ptr-template")
+,
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-term-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-bază-term-template")
+,
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-ptr-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $target-languages-template
+        }
+        {
+            ua:get-template('ptr-template')
+        }
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']) > 1};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-ptr-template")
+,
+ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-term-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']) > 1};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-term-template")
+,
+
+
+
+
 ua:template("ptr-base-word-template",
     <template>
         Cuvânt de bază&amp;nbsp;

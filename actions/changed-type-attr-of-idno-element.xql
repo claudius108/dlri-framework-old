@@ -114,9 +114,11 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 	    else (),
 	    if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
 	    then (
-	            insert nodes ($dlri:term-template, $dlri:term-template) after .,
-	            replace value of node ./following-sibling::*[1]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-bază',
-	            replace value of node ./following-sibling::*[2]/@type with 'cuvântul.titlu-formație.internă-compus-format.din-element adăugat'
+	            insert nodes (
+	            	$dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template
+	            	,
+	            	$dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+	            ) after .
 	    )
 	    else (),    
 	    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
