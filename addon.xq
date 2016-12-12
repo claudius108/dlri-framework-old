@@ -830,10 +830,6 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăug
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-term-template")
 ,
-
-
-
-
 ua:template("ptr-base-word-template",
     <template>
         Cuvânt de bază&amp;nbsp;
