@@ -51,15 +51,15 @@ declare variable $dlri:term-la-template as element() :=
 ;
 
 declare variable $dlri:term-una.sau.mai.multe.variante.lexicale-template as element() :=
-    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale" subtype="unknown" />
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale" />
 ;
 
 declare variable $dlri:term-una.sau.mai.multe.variante.lexicale-cf.-template as element() :=
-    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale-cf." subtype="unknown" />
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="una.sau.mai.multe.variante.lexicale-cf." />
 ;
 
 declare variable $dlri:term-unul.sau.mai.multe.sensuri-sensul-cf.-template as element() :=
-    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unul.sau.mai.multe.sensuri-sensul-cf." subtype="unknown" />
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="unul.sau.mai.multe.sensuri-sensul-cf." />
 ;
 
 declare variable $dlri:ptr-template as element() :=
@@ -67,15 +67,15 @@ declare variable $dlri:ptr-template as element() :=
 ;
 
 declare variable $dlri:ptr-una.sau.mai.multe.variante.lexicale-cf.-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="una.sau.mai.multe.variante.lexicale-cf." subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="una.sau.mai.multe.variante.lexicale-cf." target="unknown" />
 ;
 
 declare variable $dlri:ptr-unul.sau.mai.multe.sensuri-sensul-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unul.sau.mai.multe.sensuri-sensul" subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unul.sau.mai.multe.sensuri-sensul" target="unknown" />
 ;
 
 declare variable $dlri:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="unul.sau.mai.multe.sensuri-sensul-cf." subtype="unknown" target="unknown" />
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="unul.sau.mai.multe.sensuri-sensul-cf." target="unknown" />
 ;
 
 declare variable $dlri:ptr-base-word-template as element() :=
@@ -84,6 +84,14 @@ declare variable $dlri:ptr-base-word-template as element() :=
 
 declare variable $dlri:ptr-component-element-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="component-element" subtype="unknown" target="unknown" />
+;
+
+declare variable $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="cuvântul.titlu-formație.internă-compus-format.din-bază" target="unknown" />
+;
+
+declare variable $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element adăugat-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="cuvântul.titlu-formație.internă-compus-format.din-element adăugat" target="unknown" />
 ;
 
 declare variable $dlri:sense-template as element() :=
