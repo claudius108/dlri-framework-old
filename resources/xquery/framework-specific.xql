@@ -11,6 +11,9 @@ declare variable $frameworkDirPath external;
 
 declare variable $frameworkJavaDirPath := file:path-to-native($frameworkDirPath || "/java");
 declare variable $frameworkJarPath := file:path-to-native($frameworkJavaDirPath || "/framework.jar");
+declare variable $frameworkId := file:name($frameworkDirPath);
+declare variable $frameworkTargetDirPath := file:path-to-native($frameworkDirPath || "/target");
+declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDirPath || "/" || $frameworkId || ".jar");
 
 declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
@@ -56,7 +59,21 @@ let $special-characters :=
 
 
 return (
-	file:write-text(file:path-to-native($frameworkDirPath || "/resources/css/datalists/etymology-types.less"), $processed-etymology-types)
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/etymology-types.less",
+			bin:encode-string(
+				serialize(
+					$processed-etymology-types,
+					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+					  <output:omit-xml-declaration value="yes" />
+					</output:serialization-parameters>
+				)
+			)
+		)
+	)
 	,
 	file:write(
 		file:path-to-native($frameworkDirPath || "/resources/ontology/languages.html"),
