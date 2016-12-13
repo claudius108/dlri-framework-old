@@ -17,7 +17,7 @@ declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
 (: process the controlled vocabulary for etymology types :)
 let $etymology-types :=
-	for $concept in doc($ontology-github-url || "/etymology-types.rdf")//skos:Concept
+	for $concept in parse-xml(unparsed-text($ontology-github-url || "/etymology-types.rdf"))//skos:Concept
 	return $concept/skos:prefLabel/text()
 let $processed-etymology-types :=
 	string-join(
@@ -38,7 +38,7 @@ let $processed-etymology-types :=
 let $languages :=
 	<select>
 		{
-			for $concept in doc($ontology-github-url || "/languages.rdf")//skos:Concept
+			for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 			return <option label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
 		}
 	</select>		
@@ -48,7 +48,7 @@ let $special-characters :=
 	(
 		<properties>
 			{
-				for $concept in doc($ontology-github-url || "/special-characters.rdf")//skos:Concept
+				for $concept in parse-xml(unparsed-text($ontology-github-url || "/special-characters.rdf"))//skos:Concept
 				return <entry key="{$concept/skos:notation}">{$concept/skos:definition/text()}</entry>		
 			}		
 		</properties>
