@@ -736,7 +736,7 @@ ua:template("ptr-template",
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr:after"), "ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr:after"), "ptr-template")
 ,
 ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template",
     <template>
