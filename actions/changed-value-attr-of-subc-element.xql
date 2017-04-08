@@ -2,9 +2,8 @@ xquery version "3.0";
 
 (
     if (@value = ('adj.-empty', 'adj.-pos.', 'adj.-inter.-rel.', 'adj.-dem.', 'adj.-nehot.', 'art.-adj.', 'art.-hot.', 'art.-nehot.',
-        'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-absol.',
-        'vb.-fact.', 'vb.-intranz.', 'vb.-refl.', 'vb.-refl. impers.', 'vb.-refl. pas.', 'vb.-refl. recipr.', 'vb.-refl. unipers.',
-        'vb.-tranz.', 'vb.-tranz. fact.', 'vb.-intranz. şi refl.'))
+        'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-fact.', 'vb.-intranz.', 'vb.-tranz.',
+        'vb.-refl.', 'vb.-pas.', 'vb.-recipr.', 'vb.-impers.', 'vb.-unipers.'))
     then ()
     else (),            
     if (@value = ('', 'num.-adv.', 'pron.-neg.', 'hot.'))

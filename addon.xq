@@ -1624,6 +1624,7 @@ ua:attach-template(ua-dt:css-selector("bibl > ptr"), "bibl-ptr-before"),
 
 ua:template("bibl-date-before",
     <template>
+    	Dată:&amp;nbsp;
         <input data-ua-ref="{text()}" size="10" />
     </template>
 ),
@@ -1631,6 +1632,7 @@ ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before")
 
 ua:template("bibl-citedRange-before",
     <template>
+    	\00000ALocalizare în sursă:&amp;nbsp;
         <input data-ua-ref="{text()}" size="10" />
     </template>
 ),
@@ -1873,26 +1875,33 @@ ua:template("pos-iType-before",
 ),
 ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ iType:before"), "pos-iType-before"),
 
-ua:template("pos-vb-subc-before",
+ua:template("pos-vb-subc-1-before-template",
     <template>
         Diateză:&amp;nbsp;
-        <select data-ua-ref="{@value}" contenteditable="false">
+        <select data-ua-ref="{@value}" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
             <option label="" value="" />
-            <option label="absol." value="vb.-absol." />
             <option label="fact." value="vb.-fact." />
             <option label="intranz." value="vb.-intranz." />
-            <option label="refl." value="vb.-refl." />
-            <option label="refl. impers." value="vb.-refl. impers." />
-            <option label="refl. pas." value="vb.-refl. pas." />
-            <option label="refl. recipr." value="vb.-refl. recipr." />
-            <option label="refl. unipers." value="vb.-refl. unipers." />
             <option label="tranz." value="vb.-tranz." />
-            <option label="tranz. fact." value="vb.-tranz. fact." />
-            <option label="intranz. şi refl." value="vb.-intranz. şi refl." />
+            <option label="refl." value="vb.-refl." />
+            <option label="pas." value="vb.-pas." />
+            <option label="recipr." value="vb.-recipr." />
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:before"), "pos-vb-subc-before"),
+ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:nth-of-type(1):before"), "pos-vb-subc-1-before-template"),
+
+ua:template("pos-vb-subc-2-before-template",
+    <template>
+        Prezență / absență persoană:&amp;nbsp;
+        <select data-ua-ref="{@value}" contenteditable="false">
+            <option label="" value="" />
+            <option label="impers." value="vb.-impers." />
+            <option label="unipers." value="vb.-unipers." />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ subc:nth-of-type(2):before"), "pos-vb-subc-2-before-template"),
 
 ua:template("multiple-form-oVar",
     <template>
