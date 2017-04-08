@@ -15,7 +15,7 @@ declare variable $frameworkId := file:name($frameworkDirPath);
 declare variable $frameworkTargetDirPath := file:path-to-native($frameworkDirPath || "/target");
 declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDirPath || "/" || $frameworkId || ".jar");
 
-declare variable $ontology-github-url := "https://raw.githubusercontent.com/lingv-ro/ilir-ontology/master";
+declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
 (: process the controlled vocabulary for etymology types :)
