@@ -13,6 +13,7 @@ declare variable $frameworkJavaDirPath := file:path-to-native($frameworkDirPath 
 declare variable $frameworkJarPath := file:path-to-native($frameworkJavaDirPath || "/framework.jar");
 declare variable $frameworkId := file:name($frameworkDirPath);
 declare variable $frameworkTargetDirPath := file:path-to-native($frameworkDirPath || "/target");
+declare variable $frameworkResourcesDirPath := file:path-to-native($frameworkDirPath || "/resources");
 declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDirPath || "/" || $frameworkId || ".jar");
 
 declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
@@ -22,20 +23,19 @@ declare variable $charset := "@charset &quot;utf-8&quot;; ";
 let $etymology-types :=
 	for $concept in parse-xml(unparsed-text($ontology-github-url || "/etymology-types.rdf"))//skos:Concept
 	return $concept/skos:prefLabel/text()
-let $processed-etymology-types :=
-	string-join(
-		(
-			$charset,
-			"&#10;",
-			"@etymology-types: ",
-			"&quot;",
-			",",
-			normalize-space(string-join($etymology-types, ",")),
-			"&quot;",
-			";"
-		),
-		""
-	)
+let $processed-etymology-types := string-join(
+	(
+		$charset,
+		"&#10;",
+		"@etymology-types: ",
+		"&quot;",
+		",",
+		normalize-space(string-join($etymology-types, ",")),
+		"&quot;",
+		";"
+	),
+	""
+)
 
 (: process the controlled vocabulary for languages :)
 let $languages :=
@@ -44,7 +44,15 @@ let $languages :=
 			for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 			return <option label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
 		}
-	</select>		
+	</select>	
+let $processed-languages :=
+	serialize(
+		$languages,
+		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+		  <output:omit-xml-declaration value="yes" />
+		  <output:indent value="yes" />
+		</output:serialization-parameters>
+	)	
 
 (: process the controlled vocabulary for special characters :)
 let $special-characters :=
@@ -59,19 +67,16 @@ let $special-characters :=
 
 
 return (
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/etymology-types.less", $processed-etymology-types)
+    ,
+	file:write($frameworkResourcesDirPath || "/ontology/languages.html", $processed-languages)
+    ,    
 	file:write-binary(
 		$frameworkUberJarPath,	
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/css/datalists/etymology-types.less",
-			bin:encode-string(
-				serialize(
-					$processed-etymology-types,
-					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-					  <output:omit-xml-declaration value="yes" />
-					</output:serialization-parameters>
-				)
-			)
+			bin:encode-string($processed-etymology-types)
 		)
 	)
 	,
@@ -80,15 +85,7 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/ontology/languages.html",
-			bin:encode-string(
-				serialize(
-					$languages,
-					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-					  <output:omit-xml-declaration value="yes" />
-					  <output:indent value="yes" />
-					</output:serialization-parameters>
-				)
-			)
+			bin:encode-string($processed-languages)
 		)
 	)	
 	,
