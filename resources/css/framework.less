@@ -68,7 +68,15 @@ bibl:before{content: "Izvor: " oxy_editor(type, combo, edit, "@type", values, "u
 form > bibl:after, etym > bibl:after{content: oxy_editor(type, button, action, @insertBiblElement, transparent, true, visible, oxy_xpath("count(bibl) = 0"))  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true);}
 bibl > ptr{content: oxy_editor(type, text, edit, "@target", values, @bibliographic-references, columns, 40, hasMultipleValues, false)  oxy_editor(type, button, action, @searchBibliographicReferences, transparent, true);}
 bibl > date:before{content: "Dată: " oxy_editor(type, text, edit, "#text", columns, 10);}
-bibl > citedRange:before{content: "\00000ALocalizare în sursă: " oxy_editor(type, text, edit, "#text", columns, 10);}
+
+bibl > citedRange:before{content: "\00000ALocalizare în sursă: " oxy_editor(type, text, edit, "#text", columns, 10)
+oxy_textArea(
+      edit, '#content',
+      contentType, 'text/xml',
+      rows, 10,
+      columns, 30)
+;}
+
 cit:before{content: "Atestare:" oxy_editor(type, button, action, @4b61b3c297ab44818ccb39b960e97db1, transparent, true);}
 cit:not( :first-of-type):before{content: "Atestare:" oxy_editor(type, button, action, @4b61b3c297ab44818ccb39b960e97db1, transparent, true)  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true);}
 gramGrp:before{content: "Categorie gramaticală:" oxy_editor(type, button, action, @addGramGrp, transparent, true)  oxy_editor(type, button, action, @deleteCurrentElement, transparent, true, visible, oxy_xpath("local-name(parent::*) = ('sense', 'etym') or count(parent::*/gramGrp) > 1"));}
