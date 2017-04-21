@@ -133,6 +133,13 @@ ua:action(
     oxy:execute-xquery-script("resources/xquery/get-headword-references.xq")
 ),
 ua:action(
+    "searchBibliographicReferenceAuthors",
+    map { 
+        "name" := "Căutare"       
+    },   
+    oxy:execute-xquery-script("resources/xquery/get-bibliographic-reference-authors.xql")
+),
+ua:action(
     "insertFirstUsgElement",
     map { 
         "name" := "Indicație folosire"       
@@ -140,11 +147,11 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xq")
 ),
 ua:action(
-    "insertAuthorInBibliographicalReference",
+    "insertBibliographicReferenceAuthor",
     map { 
         "name" := "Autor"       
     },
-    oxy:execute-xquery-update-script("resources/xquery/insertAuthorInBibliographicalReference.xql")
+    oxy:execute-xquery-update-script("resources/xquery/insertBibliographicReferenceAuthor.xql")
 ),
 ua:action(
     "addFirstAccentuationSection",
@@ -1648,7 +1655,7 @@ ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRa
 ua:template("cit-before",
     <template>
         Atestare:
-        <button onclick="{oxy:xquery-update-action('insertAuthorInBibliographicalReference')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertBibliographicReferenceAuthor')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
     </template>
 ),
@@ -1673,11 +1680,11 @@ ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference']:after"), 
 
 ua:template("author-reference-template",
     <template>
-	    <datalist id="headword-references">
+	    <datalist id="bibliographic-reference-authors">
 	        <option label="" value=""/>
 	    </datalist>
-	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
-	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
+	    <input data-ua-ref="{@target}" size="40" list="bibliographic-reference-authors" />
+	    <button onclick="{oxy:xquery('searchBibliographicReferenceAuthors')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:before"), "author-reference-template"),
