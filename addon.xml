@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dlri">
         <xt:location href="http://188.212.37.221/repo/dlri-main-framework/dlri.jar"/>
-        <xt:version>1.70</xt:version>
-        <xt:oxy_version>18.1+</xt:oxy_version>
+        <xt:version>1.78</xt:version>
+        <xt:oxy_version>19.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>Claudius Teodorescu</xt:author>
         <xt:name>dlri</xt:name>
