@@ -140,6 +140,13 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xq")
 ),
 ua:action(
+    "insertAuthorInBibliographicalReference",
+    map { 
+        "name" := "Autor"       
+    },
+    oxy:execute-xquery-update-script("resources/xquery/insertAuthorInBibliographicalReference.xql")
+),
+ua:action(
     "addFirstAccentuationSection",
     map { 
         "name" := "Accentuare"        
@@ -1601,7 +1608,7 @@ ua:template("bibl-template",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("bibl:before"), "bibl-template"),
+ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):before"), "bibl-template"),
 
 ua:template("bibl-buttons-template",
     <template>
@@ -1641,6 +1648,7 @@ ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRa
 ua:template("cit-before",
     <template>
         Atestare:
+        <button onclick="{oxy:xquery-update-action('insertAuthorInBibliographicalReference')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
     </template>
 ),
@@ -1655,6 +1663,24 @@ ua:template("cit-not-first-of-type-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:not( :first-of-type):before'), "cit-not-first-of-type-before"),
+
+ua:template("bibl-author-reference-template",
+    <template>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference']:after"), "bibl-author-reference-template"),
+
+ua:template("author-reference-template",
+    <template>
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:before"), "author-reference-template"),
 
 ua:template("gramGrp-before",
     <template>
@@ -2372,7 +2398,7 @@ ua:template("author-before",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("author:before"), "author-before"),
+ua:attach-template(ua-dt:css-selector("titleStmt > author:before"), "author-before"),
 
 ua:template("editor-before",
     <template>
@@ -2384,7 +2410,7 @@ ua:template("editor-before",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/editor) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("editor:before"), "editor-before"),
+ua:attach-template(ua-dt:css-selector("titleStmt > editor:before"), "editor-before"),
 
 ua:template("creation",
     <template>
@@ -2455,7 +2481,7 @@ ua:attach-template(ua-dt:css-selector("def"), "def"),
 
 ua:template("entry-form-headword-before",
     <template>
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" /> 
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="background-color: transparent; visibility: {count(usg) = 0};"><img src="../../resources/images/note.png" /></button> 
         \00000A Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
