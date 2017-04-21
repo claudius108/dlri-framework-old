@@ -2455,12 +2455,11 @@ ua:attach-template(ua-dt:css-selector("def"), "def"),
 
 ua:template("entry-form-headword-before",
     <template>
-        Cuvânt titlu*:&amp;nbsp;
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" /> 
+        \00000A Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
         <input data-ua-ref="{@n}" size="2" />
-        \00000A
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"), "entry-form-headword-before"),
