@@ -1775,11 +1775,6 @@ ua:template("case-before",
         Caz:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="acuz." value="acuz." />
-            <option label="dat." value="dat." />
-            <option label="gen." value="gen." />
-            <option label="gen.-dat." value="gen.-dat." />
-            <option label="nom." value="nom." />
             <option label="voc." value="voc." />
         </select>
     </template>
