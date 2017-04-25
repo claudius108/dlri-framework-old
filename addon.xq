@@ -1786,9 +1786,7 @@ ua:template("name-before",
         Articulare:&amp;nbsp;
         <select data-ua-ref="{@type}" contenteditable="false">
             <option label="" value="unknown" />
-            <option label="(articulat)" value="(articulat)" />
-            <option label="(mai ales art.)" value="(mai ales art.)" />
-            <option label="articulat" value="articulat" />
+            <option label="art." value="art." />
         </select>
     </template>
 ),
