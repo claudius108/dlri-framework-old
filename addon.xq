@@ -1751,15 +1751,9 @@ ua:template("pos-s-number-before",
         Număr:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="" value="invar.">invar.</option>
-            <option label="pl." value="pl." />
-            <option label="pl. tant." value="pl. tant." />
             <option label="sg." value="sg." />
-            <option label="sg. tant." value="sg. tant." />
-            <option label="(la pl.)" value="(la pl.)" />
-            <option label="mai ales la pl." value="mai ales la pl." />
-            <option label="(sg.)" value="(sg.)" />
-            <option label="(pl.)" value="(pl.)" />            
+            <option label="pl." value="pl." />
+            <option label="" value="invar.">invar.</option>
         </select>
     </template>
 ),
