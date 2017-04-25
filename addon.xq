@@ -1753,7 +1753,7 @@ ua:template("pos-s-number-before",
             <option label="" value="" />
             <option label="sg." value="sg." />
             <option label="pl." value="pl." />
-            <option label="" value="invar.">invar.</option>
+            <option label="invar." value="invar." />
         </select>
     </template>
 ),
@@ -1798,7 +1798,7 @@ ua:template("pos-adj-subc-before",
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="adj.-empty" />
             <option label="dem." value="adj.-dem." />
-            <option label="inter.-rel." value="adj.-inter.-rel." />
+            <option label="interog.-rel." value="adj.-interog.-rel." />
             <option label="nehot." value="adj.-nehot." />
             <option label="pos." value="adj.-pos." />
         </select>
