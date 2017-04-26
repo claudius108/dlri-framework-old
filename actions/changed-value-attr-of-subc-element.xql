@@ -1,15 +1,15 @@
 xquery version "3.0";
 
 (
-    if (@value = ('adj.-empty', 'adj.-pos.', 'adj.-interog.-rel.', 'adj.-dem.', 'adj.-nehot.', 'art.-adj.', 'art.-hot.', 'art.-nehot.',
+    if (@value = ('adj.-empty', 'adv.-empty', 'adj.-pos.', 'adj.-interog.-rel.', 'adj.-dem.', 'adj.-nehot.', 'art.-adj.', 'art.-hot.', 'art.-nehot.',
         'art.-pos.', 'num.-card.', 'num.-col.', 'num.-multipl.', 'num.-nehot.', 'num.-ord.', 'vb.-fact.', 'vb.-intranz.', 'vb.-tranz.',
-        'vb.-refl.', 'vb.-pas.', 'vb.-recipr.', 'vb.-impers.', 'vb.-unipers.'))
+        'vb.-refl.', 'vb.-pas.', 'vb.-recipr.', 'vb.-impers.', 'vb.-unipers.', 'adv.-interog.'))
     then ()
     else (),            
     if (@value = ('', 'num.-adv.', 'pron.-neg.', 'hot.'))
     then (delete nodes parent::*/element()[position() > 2])
     else (),    
-    if (@value = ('pron.-dem.', 'pron.-inter.-rel.', 'pron.-nehot.'))
+    if (@value = ('pron.-dem.', 'pron.-interog.-rel.', 'pron.-nehot.'))
     then
         (
             delete nodes parent::*/element()[position() > 2]

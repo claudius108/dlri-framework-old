@@ -1806,6 +1806,17 @@ ua:template("pos-adj-subc-before",
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 'adj.'] ~ subc:before"), "pos-adj-subc-before"),
 
+ua:template("pos-adv-subc-before",
+    <template>
+        Tip:&amp;nbsp;
+        <select data-ua-ref="{@value}" contenteditable="false">
+            <option label="" value="adv.-empty" />
+            <option label="interog." value="adv.-interog." />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("pos[value = 'adv.'] ~ subc:before"), "pos-adv-subc-before"),
+
 ua:template("pos-art-subc-before",
     <template>
         Tip:&amp;nbsp;
@@ -1842,7 +1853,7 @@ ua:template("pos-pron-subc-before",
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
             <option label="dem." value="pron.-dem." />
-            <option label="inter.-rel." value="pron.-inter.-rel." />
+            <option label="interog.-rel." value="pron.-interog.-rel." />
             <option label="întăr." value="pron.-întăr." />
             <option label="neg." value="pron.-neg." />
             <option label="nehot." value="pron.-nehot." />
@@ -1865,7 +1876,7 @@ ua:template("multiple-number-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value='subst.'] ~ number:before, subc[value='pron.-dem.'] ~ number:before, subc[value='pron.-inter.-rel.'] ~ number:before, subc[value='pron.-nehot.'] ~ number:before, subc[value='pron.-pers.'] ~ number:before, subc[value='pron.-pos.'] ~ number:before, subc[value='pron.-de politeţe'] ~ number:before, subc[value='pron.-refl.'] ~ number:before"), "multiple-number-before"),
+ua:attach-template(ua-dt:css-selector("pos[value='subst.'] ~ number:before, subc[value='pron.-dem.'] ~ number:before, subc[value='pron.-interog.-rel.'] ~ number:before, subc[value='pron.-nehot.'] ~ number:before, subc[value='pron.-pers.'] ~ number:before, subc[value='pron.-pos.'] ~ number:before, subc[value='pron.-de politeţe'] ~ number:before, subc[value='pron.-refl.'] ~ number:before"), "multiple-number-before"),
 
 ua:template("multiple-per-before",
     <template>

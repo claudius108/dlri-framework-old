@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 (
-    if (@value = ('', 'adv.', 'conj.', 'interj.', 'prep.'))
+    if (@value = ('', 'conj.', 'interj.', 'prep.'))
     then (delete nodes parent::*/element()[position() > 1])
     else (),
     if (@value = 'adj.')
@@ -11,13 +11,20 @@ xquery version "3.0";
             insert nodes (doc('../content-models/subc.xml'), doc('../content-models/number.xml')) as last into parent::*
         )
     else (),
-    if (@value = ('art.', 'num.', 'pron.'))
+    if (@value = ('art.', 'num.', 'adv.'))
     then
         (
             delete nodes parent::*/element()[position() > 1],
             insert node doc('../content-models/subc.xml') as last into parent::*
         )
     else (),
+    if (@value = 'pron.')
+    then
+        (
+            delete nodes parent::*/element()[position() > 1],
+            insert nodes (doc('../content-models/subc.xml'), doc('../content-models/gen.xml')) as last into parent::*
+        )
+    else (),    
     if (@value = 's.')
     then
         (
