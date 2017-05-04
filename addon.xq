@@ -1712,6 +1712,7 @@ ua:template("pos-before",
             <option label="prep." value="prep." />
             <option label="pron." value="pron." />
             <option label="s." value="s." />
+            <option label="s. pr." value="s. pr." />
             <option label="subst." value="subst." />
             <option label="vb." value="vb." />
         </select>
@@ -1758,6 +1759,17 @@ ua:template("pos-s-number-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ number:before"), "pos-s-number-before"),
+
+ua:template("pos-s.pr.-subc-before",
+    <template>
+        Tip:&amp;nbsp;
+        <select data-ua-ref="{@value}" contenteditable="false">
+            <option label="" value="s.-pr.-empty" />
+            <option label="art." value="s.-pr.-art." />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before"), "pos-s.pr.-subc-before"),
 
 ua:template("pos-adj-number-before",
     <template>
@@ -1908,7 +1920,7 @@ ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ iType:before"), "pos-i
 
 ua:template("pos-vb-subc-1-before-template",
     <template>
-        Diateză:&amp;nbsp;
+        Tip 1:&amp;nbsp;
         <select data-ua-ref="{@value}" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
             <option label="" value="" />
             <option label="fact." value="vb.-fact." />
