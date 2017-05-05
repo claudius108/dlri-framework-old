@@ -330,13 +330,6 @@ ua:action(
     oxy:execute-xquery-update-script("actions/changed-value-attr-of-pos-element.xql")
 ),
 ua:action(
-    "changedValueAttrOfSubcElement",
-    map { 
-        "name" := "changedValueAttrOfSubcElement"     
-    },
-    oxy:execute-xquery-update-script("actions/changed-value-attr-of-subc-element.xql")
-),
-ua:action(
     "changedTypeAttrOfIdnoElement",
     map { 
         "name" := "changedTypeAttrOfIdnoElement"
@@ -390,12 +383,6 @@ ua:connect-observer("changedTypeAttrOfIdnoElementObserver", ua-dt:xpath-selector
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
-),
-ua:observer("changedValueAttrOfSubcElementObserver", "changedValueAttrOfSubcElement"),
-ua:connect-observer("changedValueAttrOfSubcElementObserver", ua-dt:xpath-selector('//subc'),
-    map {
-        "attributes" := "true",
-        "attributeFilter" := "['value']"}
 ),
 ua:observer("changedValueAttrOfPosElementObserver", "changedValueAttrOfPosElement"),
 ua:connect-observer("changedValueAttrOfPosElementObserver", ua-dt:xpath-selector('//pos'),
@@ -1859,7 +1846,7 @@ ua:template("pos-num-subc-before",
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 'num.'] ~ subc:before"), "pos-num-subc-before"),
 
-ua:template("pos-pron-subc-before",
+ua:template("pos-pron-subc1-before",
     <template>
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
@@ -1876,7 +1863,7 @@ ua:template("pos-pron-subc-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 'pron.'] ~ subc:before"), "pos-pron-subc-before"),
+ua:attach-template(ua-dt:css-selector("pos[value = 'pron.'] ~ subc:nth-of-type(1):before"), "pos-pron-subc1-before"),
 
 ua:template("multiple-number-before",
     <template>
