@@ -35,7 +35,7 @@ xquery version "3.0";
     then
         (
             delete nodes parent::*/element()[position() > 1],
-            insert nodes (doc('../content-models/gen.xml'), doc('../content-models/number.xml'), doc('../content-models/case.xml'), doc('../content-models/name.xml')) as last into parent::*
+            insert nodes (doc('../content-models/gen.xml'), doc('../content-models/number.xml'), doc('../content-models/case.xml'), doc('../content-models/subc.xml')) as last into parent::*
         )
     else (),
     if (@value = 'subst.')

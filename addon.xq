@@ -1747,16 +1747,16 @@ ua:template("pos-s-number-before",
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ number:before"), "pos-s-number-before"),
 
-ua:template("pos-s.pr.-subc-before",
+ua:template("subc-articulare-before",
     <template>
-        Tip:&amp;nbsp;
+        Articulare:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
-            <option label="" value="s.-pr.-empty" />
-            <option label="art." value="s.-pr.-art." />
+            <option label="" value="empty" />
+            <option label="art." value="art." />
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before"), "pos-s.pr.-subc-before"),
+ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before, pos[value = 's.'] ~ subc:before"), "subc-articulare-before"),
 
 ua:template("pos-adj-number-before",
     <template>
@@ -1780,26 +1780,15 @@ ua:template("case-before",
 ),
 ua:attach-template(ua-dt:css-selector("case:before"), "case-before"),
 
-ua:template("name-before",
-    <template>
-        Articulare:&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="art." value="art." />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("name:before"), "name-before"),
-
 ua:template("pos-adj-subc-before",
     <template>
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
-            <option label="" value="adj.-empty" />
-            <option label="dem." value="adj.-dem." />
-            <option label="interog.-rel." value="adj.-interog.-rel." />
-            <option label="nehot." value="adj.-nehot." />
-            <option label="pos." value="adj.-pos." />
+            <option label="" value="" />
+            <option label="dem." value="dem." />
+            <option label="interog.-rel." value="interog.-rel." />
+            <option label="nehot." value="nehot." />
+            <option label="pos." value="pos." />
         </select>
     </template>
 ),
@@ -1809,8 +1798,8 @@ ua:template("pos-adv-subc-before",
     <template>
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
-            <option label="" value="adv.-empty" />
-            <option label="interog." value="adv.-interog." />
+            <option label="" value="" />
+            <option label="interog." value="interog." />
         </select>
     </template>
 ),
@@ -1821,10 +1810,10 @@ ua:template("pos-art-subc-before",
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="adj." value="art.-adj." />
-            <option label="hot." value="art.-hot." />
-            <option label="nehot." value="art.-nehot." />
-            <option label="pos." value="art.-pos." />
+            <option label="adj." value="adj." />
+            <option label="hot." value="hot." />
+            <option label="nehot." value="nehot." />
+            <option label="pos." value="pos." />
         </select>
     </template>
 ),
@@ -1835,12 +1824,12 @@ ua:template("pos-num-subc-before",
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="adv." value="num.-adv." />
-            <option label="card." value="num.-card." />
-            <option label="col." value="num.-col." />
-            <option label="multipl." value="num.-multipl." />
-            <option label="nehot." value="num.-nehot." />
-            <option label="ord." value="num.-ord." />
+            <option label="adv." value="adv." />
+            <option label="card." value="card." />
+            <option label="col." value="col." />
+            <option label="multipl." value="multipl." />
+            <option label="nehot." value="nehot." />
+            <option label="ord." value="ord." />
         </select>
     </template>
 ),
@@ -1851,19 +1840,31 @@ ua:template("pos-pron-subc1-before",
         Tip:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="dem." value="pron.-dem." />
-            <option label="interog.-rel." value="pron.-interog.-rel." />
-            <option label="întăr." value="pron.-întăr." />
-            <option label="neg." value="pron.-neg." />
-            <option label="nehot." value="pron.-nehot." />
-            <option label="pers." value="pron.-pers." />
-            <option label="pos." value="pron.-pos." />
-            <option label="refl." value="pron.-refl." />
-            <option label="de politeţe" value="pron.-de politeţe" />
+            <option label="dem." value="dem." />
+            <option label="interog.-rel." value="interog.-rel." />
+            <option label="întăr." value="întăr." />
+            <option label="neg." value="neg." />
+            <option label="nehot." value="nehot." />
+            <option label="pers." value="pers." />
+            <option label="pos." value="pos." />
+            <option label="refl." value="refl." />
+            <option label="de politeţe" value="de politeţe" />
         </select>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 'pron.'] ~ subc:nth-of-type(1):before"), "pos-pron-subc1-before"),
+
+ua:template("pos-pron-subc2-before",
+    <template>
+        Poziție:&amp;nbsp;
+        <select data-ua-ref="{@value}" contenteditable="false">
+            <option label="" value="" />
+            <option label="antepus" value="antepus" />
+            <option label="postpus" value="postpus" />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("pos[value = 'pron.'] ~ subc:nth-of-type(2):before"), "pos-pron-subc2-before"),
 
 ua:template("multiple-number-before",
     <template>
@@ -1875,21 +1876,20 @@ ua:template("multiple-number-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value='subst.'] ~ number:before, subc[value='pron.-dem.'] ~ number:before, subc[value='pron.-interog.-rel.'] ~ number:before, subc[value='pron.-nehot.'] ~ number:before, subc[value='pron.-pers.'] ~ number:before, subc[value='pron.-pos.'] ~ number:before, subc[value='pron.-de politeţe'] ~ number:before, subc[value='pron.-refl.'] ~ number:before"), "multiple-number-before"),
+ua:attach-template(ua-dt:css-selector("pos[value='subst.'] ~ number:before, pos[value='pron.'] ~ number:before"), "multiple-number-before"),
 
 ua:template("multiple-per-before",
     <template>
         Persoană:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="pers. 1" value="pers. 1" />
-            <option label="pers. 2" value="pers. 2" />
-            <option label="pers. 3" value="pers. 3" />
+            <option label="la pers. 1" value="la pers. 1" />
+            <option label="la pers. 2" value="la pers. 2" />
+            <option label="la pers. 3" value="la pers. 3" />
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("subc[value='pron.-întăr.'] ~ per:before, subc[value='pron.-pers.'] ~ per:before, subc[value='pron.-pos.'] ~ per:before, subc[value='pron.-de politeţe'] ~ per:before, subc[value='pron.-refl.'] ~ per:before,
-pos[value='adj.'] ~ subc[value='adj.-pos.'] ~ per:before"), "multiple-per-before"),
+ua:attach-template(ua-dt:css-selector("pos[value='pron.'] ~ per:before"), "multiple-per-before"),
 
 ua:template("pos-iType-before",
     <template>
@@ -1910,12 +1910,12 @@ ua:template("pos-vb-subc-1-before-template",
         Tip 1:&amp;nbsp;
         <select data-ua-ref="{@value}" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
             <option label="" value="" />
-            <option label="fact." value="vb.-fact." />
-            <option label="intranz." value="vb.-intranz." />
-            <option label="tranz." value="vb.-tranz." />
-            <option label="refl." value="vb.-refl." />
-            <option label="pas." value="vb.-pas." />
-            <option label="recipr." value="vb.-recipr." />
+            <option label="fact." value="fact." />
+            <option label="intranz." value="intranz." />
+            <option label="tranz." value="tranz." />
+            <option label="refl." value="refl." />
+            <option label="pas." value="pas." />
+            <option label="recipr." value="recipr." />
         </select>
     </template>
 ),
@@ -1926,8 +1926,8 @@ ua:template("pos-vb-subc-2-before-template",
         Prezență / absență persoană:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="impers." value="vb.-impers." />
-            <option label="unipers." value="vb.-unipers." />
+            <option label="impers." value="impers." />
+            <option label="unipers." value="unipers." />
         </select>
     </template>
 ),
