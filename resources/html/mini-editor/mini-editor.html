@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<style type="text/css">
+body
+{
+    font-family: "Liberation Mono";
+    color: #444444;
+    font-size: 14pt;
+    background-color: #FAFAFA;
+}		
+			#content {
+			  width: 100%;
+			  height: 85%;
+			  border: 1px solid black;
+			}
+			hi[rend = 'bold'] {
+				font-weight: bold;
+			}
+			hi[rend = 'italic;'] {
+				font-style: italic;
+			}
+			hi[rend = 'superscript'] {
+				vertical-align: super; font-size: 8px;
+			}
+			hi[rend = 'subscript'] {
+				vertical-align: sub; font-size: 8px;
+			}			
+		</style>		
+	</head>
+	<body>
+		<div id="toolbar">
+			<button id="bold-button" title="Bold"><b>B</b></button>
+			<button id="italic-button" title="Italic"><span style="font-style: italic;">I</span></button>
+			<button id="superscript-button" title="Superscript">a<span style="vertical-align: super; font-size: 8px;">1</span></button>	
+			<button id="subscript-button" title="Subscript">a<span style="vertical-align: sub; font-size: 8px;">1</span></button>
+		</div>
+		<div id="content-container">
+			<div id="content" contenteditable="true"></div>
+		</div>
+		<script type="text/javascript" src="mini-editor.js">/**/</script>		
+	</body>
+</html>

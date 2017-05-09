@@ -1634,7 +1634,7 @@ ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before")
 ua:template("bibl-citedRange-before",
     <template>
     	\00000ALocalizare în sursă:&amp;nbsp;
-        <input data-ua-ref="{text()}" size="10" />
+        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="40" height="10" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRange-before"),
