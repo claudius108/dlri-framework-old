@@ -311,7 +311,7 @@ ua:action(
     "editEtymologicalNote",
     map { 
         "name" := "Editează notă",
-        "smallIconPath" := "${framework}/resources/images/edit.png"
+        "smallIconPath" := "../../resources/images/edit.png"
     },   
     oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation")
 ),
