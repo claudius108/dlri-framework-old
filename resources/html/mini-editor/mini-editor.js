@@ -48,10 +48,19 @@ document.getElementById("save-button").addEventListener("click", function() {
     
     if (startOffset + 1 < endOffset) {
         //authorDocumentController.delete(startOffset + 1, endOffset - 1);
-        authorDocumentController.delete(startOffset + 1, endOffset - 1);
+        //authorDocumentController.delete(startOffset + 1,endOffset - 1);
+    	authorDocumentController[ "delete(int,int)"](startOffset + 1, endOffset - 1);
     }
     
     var authorDocumentFragment = authorDocumentController.createNewDocumentFragmentInContext(xml, startOffset - 1);
     alert(authorDocumentFragment);
-    //authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);
+    authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);
+}, false);
+
+document.getElementById("open-button").addEventListener("click", function() {
+    // Oxygen's API needs an java.net.URL Java Object so we build it using the "apiHelper".
+    var toOpen = apiHelper.newInstance("java.net.URL", ["file:///home/claudius/oxygen/author/frameworks/dlri/resources/html/entries/entries.xml"]);
+    // The open method is overloaded. You can pick a specific overloaded method by listing the parameter 
+    // types in an extended method name.
+    pluginWorkspace["open(java.net.URL,java.lang.String)"](toOpen, "Author");
 }, false);
