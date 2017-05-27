@@ -1,22 +1,24 @@
 function bridgeReady () {
-	var authorDocumentController = authorAccess.getDocumentController();
-	
-    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentController.createDocumentFragment(contextElement.getStartOffset() + 1, contextElement.getEndOffset() - 1));
-    newContent = '<div xmlns="http://www.w3.org/1999/xhtml" id="content" contenteditable="true">' + newContent + "</div>";
+	setTimeout(function(){
+		var authorDocumentController = authorAccess.getDocumentController();
+		
+	    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentController.createDocumentFragment(contextElement.getStartOffset() + 1, contextElement.getEndOffset() - 1));
+	    newContent = '<div xmlns="http://www.w3.org/1999/xhtml" id="content" contenteditable="true">' + newContent + "</div>";
 
-    var newContentElement = (new DOMParser()).parseFromString(newContent, "text/xml").documentElement;
-    
-    var contentElement = document.getElementById("content");
-    var contentElementParent = contentElement.parentNode;
-    contentElementParent.replaceChild(document.importNode(newContentElement, true), contentElement);
+	    var newContentElement = (new DOMParser()).parseFromString(newContent, "text/xml").documentElement;
+	    
+	    var contentElement = document.getElementById("content");
+	    var contentElementParent = contentElement.parentNode;
+	    contentElementParent.replaceChild(document.importNode(newContentElement, true), contentElement);
+	}, 3000);	
 }
 
-var buttons = document.querySelectorAll("#toolbar button");
+var toolbarButtons = document.querySelectorAll("#toolbar button");
 
-for (var i = 0; i < buttons.length; i++) {
-	var button = buttons[i];
+for (var i = 0; i < toolbarButtons.length; i++) {
+	var toolbarButton = toolbarButtons[i];
 	
-	button.addEventListener("click", function() {
+	toolbarButton.addEventListener("click", function() {
 	    var selection = window.getSelection();
 	    var rendAttrValue = this.id;
 	    rendAttrValue = rendAttrValue.replace("-button", "");
@@ -40,20 +42,16 @@ document.getElementById("save-button").addEventListener("click", function() {
     var xml = (new XMLSerializer()).serializeToString(content);
     xml = xml.substring(xml.indexOf(">") + 1);
     xml = xml.replace("</div>", "");
-    //alert(xml);
     
     var authorDocumentController = authorAccess.getDocumentController();
     var startOffset = contextElement.getStartOffset();
     var endOffset = contextElement.getEndOffset();
     
     if (startOffset + 1 < endOffset) {
-        //authorDocumentController.delete(startOffset + 1, endOffset - 1);
-        //authorDocumentController.delete(startOffset + 1,endOffset - 1);
-    	authorDocumentController[ "delete(int,int)"](startOffset + 1, endOffset - 1);
+    	authorDocumentController["delete(int,int)"](startOffset + 1, endOffset - 1);
     }
     
     var authorDocumentFragment = authorDocumentController.createNewDocumentFragmentInContext(xml, startOffset - 1);
-    alert(authorDocumentFragment);
     authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);
 }, false);
 
