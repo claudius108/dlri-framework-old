@@ -1,4 +1,4 @@
-function bridgeReady () {
+function bridgeReady() {
 	setTimeout(function(){
 		var authorDocumentController = authorAccess.getDocumentController();
 		
@@ -11,6 +11,25 @@ function bridgeReady () {
 	    var contentElementParent = contentElement.parentNode;
 	    contentElementParent.replaceChild(document.importNode(newContentElement, true), contentElement);
 	}, 3000);	
+}
+
+function saveModifiedContent() {
+	var contentElement = document.getElementById("content");
+  
+	var xml = (new XMLSerializer()).serializeToString(contentElement);
+	xml = xml.substring(xml.indexOf(">") + 1);
+	xml = xml.replace("</div>", "");
+  
+	var authorDocumentController = authorAccess.getDocumentController();
+	var startOffset = contextElement.getStartOffset();
+	var endOffset = contextElement.getEndOffset();
+  
+	if (startOffset + 1 < endOffset) {
+		authorDocumentController["delete(int,int)"](startOffset + 1, endOffset - 1);
+	}
+  
+	var authorDocumentFragment = authorDocumentController.createNewDocumentFragmentInContext(xml, startOffset - 1);
+	authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);	
 }
 
 var toolbarButtons = document.querySelectorAll("#toolbar button");
@@ -36,23 +55,14 @@ for (var i = 0; i < toolbarButtons.length; i++) {
 	}, false);	
 }
 
-document.getElementById("save-button").addEventListener("click", function() {
-    var content = document.getElementById("content");
-    
-    var xml = (new XMLSerializer()).serializeToString(content);
-    xml = xml.substring(xml.indexOf(">") + 1);
-    xml = xml.replace("</div>", "");
-    
-    var authorDocumentController = authorAccess.getDocumentController();
-    var startOffset = contextElement.getStartOffset();
-    var endOffset = contextElement.getEndOffset();
-    
-    if (startOffset + 1 < endOffset) {
-    	authorDocumentController["delete(int,int)"](startOffset + 1, endOffset - 1);
-    }
-    
-    var authorDocumentFragment = authorDocumentController.createNewDocumentFragmentInContext(xml, startOffset - 1);
-    authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);
+var contentElement = document.getElementById("content");
+
+document.addEventListener("DOMSubtreeModified", function(e) {
+	saveModifiedContent();
+}, false);
+
+document.addEventListener("DOMCharacterDataModified", function() {
+	saveModifiedContent();
 }, false);
 
 document.getElementById("open-button").addEventListener("click", function() {
