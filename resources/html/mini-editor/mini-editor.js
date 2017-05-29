@@ -64,11 +64,3 @@ document.addEventListener("DOMSubtreeModified", function(e) {
 document.addEventListener("DOMCharacterDataModified", function() {
 	saveModifiedContent();
 }, false);
-
-document.getElementById("open-button").addEventListener("click", function() {
-    // Oxygen's API needs an java.net.URL Java Object so we build it using the "apiHelper".
-    var toOpen = apiHelper.newInstance("java.net.URL", ["file:///home/claudius/oxygen/author/frameworks/dlri/resources/html/entries/entries.xml"]);
-    // The open method is overloaded. You can pick a specific overloaded method by listing the parameter 
-    // types in an extended method name.
-    pluginWorkspace["open(java.net.URL,java.lang.String)"](toOpen, "Author");
-}, false);
