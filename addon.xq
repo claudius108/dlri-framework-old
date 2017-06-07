@@ -2333,6 +2333,12 @@ ua:template("idno-unitate-semantică-subsumată",
 	        <option label="loc. conj." value="conjunctional-locution" />
 	        <option label="loc. vb." value="verbal-locution" />
 	    </select>
+	    <input data-ua-ref="@type" type="checkbox" id="proverb-checkbox" name="unitate-semantică-subsumată-checkbox" value="proverb" />
+	    <label for="proverb-checkbox">proverb</label>
+	    <input data-ua-ref="@type" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
+	    <label for="saying-checkbox">zicătoare</label>	    
+	    
+	    
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
