@@ -207,7 +207,7 @@ ua:action(
     "deleteSenseElement",
     map { 
         "name" := "Ștergere",
-        "smallIconPath" := "../../resources/images/delete.png"       
+        "smallIconPath" := "${framework}/resources/images/delete.png"       
     },   
     oxy:execute-xquery-update-script("actions/deleteCurrentElement.xq")
 ),
@@ -311,7 +311,7 @@ ua:action(
     "editEtymologicalNote",
     map { 
         "name" := "Editează notă",
-        "smallIconPath" := "../../resources/images/edit.png"
+        "smallIconPath" := "${framework}/resources/images/edit.png"
     },   
     oxy:execute-action-by-class("ro.kuberam.oxygen.addonBuilder.operations.EditDocumentFragmentInNewTabOperation")
 ),
