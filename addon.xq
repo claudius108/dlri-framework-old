@@ -2350,7 +2350,7 @@ ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumat
 ua:template("form-unitate-semantică-subsumată",
     <template>
         Conținut unitate semantică subsumată:&amp;nbsp;
-        <input data-ua-ref="{text()}" size="81" />      
+        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="40" height="10" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),

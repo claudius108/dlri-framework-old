@@ -19,6 +19,7 @@ function saveModifiedContent() {
 	var xml = (new XMLSerializer()).serializeToString(contentElement);
 	xml = xml.substring(xml.indexOf(">") + 1);
 	xml = xml.replace("</div>", "");
+	xml = xml.replace("&nbsp;", " ");
   
 	var authorDocumentController = authorAccess.getDocumentController();
 	var startOffset = contextElement.getStartOffset();
