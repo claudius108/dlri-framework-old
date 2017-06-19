@@ -2319,29 +2319,29 @@ ua:attach-template(ua-dt:css-selector("sense > idno:first-of-type"), "sense-leve
 ua:template("idno-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;        
-		<input data-ua-ref="#text" type="checkbox" id="proverb-checkbox" name="unitate-semantică-subsumată-checkbox" value="proverb" />
+		<input data-ua-ref="@type" type="checkbox" id="proverb-checkbox" name="unitate-semantică-subsumată-checkbox" value="proverb" />
 		<label for="proverb-checkbox">proverb</label>
-		<input data-ua-ref="#text" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
+		<input data-ua-ref="@type" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
 		<label for="saying-checkbox">zicătoare</label>
-		<input data-ua-ref="#text" type="checkbox" id="riddle-checkbox" name="unitate-semantică-subsumată-checkbox" value="riddle" />
+		<input data-ua-ref="@type" type="checkbox" id="riddle-checkbox" name="unitate-semantică-subsumată-checkbox" value="riddle" />
 		<label for="saying-checkbox">cimilitură</label>
-		<input data-ua-ref="#text" type="checkbox" id="sibyl-checkbox" name="unitate-semantică-subsumată-checkbox" value="sibyl" />
+		<input data-ua-ref="@type" type="checkbox" id="sibyl-checkbox" name="unitate-semantică-subsumată-checkbox" value="sibyl" />
 		<label for="saying-checkbox">ghicitoare</label>		
-		<input data-ua-ref="#text" type="checkbox" id="syntagma-checkbox" name="unitate-semantică-subsumată-checkbox" value="syntagma" />
+		<input data-ua-ref="@type" type="checkbox" id="syntagma-checkbox" name="unitate-semantică-subsumată-checkbox" value="syntagma" />
 		<label for="saying-checkbox">sintagmă</label>
-		<input data-ua-ref="#text" type="checkbox" id="phrase-checkbox" name="unitate-semantică-subsumată-checkbox" value="phrase" />
+		<input data-ua-ref="@type" type="checkbox" id="phrase-checkbox" name="unitate-semantică-subsumată-checkbox" value="phrase" />
 		<label for="saying-checkbox">expresie</label>
-		<input data-ua-ref="#text" type="checkbox" id="compound-checkbox" name="unitate-semantică-subsumată-checkbox" value="compound" />
+		<input data-ua-ref="@type" type="checkbox" id="compound-checkbox" name="unitate-semantică-subsumată-checkbox" value="compound" />
 		<label for="saying-checkbox">compus</label>
-		<input data-ua-ref="#text" type="checkbox" id="adjectival-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adjectival-locution" />
+		<input data-ua-ref="@type" type="checkbox" id="adjectival-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adjectival-locution" />
 		<label for="saying-checkbox">loc. adj.</label>		
-		<input data-ua-ref="#text" type="checkbox" id="adverbial-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adverbial-locution" />
+		<input data-ua-ref="@type" type="checkbox" id="adverbial-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adverbial-locution" />
 		<label for="saying-checkbox">loc. adv.</label>
-		<input data-ua-ref="#text" type="checkbox" id="prepositional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="prepositional-locution" />
+		<input data-ua-ref="@type" type="checkbox" id="prepositional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="prepositional-locution" />
 		<label for="saying-checkbox">loc. prep.</label>
-		<input data-ua-ref="#text" type="checkbox" id="conjunctional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="conjunctional-locution" />
+		<input data-ua-ref="@type" type="checkbox" id="conjunctional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="conjunctional-locution" />
 		<label for="saying-checkbox">loc. conj.</label>
-		<input data-ua-ref="#text" type="checkbox" id="verbal-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="verbal-locution" />
+		<input data-ua-ref="@type" type="checkbox" id="verbal-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="verbal-locution" />
 		<label for="saying-checkbox">loc. vb.</label>		
     </template>
 ),
