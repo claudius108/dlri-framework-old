@@ -20,6 +20,8 @@ function saveModifiedContent() {
 	xml = xml.substring(xml.indexOf(">") + 1);
 	xml = xml.replace("</div>", "");
 	xml = xml.replace("&nbsp;", " ");
+	xml = xml.replace("<br />", "");
+	alert(xml);
   
 	var authorDocumentController = authorAccess.getDocumentController();
 	var startOffset = contextElement.getStartOffset();
