@@ -157,7 +157,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-prin.accidente.fonetice-sinereză',
             'variantă-directă-refăcut.după.forma.articulată',
             'variantă-directă-refăcut.după.sg..art.',	            
-            'variantă-directă-cu.schimbare.de.suf.'
+            'variantă-directă-cu.schimbare.de.suf.',
+            'cuvântul.titlu-loc.lat.'
         )
     )
     then ()
