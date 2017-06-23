@@ -11,7 +11,7 @@ xquery version "3.0";
             insert nodes (doc('../content-models/subc.xml'), doc('../content-models/number.xml')) as last into parent::*
         )
     else (),
-    if (@value = ('art.', 'num.', 'adv.', 's. pr.'))
+    if (@value = ('art.', 'num.', 'adv.', 's. pr.', 'loc.'))
     then
         (
             delete nodes parent::*/element()[position() > 1],

@@ -1702,6 +1702,7 @@ ua:template("pos-before",
             <option label="s. pr." value="s. pr." />
             <option label="subst." value="subst." />
             <option label="vb." value="vb." />
+            <option label="loc." value="loc." />
         </select>
     </template>
 ),
@@ -1751,12 +1752,27 @@ ua:template("subc-articulare-before",
     <template>
         Articulare:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
-            <option label="" value="empty" />
+            <option label="" value="" />
             <option label="art." value="art." />
         </select>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before, pos[value = 's.'] ~ subc:before"), "subc-articulare-before"),
+
+ua:template("subc-loc.-before",
+    <template>
+        Tip:&amp;nbsp;
+        <select data-ua-ref="{@value}" contenteditable="false">
+            <option label="" value="" />
+            <option label="adj." value="adj." />
+            <option label="adv." value="adv." />
+            <option label="prep." value="prep." />
+            <option label="conj." value="conj." />
+            <option label="vb." value="vb." />
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("pos[value = 'loc.'] ~ subc:before"), "subc-loc.-before"),
 
 ua:template("pos-adj-number-before",
     <template>
