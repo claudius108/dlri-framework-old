@@ -2459,7 +2459,8 @@ ua:template("entry-form-headword-after",
                     "edit" := "#text",
                     "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
-                    "treeHeight" := "350"
+                    "treeHeight" := "350",
+                    "treeParentNodePath" := "//dictScrap[@xml:id = 'dlr-senses']"
                 }            
             ))
         }
