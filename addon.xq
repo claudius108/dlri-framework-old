@@ -435,6 +435,18 @@ ua:template("TEI-before-template",
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
 
+ua:template("editing-mode-template",
+    <template>
+    	Mod editare&amp;nbsp;
+        <select data-ua-ref="{@type}" contenteditable="false">
+            <option label="dlr" value="editing-mode-dlr" />
+            <option label="dex" value="editing-mode-dex" />            
+        </select>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("text:before"), "editing-mode-template"),
+
+
 ua:template("grammatical-information-form",
     <template>
         Indicații gramaticale
@@ -2451,7 +2463,7 @@ ua:template("change",
 ),
 ua:attach-template(ua-dt:css-selector("change"), "change"),
 
-ua:template("entry-form-headword-after",
+ua:template("dlr-senses-tree-template",
     <template>
         {
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
@@ -2466,7 +2478,24 @@ ua:template("entry-form-headword-after",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword']:after"), "entry-form-headword-after"),
+ua:attach-template(ua-dt:css-selector("text[type = 'editing-mode-dlr'] > body > entry > form[type = 'headword']:after"), "dlr-senses-tree-template"),
+
+ua:template("dex-senses-tree-template",
+    <template>
+        {
+            ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
+                map {
+                    "edit" := "#text",
+                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
+                    "treeWidth" := "1100",
+                    "treeHeight" := "350",
+                    "treeParentNodePath" := "//dictScrap[@xml:id = 'dex-senses']"
+                }            
+            ))
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("text[type = 'editing-mode-dex'] > body > entry > form[type = 'headword']:after"), "dex-senses-tree-template"),
 
 ua:template("syll",
     <template>
