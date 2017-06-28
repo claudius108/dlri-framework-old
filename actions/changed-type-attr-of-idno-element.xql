@@ -158,7 +158,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-refăcut.după.forma.articulată',
             'variantă-directă-refăcut.după.sg..art.',	            
             'variantă-directă-cu.schimbare.de.suf.',
-            'cuvântul.titlu-loc.lat.'
+            'cuvântul.titlu-loc.lat.',
+            'cuvântul.titlu-formație.internă-onomatopee'
         )
     )
     then ()
@@ -196,7 +197,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'cuvântul.titlu-formație.internă-format.după',
             'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
             'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este',
-            'cuvântul.titlu-formație.internă-onomatopee',
             'cuvântul.titlu-formație.internă-contragere',
             'cuvântul.titlu-formație.internă-formație.spontană.de.la',
             'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
