@@ -1804,8 +1804,11 @@ ua:template("case-before",
             <option label="" value="" />
             <option label="voc." value="voc." />
             <option label="gen.-dat." value="gen.-dat." />
+            <option label="gen.-dat. și" value="gen.-dat. și" />
             <option label="gen.-dat. sg." value="gen.-dat. sg." />
+            <option label="gen.-dat. sg. și" value="gen.-dat. sg. și" />
             <option label="gen.-dat. pl." value="gen.-dat. pl." />
+            <option label="gen.-dat. pl. și" value="gen.-dat. pl. și" />
         </select>
     </template>
 ),
