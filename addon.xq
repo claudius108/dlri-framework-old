@@ -2419,8 +2419,6 @@ ua:template("author-before",
             <option label="Ștefănescu Maria" value="Maria.Stefanescu" />
             <option label="Tamba Isabella" value="isabelle.tamba" />
             <option label="Teste" value="tests" />
-            <option label="Trif Radu-Nicolae" value="Radu" />
-            <option label="Vasileanu Monica" value="monica.vasileanu" />
             <option label="Vasilescu Florin" value="FlorinV" />
         </select>
         <button onclick="{oxy:xquery-update('resources/xquery/insertAuthorElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
