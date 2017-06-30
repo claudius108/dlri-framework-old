@@ -2357,8 +2357,6 @@ ua:template("idno-unitate-semantică-subsumată",
 		<label for="proverb-checkbox">proverb</label>
 		<input data-ua-ref="@type" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
 		<label for="saying-checkbox">zicătoare</label>
-		<input data-ua-ref="@type" type="checkbox" id="riddle-checkbox" name="unitate-semantică-subsumată-checkbox" value="riddle" />
-		<label for="saying-checkbox">cimilitură</label>
 		<input data-ua-ref="@type" type="checkbox" id="sibyl-checkbox" name="unitate-semantică-subsumată-checkbox" value="sibyl" />
 		<label for="saying-checkbox">ghicitoare</label>		
 		<input data-ua-ref="@type" type="checkbox" id="syntagma-checkbox" name="unitate-semantică-subsumată-checkbox" value="syntagma" />
