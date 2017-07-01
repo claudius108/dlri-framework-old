@@ -52,6 +52,13 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             insert node doc('../content-models/grammatical-information-for-gender.xml') after .
     )
     else (),
+    if (@type = 'grammatical-information-subtype-for-fem-sg')
+    then (
+            delete nodes ./following-sibling::*,
+            insert node doc('../content-models/grammatical-information-for-fem-sg.xml') after .
+    )
+    else (),
+        
     if (parent::*/@cert)
     then (
     	delete nodes ./following-sibling::*[not(local-name() = 'note')],

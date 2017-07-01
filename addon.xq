@@ -2171,6 +2171,7 @@ ua:template("form-grammatical-information-idno-nth-of-type-2",
             <option label="pl." value="grammatical-information-subtype-for-pl" />
             <option label="caz" value="grammatical-information-subtype-for-case" />
             <option label="gen" value="grammatical-information-subtype-for-gender" />
+            <option label="fem. sg. (pentru adj.)" value="grammatical-information-subtype-for-fem-sg" />
         </select>   
     </template>
 ),
@@ -2240,6 +2241,15 @@ ua:template("form-details-for-grammatical-information-for-verb-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'details-for-grammatical-information-for-verb']:before"), "form-details-for-grammatical-information-for-verb-before"),
+
+ua:template("form-details-for-grammatical-information-for-fem-sg-before",
+    <template>
+        Feminin&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+        \00000A
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-fem-sg'] > term:before"), "form-details-for-grammatical-information-for-fem-sg-before"),
 
 ua:template("form-lexical-variant-section-before",
     <template>
