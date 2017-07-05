@@ -49,7 +49,7 @@
 	<option label="prin.nord-estul" value="geo"/>
 	<option label="în.Țările.române." value="geo"/>
 	<option label="din.Austria" value="geo"/>
-	<option label="învechit" value="time"/>
+	<option label="înv." value="time"/>
 	<option label="ieșit.din.uz" value="time"/>
 	<option label="astăzi" value="time"/>
 	<option label="în.Antichitate" value="time"/>
@@ -83,12 +83,12 @@
 	<option label="Culgh." value="dom"/>
 	<option label="Culin." value="dom"/>
 	<option label="Ec." value="dom"/>
-	<option label="Ec..pol." value="dom"/>
 	<option label="Electron." value="dom"/>
 	<option label="Electrotehn." value="dom"/>
 	<option label="Entom." value="dom"/>
 	<option label="Farm." value="dom"/>
 	<option label="Farmac." value="dom"/>
+	<option label="Farmacol." value="dom"/>
 	<option label="Fil." value="dom"/>
 	<option label="Filoz./Filos." value="dom"/>
 	<option label="Fin." value="dom"/>
@@ -134,7 +134,7 @@
 	<option label="Poligr." value="dom"/>
 	<option label="Psih." value="dom"/>
 	<option label="Radiofon." value="dom"/>
-	<option label="Rel." value="dom"/>
+	<option label="Relig." value="dom"/>
 	<option label="Statis." value="dom"/>
 	<option label="Silv." value="dom"/>
 	<option label="Șt..jur." value="dom"/>
@@ -147,7 +147,10 @@
 	<option label="Top." value="dom"/>
 	<option label="TV." value="dom"/>
 	<option label="Urban." value="dom"/>
+	<option label="Sociol." value="dom"/>
 	<option label="Zool." value="dom"/>
+	<option label="Chirurg." value="dom"/>
+	<option label="Geomorf." value="dom"/>
 	<option label="argotic" value="register style"/>
 	<option label="arhaic" value="register style"/>
 	<option label="ca.epitet.pe.lângă" value="register style"/>
@@ -158,7 +161,6 @@
 	<option label="exclamativ" value="register style"/>
 	<option label="familiar" value="register style"/>
 	<option label="fig." value="register style"/>
-	<option label="figurat" value="register style"/>
 	<option label="glumeț" value="register style"/>
 	<option label="în.argoul" value="register style"/>
 	<option label="în.basme" value="register style"/>
@@ -241,13 +243,14 @@
 	<option label="la.voc." value="gram"/>
 	<option label="pl..lui" value="gram"/>
 	<option label="substantivat" value="gram"/>
+	<option label="și.substantivat" value="gram"/>
 	<option label="complementul.indică" value="obj"/>
 	<option label="cu.complement.intern" value="obj"/>
 	<option label="cu.subiectul.....sau.un.echivalent.al.acestuia" value="subj"/>
 	<option label="cu.subiectul.neexprimat,.subînțelegându-se" value="subj"/>
 	<option label="cu.subiectul.personificat" value="subj"/>
 	<option label="cu.subiectul.personificat" value="subj"/>
-	<option label="cu.subiectului.exprimat.sau.subînțeles" value="subj"/>
+	<option label="cu.subiectul.exprimat.sau.subînțeles" value="subj"/>
 	<option label="subiect.gramatical.sau.logic" value="subj"/>
 	<option label="subiectul.este" value="subj"/>
 	<option label="subiectul.indică" value="subj"/>
@@ -348,6 +351,7 @@
 	<option label="în.prov..și.în.zic." value="coloc"/>
 	<option label="în.sint." value="coloc"/>
 	<option label="în.zic..și.în.expr." value="coloc"/>
+	<option label="într-o.ghicitoare" value="coloc"/>
 	<option label="indică" value="coloc"/>
 	<option label="întărit.prin" value="coloc"/>
 	<option label="precedă" value="coloc"/>
@@ -401,7 +405,10 @@
 	<option label="p..anal." value="sem"/>
 	<option label="p..anal..cu" value="sem"/>
 	<option label="p..ext." value="sem"/>
-	<option label="p.gener." value="sem"/>
+	<option label="p..gener." value="sem"/>
 	<option label="p..restr." value="sem"/>
-	<option label="p..spec." value="sem"/>
+	<option label="spec." value="sem"/>
+	<option label="cu.determinări" value="coloc"/>
+	<option label="rar.la" value="gram"/>
+	<option label="mai.ales.la" value="gram"/>
 </datalist>
