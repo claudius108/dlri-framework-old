@@ -901,16 +901,6 @@ ua:template("variantă-directă-derivat.regresiv.de.la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-derivat.regresiv.de.la'] ~ term"), "variantă-directă-derivat.regresiv.de.la-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-derivat.postverbal-template",
-    <template>
-        Derivat postverbal de la&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat.postverbal'] ~ term"), "cuvântul.titlu-formație.internă-derivat.postverbal-template"),
-
 ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template",
     <template>
         Contaminare între&amp;nbsp;
