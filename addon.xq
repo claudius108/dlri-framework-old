@@ -954,11 +954,6 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
 
-
-
-
-
-
 ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template",
     <template>
         Limba&amp;nbsp;
@@ -970,7 +965,7 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template")
 ,
 ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
     <template>
@@ -981,7 +976,7 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-term-template")
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-term-template")
 ,
 
 

@@ -189,7 +189,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     else (),         
     if (@type = (
     		'cuvântul.titlu-formație.internă-trimitere-V.',
-    		'cuvântul.titlu-formație.internă-trimitere-Cf.',
             'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
             'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
             'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
@@ -232,5 +231,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
         insert nodes ($dlri:term-una.sau.mai.multe.variante.lexicale-template, $dlri:bibl-template) after .
     )
-    else ()
+    else (),
+    if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
+    then insert node $dlri:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template after .
+    else ()   
 )

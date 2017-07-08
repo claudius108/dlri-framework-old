@@ -70,6 +70,10 @@ declare variable $dlri:term-cuvântul.titlu-formație.internă-compus-format.din
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="cuvântul.titlu-formație.internă-compus-format.din-element.adăugat" />
 ;
 
+declare variable $dlri:term-cuvântul.titlu-formație.internă-trimitere-Cf.-template as element() :=
+    <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="cuvântul.titlu-formație.internă-trimitere-Cf." />
+;
+
 declare variable $dlri:ptr-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unknown" subtype="unknown" target="unknown" />
 ;
@@ -100,6 +104,10 @@ declare variable $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-
 
 declare variable $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="cuvântul.titlu-formație.internă-compus-format.din-element.adăugat" target="unknown" />
+;
+
+declare variable $dlri:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template as element() :=
+    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="cuvântul.titlu-formație.internă-trimitere-Cf." />
 ;
 
 declare variable $dlri:sense-template as element() :=

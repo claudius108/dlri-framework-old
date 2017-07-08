@@ -20,4 +20,8 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 	if (@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat' and @xml:lang = 'ro')
 	then replace node . with $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
 	else ()
+	,
+	if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.' and @xml:lang = 'ro')
+	then replace node . with $dlri:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template
+	else ()	
 )	
