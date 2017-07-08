@@ -893,16 +893,6 @@ ua:template("ptr-component-element-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'component-element']:after"), "ptr-component-element-template"),
 
-ua:template("cuvântul.titlu-formație.internă-derivat.regresiv-template",
-    <template>
-        Derivat regresiv de la&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-        &amp;nbsp;Nr. omonim&amp;nbsp;
-        <input data-ua-ref="{@subtype}" size="3" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-derivat.regresiv'] ~ term"), "cuvântul.titlu-formație.internă-derivat.regresiv-template")
-,
 ua:template("variantă-directă-derivat.regresiv.de.la-template",
     <template>
         Derivat regresiv de la&amp;nbsp;
@@ -973,6 +963,60 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
+
+
+
+
+
+
+ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $target-languages-template
+        }
+        {
+            ua:get-template('ptr-template')
+        }
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template")
+,
+ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
+    <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-term-template")
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ua:template("etym-note-template",
     <template>

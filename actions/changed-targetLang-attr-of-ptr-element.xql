@@ -43,5 +43,15 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 			return $template
 			
 		return replace node . with $processed-template
-	else ()		
+	else ()
+	,
+	if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.' and @targetLang != 'ro')
+	then
+		let $processed-template :=
+			copy $template := $dlri:term-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+			modify replace value of node $template/@xml:lang with ./@targetLang
+			return $template
+			
+		return replace node . with $processed-template
+	else ()
 )	
