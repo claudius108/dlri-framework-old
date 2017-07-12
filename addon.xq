@@ -204,6 +204,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/deleteCurrentElement.xq")
 ),
 ua:action(
+    "cloneCurrentElement",
+    map { 
+        "name" := "Duplicare",
+        "smallIconPath" := "../../resources/images/clone.png"       
+    },   
+    oxy:execute-xquery-update-script("resources/xquery/cloneCurrentElement.xql")
+),
+ua:action(
     "deleteSenseElement",
     map { 
         "name" := "Ștergere",
@@ -451,6 +459,7 @@ ua:template("grammatical-information-form",
     <template>
         Indicații gramaticale
         <button onclick="{oxy:xquery-update-action('addGrammaticalInformationSection')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         \00000A
     </template>
@@ -2291,6 +2300,7 @@ ua:template("form-lexical-variant-section-before",
     <template>
         Variantă lexicală&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/addLexicalVariant.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
