@@ -166,7 +166,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-refăcut.după.sg..art.',	            
             'variantă-directă-cu.schimbare.de.suf.',
             'cuvântul.titlu-loc.lat.',
-            'cuvântul.titlu-formație.internă-onomatopee'
+            'cuvântul.titlu-formație.internă-onomatopee',
+            'variantă-directă-etimon.variantă-prin.hiperurbanism'
         )
     )
     then ()
@@ -216,7 +217,10 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*'
     	)
     	or
-    	starts-with(@type, 'variantă-directă-etimon.variantă')
+    	(
+    		starts-with(@type, 'variantă-directă-etimon.variantă')
+    		and @type != 'variantă-directă-etimon.variantă-prin.hiperurbanism'
+    	)
     )
     then (
         insert node $dlri:ptr-template after .
