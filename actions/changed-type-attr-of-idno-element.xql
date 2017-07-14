@@ -46,10 +46,10 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         insert node doc('../content-models/grammatical-information-for-case.xml') after .
     )
     else (),
-    if (@type = 'grammatical-information-subtype-for-gender')
+    if (@type = 'grammatical-information-subtype-for-category')
     then (
             delete nodes ./following-sibling::*,
-            insert node doc('../content-models/grammatical-information-for-gender.xml') after .
+            insert node $dlri:gramGrp-template after .
     )
     else (),
     if (@type = 'grammatical-information-subtype-for-fem-sg')

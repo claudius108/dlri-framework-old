@@ -1691,7 +1691,7 @@ ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before")
 ua:template("bibl-citedRange-before",
     <template>
     	\00000ALocalizare în sursă:&amp;nbsp;
-        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="40" height="10" />
+        <input data-ua-ref="{text()}" size="30" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRange-before"),
@@ -2215,9 +2215,10 @@ ua:template("form-grammatical-information-idno-nth-of-type-2",
             <option label="" value="unknown" />
             <option label="pl." value="grammatical-information-subtype-for-pl" />
             <option label="caz" value="grammatical-information-subtype-for-case" />
-            <option label="gen" value="grammatical-information-subtype-for-gender" />
+            <option label="cat. gram." value="grammatical-information-subtype-for-category" />
             <option label="fem. sg. (pentru adj.)" value="grammatical-information-subtype-for-fem-sg" />
-        </select>   
+        </select>
+        \00000A
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information'] > idno:nth-of-type(2)"), "form-grammatical-information-idno-nth-of-type-2"),
@@ -2237,20 +2238,6 @@ ua:template("form-grammatical-information-for-plural-gen-after",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > gen:after"), "form-grammatical-information-for-plural-gen-after"),
-
-ua:template("form-grammatical-information-for-gender-gen-before",
-    <template>
-        Gen&amp;nbsp;
-        <select data-ua-ref="{@target}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="m" value="m" />
-            <option label="f" value="f" />
-            <option label="n" value="n" />
-            <option label="m. şi f." value="m. şi f." />
-        </select>   
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender'] > gen:before"), "form-grammatical-information-for-gender-gen-before"),
 
 ua:template("form-grammatical-information-for-verb-per",
     <template>
@@ -2335,7 +2322,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'graphic-variant']:not( :firs
 
 ua:template("form-grammatical-information-for-plural-before",
     <template>
-        \00000AIndicaţii pentru plural
+        Indicaţii pentru plural
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForPluralSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstGenElement.xq')}" style="visibility: {count(gen) = 0};">Gen</button>
@@ -2348,7 +2335,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("form-grammatical-information-for-case-before",
     <template>
-        \00000AIndicaţii pentru caz
+        Indicaţii pentru caz
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForCaseSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
@@ -2364,15 +2351,6 @@ ua:template("form-grammatical-information-for-case-case",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-case'] > case"), "form-grammatical-information-for-case-case"),
-
-ua:template("form-grammatical-information-for-gender-before",
-    <template>
-        \00000AIndicaţii pentru gen
-        <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForGenderSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-gender']:before"), "form-grammatical-information-for-gender-before"),
 
 ua:template("form-grammatical-information-for-verb-before",
     <template>
@@ -2438,7 +2416,7 @@ ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumat
 ua:template("form-unitate-semantică-subsumată",
     <template>
         Conținut unitate semantică subsumată:&amp;nbsp;
-        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="40" height="10" />
+        <input data-ua-ref="{text()}" size="30" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
@@ -2571,7 +2549,7 @@ ua:template("def",
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
-        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="40" height="10" />
+        <input data-ua-ref="{text()}" size="30" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xq')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
     </template>
