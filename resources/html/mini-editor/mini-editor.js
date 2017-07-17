@@ -1,16 +1,14 @@
 function bridgeReady() {
-	setTimeout(function(){
-		var authorDocumentController = authorAccess.getDocumentController();
-		
-	    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentController.createDocumentFragment(contextElement.getStartOffset() + 1, contextElement.getEndOffset() - 1));
-	    newContent = '<div xmlns="http://www.w3.org/1999/xhtml" id="content" contenteditable="true">' + newContent + "</div>";
+	var authorDocumentController = authorAccess.getDocumentController();
+	
+    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentController.createDocumentFragment(contextElement.getStartOffset() + 1, contextElement.getEndOffset() - 1));
+    newContent = '<div xmlns="http://www.w3.org/1999/xhtml" id="content" contenteditable="true">' + newContent + "</div>";
 
-	    var newContentElement = (new DOMParser()).parseFromString(newContent, "text/xml").documentElement;
-	    
-	    var contentElement = document.getElementById("content");
-	    var contentElementParent = contentElement.parentNode;
-	    contentElementParent.replaceChild(document.importNode(newContentElement, true), contentElement);
-	}, 3000);	
+    var newContentElement = (new DOMParser()).parseFromString(newContent, "text/xml").documentElement;
+    
+    var contentElement = document.getElementById("content");
+    var contentElementParent = contentElement.parentNode;
+    contentElementParent.replaceChild(document.importNode(newContentElement, true), contentElement);
 }
 
 function saveModifiedContent() {
