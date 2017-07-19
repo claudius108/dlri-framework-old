@@ -1,8 +1,14 @@
 function bridgeReady() {
 	var authorDocumentController = authorAccess.getDocumentController();
+	var startOffset = contextElement.getStartOffset();
+	var endOffset = contextElement.getEndOffset();	
+	var newContent = "";
 	
-	var authorDocumentFragment = authorDocumentController["createDocumentFragment(int,int)"](contextElement.getStartOffset() + 1, contextElement.getEndOffset() - 1);
-    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentFragment);
+	if (startOffset + 1 < endOffset) {
+		var authorDocumentFragment = authorDocumentController["createDocumentFragment(int,int)"](startOffset + 1, endOffset - 1);
+	    var newContent = authorDocumentController.serializeFragmentToXML(authorDocumentFragment);
+	}
+
     newContent = '<div xmlns="http://www.w3.org/1999/xhtml" id="content" contenteditable="true">' + newContent + "</div>";
 
     var newContentElement = (new DOMParser()).parseFromString(newContent, "text/xml").documentElement;
@@ -37,7 +43,10 @@ function saveModifiedContent() {
 		authorDocumentController.insertFragment(startOffset + 1, authorDocumentFragment);
     } finally {
     	authorDocumentController.sync();
-    }		
+    }
+    
+    var authorEditorAccess = authorAccess.getEditorAccess();
+    authorEditorAccess.save();
 }
 
 var toolbarButtons = document.querySelectorAll("#toolbar button");
