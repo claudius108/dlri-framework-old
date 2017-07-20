@@ -987,31 +987,6 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-term-template")
 ,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ua:template("etym-note-template",
     <template>
 		Notă&amp;nbsp;
@@ -2215,7 +2190,6 @@ ua:template("form-grammatical-information-idno-nth-of-type-2",
             <option label="" value="unknown" />
             <option label="pl." value="grammatical-information-subtype-for-pl" />
             <option label="caz" value="grammatical-information-subtype-for-case" />
-            <option label="cat. gram." value="grammatical-information-subtype-for-category" />
             <option label="fem. sg. (pentru adj.)" value="grammatical-information-subtype-for-fem-sg" />
         </select>
         \00000A
