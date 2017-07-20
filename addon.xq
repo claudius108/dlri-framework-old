@@ -2205,14 +2205,6 @@ ua:template("form-grammatical-information-for-plural-number",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > number"), "form-grammatical-information-for-plural-number"),
 
-ua:template("form-grammatical-information-for-plural-gen-after",
-    <template>
-        <button onclick="{oxy:xquery-update('resources/xquery/addGenElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-plural'] > gen:after"), "form-grammatical-information-for-plural-gen-after"),
-
 ua:template("form-grammatical-information-for-verb-per",
     <template>
         Persoană&amp;nbsp;
@@ -2299,7 +2291,7 @@ ua:template("form-grammatical-information-for-plural-before",
         Indicaţii pentru plural
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForPluralSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstGenElement.xq')}" style="visibility: {count(gen) = 0};">Gen</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addGramGrpInForm.xql')}" style="visibility: {count(gramGrp) = 0};">Cat. gram.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />

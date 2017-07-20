@@ -11,4 +11,5 @@ return
 	case "sense" return insert node $dlri:gramGrp-template as first into .
 	case "gramGrp" return insert node $dlri:gramGrp-template after .
 	case "etym" return insert node $dlri:gramGrp-template as last into .
+	case "form" return insert node $dlri:gramGrp-template after (tei:number | tei:usg | tei:gramGrp | tei:ptr)[last()]
 	default return ()
