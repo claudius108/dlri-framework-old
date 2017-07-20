@@ -2333,7 +2333,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("sense-currentEdited-value-before",
     <template>
-        <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>     
     </template>
 ),
