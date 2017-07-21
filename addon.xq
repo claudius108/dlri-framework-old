@@ -2515,7 +2515,7 @@ ua:template("def",
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
-        <iframe src="${framework}/resources/html/mini-editor/mini-editor.html" width="700" height="145" />
+        <input data-ua-ref="{text()}" size="30" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xq')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
     </template>
