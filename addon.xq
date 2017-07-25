@@ -554,8 +554,8 @@ ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
 ua:template("etym-idno-first-of-type",
     <template>
         \00000A Etimologie pentru&amp;nbsp;
-        <datalist id="etymology-types" />
-        <input data-ua-ref="{@type}" size="80" list="etymology-types" />               
+        <datalist id="headword-etymology-types" />
+        <input data-ua-ref="{@type}" size="80" list="headword-etymology-types" />               
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
