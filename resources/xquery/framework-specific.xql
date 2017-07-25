@@ -103,6 +103,10 @@ let $special-characters :=
 return (
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/headword-etymology-types.less", $processed-headword-etymology-types)
     ,
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/senses-etymology-types.less", $processed-senses-etymology-types)
+    ,
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/variants-etymology-types.less", $processed-variants-etymology-types)
+    ,
 	file:write($frameworkResourcesDirPath || "/ontology/languages.html", $processed-languages)
     ,    
 	file:write-binary(
@@ -111,6 +115,24 @@ return (
 			file:read-binary($frameworkUberJarPath),
 			"resources/css/datalists/headword-etymology-types.less",
 			bin:encode-string($processed-headword-etymology-types)
+		)
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/senses-etymology-types.less",
+			bin:encode-string($processed-senses-etymology-types)
+		)
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/variants-etymology-types.less",
+			bin:encode-string($processed-variants-etymology-types)
 		)
 	)
 	,
