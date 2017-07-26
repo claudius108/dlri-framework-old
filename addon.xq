@@ -538,7 +538,7 @@ ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-
 
 ua:template("etym-before",
     <template>
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAfter.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         Probabilitate etimologie&amp;nbsp;
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
@@ -551,14 +551,23 @@ ua:template("etym-before",
 ),
 ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
 
-ua:template("etym-idno-first-of-type",
+ua:template("entry-etym-idno-first-of-type",
     <template>
         \00000A Etimologie pentru&amp;nbsp;
         <datalist id="headword-etymology-types" />
         <input data-ua-ref="{@type}" size="80" list="headword-etymology-types" />               
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno:first-of-type"), "etym-idno-first-of-type"),
+ua:attach-template(ua-dt:css-selector("entry > etym > idno:first-of-type"), "entry-etym-idno-first-of-type"),
+
+ua:template("sense-etym-idno-first-of-type",
+    <template>
+        \00000A Etimologie pentru&amp;nbsp;
+        <datalist id="sense-etymology-types" />
+        <input data-ua-ref="{@type}" size="80" list="sense-etymology-types" />               
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > etym > idno:first-of-type"), "sense-etym-idno-first-of-type"),
 
 ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template",
     <template>
@@ -2334,7 +2343,8 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 ua:template("sense-currentEdited-value-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>     
+        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}">Etimologie</button>     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),

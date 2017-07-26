@@ -25,11 +25,11 @@ let $etymology-types := parse-xml(unparsed-text($ontology-github-url || "/etymol
 let $headword-etymology-types :=
 	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/headword']//skos:Concept
 	return $concept/skos:prefLabel/text()
-let $senses-etymology-types :=
-	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/senses']//skos:Concept
+let $sense-etymology-types :=
+	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/sense']//skos:Concept
 	return $concept/skos:prefLabel/text()
-let $variants-etymology-types :=
-	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variants']//skos:Concept
+let $variant-etymology-types :=
+	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
 	return $concept/skos:prefLabel/text()
 let $processed-headword-etymology-types := string-join(
 	(
@@ -44,27 +44,27 @@ let $processed-headword-etymology-types := string-join(
 	),
 	""
 )
-let $processed-senses-etymology-types := string-join(
+let $processed-sense-etymology-types := string-join(
 	(
 		$charset,
 		"&#10;",
-		"@senses-etymology-types: ",
+		"@sense-etymology-types: ",
 		"&quot;",
 		",",
-		normalize-space(string-join($senses-etymology-types, ",")),
+		normalize-space(string-join($sense-etymology-types, ",")),
 		"&quot;",
 		";"
 	),
 	""
 )
-let $processed-variants-etymology-types := string-join(
+let $processed-variant-etymology-types := string-join(
 	(
 		$charset,
 		"&#10;",
-		"@variants-etymology-types: ",
+		"@variant-etymology-types: ",
 		"&quot;",
 		",",
-		normalize-space(string-join($variants-etymology-types, ",")),
+		normalize-space(string-join($variant-etymology-types, ",")),
 		"&quot;",
 		";"
 	),
@@ -103,9 +103,9 @@ let $special-characters :=
 return (
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/headword-etymology-types.less", $processed-headword-etymology-types)
     ,
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/senses-etymology-types.less", $processed-senses-etymology-types)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/sense-etymology-types.less", $processed-sense-etymology-types)
     ,
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/variants-etymology-types.less", $processed-variants-etymology-types)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $processed-variant-etymology-types)
     ,
 	file:write($frameworkResourcesDirPath || "/ontology/languages.html", $processed-languages)
     ,    
@@ -122,8 +122,8 @@ return (
 		$frameworkUberJarPath,	
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
-			"resources/css/datalists/senses-etymology-types.less",
-			bin:encode-string($processed-senses-etymology-types)
+			"resources/css/datalists/sense-etymology-types.less",
+			bin:encode-string($processed-sense-etymology-types)
 		)
 	)
 	,
@@ -131,8 +131,8 @@ return (
 		$frameworkUberJarPath,	
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
-			"resources/css/datalists/variants-etymology-types.less",
-			bin:encode-string($processed-variants-etymology-types)
+			"resources/css/datalists/variant-etymology-types.less",
+			bin:encode-string($processed-variant-etymology-types)
 		)
 	)
 	,
