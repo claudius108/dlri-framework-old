@@ -438,7 +438,7 @@ ua:template("TEI-before-template",
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xq')}" style="visibility: {count(//entry/form[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xq')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
@@ -2002,7 +2002,7 @@ ua:template("multiple-form-oVar",
         <input data-ua-ref="{text()}" size="40" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'writing'] > oVar, form[type = 'lexical-variant-section'] > oVar, form[type = 'abbreviation'] > oVar"), "multiple-form-oVar"),
+ua:attach-template(ua-dt:css-selector("form[type = 'writing'] > oVar, re[type = 'lexical-variant-section'] > oVar, form[type = 'abbreviation'] > oVar"), "multiple-form-oVar"),
 
 ua:template("grammatical-information-for-verb-mood",
     <template>
@@ -2258,32 +2258,6 @@ ua:template("form-details-for-grammatical-information-for-fem-sg-before",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-fem-sg'] > term:before"), "form-details-for-grammatical-information-for-fem-sg-before"),
 
-ua:template("form-lexical-variant-section-before",
-    <template>
-        Variantă lexicală&amp;nbsp;
-        <button onclick="{oxy:xquery-update('resources/xquery/addLexicalVariant.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant-section']:before"), "form-lexical-variant-section-before"),
-
-ua:template("form-lexical-variant-before",
-    <template>
-        \00000AVariantă lexicală
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'lexical-variant']:before"), "form-lexical-variant-before"),
-
 ua:template("graphic-variant-not-first-of-type-before",
     <template>
         {
@@ -2517,7 +2491,7 @@ ua:template("syll",
 ),
 ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 
-ua:template("def",
+ua:template("sense-def-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" />
@@ -2526,11 +2500,11 @@ ua:template("def",
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
         <input data-ua-ref="{text()}" size="30" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xq')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("def"), "def"),
+ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
 
 ua:template("entry-form-headword-before",
     <template>
@@ -2548,4 +2522,30 @@ ua:template("sense-form-before",
         <input data-ua-ref="{text()}" size="108" /> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form:before"), "sense-form-before")
+ua:attach-template(ua-dt:css-selector("sense > form:before"), "sense-form-before"),
+
+ua:template("lexical-variant-section-before",
+    <template>
+        Variantă lexicală&amp;nbsp;
+        <button onclick="{oxy:xquery-update('resources/xquery/addLexicalVariant.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section']:before"), "lexical-variant-section-before"),
+
+ua:template("def-lexical-variant-section-before",
+    <template>
+        \00000A
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section'] > def:before"), "def-lexical-variant-section-before")

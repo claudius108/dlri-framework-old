@@ -9,10 +9,10 @@ declare variable $dlri:gramGrp-template as element() :=
 ;
 
 declare variable $dlri:lexical-variant-section-template as element() :=
-	<form xmlns="http://www.tei-c.org/ns/1.0" type="lexical-variant-section">
-        <form type="lexical-variant" />
+	<re xmlns="http://www.tei-c.org/ns/1.0" type="lexical-variant-section">
+        <def />
         {$dlri:gramGrp-template}
-    </form>
+    </re>
 ;
 
 declare variable $dlri:def-template as element() :=

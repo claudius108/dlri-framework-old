@@ -29,7 +29,7 @@ TEI:before {
 }
 
 title, author, editor, syll, quote, stress, usg, term, def, form[type = 'headword'] > orth,
-form[type = 'grammatical-information-for-plural'] > number, form[type = 'lexical-variant'], form[type = 'writing'] > oVar,
+form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
 note, form[type='articulation'] > term, bibl > citedRange, bibl > date, idno {
 	visibility: "-oxy-collapse-text";
@@ -52,7 +52,7 @@ change {
 	font-weight: normal;
 }
 
-entry>form,teiHeader,entry>gramGrp, etym {
+entry>form,teiHeader,entry>gramGrp, etym, entry>re {
 	border: solid 1px black;
 	width: 1100px;
 	min-height: 100px;
@@ -70,7 +70,7 @@ form[type = 'headword'] > pron {
 	display: none;
 }
 
-def {
+sense>def {
 	margin-left: 10px;
 	border: solid 1px black;
 }
