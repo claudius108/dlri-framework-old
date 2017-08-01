@@ -438,7 +438,7 @@ ua:template("TEI-before-template",
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xq')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
@@ -2318,6 +2318,7 @@ ua:template("sense-currentEdited-value-before",
     <template>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}">Etimologie</button>     
     </template>
 ),
