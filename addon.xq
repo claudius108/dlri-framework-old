@@ -569,6 +569,15 @@ ua:template("sense-etym-idno-first-of-type",
 ),
 ua:attach-template(ua-dt:css-selector("sense > etym > idno:first-of-type"), "sense-etym-idno-first-of-type"),
 
+ua:template("variant-etym-idno-first-of-type",
+    <template>
+        \00000A Etimologie pentru&amp;nbsp;
+        <datalist id="variant-etymology-types" />
+        <input data-ua-ref="{@type}" size="80" list="variant-etymology-types" />               
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section'] > etym > idno:first-of-type"), "variant-etym-idno-first-of-type"),
+
 ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template",
     <template>
         Formaţie onomatopeică&amp;nbsp;
@@ -2538,6 +2547,7 @@ ua:template("lexical-variant-section-before",
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {local-name(parent::*) = 'entry'};">Etimologie</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section']:before"), "lexical-variant-section-before"),
