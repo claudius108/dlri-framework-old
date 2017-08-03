@@ -7,6 +7,8 @@ declare namespace bin = "http://expath.org/ns/binary";
 declare namespace skos = "http://www.w3.org/2004/02/skos/core#";
 declare namespace rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
+declare default element namespace "http://www.w3.org/1999/xhtml";
+
 declare variable $pluginInstallDirPath external;
 declare variable $frameworkDirPath external;
 
@@ -76,15 +78,16 @@ let $languages :=
 	<select>
 		{
 			for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
-			return <option label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
+			return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
 		}
 	</select>	
-let $processed-languages :=
+let $serialized-languages :=
 	serialize(
 		$languages,
 		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-		  <output:omit-xml-declaration value="yes" />
-		  <output:indent value="yes" />
+			<output:method value="xml" />
+			<output:omit-xml-declaration value="yes" />
+			<output:indent value="yes" />
 		</output:serialization-parameters>
 	)	
 
@@ -107,8 +110,8 @@ return (
     ,
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $processed-variant-etymology-types)
     ,
-	file:write($frameworkResourcesDirPath || "/ontology/languages.html", $processed-languages)
-    ,    
+	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $serialized-languages)
+    ,
 	file:write-binary(
 		$frameworkUberJarPath,	
 		arch:update(
@@ -141,7 +144,7 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/ontology/languages.html",
-			bin:encode-string($processed-languages)
+			bin:encode-string($serialized-languages)
 		)
 	)	
 	,
