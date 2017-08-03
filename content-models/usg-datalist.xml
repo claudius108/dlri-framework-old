@@ -167,6 +167,7 @@
 	<option label="în.basme.și.superstiții" value="register style"/>
 	<option label="în.cântece.de.leagăn" value="register style"/>
 	<option label="în.colinde" value="register style"/>
+	<option label="în.jurăminte" value="register style"/>
 	<option label="în.concepțiile.religioase" value="register style"/>
 	<option label="în.credințele.mistice" value="register style"/>
 	<option label="în.credințele.populare" value="register style"/>
@@ -311,6 +312,7 @@
 	<option label="prin.confuzie.cu" value="hint"/>
 	<option label="prin.haplologie" value="hint"/>
 	<option label="prin.metateză" value="hint"/>
+	<option label="prin.metonimie" value="hint"/>
 	<option label="prin.sincopare" value="hint"/>
 	<option label="probabil.din.necesități.prozodice" value="hint"/>
 	<option label="pronunțat.cu" value="hint"/>
@@ -358,6 +360,7 @@
 	<option label="precedă.noțiuni.temporale" value="coloc"/>
 	<option label="precedă.ultimul.termen.al.unei.enumerări" value="coloc"/>
 	<option label="precedat.de" value="coloc"/>
+	<option label="precedat.de.prep." value="coloc"/>
 	<option label="precedat.de.calificative" value="coloc"/>
 	<option label="precedat.de.complementul" value="coloc"/>
 	<option label="urmat.de.complementul" value="coloc"/>
@@ -377,7 +380,6 @@
 	<option label="precedat.de.propoziții.negative.care" value="coloc"/>
 	<option label="prin.analogie.cu" value="coloc"/>
 	<option label="repetat" value="coloc"/>
-	<option label="și.în.sint." value="coloc"/>
 	<option label="urmând.după.s..determinat" value="coloc"/>
 	<option label="urmat.de" value="coloc"/>
 	<option label="urmat.de.calificative" value="coloc"/>
