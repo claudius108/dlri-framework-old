@@ -164,4 +164,13 @@ return (
 			)
 		)
 	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"java/framework.jar",
+			file:read-binary($frameworkJarPath)
+		)
+	)
 )
