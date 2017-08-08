@@ -94,7 +94,7 @@ let $serialized-languages :=
 (: process the controlled vocabulary for special characters :)
 let $special-characters :=
 	(
-		<properties>
+		<properties xmlns="">
 			{
 				for $concept in parse-xml(unparsed-text($ontology-github-url || "/special-characters.rdf"))//skos:Concept
 				return <entry key="{$concept/skos:notation}">{$concept/skos:definition/text()}</entry>		
