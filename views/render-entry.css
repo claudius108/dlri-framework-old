@@ -50,4 +50,8 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
 
 span.bibl-quote {
   font-style: italic;
-}            
+}     
+
+div.writing-form, div.pronunciation-form {
+	float: left;
+} 

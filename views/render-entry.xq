@@ -10,6 +10,7 @@ declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
 declare variable $language-codes := doc("../resources/ontology/languages.html");
+declare variable $editing-mode := /*//tei:text/@type;
 
 declare function dlri-views:dispatch($node) {
     typeswitch($node)
@@ -103,10 +104,13 @@ declare function dlri-views:get-entry-title($entry) {
 };
 
 declare function dlri-views:headword($node) {
-	<div class="headword">
-		<span>{$entry-title}</span>
-	  	<span class="superscript">{data($node/tei:orth/@n)}</span>
-	</div>
+	let $homonym-number := data($node/tei:orth/@n) 
+	
+	return
+		<div class="headword">
+			<span>{$entry-title}</span>
+		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else ()}
+		</div>
 };
 
 declare function dlri-views:gramGrp($node) {
@@ -221,7 +225,7 @@ declare function dlri-views:writing-form($node) {
 };
 
 declare function dlri-views:pronunciation-form($node) {
-    <div class="pronunciation-form">− Pronunțat: {$node/tei:pRef/text()}.</div>
+    <div class="pronunciation-form">− Pronunțat: {$node/(tei:pRef | tei:syll)/text()}.</div>
 };
 declare function dlri-views:grammatical-information($node) {
 	let $type := $node/tei:form/@type
@@ -289,7 +293,7 @@ declare function dlri-views:etym($nodes) {
     ,    
     processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/render-entry.css&quot;")}
     ,
-    <html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
             <title>{$entry-title}</title>
         </head>
