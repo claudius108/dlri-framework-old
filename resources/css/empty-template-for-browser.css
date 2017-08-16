@@ -1,0 +1,13 @@
+/**
+ * CSS file for rendering HTML content in a browser.
+ * 
+ * Copyright (C) 2017 Linguistic Institute of the Romanian Academy.
+ * 
+ * 
+ */
+
+* {-oxy-display-tags: none;}
+
+graphic {
+    content: oxy_browser(href, oxy_url(attr(url)), width, 600px, height, 400px);
+}
