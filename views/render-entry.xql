@@ -6,10 +6,10 @@ declare namespace dlri-views = "http://dlri.ro/ns/dlri-views";
 declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
 declare namespace html = "http://www.w3.org/1999/xhtml";
 
-declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework(dlri)}");
+declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
-declare variable $language-codes := doc("../resources/ontology/languages.html");
+declare variable $language-codes := doc($frameworkDir || "/resources/ontology/languages.html");
 declare variable $editing-mode := /*//tei:text/@type;
 
 declare function dlri-views:dispatch($node) {
@@ -286,39 +286,31 @@ declare function dlri-views:etym($nodes) {
     </div>
 };
 
-(
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "resources/css/html.css&quot;")}
-    ,
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/oxygen-render.css&quot;")}
-    ,    
-    processing-instruction xml-stylesheet {concat("type=&quot;text/css&quot; href=&quot;", $framework-dir, "views/render-entry.css&quot;")}
-    ,
-    <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-            <title>{$entry-title}</title>
-        </head>
-        <body>
-            {
-            	dlri-views:headword($entry/tei:form[@type = 'headword'])
-            	,
-            	dlri-views:gramGrp($entry/tei:gramGrp)
-            	,
-            	dlri-views:sense($entry/tei:sense[1], "-first")
-            	,
-            	for $sense in $entry/tei:sense[position() > 1]
-            	return dlri-views:sense($sense, "")
-            	,
-            	for $writing-form in $entry/tei:form[@type = 'writing']
-            	return dlri-views:writing-form($writing-form)
-            	,   
-            	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
-            	return dlri-views:pronunciation-form($pronunciation-form)
-            	,               	         	
-            	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
-            	return dlri-views:grammatical-information($grammatical-information)
-            	,
-            	dlri-views:etym($entry/tei:etym)
-            }     
-        </body>
-    </html>
-)
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{$entry-title}</title>
+    </head>
+    <body>
+        {
+        	dlri-views:headword($entry/tei:form[@type = 'headword'])
+        	,
+        	dlri-views:gramGrp($entry/tei:gramGrp)
+        	,
+        	dlri-views:sense($entry/tei:sense[1], "-first")
+        	,
+        	for $sense in $entry/tei:sense[position() > 1]
+        	return dlri-views:sense($sense, "")
+        	,
+        	for $writing-form in $entry/tei:form[@type = 'writing']
+        	return dlri-views:writing-form($writing-form)
+        	,   
+        	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
+        	return dlri-views:pronunciation-form($pronunciation-form)
+        	,               	         	
+        	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
+        	return dlri-views:grammatical-information($grammatical-information)
+        	,
+        	dlri-views:etym($entry/tei:etym)
+        }     
+    </body>
+</html>
