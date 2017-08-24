@@ -289,6 +289,7 @@ declare function dlri-views:etym($nodes) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{$entry-title}</title>
+        <link rel="stylesheet" type="text/css" href="render-entry.css" />
     </head>
     <body>
         {
