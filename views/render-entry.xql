@@ -10,7 +10,8 @@ declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
 declare variable $language-codes := doc($frameworkDir || "/resources/ontology/languages.html");
-declare variable $editing-mode := /*//tei:text/@type;
+declare variable $editing-mode := /*//tei:text/@type/data(.);
+declare variable $processed-editing-mode := replace($editing-mode, "editing-mode-", "");
 
 declare function dlri-views:dispatch($node) {
     typeswitch($node)
@@ -289,6 +290,7 @@ declare function dlri-views:etym($nodes) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{$entry-title}</title>
+        <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="render-entry.css" />
     </head>
     <body>
@@ -297,10 +299,14 @@ declare function dlri-views:etym($nodes) {
         	,
         	dlri-views:gramGrp($entry/tei:gramGrp)
         	,
-        	dlri-views:sense($entry/tei:sense[1], "-first")
-        	,
-        	for $sense in $entry/tei:sense[position() > 1]
-        	return dlri-views:sense($sense, "")
+        	let $senses := $entry/tei:dictScrap[@xml:id = $processed-editing-mode || '-senses']/tei:sense
+        	
+        	return (
+	        	dlri-views:sense($senses[1], "-first")
+	        	,
+	        	for $sense in $senses[position() > 1]
+	        	return dlri-views:sense($sense, "")        	
+        	)
         	,
         	for $writing-form in $entry/tei:form[@type = 'writing']
         	return dlri-views:writing-form($writing-form)
