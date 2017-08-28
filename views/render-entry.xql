@@ -124,36 +124,40 @@ declare function dlri-views:gramGrp($node) {
 };
 
 declare function dlri-views:sense($node, $current-sense-mark) {
-	(
-	    <div class="sense-level{concat(count($node/ancestor-or-self::tei:sense), $current-sense-mark)}">
-	        {
-	            (
-	                <span class="sense-level">{data($node/tei:idno[1]/@n)}</span>
-	                ,
-	                <span>{dlri-views:usg($node/tei:usg)}</span>
-	                ,
-	                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
-	            )
-	        }
-	    </div>
-	    ,
-	    <div class="cit-container">
-	    	{
-	    		(
-		            for $cit in $node/tei:cit
-		            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
-		            let $current-type := data($cit/tei:bibl/@type)
-		            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
-		            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
-		            
-		            return ($delimiter, dlri-views:cit($cit))
-		        )
-	        }
-	    </div>
-	    ,
-	    for $sense in $node/tei:sense
-	    return dlri-views:sense($sense, "")
-	)
+	let $sense-level := data($node/tei:idno[1]/@n)
+	let $sense-usg := dlri-views:usg($node/tei:usg)
+	
+	return
+		(
+		    <div class="sense-level{concat(count($node/ancestor-or-self::tei:sense), $current-sense-mark)}">
+		        {
+		            (
+		                if ($sense-level != '') then <span class="sense-level">{$sense-level}</span> else ()
+		                ,
+		                if (exists($sense-usg)) then <span>{$sense-usg}</span> else ()
+		                ,
+		                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
+		            )
+		        }
+		    </div>
+		    ,
+		    <div class="cit-container">
+		    	{
+		    		(
+			            for $cit in $node/tei:cit
+			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
+			            let $current-type := data($cit/tei:bibl/@type)
+			            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
+			            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
+			            
+			            return ($delimiter, dlri-views:cit($cit))
+			        )
+		        }
+		    </div>
+		    ,
+		    for $sense in $node/tei:sense
+		    return dlri-views:sense($sense, "")
+		)
 };
 
 declare function dlri-views:usg($nodes) {
