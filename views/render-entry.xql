@@ -298,7 +298,7 @@ declare function dlri-views:etym($nodes) {
         <link rel="stylesheet" type="text/css" href="render-entry.css" />
     </head>
     <body>
-    	<button onclick="alert('a');"><img src="circular-arrow-yang.png" /></button>
+    	<button onclick="refreshContent();"><img src="circular-arrow-yang.png" /></button>
         {
         	dlri-views:headword($entry/tei:form[@type = 'headword'])
         	,

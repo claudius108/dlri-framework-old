@@ -1,3 +1,9 @@
 function bridgeReady() {
-	alert('a');
+}
+
+function refreshContent() {
+	var optionsStorage = pluginWorkspace.getOptionsStorage();
+	
+	alert(pluginWorkspace);
+	
 }
