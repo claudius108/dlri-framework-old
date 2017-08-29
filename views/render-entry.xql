@@ -110,7 +110,8 @@ declare function dlri-views:headword($node) {
 	return
 		<div class="headword">
 			<span>{$entry-title}</span>
-		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else ()}
+		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else ""}
+		  	<span>, </span>
 		</div>
 };
 
@@ -134,25 +135,24 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 		            (
 		                if ($sense-level != '') then <span class="sense-level">{$sense-level}</span> else ()
 		                ,
-		                if (exists($sense-usg)) then <span>{$sense-usg}</span> else ()
+		                if ($sense-usg != '') then <span>{$sense-usg}</span> else ()
 		                ,
 		                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
 		            )
 		        }
-		    </div>
-		    ,
-		    <div class="cit-container">
-		    	{
-		    		(
-			            for $cit in $node/tei:cit
-			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
-			            let $current-type := data($cit/tei:bibl/@type)
-			            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
-			            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
-			            
-			            return ($delimiter, dlri-views:cit($cit))
-			        )
-		        }
+			    <div class="cit-container">
+			    	{
+			    		(
+				            for $cit in $node/tei:cit
+				            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
+				            let $current-type := data($cit/tei:bibl/@type)
+				            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
+				            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
+				            
+				            return ($delimiter, dlri-views:cit($cit))
+				        )
+			        }
+			    </div>		        
 		    </div>
 		    ,
 		    for $sense in $node/tei:sense
@@ -181,16 +181,16 @@ declare function dlri-views:def($definitions, $synonyms) {
 	let $synonym-content :=
 		for $synonym in $synonyms
 		return $synonym/@target
-	let $content := ($definition-content, $synonym-content)
-	let $content := if (empty($content)) then () else <span>{string-join($content, "; ")}.</span>
+	let $content-1 := ($definition-content, $synonym-content)
+	let $content-2 := if (empty($content-1)) then () else <span>{string-join($content-1, "; ")}</span>
 		
-	return $content
+	return $content-2
 };
 
 declare function dlri-views:cit($node) {
 	let $bibl := $node/tei:bibl
 	
-	let $quote := dlri-views:bibl-quote(normalize-space($node/tei:quote/text()))
+	let $quote := dlri-views:bibl-quote(normalize-space($node/tei:quote/text()) || "")
 	let $ptr := dlri-views:bibl-ptr(data($bibl/tei:ptr/@target))
 	let $date := dlri-views:bibl-date($bibl/tei:date/text() || "")
 	let $citedRange := dlri-views:bibl-citedRange($bibl/tei:citedRange/text() || "")
@@ -204,7 +204,7 @@ declare function dlri-views:cit($node) {
 			,
 			$quote
 		) 
-	let $delimiter := if (ends-with($content[last()]/text(), ".")) then "" else "." 	
+	let $delimiter := if (ends-with($quote, ".")) then () else "."	
   
 	return ($content, $delimiter)
 };
@@ -298,6 +298,7 @@ declare function dlri-views:etym($nodes) {
         <link rel="stylesheet" type="text/css" href="render-entry.css" />
     </head>
     <body>
+    	<button onclick="alert('a');"><img src="circular-arrow-yang.png" /></button>
         {
         	dlri-views:headword($entry/tei:form[@type = 'headword'])
         	,
@@ -322,6 +323,7 @@ declare function dlri-views:etym($nodes) {
         	return dlri-views:grammatical-information($grammatical-information)
         	,
         	dlri-views:etym($entry/tei:etym)
-        }     
+        }
+        <script type="text/javascript" src="render-entry.js">/**/</script>     
     </body>
 </html>

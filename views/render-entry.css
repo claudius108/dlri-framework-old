@@ -15,8 +15,8 @@ span:empty {
 	display: none;
 }
 
-div.headword, div.gramGrp, div.sense-level1-first {
-	display: inline;
+div.headword, div.gramGrp, div[class^='sense-level'] {
+	display: block;
 }
 
 div.cit-container {
