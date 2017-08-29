@@ -1,0 +1,3 @@
+function bridgeReady() {
+	alert('a');
+}
