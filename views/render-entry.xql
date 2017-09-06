@@ -101,7 +101,7 @@ declare function local:usg($node) {
 declare function dlri-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
-    return if ($title != '') then $title else ' '
+    return if ($title != '') then $title else ''
 };
 
 declare function dlri-views:headword($node) {
@@ -110,7 +110,7 @@ declare function dlri-views:headword($node) {
 	return
 		<div class="headword">
 			<span>{$entry-title}</span>
-		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else ""}
+		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else "&#65279;"}
 		  	<span>, </span>
 		</div>
 };

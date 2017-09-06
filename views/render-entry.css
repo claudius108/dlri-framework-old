@@ -11,12 +11,8 @@ body {
 	column-count: 2;
 }
 
-span:empty {
-	display: none;
-}
-
 div.headword, div.gramGrp, div[class^='sense-level'] {
-	display: block;
+	display: inline;
 }
 
 div.cit-container {
