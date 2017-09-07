@@ -58,13 +58,17 @@ declare function local:passthru($nodes) {
 };
 
 declare function local:generate-span($content, $class-name) {
-  	(
+  	if ($content != '')
+  	then (
 		"&#65279;"
 		,				  	
   		<span class="{$class-name}">{$content}</span>
 	  	,
 	  	"&#65279;"
 	)
+	else "&#65279;"
+					
+
 };
 
 declare function local:process-sense-content($node as element(tei:sense)) {
@@ -115,30 +119,18 @@ declare function dlri-views:get-entry-title($entry) {
 };
 
 declare function dlri-views:headword($node) {
-	let $homonym-number := data($node/tei:orth/@n) 
-	
-	return
-		<div class="headword">
-			{
-				(
-					<span>{$entry-title}</span>
-					,
-				  	if ($homonym-number != '')
-				  	then local:generate-span($homonym-number, "superscript")
-					else "&#65279;"
-				  	,
-				  	<span>, </span>
-				)
-			}
-		</div>
+	<div class="headword">
+		<span>{$entry-title}</span>
+	  	{local:generate-span(data($node/tei:orth/@n), "superscript")}
+	  	<span>, </span>
+	</div>
 };
 
 declare function dlri-views:gramGrp($node) {
     <div class="gramGrp">
-    	<span>{data($node/tei:pos/@value)}</span>
-    	<span>{data($node/tei:iType/@value)}</span>
-    	<span>{data($node/tei:subc/@value)}</span>
-    	<span>{data($node/tei:gen/@value)}</span>
+    	{
+	   		local:generate-span(string-join($node/(tei:pos/@value, tei:iType/@value, tei:subc/@value, tei:gen/@value), " "), "")
+    	}
     </div>
 };
 
