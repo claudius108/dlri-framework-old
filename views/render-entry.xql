@@ -57,6 +57,16 @@ declare function local:passthru($nodes) {
     for $node in $nodes/node() return local:dispatch($node)
 };
 
+declare function local:generate-span($content, $class-name) {
+  	(
+		"&#65279;"
+		,				  	
+  		<span class="{$class-name}">{$content}</span>
+	  	,
+	  	"&#65279;"
+	)
+};
+
 declare function local:process-sense-content($node as element(tei:sense)) {
   local:passthru($node)
 };
@@ -109,9 +119,17 @@ declare function dlri-views:headword($node) {
 	
 	return
 		<div class="headword">
-			<span>{$entry-title}</span>
-		  	{if ($homonym-number != '') then <span class="superscript">{$homonym-number}</span> else "&#65279;"}
-		  	<span>, </span>
+			{
+				(
+					<span>{$entry-title}</span>
+					,
+				  	if ($homonym-number != '')
+				  	then local:generate-span($homonym-number, "superscript")
+					else "&#65279;"
+				  	,
+				  	<span>, </span>
+				)
+			}
 		</div>
 };
 
