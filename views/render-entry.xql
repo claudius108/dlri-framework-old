@@ -62,7 +62,15 @@ declare function local:generate-span($content, $class-name) {
   	then (
 		"&#65279;"
 		,				  	
-  		<span class="{$class-name}">{$content}</span>
+  		<span>
+  			{
+  				(
+  					if ($class-name != '') then attribute class {$class-name} else ()
+  					,
+  					$content
+  				)
+  			}
+  		</span>
 	  	,
 	  	"&#65279;"
 	)
@@ -153,11 +161,11 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 			    <div class="cit-container">
 			    	{
 			    		(
-				            for $cit in $node/tei:cit
-				            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type) || ""
+				            for $cit in $node/tei:cit[data(.) != '']
+				            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
 				            let $current-type := data($cit/tei:bibl/@type)
-				            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
-				            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
+				            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else "&#65279;"
+				            let $delimiter := if ($current-type = 'unknown') then "&#65279;" else $current-type
 				            
 				            return ($delimiter, dlri-views:cit($cit))
 				        )
@@ -200,35 +208,25 @@ declare function dlri-views:def($definitions, $synonyms) {
 declare function dlri-views:cit($node) {
 	let $bibl := $node/tei:bibl
 	
-	let $quote := dlri-views:bibl-quote(normalize-space($node/tei:quote/text()) || "")
-	let $ptr := dlri-views:bibl-ptr(data($bibl/tei:ptr/@target))
-	let $date := dlri-views:bibl-date($bibl/tei:date/text() || "")
-	let $citedRange := dlri-views:bibl-citedRange($bibl/tei:citedRange/text() || "")
-  	let $content :=
-		(
-			$date
-			,
-			$ptr
-			,
-			$citedRange
-			,
-			$quote
-		) 
-	let $delimiter := if (ends-with($quote, ".")) then () else "."	
-  
-	return ($content, $delimiter)
-};
-
-declare function dlri-views:bibl-quote($content) {
-	if ($content != '') then <span class="bibl-quote">: {$content}</span> else ()
-};
-
-declare function dlri-views:bibl-ptr($content) {
-	if ($content != '') then <span class="bibl-ptr">{substring-after($content, '| ')}</span> else ()
-};
-
-declare function dlri-views:bibl-date($content) {
-	if ($content != '') then <span class="bibl-date">{$content}</span> else ()
+	let $date := local:generate-span(data($bibl/tei:date), "bibl-date")
+	
+	let $ptr := data($bibl/tei:ptr/@target)
+	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then $ptr else '', "bibl-ptr")	
+	
+	let $citedRange := local:generate-span(data($bibl/tei:citedRange), "")
+	
+	let $quote := data($node/tei:quote)
+	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "bibl-quote")
+	
+	return (
+		$date
+		,
+		$ptr-processed
+		,
+		$citedRange
+		,
+		$quote-processed
+	)
 };
 
 declare function dlri-views:bibl-citedRange($content) {
