@@ -151,11 +151,11 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 		    <div class="sense-level{concat(count($node/ancestor-or-self::tei:sense), $current-sense-mark)}">
 		        {
 		            (
-		                if ($sense-level != '') then <span class="sense-level">{$sense-level}</span> else ()
+		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                if ($sense-usg != '') then <span>{$sense-usg}</span> else ()
+		                local:generate-span($sense-usg, "sense-level")
 		                ,
-		                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
+		                local:generate-span(dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn']), "")
 		            )
 		        }
 				{
@@ -201,7 +201,7 @@ declare function dlri-views:def($definitions, $synonyms) {
 		for $synonym in $synonyms
 		return $synonym/@target
 	let $content-1 := ($definition-content, $synonym-content)
-	let $content-2 := if (empty($content-1)) then () else <span>{string-join($content-1, "; ")}</span>
+	let $content-2 := if (empty($content-1)) then () else string-join($content-1, "; ")
 		
 	return $content-2
 };
