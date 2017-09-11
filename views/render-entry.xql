@@ -158,19 +158,20 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 		                <span>{dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])}</span>
 		            )
 		        }
-			    <div class="cit-container">
-			    	{
-			    		(
-				            for $cit in $node/tei:cit[data(.) != '']
-				            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
-				            let $current-type := data($cit/tei:bibl/@type)
-				            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else "&#65279;"
-				            let $delimiter := if ($current-type = 'unknown') then "&#65279;" else $current-type
-				            
-				            return ($delimiter, dlri-views:cit($cit))
-				        )
-			        }
-			    </div>		        
+				{
+			            for $cit in $node/tei:cit[normalize-space(string-join(.//* | .//tei:ptr/@target[. != 'unknown'])) != '']
+			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
+			            let $current-type := data($cit/tei:bibl/@type)
+			            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
+			            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
+			            
+			            return
+							<div class="cit-container">
+								{
+									($delimiter, dlri-views:cit($cit))
+								}
+							</div>
+				}		        
 		    </div>
 		    ,
 		    for $sense in $node/tei:sense
@@ -218,15 +219,7 @@ declare function dlri-views:cit($node) {
 	let $quote := data($node/tei:quote)
 	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "bibl-quote")
 	
-	return (
-		$date
-		,
-		$ptr-processed
-		,
-		$citedRange
-		,
-		$quote-processed
-	)
+	return ($date, $ptr-processed, $citedRange, $quote-processed)
 };
 
 declare function dlri-views:bibl-citedRange($content) {
