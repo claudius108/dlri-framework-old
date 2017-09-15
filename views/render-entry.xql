@@ -142,20 +142,19 @@ declare function dlri-views:gramGrp($node) {
     </div>
 };
 
-declare function dlri-views:sense($node, $current-sense-mark) {
+declare function dlri-views:sense($node) {
 	let $sense-level := data($node/tei:idno[1]/@n)
 	let $sense-usg := dlri-views:usg($node/tei:usg)
+	let $sense-level-type := if (matches($sense-level, "[A-Z]|[0-9]")) then "block" else "inline"
 	
 	return
 		(
-		    <div class="sense-level{concat(count($node/ancestor-or-self::tei:sense), $current-sense-mark)}">
+		    <div class="sense-level-{$sense-level-type}">
 		        {
 		            (
 		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                local:generate-span($sense-usg, "sense-level")
-		                ,
-		                local:generate-span(dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn']), "")
+		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
 		            )
 		        }
 				{
@@ -175,7 +174,7 @@ declare function dlri-views:sense($node, $current-sense-mark) {
 		    </div>
 		    ,
 		    for $sense in $node/tei:sense
-		    return dlri-views:sense($sense, "")
+		    return dlri-views:sense($sense)
 		)
 };
 
@@ -190,7 +189,7 @@ declare function dlri-views:usg($nodes) {
 				case "complementul.indică" return "Complementul indică " || $usg/text()[1]
 				default return $value
 				
-	return if (empty($result)) then () else concat("(", string-join($result, ','), ")")
+	return if (empty($result)) then () else concat("(", string-join($result, ', '), ")")
 };
 
 declare function dlri-views:def($definitions, $synonyms) {
@@ -212,7 +211,7 @@ declare function dlri-views:cit($node) {
 	let $date := local:generate-span(data($bibl/tei:date), "bibl-date")
 	
 	let $ptr := data($bibl/tei:ptr/@target)
-	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then $ptr else '', "bibl-ptr")	
+	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
 	
 	let $citedRange := local:generate-span(data($bibl/tei:citedRange), "")
 	
@@ -220,10 +219,6 @@ declare function dlri-views:cit($node) {
 	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "bibl-quote")
 	
 	return ($date, $ptr-processed, $citedRange, $quote-processed)
-};
-
-declare function dlri-views:bibl-citedRange($content) {
-    if ($content != '') then concat(', ', $content) else ()
 };
 
 declare function dlri-views:writing-form($node) {
@@ -307,12 +302,9 @@ declare function dlri-views:etym($nodes) {
         	,
         	let $senses := $entry/tei:dictScrap[@xml:id = $processed-editing-mode || '-senses']/tei:sense
         	
-        	return (
-	        	dlri-views:sense($senses[1], "-first")
-	        	,
-	        	for $sense in $senses[position() > 1]
-	        	return dlri-views:sense($sense, "")        	
-        	)
+        	return
+	        	for $sense in $senses
+	        	return dlri-views:sense($sense)
         	,
         	for $writing-form in $entry/tei:form[@type = 'writing']
         	return dlri-views:writing-form($writing-form)

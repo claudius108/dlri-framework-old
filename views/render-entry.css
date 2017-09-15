@@ -9,26 +9,27 @@
 
 body {
 	column-count: 2;
+	column-fill: auto;
 }
 
-div.headword, div.gramGrp, div[class^='sense-level'] {
+div.headword, div.gramGrp {
+	display: inline;
+}
+
+div[class='sense-level-inline'] {
 	display: inline;
 }
 
 div.cit-container {
-	display: block;
+	display: inline;
 }
 
 div.cit-container > span {
 	display: inline;
 }
 
-div.gramGrp > span, span.lang, span.term, span.bibl-date {
+span.lang, span.term, span.bibl-date {
 	margin-left: 5px;
-}
-
-span.sense-level {
-  margin-right: 5px;
 }
 	
 div.headword > span:first-of-type, span.sense-level, .bold, span.term {
