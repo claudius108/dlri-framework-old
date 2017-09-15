@@ -146,6 +146,7 @@ declare function dlri-views:sense($node) {
 	let $sense-level := data($node/tei:idno[1]/@n)
 	let $sense-usg := dlri-views:usg($node/tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]|[0-9]")) then "block" else "inline"
+	let $semantic-unit := $node/tei:form[@type = 'unitate-semantică-subsumată']/text()
 	
 	return
 		(
@@ -153,6 +154,8 @@ declare function dlri-views:sense($node) {
 		        {
 		            (
 		                local:generate-span($sense-level, "sense-level")
+		                ,
+		                local:generate-span($semantic-unit || " =", "semantic-unit")
 		                ,
 		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
 		            )

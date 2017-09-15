@@ -10,13 +10,18 @@
 body {
 	column-count: 2;
 	column-fill: auto;
+	font-family: "Arial";
 }
 
 div.headword, div.gramGrp {
 	display: inline;
 }
 
-div[class='sense-level-inline'] {
+div.sense-level-block {
+	display: block;
+}
+
+div.sense-level-inline {
 	display: inline;
 }
 
@@ -45,7 +50,7 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
   letter-spacing: 0.3em;
 }
 
-span.bibl-quote {
+span.semantic-unit, span.bibl-quote {
   font-style: italic;
 }     
 
