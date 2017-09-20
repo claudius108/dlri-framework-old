@@ -1411,6 +1411,7 @@ ua:template("usg-before",
 			<option label="cu.pron." value="gram"/>
 			<option label="cu.schimbare.de.suf." value="gram"/>
 			<option label="cu.valoare" value="gram"/>
+			<option label="absol." value="gram"/>
 			<option label="folosit.și.absol" value="gram"/>
 			<option label="imper..lui" value="gram"/>
 			<option label="impers." value="gram"/>
@@ -1606,6 +1607,12 @@ ua:template("usg-before",
 			<option label="cu.determinări" value="coloc"/>
 			<option label="rar.la" value="gram"/>
 			<option label="mai.ales.la" value="gram"/>
+			<option label="fact." value="gram"/>
+			<option label="intranz." value="gram"/>
+			<option label="tranz." value="gram"/>
+			<option label="refl." value="gram"/>
+			<option label="recipr." value="gram"/>
+			<option label="refl..pas." value="gram"/>
 		</datalist>
         <input data-ua-ref="{@value}" size="30" list="usage-options" />
         <input data-ua-ref="{text()}" size="22" />      
