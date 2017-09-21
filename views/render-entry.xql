@@ -155,7 +155,7 @@ declare function dlri-views:sense($node) {
 		            (
 		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                local:generate-span($semantic-unit || " =", "semantic-unit")
+		                if ($semantic-unit != '') then local:generate-span($semantic-unit || " =", "semantic-unit") else ''
 		                ,
 		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
 		            )
@@ -164,13 +164,15 @@ declare function dlri-views:sense($node) {
 			            for $cit in $node/tei:cit[normalize-space(string-join(.//* | .//tei:ptr/@target[. != 'unknown'])) != '']
 			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
 			            let $current-type := data($cit/tei:bibl/@type)
-			            let $delimiter := if ($preceding-type != 'cf.') then "Cf." else ""
-			            let $delimiter := if ($current-type = 'unknown') then "" else $current-type
+			            
+			            let $delimiter-1 := if ($current-type = 'unknown') then "" else $current-type
+			            let $delimiter-2 := if ($delimiter-1 = 'cf.') then "Cf." else $delimiter-1
+			            let $delimiter-3 := if ($preceding-type = 'cf.') then "" else $delimiter-2
 			            
 			            return
 							<div class="cit-container">
 								{
-									($delimiter, dlri-views:cit($cit))
+									($delimiter-3, dlri-views:cit($cit))
 								}
 							</div>
 				}		        
@@ -192,7 +194,7 @@ declare function dlri-views:usg($nodes) {
 				case "complementul.indică" return "Complementul indică " || $usg/text()[1]
 				default return $value
 				
-	return if (empty($result)) then () else concat("(", string-join($result, ', '), ")")
+	return if (empty($result)) then () else concat("(", string-join($result, ', '), ") ")
 };
 
 declare function dlri-views:def($definitions, $synonyms) {

@@ -144,7 +144,7 @@ ua:action(
     map { 
         "name" := "Indicație folosire"       
     },
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xq")
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xql")
 ),
 ua:action(
     "insertBibliographicReferenceAuthor",

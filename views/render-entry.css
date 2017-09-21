@@ -51,7 +51,7 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
 }
 
 span.semantic-unit, span.bibl-quote {
-  font-style: italic;
+  font-weight: bold;
 }     
 
 div.writing-form, div.pronunciation-form {
