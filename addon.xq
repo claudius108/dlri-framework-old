@@ -225,7 +225,7 @@ ua:action(
         "name" := "Indicație folosire",
         "smallIconPath" := "../../resources/images/add.png"        
     }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertUsgElement.xq")  
+    oxy:execute-xquery-update-script("resources/xquery/insertUsgElement.xql")  
 ),
 ua:action(
     "insertBiblElement",

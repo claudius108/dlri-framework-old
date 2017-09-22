@@ -145,7 +145,7 @@ declare function dlri-views:gramGrp($node) {
 declare function dlri-views:sense($node) {
 	let $sense-level := data($node/tei:idno[1]/@n)
 	let $sense-usg := dlri-views:usg($node/tei:usg)
-	let $sense-level-type := if (matches($sense-level, "[A-Z]|[0-9]")) then "block" else "inline"
+	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
 	let $semantic-unit := $node/tei:form[@type = 'unitate-semantică-subsumată']/text()
 	
 	return
@@ -158,9 +158,7 @@ declare function dlri-views:sense($node) {
 		                if ($semantic-unit != '') then local:generate-span($semantic-unit || " =", "semantic-unit") else ''
 		                ,
 		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
-		            )
-		        }
-				{
+						,
 			            for $cit in $node/tei:cit[normalize-space(string-join(.//* | .//tei:ptr/@target[. != 'unknown'])) != '']
 			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
 			            let $current-type := data($cit/tei:bibl/@type)
@@ -175,11 +173,21 @@ declare function dlri-views:sense($node) {
 									($delimiter-3, dlri-views:cit($cit))
 								}
 							</div>
+						,
+						if ($sense-level-type = 'block')
+						then dlri-views:sense($node/tei:sense[1])
+						else
+						    for $sense in $node/tei:sense
+						    return dlri-views:sense($sense)						
+					)
 				}		        
 		    </div>
 		    ,
-		    for $sense in $node/tei:sense
-		    return dlri-views:sense($sense)
+			if ($sense-level-type = 'block')
+			then
+			    for $sense in $node/tei:sense[position() > 1]
+			    return dlri-views:sense($sense)			
+			else ()
 		)
 };
 
