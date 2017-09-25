@@ -13,7 +13,11 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     	delete node ./following-sibling::tei:form[@type = 'unitate-semantică-subsumată']
     	,
     	if (@type != 'unknown' and @type != '')
-    	then insert node <form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" /> after following-sibling::tei:idno[last()]
+    	then insert node
+    		<form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
+    			<term />
+    		</form>
+    	after following-sibling::tei:idno[last()]
     	else replace value of node @type with 'unknown'
     )
     else (),

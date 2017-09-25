@@ -114,7 +114,6 @@ declare variable $dlri:sense-template as element() :=
     <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
         <idno n="" type="level-label" />
         <idno n="tip-unitate-semantică-subsumată" type="unknown" />
-        <idno n="tip-proces-semantic" type="unknown" />
         {$dlri:def-template}
         {$dlri:cit-template}
     </sense>

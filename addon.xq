@@ -2387,7 +2387,7 @@ ua:template("form-unitate-semantică-subsumată",
         <input data-ua-ref="{text()}" size="30" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:first-of-type:before"), "form-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>
