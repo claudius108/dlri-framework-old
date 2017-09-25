@@ -15,7 +15,7 @@
 		</profileDesc>
 		<revisionDesc status="proposed" />
 	</teiHeader>
-	<text>
+	<text type="editing-mode-dlr">
 		<body>
 			<entry>
 				<form type="headword">
