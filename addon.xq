@@ -1994,8 +1994,7 @@ ua:template("pos-vb-subc-1-before-template",
             <option label="fact." value="fact." />
             <option label="intranz." value="intranz." />
             <option label="tranz." value="tranz." />
-            <option label="refl." value="refl." />
-            <option label="pas." value="pas." />
+            <option label="refl. pas." value="refl. pas." />
             <option label="recipr." value="recipr." />
         </select>
     </template>
