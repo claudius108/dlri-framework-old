@@ -31,7 +31,7 @@ TEI:before {
 title, author, editor, syll, quote, stress, usg, term, def, form[type = 'headword'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
-note, form[type='articulation'] > term, bibl > citedRange, bibl > date, idno {
+note, bibl > citedRange, bibl > date, idno {
 	visibility: "-oxy-collapse-text";
 }
 
@@ -52,7 +52,7 @@ change {
 	font-weight: normal;
 }
 
-entry>form,teiHeader,entry>gramGrp, etym, entry>re {
+entry > form, teiHeader, entry > gramGrp, etym, entry > re {
 	border: solid 1px black;
 	width: 1100px;
 	min-height: 100px;
@@ -60,7 +60,7 @@ entry>form,teiHeader,entry>gramGrp, etym, entry>re {
 	margin-bottom: 20px;
 }
 
-orth,form[type = 'headword'] > pron,def,cit,entry>form[type = 'headword'] {
+orth,form[type = 'headword'] > pron, def, cit, entry > form[type = 'headword'] {
 	width: 1000px;
 	background-color: #d8d8d8;
 	margin-top: 5px;
@@ -70,7 +70,7 @@ form[type = 'headword'] > pron {
 	display: none;
 }
 
-sense>def {
+sense > def {
 	margin-left: 10px;
 	border: solid 1px black;
 }
@@ -109,7 +109,7 @@ pos[value=''] ~ * {
 	display: none;
 }
 
-form>gramGrp>* {
+form > gramGrp > * {
 	display: inline-block;
 	margin-top: 10px;
 	margin-bottom: 20px;
