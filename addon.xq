@@ -2381,13 +2381,13 @@ ua:template("idno-unitate-semantică-subsumată",
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
 
-ua:template("form-unitate-semantică-subsumată",
+ua:template("term-unitate-semantică-subsumată",
     <template>
         Conținut unitate semantică subsumată:&amp;nbsp;
-        <input data-ua-ref="{text()}" size="30" />
+        <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:first-of-type:before"), "form-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:first-of-type:before"), "term-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>
@@ -2534,13 +2534,6 @@ ua:template("entry-form-headword-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"), "entry-form-headword-before"),
-
-ua:template("sense-form-before",
-    <template>
-        <input data-ua-ref="{text()}" size="108" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("sense > form:before"), "sense-form-before"),
 
 ua:template("lexical-variant-section-before",
     <template>
