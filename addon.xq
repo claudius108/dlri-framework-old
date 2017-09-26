@@ -186,7 +186,7 @@ ua:action(
     map { 
         "name" := "Abreviere"        
     },
-    oxy:execute-xquery-update-script("resources/xquery/addFirstAbbreviationSection.xq")
+    oxy:execute-xquery-update-script("resources/xquery/addFirstAbbreviationSection.xql")
 ),
 ua:action(
     "insertFirstSenseNumber",
@@ -2381,13 +2381,32 @@ ua:template("idno-unitate-semantică-subsumată",
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
 
-ua:template("term-unitate-semantică-subsumată",
+
+
+
+ua:template("form-unitate-semantică-subsumată",
     <template>
-        Conținut unitate semantică subsumată:&amp;nbsp;
+        Unitate semantică subsumată:&amp;nbsp;
+        <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
+
+ua:template("term1-unitate-semantică-subsumată",
+    <template>
+        Conținut:&amp;nbsp;
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:first-of-type:before"), "term-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(1):before"), "term1-unitate-semantică-subsumată"),
+
+ua:template("term2-unitate-semantică-subsumată",
+    <template>
+        Abreviere:&amp;nbsp;
+        <input data-ua-ref="{text()}" size="70" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(2):before"), "term2-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>
