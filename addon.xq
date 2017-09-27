@@ -2352,9 +2352,17 @@ ua:template("sense-level-template",
 ),
 ua:attach-template(ua-dt:css-selector("sense > idno:first-of-type"), "sense-level-template"),
 
+ua:template("form-unitate-semantică-subsumată",
+    <template>
+        Unitate semantică subsumată:&amp;nbsp;
+        <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
+
 ua:template("idno-unitate-semantică-subsumată",
     <template>
-        Unitate semantică subsumată:&amp;nbsp;        
+        Tip:&amp;nbsp;        
 		<input data-ua-ref="@type" type="checkbox" id="proverb-checkbox" name="unitate-semantică-subsumată-checkbox" value="proverb" />
 		<label for="proverb-checkbox">proverb</label>
 		<input data-ua-ref="@type" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
@@ -2380,17 +2388,6 @@ ua:template("idno-unitate-semantică-subsumată",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
-
-
-
-
-ua:template("form-unitate-semantică-subsumată",
-    <template>
-        Unitate semantică subsumată:&amp;nbsp;
-        <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
 
 ua:template("term1-unitate-semantică-subsumată",
     <template>

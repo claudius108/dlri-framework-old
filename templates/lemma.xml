@@ -34,7 +34,6 @@
 				<dictScrap xml:id="dlr-senses">
 					<sense xml:id="uuid-${uuid}">
 						<idno n="" type="level-label" />
-						<idno n="tip-unitate-semantică-subsumată" type="unknown" />
 						<def n="" />
 						<cit>
 							<quote />
@@ -49,7 +48,6 @@
 				<dictScrap xml:id="dex-senses">
 					<sense xml:id="uuid-${uuid}">
 						<idno n="" type="level-label" />
-						<idno n="tip-unitate-semantică-subsumată" type="unknown" />
 						<def n="" />
 						<cit>
 							<quote />

@@ -15,6 +15,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     	if (@type != 'unknown' and @type != '')
     	then insert node
     		<form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
+    			<idno n="tip-unitate-semantică-subsumată" type="unknown" />
     			<term />
     		</form>
     	after following-sibling::tei:idno[last()]
