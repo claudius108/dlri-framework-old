@@ -2333,6 +2333,11 @@ ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information-for-
 
 ua:template("sense-currentEdited-value-before",
     <template>
+        Nivel:&amp;nbsp;
+        <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
+            <option label="◊" value="◊" />
+            <option label="♦" value="♦" />
+        </select>    
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
@@ -2341,17 +2346,6 @@ ua:template("sense-currentEdited-value-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
-
-ua:template("sense-level-template",
-    <template>
-        Nivel:&amp;nbsp;
-        <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
-            <option label="◊" value="◊" />
-            <option label="♦" value="♦" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("sense > idno:first-of-type"), "sense-level-template"),
 
 ua:template("form-unitate-semantică-subsumată",
     <template>

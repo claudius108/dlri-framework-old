@@ -32,8 +32,7 @@
 					<pos value="" />
 				</gramGrp>
 				<dictScrap xml:id="dlr-senses">
-					<sense xml:id="uuid-${uuid}">
-						<idno n="" type="level-label" />
+					<sense xml:id="uuid-${uuid}" n="">
 						<def n="" />
 						<cit>
 							<quote />
@@ -46,8 +45,7 @@
 					</sense>
 				</dictScrap>
 				<dictScrap xml:id="dex-senses">
-					<sense xml:id="uuid-${uuid}">
-						<idno n="" type="level-label" />
+					<sense xml:id="uuid-${uuid}" n="">
 						<def n="" />
 						<cit>
 							<quote />

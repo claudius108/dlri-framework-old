@@ -111,8 +111,7 @@ declare variable $dlri:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-temp
 ;
 
 declare variable $dlri:sense-template as element() :=
-    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
-        <idno n="" type="level-label" />
+    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" n="">
         {$dlri:def-template}
         {$dlri:cit-template}
     </sense>
