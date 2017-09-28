@@ -117,3 +117,11 @@ declare variable $dlri:sense-template as element() :=
         {$dlri:cit-template}
     </sense>
 ;
+
+declare variable $dlri:semantical-unit-template as element() :=
+	<form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
+		<idno n="tip-unitate-semantică-subsumată" type="unknown" />
+		<term />
+	</form>
+;
+

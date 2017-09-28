@@ -8,20 +8,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     if (@type = ('abstr.', 'concr.', 'fig.', 'p. anal.', 'p. anal. cu', 'p. ext.'))
     then ()
     else (),
-    if (@n = 'tip-unitate-semantică-subsumată')
-    then (
-    	delete node ./following-sibling::tei:form[@type = 'unitate-semantică-subsumată']
-    	,
-    	if (@type != 'unknown' and @type != '')
-    	then insert node
-    		<form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
-    			<idno n="tip-unitate-semantică-subsumată" type="unknown" />
-    			<term />
-    		</form>
-    	after following-sibling::tei:idno[last()]
-    	else replace value of node @type with 'unknown'
-    )
-    else (),
     if (parent::*[@type = 'grammatical-information'] and @type = 'unknown')
     then (
         delete nodes ./following-sibling::*
