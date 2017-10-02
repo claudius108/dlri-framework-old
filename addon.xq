@@ -2351,7 +2351,8 @@ ua:template("form-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/insertSemanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />        
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />         
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
     </template>
 ),
@@ -2486,7 +2487,7 @@ ua:template("dlr-senses-tree-template",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
-                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
+                    "itemLabel" := "concat(@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
                     "treeHeight" := "350",
                     "treeParentNodePath" := "//dictScrap[@xml:id = 'dlr-senses']"
@@ -2503,7 +2504,7 @@ ua:template("dex-senses-tree-template",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
-                    "itemLabel" := "concat(idno[1]/@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
+                    "itemLabel" := "concat(@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
                     "treeHeight" := "350",
                     "treeParentNodePath" := "//dictScrap[@xml:id = 'dex-senses']"
