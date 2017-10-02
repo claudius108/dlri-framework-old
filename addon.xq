@@ -2352,7 +2352,8 @@ ua:template("form-unitate-semantică-subsumată",
         Unitate semantică subsumată:&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/insertSemanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />         
+        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
     </template>
 ),
@@ -2393,7 +2394,30 @@ ua:template("term1-unitate-semantică-subsumată",
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(1):before"), "term1-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(1):before"), "term1-unitate-semantică-subsumată"),
+
+ua:template("subc-unitate-semantică-subsumată-template",
+    <template>
+        Tip 1:&amp;nbsp;
+        <select data-ua-ref="{@value}" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
+            <option label="" value="" />
+            <option label="fact." value="fact." />
+            <option label="intranz." value="intranz." />
+            <option label="tranz." value="tranz." />
+            <option label="refl. pas." value="refl. pas." />
+            <option label="recipr." value="recipr." />
+        </select>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > subc:before"), "subc-unitate-semantică-subsumată-template"),
+
+
+
+
+
+
+
 
 ua:template("term2-unitate-semantică-subsumată",
     <template>
@@ -2401,7 +2425,7 @@ ua:template("term2-unitate-semantică-subsumată",
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(2):before"), "term2-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(2):before"), "term2-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>
