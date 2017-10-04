@@ -2355,6 +2355,7 @@ ua:template("form-unitate-semantică-subsumată",
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/addTermOfEtymType.xql')}" style="visibility: {count(term[@type = 'etym']) = 0};">Etimologie</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
@@ -2414,11 +2415,14 @@ ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumat�
 
 ua:template("term2-unitate-semantică-subsumată",
     <template>
-        Abreviere:&amp;nbsp;
+        Etimologie:&amp;nbsp;
+        {
+            $target-languages-template
+        }
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(2):before"), "term2-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term[type = 'etym']:before"), "term2-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>
