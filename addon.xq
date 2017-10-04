@@ -2412,13 +2412,6 @@ ua:template("subc-unitate-semantică-subsumată-template",
 ),
 ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > subc:before"), "subc-unitate-semantică-subsumată-template"),
 
-
-
-
-
-
-
-
 ua:template("term2-unitate-semantică-subsumată",
     <template>
         Abreviere:&amp;nbsp;
@@ -2511,7 +2504,7 @@ ua:template("dlr-senses-tree-template",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
-                    "itemLabel" := "concat(@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
+                    "itemLabel" := "concat(@n, ' ', if (form) then concat(string-join(form/term[1], ' | '), ' =') else (), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
                     "treeHeight" := "350",
                     "treeParentNodePath" := "//dictScrap[@xml:id = 'dlr-senses']"
@@ -2528,7 +2521,7 @@ ua:template("dex-senses-tree-template",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
-                    "itemLabel" := "concat(@n, ' ', if (form) then concat(form, ' =') else (), ' ', string-join(def, ' '))",
+                    "itemLabel" := "concat(@n, ' ', if (form) then concat(string-join(form/term[1], ' | '), ' =') else (), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
                     "treeHeight" := "350",
                     "treeParentNodePath" := "//dictScrap[@xml:id = 'dex-senses']"
