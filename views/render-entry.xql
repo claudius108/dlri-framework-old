@@ -123,7 +123,7 @@ declare function local:usg($node) {
 declare function dlri-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
-    return if ($title != '') then $title else ''
+    return if ($title != '') then $title else ' '
 };
 
 declare function dlri-views:headword($node) {
@@ -144,9 +144,9 @@ declare function dlri-views:gramGrp($node) {
 
 declare function dlri-views:sense($node) {
 	let $sense-level := data($node/tei:idno[1]/@n)
-	let $sense-usg := dlri-views:usg($node/tei:usg)
+	let $sense-usg := for $usg in $node/tei:usg return dlri-views:usg($usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
-	let $semantic-unit := $node/tei:form[@type = 'unitate-semantică-subsumată']/text()
+	let $semantic-units := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	
 	return
 		(
@@ -155,7 +155,12 @@ declare function dlri-views:sense($node) {
 		            (
 		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                if ($semantic-unit != '') then local:generate-span($semantic-unit || " =", "semantic-unit") else ''
+		                if (count($semantic-units) > 0)
+		                then
+		                	for $semantic-unit in $semantic-units
+		                	
+		                	return local:generate-span($semantic-unit/tei:term[1] || " =", "semantic-unit")
+		                else ''
 		                ,
 		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
 						,
@@ -242,19 +247,21 @@ declare function dlri-views:pronunciation-form($node) {
     <div class="pronunciation-form">− Pronunțat: {$node/(tei:pRef | tei:syll)/text()}.</div>
 };
 declare function dlri-views:grammatical-information($node) {
-	let $type := $node/tei:form/@type
+	let $type := $node/tei:form[1]/@type
 	
 	return
 	    <div class="grammatical-information">
 	    	{
 				switch($type)
 				case "grammatical-information-for-verb"
-				return concat($node/tei:form/tei:tns/@value, ' ', $node/tei:form/tei:mood/@value)
+				return
+					for $term in $node/tei:form
+					return concat($term/tei:tns/@value, ' ', $term/tei:mood/@value)
 				case "grammatical-information-for-plural"
 				return "− Pl."
 				default return ()   	
 	    	}
-	    	<span>: {normalize-space($node/tei:form/string())}.</span>
+	    	<span>: {string-join($node/tei:form/tei:form, " ")}.</span>
 	    </div>
 };
 
