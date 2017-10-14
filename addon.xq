@@ -189,13 +189,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/addFirstAbbreviationSection.xql")
 ),
 ua:action(
-    "insertFirstSenseNumber",
-    map { 
-        "name" := "Nr. de sens"       
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstSenseNumber.xq")  
-),
-ua:action(
     "deleteCurrentElement",
     map { 
         "name" := "Ștergere",
@@ -282,14 +275,6 @@ ua:action(
         "smallIconPath" := "../../resources/images/add.png"       
     },
     oxy:execute-xquery-update-script("resources/xquery/addGrammaticalInformationSection.xq")
-),
-ua:action(
-    "insertSenseNumber",
-    map { 
-        "name" := "Nr. de sens",
-        "smallIconPath" := "../../resources/images/add.png"        
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertSenseNumber.xq")
 ),
 ua:action(
     "insertBaseWord",
@@ -660,25 +645,6 @@ ua:template("cuvântul.titlu-element.extern-calc-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-calc'] ~ term"), "cuvântul.titlu-element.extern-calc-template"),
 
-ua:template("număr-de-sens-template",
-    <template>
-    	Număr de sens&amp;nbsp;
-        {
-            ua:get-template(oxy:get-template("combo",
-                map {
-                    "edit" := "@target",
-                    "editable" := false,
-                    "values" := string-join(//sense/@xml:id, ','),
-                    "labels" := string-join(('', //sense/(if (empty(idno[1]/@n)) then @xml:id else idno[1]/@n)), ',')
-                }            
-            ))
-        }
-        <button onclick="{oxy:xquery-update-action('insertSenseNumber')}" style="background-color: transparent;" />        
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'sense-number']:after"), "număr-de-sens-template")
-,
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
     <template>
         Cf.&amp;nbsp;
@@ -2292,8 +2258,8 @@ ua:template("form-grammatical-information-for-plural-before",
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForPluralSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addGramGrpInForm.xql')}" style="visibility: {count(gramGrp) = 0};">Cat. gram.</button>
-        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
@@ -2304,8 +2270,8 @@ ua:template("form-grammatical-information-for-case-before",
         Indicaţii pentru caz
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForCaseSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
+        Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),
@@ -2325,7 +2291,7 @@ ua:template("form-grammatical-information-for-verb-before",
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstSenseNumber')}" style="visibility: {count(ptr) = 0};" />
+        Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
     </template>
 ),

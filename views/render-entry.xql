@@ -123,7 +123,7 @@ declare function local:usg($node) {
 declare function dlri-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
-    return if ($title != '') then $title else ' '
+    return if ($title != '') then $title else ''
 };
 
 declare function dlri-views:headword($node) {
@@ -252,16 +252,20 @@ declare function dlri-views:grammatical-information($node) {
 	return
 	    <div class="grammatical-information">
 	    	{
-				switch($type)
-				case "grammatical-information-for-verb"
-				return
-					for $term in $node/tei:form
-					return concat($term/tei:tns/@value, ' ', $term/tei:mood/@value)
-				case "grammatical-information-for-plural"
-				return "− Pl."
-				default return ()   	
+	    		distinct-values(
+					switch($type)
+					case "grammatical-information-for-verb"
+					return
+						for $term in $node/tei:form
+						let $sense-number := if ($term/@corresp != '') then concat(' (', $term/@corresp, ')') else ''
+						
+						return concat($term/tei:tns/@value, ' ', $term/tei:mood/@value, $sense-number)
+					case "grammatical-information-for-plural"
+					return "− Pl."
+					default return ()
+				)   	
 	    	}
-	    	<span>: {string-join($node/tei:form/tei:form, " ")}.</span>
+	    	<span>: {string-join($node/tei:form/tei:form, ", ")}.</span>
 	    </div>
 };
 
@@ -276,30 +280,29 @@ declare function dlri-views:etym($nodes) {
 					let $language := data($language-codes//html:option[@value = $language-code]/@label)
 						
 					return
-			
-					    		(
-									if (starts-with($node/tei:idno[1]/@type, 'cuvântul.titlu-element.extern'))
-									then
-										(
-											<span>− Din</span>
-											,
-											<span class="lang">{$language}</span>
-											,
-											<span class="term">{$node/tei:term[1]/text()}</span>
-										)
-									else ()
+			    		(
+							if (starts-with($node/tei:idno[1]/@type, 'cuvântul.titlu-element.extern'))
+							then
+								(
+									<span>− Din</span>
 									,
-									if ($node/tei:idno[1]/@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
-									then
-										(
-											", "
-											,
-											<span class="lang">{$language}</span>											
-											,
-											<span class="term">{$node/tei:term[1]/text()}</span>
-										)
-									else ()
+									<span class="lang">{$language}</span>
+									,
+									<span class="term">{$node/tei:term[1]/text()}</span>
 								)
+							else ()
+							,
+							if ($node/tei:idno[1]/@type = 'cuvântul.titlu-element.moştenit-etimon.atestat')
+							then
+								(
+									", "
+									,
+									<span class="lang">{$language}</span>											
+									,
+									<span class="term">{$node/tei:term[1]/text()}</span>
+								)
+							else ()
+						)
 				,
 				"."
 			)
@@ -309,7 +312,7 @@ declare function dlri-views:etym($nodes) {
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>{$entry-title}</title>
+        <title>&#65279;</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="resources/render-entry.css" />
     </head>
