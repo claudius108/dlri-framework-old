@@ -2303,7 +2303,8 @@ ua:template("sense-currentEdited-value-before",
         <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
             <option label="◊" value="◊" />
             <option label="♦" value="♦" />
-        </select>    
+        </select>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElement.xql')}">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
@@ -2527,7 +2528,7 @@ ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
 
 ua:template("entry-form-headword-before",
     <template>
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="background-color: transparent; visibility: {count(usg) = 0};"><img src="../../resources/images/note.png" /></button> 
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoHeadword.xql')}" style="background-color: transparent; visibility: {count(usg) = 0};">Ind. fol.</button> 
         \00000A Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;

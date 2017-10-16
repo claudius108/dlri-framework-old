@@ -1,11 +1,17 @@
 xquery version "3.0";
 
-declare namespace tei = "http://www.tei-c.org/ns/1.0";
+declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-if (count(tei:def | tei:orth | tei:ref | tei:syll | tei:pron | tei:pRef | tei:number | tei:case | tei:mood | tei:tns | tei:per
-| tei:form[@type = 'details-for-grammatical-information-for-verb'] | tei:stress | tei:gramGrp | tei:oVar | tei:term) = 0)
-then insert node doc('../../content-models/usg.xml') as first into .
-else if (count(tei:term) > 0)
-	then insert node doc('../../content-models/usg.xml') after tei:term[1]
-	else insert node doc('../../content-models/usg.xml') after (tei:def | tei:orth | tei:ref | tei:syll | tei:pron | tei:pRef | tei:number | tei:case | tei:mood | tei:tns | tei:per
-| tei:form[@type = 'details-for-grammatical-information-for-verb'] | tei:stress | tei:gramGrp | tei:oVar)[last()]
+(
+	if (count(orth | ref | syll | pron | pRef | number | case | mood | tns | per | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar) = 0 and @type != 'unitate-semantică-subsumată')
+	then insert node doc('../../content-models/usg.xml') as first into .
+	else ()
+	,
+	if (@type = 'unitate-semantică-subsumată')
+	then insert node doc('../../content-models/usg.xml') after term[1]
+	else ()
+	,
+	if (count(orth | ref | syll | pron | pRef | number | case | mood | tns | per | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar) > 0) 
+	then insert node doc('../../content-models/usg.xml') after (orth | ref | syll | pron | pRef | number | case | mood | tns | per | form[@type = 'details-for-grammatical-information-for-verb'] | stress | gramGrp | oVar)[last()]
+	else ()
+)
