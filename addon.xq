@@ -2089,7 +2089,7 @@ ua:template("form-pronunciation-before",
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstSyllabationElement.xq')}" style="visibility: {count(syll) = 0};">Silabație hiat</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronElement.xq')}" style="visibility: {count(pron) = 0};">Pron. cuvânt străin</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronunciationReferenceElement.xq')}" style="visibility: {count(pRef) = 0};">Pronunţat şi</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementInPronunciationForm')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementInPronunciationForm.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
