@@ -8,7 +8,11 @@ let $current-element-name := local-name()
 
 return
 	switch ($current-element-name)
-	case "sense" return insert node $dlri:gramGrp-template as first into .
+	case "sense"
+	return
+		if (element()[1]/local-name() = 'usg')
+		then insert node $dlri:gramGrp-template after element()[1]
+		else insert node $dlri:gramGrp-template as first into .	
 	case "gramGrp" return insert node $dlri:gramGrp-template after .
 	case "etym" return insert node $dlri:gramGrp-template as last into .
 	default return ()

@@ -474,7 +474,7 @@ ua:template("syn-before",
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoPtr.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>                
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>                
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'syn']:before"), "syn-before"),
@@ -2130,7 +2130,7 @@ ua:template("form-writing-before",
         Scriere
         <button onclick="{oxy:xquery-update('resources/xquery/addWritingSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastInto.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" />
     </template>
 ),
@@ -2256,7 +2256,7 @@ ua:template("form-grammatical-information-for-plural-before",
     <template>
         Indicaţii pentru plural
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForPluralSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementIntoPluralInformationSection.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addGramGrpInForm.xql')}" style="visibility: {count(gramGrp) = 0};">Cat. gram.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
@@ -2269,7 +2269,7 @@ ua:template("form-grammatical-information-for-case-before",
     <template>
         Indicaţii pentru caz
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForCaseSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementIntoCaseInformationSection.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
@@ -2289,7 +2289,7 @@ ua:template("form-grammatical-information-for-verb-before",
         \00000AIndicaţii pentru verb
         <button onclick="{oxy:xquery-update('resources/xquery/addGrammaticalInformationForVerbSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstStressElement.xq')}" style="visibility: {count(stress) = 0};">Var. acc.</button>
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementIntoVerbInformationSection.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::form/form) > 1};" />
@@ -2304,7 +2304,7 @@ ua:template("sense-currentEdited-value-before",
             <option label="◊" value="◊" />
             <option label="♦" value="♦" />
         </select>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElement.xql')}">Ind. fol. globală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
@@ -2528,7 +2528,7 @@ ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
 
 ua:template("entry-form-headword-before",
     <template>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoHeadword.xql')}" style="background-color: transparent; visibility: {count(usg) = 0};">Ind. fol.</button> 
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="background-color: transparent; visibility: {count(usg) = 0};">Ind. fol.</button> 
         \00000A Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;

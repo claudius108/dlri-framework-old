@@ -4,4 +4,6 @@ import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
-insert node $dlri:semantical-unit-template as first into .
+if (element()[1]/local-name() = ('usg', 'gramGrp'))
+then insert node $dlri:semantical-unit-template after element()[1]
+else insert node $dlri:semantical-unit-template as first into .
