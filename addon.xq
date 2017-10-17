@@ -140,13 +140,6 @@ ua:action(
     oxy:execute-xquery-script("resources/xquery/get-bibliographic-reference-authors.xql")
 ),
 ua:action(
-    "insertFirstUsgElement",
-    map { 
-        "name" := "Indicație folosire"       
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstUsgElement.xql")
-),
-ua:action(
     "insertBibliographicReferenceAuthor",
     map { 
         "name" := "Autor"       
@@ -2307,7 +2300,7 @@ ua:template("sense-currentEdited-value-before",
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {not(element()[1]/local-name() = 'usg' or element()[2]/local-name() = 'usg')};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xq')}">Trimitere</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}">Trimitere</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}">Etimologie</button>     
     </template>
@@ -2319,7 +2312,7 @@ ua:template("form-unitate-semantică-subsumată",
         Unitate semantică subsumată:&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/insertSemanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addTermOfEtymType.xql')}" style="visibility: {count(term[@type = 'etym']) = 0};">Etimologie</button>
@@ -2543,7 +2536,7 @@ ua:template("lexical-variant-section-before",
         <button onclick="{oxy:xquery-update('resources/xquery/addLexicalVariant.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('insertFirstUsgElement')}" style="visibility: {count(usg) = 0};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
