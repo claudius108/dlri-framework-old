@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+declare namespace file = "http://expath.org/ns/file";
+
 declare default element namespace "http://www.w3.org/1999/xhtml";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace dlri-views = "http://dlri.ro/ns/dlri-views";
@@ -9,7 +11,7 @@ declare namespace html = "http://www.w3.org/1999/xhtml";
 declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
-declare variable $language-codes := doc($frameworkDir || "/resources/ontology/languages.html");
+declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/languages.html"));
 declare variable $editing-mode := /*//tei:text/@type/data(.);
 declare variable $processed-editing-mode := replace($editing-mode, "editing-mode-", "");
 
