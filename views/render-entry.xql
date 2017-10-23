@@ -316,7 +316,7 @@ declare function dlri-views:etym($nodes) {
     <head>
         <title>&#65279;</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="resources/render-entry.css" />
+		<style type="text/css">{unparsed-text("views/render-entry.css")}</style>        
     </head>
     <body>
     	<button onclick="refreshContent();"><img src="resources/circular-arrow-yang.png" /></button>
