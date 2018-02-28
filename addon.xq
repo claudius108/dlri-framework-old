@@ -1955,6 +1955,8 @@ ua:template("pos-vb-subc-1-before-template",
             <option label="tranz." value="tranz." />
             <option label="refl. pas." value="refl. pas." />
             <option label="recipr." value="recipr." />
+            <option label="refl." value="refl." />
+            <option label="impers." value="impers." />
         </select>
     </template>
 ),
