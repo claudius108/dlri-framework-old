@@ -245,6 +245,10 @@ declare function dlri-views:writing-form($node) {
     <div class="writing-form">− Scris și: {$node/tei:oVar/text()}.</div>
 };
 
+declare function dlri-views:abbreviation-form($node) {
+    <div class="abbreviation-form">Abr.: {$node/tei:abbr/text()}.</div>
+};
+
 declare function dlri-views:pronunciation-form($node) {
     <div class="pronunciation-form">− Pronunțat: {$node/(tei:pRef | tei:syll)/text()}.</div>
 };
@@ -331,12 +335,15 @@ declare function dlri-views:etym($nodes) {
 	        	for $sense in $senses
 	        	return dlri-views:sense($sense)
         	,
-        	for $writing-form in $entry/tei:form[@type = 'writing']
-        	return dlri-views:writing-form($writing-form)
-        	,   
         	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
         	return dlri-views:pronunciation-form($pronunciation-form)
-        	,               	         	
+        	,
+        	for $writing-form in $entry/tei:form[@type = 'writing']
+        	return dlri-views:writing-form($writing-form)
+        	,
+        	for $abbreviation-form in $entry/tei:form[@type = 'abbreviation']
+        	return dlri-views:abbreviation-form($abbreviation-form)
+        	,        	
         	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
         	return dlri-views:grammatical-information($grammatical-information)
         	,
