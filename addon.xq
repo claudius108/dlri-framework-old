@@ -922,6 +922,8 @@ ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
             <option label="cuv. japonez" value="cuv. japonez" />
             <option label="cuv. mongol" value="cuv. mongol" />
             <option label="împrumut savant din greacă" value="împrumut savant din greacă" />
+            <option label="cuv. lat." value="cuv. lat." />
+            <option label="cuv. it." value="cuv. it." />
         </select>        
         &amp;nbsp;etimon sigur&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
