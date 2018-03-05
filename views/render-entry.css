@@ -54,6 +54,6 @@ span.semantic-unit, span.bibl-quote {
   font-weight: bold;
 }     
 
-div.writing-form, div.pronunciation-form {
-	float: left;
+div.accentuation-form, div.writing-form, div.pronunciation-form, div.abbreviation-form {
+	display: block;
 } 

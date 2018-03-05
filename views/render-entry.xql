@@ -146,7 +146,7 @@ declare function dlri-views:gramGrp($node) {
 
 declare function dlri-views:sense($node) {
 	let $sense-level := data($node/tei:idno[1]/@n)
-	let $sense-usg := for $usg in $node/tei:usg return dlri-views:usg($usg)
+	let $sense-usg := dlri-views:usg($node/tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
 	let $semantic-units := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	
@@ -202,12 +202,16 @@ declare function dlri-views:usg($nodes) {
 	let $result :=
 		for $usg in $nodes
 		return
-			let $value := $usg/@value
-			
-			return
-				switch($value)
-				case "complementul.indică" return "Complementul indică " || $usg/text()[1]
-				default return $value
+			let $usg-value := $usg/@value
+			let $processed-usg-value-1 :=
+				switch($usg-value)
+				case "complementul.indică" return "Complementul indică"
+				default return $usg-value
+			let $processed-usg-value-2 := replace($processed-usg-value-1, "\.\.", " ")
+			let $processed-usg-value-3 := replace($processed-usg-value-2, "\.", " ")
+							
+			return $processed-usg-value-3 || " " || $usg/text()[1]
+
 				
 	return if (empty($result)) then () else concat("(", string-join($result, ', '), ") ")
 };
@@ -247,6 +251,10 @@ declare function dlri-views:writing-form($node) {
 
 declare function dlri-views:abbreviation-form($node) {
     <div class="abbreviation-form">Abr.: {$node/tei:abbr/text()}.</div>
+};
+
+declare function dlri-views:accentuation-form($node) {
+	<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {$node/tei:stress/text()}.</div>
 };
 
 declare function dlri-views:pronunciation-form($node) {
@@ -335,6 +343,9 @@ declare function dlri-views:etym($nodes) {
 	        	for $sense in $senses
 	        	return dlri-views:sense($sense)
         	,
+        	for $form in $entry/tei:form[@type = 'accentuation-variant']
+        	return dlri-views:accentuation-form($form)
+        	,        	
         	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
         	return dlri-views:pronunciation-form($pronunciation-form)
         	,
