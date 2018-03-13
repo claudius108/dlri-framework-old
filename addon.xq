@@ -2084,7 +2084,7 @@ ua:template("form-pronunciation-before",
             <option label="bisilabic" value="bisyllabic" />
             <option label="trisilabic" value="trisyllabic" />
         </select>
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronElement.xq')}" style="visibility: {count(pron) = 0};">Pron. cuvânt străin</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronElement.xq')}" style="visibility: {count(pron) = 0};">Pron.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronunciationReferenceElement.xq')}" style="visibility: {count(pRef) = 0};">Pronunţat şi</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementInPronunciationForm.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
@@ -2094,7 +2094,7 @@ ua:attach-template(ua-dt:css-selector("form[type = 'pronunciation']:before"), "f
 
 ua:template("form-pronunciation-pron",
     <template>
-        Pronunțarea cuvântului titlu străin&amp;nbsp;
+        Pronunțat&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
         <button onclick="{oxy:xquery-update('resources/xquery/addPronElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
