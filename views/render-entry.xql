@@ -145,7 +145,7 @@ declare function dlri-views:gramGrp($node) {
 };
 
 declare function dlri-views:sense($node) {
-	let $sense-level := data($node/tei:idno[1]/@n)
+	let $sense-level := data($node/@n)
 	let $sense-usg := dlri-views:usg($node/tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
 	let $semantic-units := $node/tei:form[@type = 'unitate-semantică-subsumată']
