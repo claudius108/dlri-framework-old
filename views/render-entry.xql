@@ -245,10 +245,6 @@ declare function dlri-views:cit($node) {
 	return ($date, $ptr-processed, $citedRange, $quote-processed)
 };
 
-declare function dlri-views:writing-form($node) {
-    <div class="writing-form">− Scris și: {$node/tei:oVar/text()}.</div>
-};
-
 declare function dlri-views:abbreviation-form($node) {
     <div class="abbreviation-form">Abr.: {$node/tei:abbr/text()}.</div>
 };
@@ -258,12 +254,17 @@ declare function dlri-views:accentuation-form($node) {
 };
 
 declare function dlri-views:articulation-form($node) {
-	<div class="articulation-form">Articulat: {$node/tei:term/text()}.</div>
+	<div class="articulation-form">– Articulat: {$node/tei:term/text()}.</div>
 };
 
 declare function dlri-views:pronunciation-form($node) {
     <div class="pronunciation-form">− Pronunțat: {$node/tei:pRef/text()}.</div>
 };
+
+declare function dlri-views:writing-form($node) {
+    <div class="writing-form">− Scris și: {dlri-views:usg($node/tei:usg)}  {$node/tei:oVar/text()}.</div>
+};
+
 declare function dlri-views:grammatical-information($node) {
 	let $type := $node/tei:form[1]/@type
 	
@@ -356,8 +357,8 @@ declare function dlri-views:etym($nodes) {
         	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
         	return dlri-views:pronunciation-form($pronunciation-form)
         	,
-        	for $writing-form in $entry/tei:form[@type = 'writing']
-        	return dlri-views:writing-form($writing-form)
+        	for $form in $entry/tei:form[@type = 'writing']
+        	return dlri-views:writing-form($form)
         	,
         	for $abbreviation-form in $entry/tei:form[@type = 'abbreviation']
         	return dlri-views:abbreviation-form($abbreviation-form)
