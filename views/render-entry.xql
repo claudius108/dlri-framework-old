@@ -158,10 +158,7 @@ declare function dlri-views:sense($node) {
 		                local:generate-span($sense-level, "sense-level")
 		                ,
 		                if (count($semantic-units) > 0)
-		                then
-		                	for $semantic-unit in $semantic-units
-		                	
-		                	return local:generate-span($semantic-unit/tei:term[1] || " =", "semantic-unit")
+		                then local:generate-span(dlri-views:semantic-unit($semantic-units), "semantic-unit")
 		                else ''
 		                ,
 		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
@@ -214,6 +211,15 @@ declare function dlri-views:usg($nodes) {
 
 				
 	return if (empty($result)) then () else concat("(", string-join($result, ', '), ") ")
+};
+
+declare function dlri-views:semantic-unit($nodes) {
+	let $processed-semantic-units :=
+		for $node in $nodes
+		
+		return $node/tei:term[1]
+	
+	return string-join($processed-semantic-units, " | ")
 };
 
 declare function dlri-views:def($definitions, $synonyms) {
