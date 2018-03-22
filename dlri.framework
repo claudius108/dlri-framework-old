@@ -19,7 +19,7 @@
 							<String>${framework}/java/framework.jar</String>
 							<String>${oxygenInstallDir}/jre/lib/jfxrt.jar</String>
 							<String>${framework}/java/dlri.jar</String>
-						</String-array>
+						<String>${framework}/java/plugin.jar</String></String-array>
 					</field>
 					<field name="parentClassLoaderID">
 						<null/>
