@@ -1,4 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="resources/empty-template-for-browser.css"?>
-
 <graphic xmlns="http://www.tei-c.org/ns/1.0" url="${content-url}" />

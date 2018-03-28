@@ -145,3 +145,7 @@ bibl > * {
 etym > note > * {
     display: none;
 }
+
+graphic {
+    content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 700px);
+}
