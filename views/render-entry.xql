@@ -339,10 +339,11 @@ declare function dlri-views:etym($nodes) {
     <head>
         <title>&#65279;</title>
         <meta charset="utf-8" />
-		<style type="text/css">{unparsed-text("views/render-entry.css")}</style>        
+        <base href="file:///{$frameworkDir}/" />
+		<link rel="stylesheet" href="views/render-entry.css" />
     </head>
     <body>
-    	<button onclick="refreshContent();"><img src="resources/circular-arrow-yang.png" /></button>
+    	<button onclick="refreshContent();"><img src="resources/images/circular-arrow-yang.png" /></button>
         {
         	dlri-views:headword($entry/tei:form[@type = 'headword'])
         	,
@@ -374,6 +375,6 @@ declare function dlri-views:etym($nodes) {
         	,
         	dlri-views:etym($entry/tei:etym)
         }
-        <script type="text/javascript" src="resources/render-entry.js">/**/</script>     
+        <script type="text/javascript" src="views/render-entry.js">/**/</script>
     </body>
 </html>
