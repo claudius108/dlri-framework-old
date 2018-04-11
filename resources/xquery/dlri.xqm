@@ -16,7 +16,7 @@ declare variable $dlri:lexical-variant-section-template as element() :=
 ;
 
 declare variable $dlri:def-template as element() :=
-    <def xmlns="http://www.tei-c.org/ns/1.0" n="" />
+    <def xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" />
 ;
 
 declare variable $dlri:bibl-template as element() :=
