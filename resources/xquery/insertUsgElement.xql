@@ -1,3 +1,10 @@
 xquery version "3.0";
 
-insert node doc('../../content-models/usg.xml') after .
+let $context := .
+
+let $processed-template :=
+	copy $template := doc('../../content-models/usg.xml')
+	modify insert node attribute {'corresp'} {concat('#', $context/@xml:id)} into $template/*
+	return $template
+
+return insert node $processed-template after .
