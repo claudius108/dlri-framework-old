@@ -227,7 +227,7 @@ ua:action(
         "name" := "Sinonim",
         "smallIconPath" := "../../resources/images/add.png"
     }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertSynonym.xq")  
+    oxy:execute-xquery-update-script("resources/xquery/insertSynonym.xql")  
 ),
 ua:action(
     "insertAnalogy",
@@ -235,7 +235,7 @@ ua:action(
         "name" := "Analogie",
         "smallIconPath" := "../../resources/images/add.png"        
     }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertAnalogy.xq")  
+    oxy:execute-xquery-update-script("resources/xquery/insertAnalogy.xql")  
 ),
 ua:action(
     "insertAssociation",
@@ -243,7 +243,7 @@ ua:action(
         "name" := "Asociație",
         "smallIconPath" := "../../resources/images/add.png"
     },
-    oxy:execute-xquery-update-script("resources/xquery/insertAssociation.xq")
+    oxy:execute-xquery-update-script("resources/xquery/insertAssociation.xql")
 ),
 ua:action(
     "insertAntonym",
@@ -251,7 +251,7 @@ ua:action(
         "name" := "Antonim",
         "smallIconPath" := "../../resources/images/add.png"
     },
-    oxy:execute-xquery-update-script("resources/xquery/insertAntonym.xq")
+    oxy:execute-xquery-update-script("resources/xquery/insertAntonym.xql")
 ),
 ua:action(
     "addGramGrp",
@@ -2500,7 +2500,7 @@ ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 
 ua:template("sense-def-template",
     <template>
-        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" />
