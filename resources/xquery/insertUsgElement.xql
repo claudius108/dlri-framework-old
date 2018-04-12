@@ -1,10 +1,20 @@
 xquery version "3.0";
 
-let $context := .
+let $context-node := .
+let $context-node-local-name := local-name($context-node) 
+let $corresp-value :=
+	switch ($context-node-local-name) 
+	   case "def" return concat('#', $context-node/@xml:id)
+	   case "usg" return $context-node/@corresp
+	   default return ""
+let $template-content := doc('../../content-models/usg.xml')
 
 let $processed-template :=
-	copy $template := doc('../../content-models/usg.xml')
-	modify insert node attribute {'corresp'} {concat('#', $context/@xml:id)} into $template/*
-	return $template
+	if ($corresp-value != '')
+	then
+		copy $template := $template-content
+		modify insert node attribute {'corresp'} {$corresp-value} into $template/*
+		return $template
+	else $template-content
 
-return insert node $processed-template after .
+return insert node $processed-template after $context-node
