@@ -28,7 +28,4 @@ let $processed-template :=
 return
 	if (local-name() = 'ptr')
 	then insert node $processed-template after $context-node
-	else insert node $processed-template after ($context-node | $context-node/following-sibling::tei:*[@corresp = $corresp-value])[last()]
-	
-	
-	(: insert node $processed-template after (following-sibling::tei:ptr[@type = ('analog', 'syn')] | .) :)
+	else insert node $processed-template after ($context-node | following-sibling::tei:usg | $context-node/following-sibling::tei:ptr[@type = 'syn' and @corresp = $corresp-value])[last()]
