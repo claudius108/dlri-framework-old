@@ -24,7 +24,8 @@ let $processed-template :=
 		return $template
 	else $dlri:ptr-template	
 
+
 return
 	if (local-name() = 'ptr')
-	then insert node $processed-template after .
-	else insert node $processed-template after (following-sibling::tei:ptr[@type = ('analog', 'syn', 'asoc', 'antonim')] | .)[last()]
+	then insert node $processed-template after $context-node
+	else insert node $processed-template after ($context-node | following-sibling::tei:usg | $context-node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc') and @corresp = $corresp-value])[last()]	
