@@ -2502,7 +2502,7 @@ ua:template("sense-def-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false"  style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" />
         \00000A
