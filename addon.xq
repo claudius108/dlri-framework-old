@@ -518,6 +518,7 @@ ua:template("nume.latinesc.definiție.sens-template",
     <template>
         Nume lat.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
+		<button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />        
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > def ~ term"), "nume.latinesc.definiție.sens-template"),
@@ -2513,9 +2514,7 @@ ua:template("sense-def-template",
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update('insertLatinName.xql')}">Nume lat.</button>
-        
-        
+        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {let $context := . return count($context/following-sibling::term[@corresp = concat('#', $context/@xml:id)]) = 0};">Nume lat.</button>
         \00000A
         <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
