@@ -33,7 +33,7 @@
 				</gramGrp>
 				<dictScrap xml:id="dlr-senses">
 					<sense xml:id="uuid-${uuid}" n="">
-						<def n="" />
+						<def xml:id="uuid-${uuid}" />
 						<cit>
 							<quote />
 							<bibl type="unknown">

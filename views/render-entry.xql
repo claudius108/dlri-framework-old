@@ -161,7 +161,7 @@ declare function dlri-views:sense($node) {
 		                then local:generate-span(dlri-views:semantic-unit($semantic-units), "semantic-unit")
 		                else ''
 		                ,
-		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = 'syn'])), ""), "")
+		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim')])), ""), "")
 						,
 			            for $cit in $node/tei:cit[normalize-space(string-join(.//* | .//tei:ptr/@target[. != 'unknown'])) != '']
 			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
