@@ -117,11 +117,6 @@ declare function local:usg($node) {
   )
 };
 
-
-
-
-
-
 declare function dlri-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
@@ -197,9 +192,10 @@ declare function dlri-views:sense($node) {
 
 declare function dlri-views:usg($nodes) {
 	let $result :=
-		for $usg in $nodes
+		for $node in $nodes
+		
 		return
-			let $usg-value := $usg/@value
+			let $usg-value := $node/@value
 			let $processed-usg-value-1 :=
 				switch($usg-value)
 				case "complementul.indică" return "Complementul indică"
@@ -207,7 +203,7 @@ declare function dlri-views:usg($nodes) {
 			let $processed-usg-value-2 := replace($processed-usg-value-1, "\.\.", " ")
 			let $processed-usg-value-3 := replace($processed-usg-value-2, "\.", " ")
 							
-			return $processed-usg-value-3 || " " || $usg/text()[1]
+			return $processed-usg-value-3 || " " || $node/text()[1]
 
 				
 	return if (empty($result)) then () else concat("(", string-join($result, ', '), ") ")
@@ -242,15 +238,31 @@ declare function dlri-views:cit($node) {
 	return (dlri-views:bibl($node/tei:bibl), $quote-processed)
 };
 
-declare function dlri-views:bibl($node) {
-	let $date := local:generate-span(data($node/tei:date), "bibl-date")
+declare function dlri-views:bibl($nodes) {
+	let $result :=
+		for $node in $nodes
+		
+		return	
+			let $date := local:generate-span(data($node/tei:date), "bibl-date")
+			
+			let $ptr := data($node/tei:ptr/@target)
+			let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
+			
+			let $citedRange := local:generate-span(data($node/tei:citedRange), "")
+			
+			return ($date, $ptr-processed, $citedRange, ", ")
+
+	return
+		if (empty($result))
+		then ()
+		else $result[position() < last()]
+};
+
+declare function dlri-views:bibl-with-parenthesis($nodes) {
+	let $bibl := dlri-views:bibl($nodes)[. != "&#65279;"]
+	let $bibl-processed := if ($bibl != "") then (" (", $bibl, ")") else ""
 	
-	let $ptr := data($node/tei:ptr/@target)
-	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
-	
-	let $citedRange := local:generate-span(data($node/tei:citedRange), "")
-	
-	return ($date, $ptr-processed, $citedRange)
+	return $bibl-processed
 };
 
 declare function dlri-views:abbreviation-form($node) {
@@ -258,11 +270,7 @@ declare function dlri-views:abbreviation-form($node) {
 };
 
 declare function dlri-views:accentuation-form($node) {
-	let $bibl := dlri-views:bibl($node/tei:bibl)[. != "&#65279;"]
-	let $bibl-processed := if ($bibl != "") then (" (", $bibl, ")") else ""
-	
-	return
-		<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {$bibl-processed}.</div>
+	<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {dlri-views:bibl-with-parenthesis($node/tei:bibl)}.</div>
 };
 
 declare function dlri-views:articulation-form($node) {
@@ -299,6 +307,40 @@ declare function dlri-views:grammatical-information($node) {
 	    	<span>: {string-join($node/tei:form/tei:form, ", ")}.</span>
 	    </div>
 };
+
+declare function dlri-views:lexical-variant($nodes) {
+	let $result :=
+		for $node in $nodes
+		
+		return (
+			dlri-views:usg($node/tei:usg)
+			,
+			$node/tei:def/text()
+			,
+			dlri-views:bibl-with-parenthesis($node/tei:bibl)
+			,
+			dlri-views:gramGrp($node/tei:gramGrp)
+			,
+			", "			
+		)	
+	
+	return
+		if (empty($result))
+		then ()
+		else	
+			<div class="lexical-variant">
+				{
+					"– Şi: "
+					,
+					$result[position() < last()]
+					,
+					if (ends-with($result[position() < (last() - 1)][last()], ".")) then "" else "."
+				}
+			</div>
+};
+
+
+
 
 declare function dlri-views:etym($nodes) {
     <div class="etym">
@@ -367,17 +409,19 @@ declare function dlri-views:etym($nodes) {
         	for $form in $entry/tei:form[@type = 'articulation']
         	return dlri-views:articulation-form($form)        	
         	,        	
-        	for $pronunciation-form in $entry/tei:form[@type = 'pronunciation']
-        	return dlri-views:pronunciation-form($pronunciation-form)
+        	for $form in $entry/tei:form[@type = 'pronunciation']
+        	return dlri-views:pronunciation-form($form)
         	,
         	for $form in $entry/tei:form[@type = 'writing']
         	return dlri-views:writing-form($form)
         	,
-        	for $abbreviation-form in $entry/tei:form[@type = 'abbreviation']
-        	return dlri-views:abbreviation-form($abbreviation-form)
+        	for $form in $entry/tei:form[@type = 'abbreviation']
+        	return dlri-views:abbreviation-form($form)
         	,        	
-        	for $grammatical-information in $entry/tei:form[@type = 'grammatical-information']
-        	return dlri-views:grammatical-information($grammatical-information)
+        	for $form in $entry/tei:form[@type = 'grammatical-information']
+        	return dlri-views:grammatical-information($form)
+        	,
+        	dlri-views:lexical-variant($entry/tei:re[@type = 'lexical-variant-section'])        	
         	,
         	dlri-views:etym($entry/tei:etym)
         }
