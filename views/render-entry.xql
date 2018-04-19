@@ -236,19 +236,21 @@ declare function dlri-views:def($definitions, $synonyms) {
 };
 
 declare function dlri-views:cit($node) {
-	let $bibl := $node/tei:bibl
-	
-	let $date := local:generate-span(data($bibl/tei:date), "bibl-date")
-	
-	let $ptr := data($bibl/tei:ptr/@target)
-	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
-	
-	let $citedRange := local:generate-span(data($bibl/tei:citedRange), "")
-	
 	let $quote := data($node/tei:quote)
 	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "bibl-quote")
 	
-	return ($date, $ptr-processed, $citedRange, $quote-processed)
+	return (dlri-views:bibl($node/tei:bibl), $quote-processed)
+};
+
+declare function dlri-views:bibl($node) {
+	let $date := local:generate-span(data($node/tei:date), "bibl-date")
+	
+	let $ptr := data($node/tei:ptr/@target)
+	let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
+	
+	let $citedRange := local:generate-span(data($node/tei:citedRange), "")
+	
+	return ($date, $ptr-processed, $citedRange)
 };
 
 declare function dlri-views:abbreviation-form($node) {
@@ -256,7 +258,11 @@ declare function dlri-views:abbreviation-form($node) {
 };
 
 declare function dlri-views:accentuation-form($node) {
-	<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {$node/tei:stress/text()}.</div>
+	let $bibl := dlri-views:bibl($node/tei:bibl)[. != "&#65279;"]
+	let $bibl-processed := if ($bibl != "") then (" (", $bibl, ")") else ""
+	
+	return
+		<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {$bibl-processed}.</div>
 };
 
 declare function dlri-views:articulation-form($node) {

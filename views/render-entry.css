@@ -11,6 +11,7 @@ body {
 	column-count: 2;
 	column-fill: auto;
 	font-family: "Arial";
+	font-size: 18px;
 }
 
 div.headword, div.gramGrp {
@@ -33,7 +34,7 @@ div.cit-container > span {
 	display: inline;
 }
 
-span.lang, span.term, span.bibl-date {
+span.lang, span.term {
 	margin-left: 5px;
 }
 	
@@ -44,6 +45,10 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
 .superscript {
   vertical-align: super;
   font-size: 80%;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .spacing, .analog, .asoc, .trimitere {
