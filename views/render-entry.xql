@@ -270,7 +270,7 @@ declare function dlri-views:abbreviation-form($node) {
 };
 
 declare function dlri-views:accentuation-form($node) {
-	<div class="accentuation-form">Accentuat și: {dlri-views:usg($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {dlri-views:bibl-with-parenthesis($node/tei:bibl)}.</div>
+	<div class="accentuation-form">– Accentuat și: {dlri-views:usg($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {dlri-views:bibl-with-parenthesis($node/tei:bibl)}.</div>
 };
 
 declare function dlri-views:articulation-form($node) {
@@ -310,7 +310,9 @@ declare function dlri-views:grammatical-information($node) {
 
 declare function dlri-views:lexical-variant($nodes) {
 	let $result :=
-		for $node in $nodes
+		for $node at $i in $nodes
+		let $current-gramGrp := dlri-views:gramGrp($node/tei:gramGrp)
+		let $next-gramGrp := dlri-views:gramGrp($nodes[$i + 1]/tei:gramGrp)
 		
 		return (
 			dlri-views:usg($node/tei:usg)
@@ -319,7 +321,7 @@ declare function dlri-views:lexical-variant($nodes) {
 			,
 			dlri-views:bibl-with-parenthesis($node/tei:bibl)
 			,
-			dlri-views:gramGrp($node/tei:gramGrp)
+			if ($current-gramGrp != $next-gramGrp) then $current-gramGrp else ""
 			,
 			", "			
 		)	
