@@ -116,7 +116,7 @@ ua:action(
     map { 
         "name" := "Izvor"       
     }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xq")   
+    oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xql")   
 ),
 ua:action(
     "searchBibliographicReferences",
