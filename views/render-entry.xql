@@ -188,7 +188,12 @@ declare function dlri-views:def($definitions, $synonyms) {
 };
 
 declare function dlri-views:latin-name($node) {
-	("(", local:generate-span($node/text(), "italic"), ")")
+	let $result := $node/text()
+	
+	return
+		if ($result != '')
+		then ("(", local:generate-span($result, "italic"), ")")
+		else ""
 };
 
 declare function dlri-views:cit($node) {
