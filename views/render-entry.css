@@ -51,6 +51,10 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
   font-style: italic;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .spacing, .analog, .asoc, .trimitere {
   letter-spacing: 0.3em;
 }

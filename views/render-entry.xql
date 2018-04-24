@@ -89,6 +89,10 @@ declare function dlri-views:sense($node) {
 	let $sense-usg := dlri-views:usg($node/tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
 	let $semantic-units := $node/tei:form[@type = 'unitate-semantică-subsumată']
+	let $semantic-units-processed := 
+		if (count($semantic-units) > 0)
+		then dlri-views:semantic-unit($semantic-units)
+		else ''
 	
 	return
 		(
@@ -97,9 +101,7 @@ declare function dlri-views:sense($node) {
 		            (
 		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                if (count($semantic-units) > 0)
-		                then local:generate-span(dlri-views:semantic-unit($semantic-units), "semantic-unit")
-		                else ''
+		                $semantic-units-processed
 		                ,
 		                local:generate-span($sense-usg, "")
 		                ,
@@ -166,12 +168,17 @@ declare function dlri-views:usg($nodes) {
 };
 
 declare function dlri-views:semantic-unit($nodes) {
-	let $processed-semantic-units :=
+	let $result :=
 		for $node in $nodes
+		let $type := $node/tei:idno/@type
+		let $prefix :=
+			switch($type)
+			case "syntagma" return "Sint."
+			default return ""		
 		
-		return $node/tei:term[1]
+		return ($prefix, local:generate-span($node/tei:term[1]/text(), "bold"), " | ")
 	
-	return string-join($processed-semantic-units, " | ")
+	return $result[position() < last()]
 };
 
 declare function dlri-views:def($definitions, $synonyms) {
