@@ -66,13 +66,6 @@ declare function dlri-views:process-form($node as node()) as item()* {
     default return ()
 };
 
-declare function dlri-views:form-phrase($node as node()) as item()+ {
-  (
-    <span class="spacing">Expr.</span>,
-    dlri-views:passthru($node)
-  )
-};
-
 declare function dlri-views:hi($node as node()) as node() {
   <span class="{$node/@rend}">{$node/text()}</span>
 };

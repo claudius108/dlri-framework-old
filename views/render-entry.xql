@@ -15,50 +15,6 @@ declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/
 declare variable $editing-mode := /*//tei:text/@type/data(.);
 declare variable $processed-editing-mode := replace($editing-mode, "editing-mode-", "");
 
-declare function dlri-views:dispatch($node) {
-    typeswitch($node)
-        case text() return $node
-        case element(tei:hi) return dlri-views:hi($node)
-        default return dlri-views:passthru($node)
-};
-
-declare function dlri-views:passthru($nodes) {
-    for $node in $nodes/node() return dlri-views:dispatch($node)
-};
-
-declare function dlri-views:form($node) {
-	let $type := $node/@type
-	
-	return
-		switch ($type) 
-		   case "phrase" return dlri-views:form-phrase($node)
-		   default return ()
-};
-
-declare function dlri-views:form-phrase($node) {
-  (
-    <span class="spacing">Expr.</span>,
-    dlri-views:passthru($node)
-  )
-};
-
-declare function dlri-views:hi($node) {
-  <span class="{$node/@rend}">{$node/text()}</span>
-};
-
-declare function local:dispatch($node) {
-    typeswitch($node)
-        case text() return $node
-        case element(tei:usg) return local:usg($node)
-        case element(tei:form) return dlri-views:form($node)
-        case element(tei:hi) return dlri-views:hi($node)
-        default return local:passthru($node)
-};
-
-declare function local:passthru($nodes) {
-    for $node in $nodes/node() return local:dispatch($node)
-};
-
 declare function local:generate-span($content, $class-name) {
   	if ($content != '')
   	then (
@@ -82,13 +38,12 @@ declare function local:generate-span($content, $class-name) {
 };
 
 declare function local:process-sense-content($node as element(tei:sense)) {
-  local:passthru($node)
+	()
 };
 
 declare function local:xr-synonym($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'syn']) eq 0) then ";" else ", ",
-    local:passthru($node),
     if (count($node/following-sibling::tei:xr[@type = 'syn']) eq 0) then ". " else ()
   )
 };
@@ -96,7 +51,6 @@ declare function local:xr-synonym($node) {
 declare function local:xr-analogy($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'analog']) eq 0) then "V. " else ", ",
-    local:passthru($node),
     if (count($node/following-sibling::tei:xr[@type = 'analog']) eq 0) then ". " else ()
   )
 };
@@ -104,16 +58,7 @@ declare function local:xr-analogy($node) {
 declare function local:xr-association($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'asoc']) eq 0) then "Cf. " else ", ",
-    local:passthru($node),
     if (count($node/following-sibling::tei:xr[@type = 'asoc']) eq 0) then ". " else ()
-  )
-};
-
-declare function local:usg($node) {
-  (
-    if (count($node/preceding-sibling::tei:xr[@type = 'syn']) eq 0) then " (" else ", ",
-    local:passthru($node),
-    if (count($node/following-sibling::tei:xr[@type = 'syn']) eq 0) then ")" else ()
   )
 };
 
@@ -156,7 +101,18 @@ declare function dlri-views:sense($node) {
 		                then local:generate-span(dlri-views:semantic-unit($semantic-units), "semantic-unit")
 		                else ''
 		                ,
-		                local:generate-span(string-join(($sense-usg, dlri-views:def($node/tei:def, $node/tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim')])), ""), "")
+		                local:generate-span($sense-usg, "")
+		                ,
+		                for $def in $node/tei:def
+		                let $corresp-value := concat('#', $def/@xml:id)
+		                
+		                return (
+		                	local:generate-span(string-join((dlri-views:def($def, $def/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])), ""), "")
+		                	,
+		                	dlri-views:latin-name($def/following-sibling::tei:term[@corresp = $corresp-value])
+		                )
+		                ,
+		                "."
 						,
 			            for $cit in $node/tei:cit[normalize-space(string-join(.//* | .//tei:ptr/@target[. != 'unknown'])) != '']
 			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
@@ -229,6 +185,10 @@ declare function dlri-views:def($definitions, $synonyms) {
 	let $content-2 := if (empty($content-1)) then () else string-join($content-1, "; ")
 		
 	return $content-2
+};
+
+declare function dlri-views:latin-name($node) {
+	("(", local:generate-span($node/text(), "italic"), ")")
 };
 
 declare function dlri-views:cit($node) {
