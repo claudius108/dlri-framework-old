@@ -159,12 +159,15 @@ declare function dlri-views:usg($nodes) {
 				case "complementul.indică" return "Complementul indică"
 				default return $usg-value
 			let $processed-usg-value-2 := replace($processed-usg-value-1, "\.\.", " ")
-			let $processed-usg-value-3 := replace($processed-usg-value-2, "\.", " ")
+			
+			let $delimiter := $node/tei:pc/text()
+			let $delimiter-1 := if ($delimiter != '') then $delimiter else ', '
+			let $delimiter-2 := if ($delimiter-1 = 'și') then concat(' ', $delimiter, ' ') else $delimiter
 							
-			return $processed-usg-value-3 || " " || $node/text()[1]
+			return $processed-usg-value-2 || " " || $node/text()[1] || $delimiter-2
 
 				
-	return if (empty($result)) then () else concat("(", string-join($result, ', '), ") ")
+	return if (empty($result)) then () else concat("(", string-join($result, ''), ") ")
 };
 
 declare function dlri-views:semantic-unit($nodes) {
@@ -312,9 +315,6 @@ declare function dlri-views:lexical-variant($nodes) {
 				}
 			</div>
 };
-
-
-
 
 declare function dlri-views:etym($nodes) {
     <div class="etym">
