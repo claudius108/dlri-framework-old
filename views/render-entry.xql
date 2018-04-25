@@ -105,14 +105,7 @@ declare function dlri-views:sense($node) {
 		                ,
 		                local:generate-span($sense-usg, "")
 		                ,
-		                for $def in $node/tei:def
-		                let $corresp-value := concat('#', $def/@xml:id)
-		                
-		                return (
-		                	local:generate-span(string-join((dlri-views:def($def, $def/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])), ""), "")
-		                	,
-		                	dlri-views:latin-name($def/following-sibling::tei:term[@corresp = $corresp-value])
-		                )
+		                dlri-views:def($node/tei:def)
 		                ,
 		                "."
 						,
@@ -177,22 +170,32 @@ declare function dlri-views:semantic-unit($nodes) {
 		let $prefix :=
 			switch($type)
 			case "syntagma" return "Sint."
-			default return ""		
-		
+			default return ""
+
 		return ($prefix, local:generate-span($node/tei:term[1]/text(), "bold"), " | ")
+	let $definitions := $nodes/following-sibling::tei:def/text()
+	let $sufix := if ($definitions != '') then "=" else ""	
+		
 	
-	return $result[position() < last()]
+	return ($result[position() < last()], $sufix) 
 };
 
-declare function dlri-views:def($definitions, $synonyms) {
-	let $definition-content :=
-		for $definition in $definitions
-		return $definition/text()
+declare function dlri-views:def($nodes) {
+	for $node in $nodes
+	let $corresp-value := concat('#', $node/@xml:id)
+	
+	return (
+		local:generate-span(string-join((dlri-views:def($def, $def/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])), ""), "")
+		,
+		dlri-views:latin-name($node/following-sibling::tei:term[@corresp = $corresp-value])
+	)
+
+
 	let $synonym-content :=
 		for $synonym in $synonyms
 		return $synonym/@target
-	let $content-1 := ($definition-content, $synonym-content)
-	let $content-2 := if (empty($content-1)) then () else string-join($content-1, "; ")
+	let $content-1 := ($definition, $synonym-content)
+	let $content-2 := if (empty($content-1)) then "" else string-join($content-1, "; ")
 		
 	return $content-2
 };
