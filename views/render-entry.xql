@@ -181,23 +181,25 @@ declare function dlri-views:semantic-unit($nodes) {
 };
 
 declare function dlri-views:def($nodes) {
-	for $node in $nodes
-	let $corresp-value := concat('#', $node/@xml:id)
-	
-	return (
-		local:generate-span(string-join((dlri-views:def($def, $def/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])), ""), "")
-		,
-		dlri-views:latin-name($node/following-sibling::tei:term[@corresp = $corresp-value])
-	)
-
-
-	let $synonym-content :=
-		for $synonym in $synonyms
-		return $synonym/@target
-	let $content-1 := ($definition, $synonym-content)
-	let $content-2 := if (empty($content-1)) then "" else string-join($content-1, "; ")
+	let $result :=
+		for $node in $nodes
+		let $corresp-value := concat('#', $node/@xml:id)
+		let $synonym-content :=
+			for $synonym in $node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value]
+			
+			return $synonym/@target
+		let $content-1 := string-join(($node/text(), $synonym-content), "")
+			
 		
-	return $content-2
+		return (
+			$content-1
+			,
+			dlri-views:latin-name($node/following-sibling::tei:term[@corresp = $corresp-value])
+			,
+			"; "
+		)
+		
+	return $result[position() < last()]
 };
 
 declare function dlri-views:latin-name($node) {
