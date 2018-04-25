@@ -10,6 +10,7 @@
 body {
 	column-count: 2;
 	column-fill: auto;
+	orphans: 10;
 	font-family: "Arial";
 	font-size: 18px;
 }
