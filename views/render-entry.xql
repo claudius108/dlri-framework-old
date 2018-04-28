@@ -184,11 +184,11 @@ declare function dlri-views:def($nodes) {
 	let $result :=
 		for $node in $nodes
 		let $corresp-value := concat('#', $node/@xml:id)
-		let $synonym-content :=
-			for $synonym in $node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value]
+		let $references-content :=
+			for $reference in $node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value]
 			
-			return $synonym/@target
-		let $content-1 := string-join(($node/text(), $synonym-content), "")
+			return $reference/@target
+		let $content-1 := string-join(($node/text(), $references-content), "")
 			
 		
 		return (
@@ -225,12 +225,12 @@ declare function dlri-views:bibl($nodes) {
 		return	
 			let $date := local:generate-span(data($node/tei:date), "bibl-date")
 			
-			let $ptr := data($node/tei:ptr/@target)
-			let $ptr-processed := local:generate-span(if ($ptr != 'unknown') then substring-after($ptr, '| ') else '', "bibl-ptr")	
+			let $ptr-1 := data($node/tei:ptr/@target)
+			let $ptr-2 := local:generate-span(if ($ptr-1 != 'unknown') then substring-after($ptr-1, '| ') else '', "bibl-ptr")	
+			let $citedRange-1 := $node/tei:citedRange
+			let $citedRange-2 := if ($citedRange-1 != '') then local:generate-span(', ' || $citedRange-1, "") else ''
 			
-			let $citedRange := local:generate-span(data($node/tei:citedRange), "")
-			
-			return ($date, $ptr-processed, $citedRange, ", ")
+			return ($date, $ptr-2, $citedRange-2, ", ")
 
 	return
 		if (empty($result))
@@ -280,7 +280,21 @@ declare function dlri-views:grammatical-information($node) {
 						
 						return concat($term/tei:tns/@value, ' ', $term/tei:mood/@value, $sense-number)
 					case "grammatical-information-for-plural"
-					return "− Pl."
+					return
+						let $forms :=
+							for $form in $node/tei:form
+							let $usg-1 := dlri-views:usg($form/tei:usg)
+							let $usg-2 := replace($usg-1, "\(", "")
+							let $usg-3 := replace($usg-2, "\)", "")
+							let $gramGrp := dlri-views:gramGrp($form/tei:gramGrp)
+							let $secondary-content :=
+								if (string-length(string-join(($usg-3, $gramGrp), '')) = 1)
+								then ""
+								else ("(", $usg-3, $gramGrp, ", ", ")")
+							
+							return ($secondary-content, $form/tei:number/text(), " și ")
+						
+						return ("− Pl.", $forms[position() < last()]) 
 					default return ()
 				)   	
 	    	}
