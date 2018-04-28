@@ -223,7 +223,7 @@ declare function dlri-views:bibl($nodes) {
 		for $node in $nodes
 		
 		return	
-			let $date := local:generate-span(data($node/tei:date), "bibl-date")
+			let $date := local:generate-span(data($node/tei:date), "bold")
 			
 			let $ptr-1 := data($node/tei:ptr/@target)
 			let $ptr-2 := local:generate-span(if ($ptr-1 != 'unknown') then substring-after($ptr-1, '| ') else '', "bibl-ptr")	
