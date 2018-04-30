@@ -113,14 +113,15 @@ declare function dlri-views:sense($node) {
 			            let $preceding-type := data($cit/preceding-sibling::tei:cit[1]/tei:bibl/@type)
 			            let $current-type := data($cit/tei:bibl/@type)
 			            
-			            let $delimiter-1 := if ($current-type = 'unknown') then "" else $current-type
-			            let $delimiter-2 := if ($delimiter-1 = 'cf.') then "Cf." else $delimiter-1
-			            let $delimiter-3 := if ($preceding-type = 'cf.') then "" else $delimiter-2
+			            let $prefix-1 := if ($current-type = 'unknown') then "" else $current-type
+			            let $prefix-2 := if ($prefix-1 = 'cf.') then "Cf." else $prefix-1
+			            let $prefix-3 := if ($preceding-type = 'cf.') then "" else $prefix-2
+			            let $sufix := if ($cit/following-sibling::tei:cit) then ", " else ""
 			            
 			            return
 							<div class="cit-container">
 								{
-									($delimiter-3, dlri-views:cit($cit))
+									($prefix-3, dlri-views:cit($cit), $sufix)
 								}
 							</div>
 						,
@@ -128,7 +129,7 @@ declare function dlri-views:sense($node) {
 						then dlri-views:sense($node/tei:sense[1])
 						else
 						    for $sense in $node/tei:sense
-						    return dlri-views:sense($sense)						
+						    return dlri-views:sense($sense)
 					)
 				}		        
 		    </div>
@@ -218,24 +219,21 @@ declare function dlri-views:cit($node) {
 	return (dlri-views:bibl($node/tei:bibl), $quote-processed)
 };
 
-declare function dlri-views:bibl($nodes) {
+declare function dlri-views:bibl($node) {
 	let $result :=
-		for $node in $nodes
+		let $date := local:generate-span(data($node/tei:date), "bold")
 		
-		return	
-			let $date := local:generate-span(data($node/tei:date), "bold")
-			
-			let $ptr-1 := data($node/tei:ptr/@target)
-			let $ptr-2 := local:generate-span(if ($ptr-1 != 'unknown') then substring-after($ptr-1, '| ') else '', "bibl-ptr")	
-			let $citedRange-1 := $node/tei:citedRange
-			let $citedRange-2 := if ($citedRange-1 != '') then local:generate-span(', ' || $citedRange-1, "") else ''
-			
-			return ($date, $ptr-2, $citedRange-2, ", ")
+		let $ptr-1 := data($node/tei:ptr/@target)
+		let $ptr-2 := local:generate-span(if ($ptr-1 != 'unknown') then substring-after($ptr-1, '| ') else '', "bibl-ptr")	
+		let $citedRange-1 := $node/tei:citedRange
+		let $citedRange-2 := if ($citedRange-1 != '') then local:generate-span(', ' || $citedRange-1, "") else ''
+		
+		return ($date, $ptr-2, $citedRange-2)
 
 	return
 		if (empty($result))
-		then ()
-		else $result[position() < last()]
+		then ""
+		else $result
 };
 
 declare function dlri-views:bibl-with-parenthesis($nodes) {
