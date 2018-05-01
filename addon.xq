@@ -2305,7 +2305,7 @@ ua:template("sense-currentEdited-value-before",
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}">Etimologie</button>     
+        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
