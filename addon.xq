@@ -2370,6 +2370,7 @@ ua:template("subc-unitate-semantică-subsumată-template",
             <option label="tranz." value="tranz." />
             <option label="refl. pas." value="refl. pas." />
             <option label="recipr." value="recipr." />
+            <option label="refl." value="refl." />
         </select>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
