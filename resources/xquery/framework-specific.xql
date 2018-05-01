@@ -75,15 +75,31 @@ let $processed-variant-etymology-types := string-join(
 
 (: process the controlled vocabulary for languages :)
 let $languages :=
-	<select>
-		{
-			for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
-			return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
-		}
-	</select>	
-let $serialized-languages :=
 	serialize(
-		$languages,
+		<select>
+			{
+				for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
+				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
+			}
+		</select>
+		,
+		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+			<output:method value="xml" />
+			<output:omit-xml-declaration value="yes" />
+			<output:indent value="yes" />
+		</output:serialization-parameters>
+	)
+	
+(: process the controlled vocabulary for usages :)
+let $usages :=
+	serialize(
+		<select>
+			{
+				for $concept in parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:Concept
+				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:hiddenLabel}" />		
+			}
+		</select>
+		,
 		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
 			<output:method value="xml" />
 			<output:omit-xml-declaration value="yes" />
@@ -110,7 +126,9 @@ return (
     ,
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $processed-variant-etymology-types)
     ,
-	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $serialized-languages)
+	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $languages)
+	,
+	file:write-text($frameworkResourcesDirPath || "/ontology/usages.html", $usages)
     ,
 	file:write-binary(
 		$frameworkUberJarPath,	
@@ -144,7 +162,16 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/ontology/languages.html",
-			bin:encode-string($serialized-languages)
+			bin:encode-string($languages)
+		)
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/ontology/usages.html",
+			bin:encode-string($usages)
 		)
 	)	
 	,

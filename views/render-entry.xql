@@ -12,8 +12,9 @@ declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlri-views:get-entry-title($entry);
 declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/languages.html"));
-declare variable $editing-mode := /*//tei:text/@type/data(.);
-declare variable $processed-editing-mode := replace($editing-mode, "editing-mode-", "");
+declare variable $usages := parse-xml(unparsed-text("resources/ontology/usages.html"));
+
+declare variable $editing-mode := replace(/*//tei:text/@type, "editing-mode-", "");
 
 declare function local:generate-span($content, $class-name) {
   	if ($content != '')
@@ -148,17 +149,13 @@ declare function dlri-views:usg($nodes) {
 		
 		return
 			let $usg-value := $node/@value
-			let $processed-usg-value-1 :=
-				switch($usg-value)
-				case "complementul.indică" return "Complementul indică"
-				default return $usg-value
-			let $processed-usg-value-2 := replace($processed-usg-value-1, "\.\.", " ")
+			let $usg-label := $usages//html:option[@value = $usg-value]/@label
 			
 			let $delimiter := $node/tei:pc/text()
 			let $delimiter-1 := if ($delimiter != '') then $delimiter else ', '
 			let $delimiter-2 := if ($delimiter-1 = 'și') then concat(' ', $delimiter, ' ') else $delimiter
 							
-			return $processed-usg-value-2 || " " || $node/text()[1] || $delimiter-2
+			return $usg-label || " " || $node/text()[1] || $delimiter-2
 
 				
 	return if (empty($result)) then () else concat("(", string-join($result, ''), ") ")
@@ -388,7 +385,7 @@ declare function dlri-views:etym($nodes) {
         	,
         	dlri-views:gramGrp($entry/tei:gramGrp)
         	,
-        	let $senses := $entry/tei:dictScrap[@xml:id = $processed-editing-mode || '-senses']/tei:sense
+        	let $senses := $entry/tei:dictScrap[@xml:id = $editing-mode || '-senses']/tei:sense
         	
         	return
 	        	for $sense in $senses
