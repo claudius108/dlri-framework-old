@@ -526,6 +526,7 @@ ua:attach-template(ua-dt:css-selector("sense > def ~ term"), "nume.latinesc.defi
 ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAfter.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::entry/etym) > 1 or count(parent::sense/etym) > 0};" />
         Probabilitate etimologie&amp;nbsp;
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
@@ -533,7 +534,6 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'variantă-directă-etimon.variantă')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(//entry/etym) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
