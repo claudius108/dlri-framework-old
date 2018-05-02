@@ -22,6 +22,24 @@ declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDi
 declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
+declare function local:generate-datalist($datalist-name, $datalist-values) {
+	string-join(
+		(
+			$charset,
+			"&#10;",
+			"@",
+			$datalist-name,
+			": ",
+			"&quot;",
+			",",
+			$datalist-values,
+			"&quot;",
+			";"
+		),
+		""
+	)
+};
+
 (: process the controlled vocabulary for etymology types :)
 let $etymology-types := parse-xml(unparsed-text($ontology-github-url || "/etymology-types.rdf"))
 let $headword-etymology-types :=
@@ -33,52 +51,21 @@ let $sense-etymology-types :=
 let $variant-etymology-types :=
 	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
 	return $concept/skos:prefLabel/text()
-let $processed-headword-etymology-types := string-join(
-	(
-		$charset,
-		"&#10;",
-		"@headword-etymology-types: ",
-		"&quot;",
-		",",
-		normalize-space(string-join($headword-etymology-types, ",")),
-		"&quot;",
-		";"
-	),
-	""
-)
-let $processed-sense-etymology-types := string-join(
-	(
-		$charset,
-		"&#10;",
-		"@sense-etymology-types: ",
-		"&quot;",
-		",",
-		normalize-space(string-join($sense-etymology-types, ",")),
-		"&quot;",
-		";"
-	),
-	""
-)
-let $processed-variant-etymology-types := string-join(
-	(
-		$charset,
-		"&#10;",
-		"@variant-etymology-types: ",
-		"&quot;",
-		",",
-		normalize-space(string-join($variant-etymology-types, ",")),
-		"&quot;",
-		";"
-	),
-	""
-)
+let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
+let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:Concept
+				
+let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", normalize-space(string-join($headword-etymology-types, ",")))
+let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", normalize-space(string-join($sense-etymology-types, ",")))
+let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", normalize-space(string-join($variant-etymology-types, ",")))
+let $languages-datalist := local:generate-datalist("languages", normalize-space(string-join($languages-concepts/skos:prefLabel, ",")))
+let $usage-options-datalist := local:generate-datalist("usage-options", normalize-space(string-join($usage-options-concepts/skos:hiddenLabel, ",")))
 
 (: process the controlled vocabulary for languages :)
 let $languages :=
 	serialize(
 		<select>
 			{
-				for $concept in parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
+				for $concept in $languages-concepts
 				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:notation}" />		
 			}
 		</select>
@@ -91,12 +78,12 @@ let $languages :=
 	)
 	
 (: process the controlled vocabulary for usages :)
-let $usages :=
+let $usage-options :=
 	serialize(
 		<select>
 			{
-				for $concept in parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:Concept
-				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:hiddenLabel}" />		
+				for $concept in $usage-options-concepts
+				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:hiddenLabel}" />			
 			}
 		</select>
 		,
@@ -120,22 +107,26 @@ let $special-characters :=
 
 
 return (
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/headword-etymology-types.less", $processed-headword-etymology-types)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/headword-etymology-types.less", $headword-etymology-types-datalist)
     ,
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/sense-etymology-types.less", $processed-sense-etymology-types)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/sense-etymology-types.less", $sense-etymology-types-datalist)
     ,
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $processed-variant-etymology-types)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $variant-etymology-types-datalist)
     ,
 	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $languages)
 	,
-	file:write-text($frameworkResourcesDirPath || "/ontology/usages.html", $usages)
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/languages.less", $languages-datalist)	
+	,
+	file:write-text($frameworkResourcesDirPath || "/ontology/usages.html", $usage-options)
+	,
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/usage-options.less", $usage-options-datalist)	
     ,
 	file:write-binary(
 		$frameworkUberJarPath,	
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/css/datalists/headword-etymology-types.less",
-			bin:encode-string($processed-headword-etymology-types)
+			bin:encode-string($headword-etymology-types-datalist)
 		)
 	)
 	,
@@ -144,7 +135,7 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/css/datalists/sense-etymology-types.less",
-			bin:encode-string($processed-sense-etymology-types)
+			bin:encode-string($sense-etymology-types-datalist)
 		)
 	)
 	,
@@ -153,7 +144,25 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/css/datalists/variant-etymology-types.less",
-			bin:encode-string($processed-variant-etymology-types)
+			bin:encode-string($variant-etymology-types-datalist)
+		)
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/languages.less",
+			bin:encode-string($languages-datalist)
+		)
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/usage-options.less",
+			bin:encode-string($usage-options-datalist)
 		)
 	)
 	,
@@ -171,7 +180,7 @@ return (
 		arch:update(
 			file:read-binary($frameworkUberJarPath),
 			"resources/ontology/usages.html",
-			bin:encode-string($usages)
+			bin:encode-string($usage-options)
 		)
 	)	
 	,
