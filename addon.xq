@@ -123,7 +123,7 @@ ua:action(
     map { 
         "name" := "Căutare"       
     },   
-    oxy:execute-xquery-script("resources/xquery/get-bibliographic-references.xq")
+    oxy:execute-xquery-script("resources/xquery/get-bibliographic-references.xql")
 ),
 ua:action(
     "searchHeadwordReferences",

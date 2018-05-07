@@ -8,7 +8,7 @@ let $search-string := lower-case(/*/@target)
     
 return
 	(
-		dlri-utils:updateDatalist("bibliographic-references", doc("http://188.212.37.221:8080/apps/dlri-app/services/bibliographic-references/bibliographic-references.xq?search-string=" || $search-string))
+		dlri-utils:updateDatalist("bibliographic-references", doc("http://188.212.37.221:8080/apps/dlri-app/services/bibliographic-references/bibliographic-references.xql?search-string=" || $search-string))
 		,
 		jp:showMessageDialog((), "Căutarea s-a efectuat cu succes!")
 	)
