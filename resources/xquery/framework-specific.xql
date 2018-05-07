@@ -52,7 +52,7 @@ let $variant-etymology-types :=
 	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
 	return $concept/skos:prefLabel/text()
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
-let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:Concept
+let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:OrderedCollection[1]//skos:Concept
 				
 let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", normalize-space(string-join($headword-etymology-types, ",")))
 let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", normalize-space(string-join($sense-etymology-types, ",")))
