@@ -38,10 +38,6 @@ declare function local:generate-span($content, $class-name) {
 
 };
 
-declare function local:process-sense-content($node as element(tei:sense)) {
-	()
-};
-
 declare function local:xr-synonym($node) {
   (
     if (count($node/preceding-sibling::tei:xr[@type = 'syn']) eq 0) then ";" else ", ",
@@ -89,10 +85,10 @@ declare function dlri-views:sense($node) {
 	let $sense-level := data($node/@n)
 	let $sense-usg := dlri-views:usg($node/tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
-	let $semantic-units := $node/tei:form[@type = 'unitate-semantică-subsumată']
-	let $semantic-units-processed := 
-		if (count($semantic-units) > 0)
-		then dlri-views:semantic-unit($semantic-units)
+	let $semantic-units-1 := $node/tei:form[@type = 'unitate-semantică-subsumată']
+	let $semantic-units-2 := 
+		if (count($semantic-units-1) > 0)
+		then dlri-views:semantic-unit($semantic-units-1)
 		else ''
 	
 	return
@@ -102,7 +98,7 @@ declare function dlri-views:sense($node) {
 		            (
 		                local:generate-span($sense-level, "sense-level")
 		                ,
-		                $semantic-units-processed
+		                $semantic-units-2
 		                ,
 		                local:generate-span($sense-usg, "")
 		                ,
