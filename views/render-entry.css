@@ -60,7 +60,7 @@ div.headword > span:first-of-type, span.sense-level, .bold, span.term {
   letter-spacing: 0.3em;
 }
 
-span.semantic-unit, span.bibl-quote {
+span.semantic-unit {
   font-weight: bold;
 }     
 

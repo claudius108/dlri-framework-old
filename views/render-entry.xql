@@ -207,7 +207,7 @@ declare function dlri-views:latin-name($node) {
 
 declare function dlri-views:cit($node) {
 	let $quote := data($node/tei:quote)
-	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "bibl-quote")
+	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "")
 	
 	return (dlri-views:bibl($node/tei:bibl), $quote-processed)
 };
