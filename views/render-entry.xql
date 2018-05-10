@@ -83,7 +83,7 @@ declare function dlri-views:gramGrp($node) {
 
 declare function dlri-views:sense($node) {
 	let $sense-level := data($node/@n)
-	let $sense-usg := dlri-views:usg($node/tei:usg)
+	let $sense-usg := dlri-views:usg($node/tei:def[1]/preceding-sibling::tei:usg)
 	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
 	let $semantic-units-1 := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	let $semantic-units-2 := 
@@ -178,11 +178,12 @@ declare function dlri-views:def($nodes) {
 	let $result :=
 		for $node in $nodes
 		let $corresp-value := concat('#', $node/@xml:id)
+		let $usages-content := dlri-views:usg($node/following-sibling::tei:usg[@corresp = $corresp-value])
 		let $references-content :=
 			for $reference in $node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value]
 			
 			return $reference/@target
-		let $content-1 := string-join(($node/text(), $references-content), "")
+		let $content-1 := string-join(($usages-content, $node/text(), $references-content), "")
 			
 		
 		return (
