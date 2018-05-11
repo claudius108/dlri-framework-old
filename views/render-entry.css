@@ -8,7 +8,7 @@
  */
 
 body {
-	column-count: 2;
+	column-count: 1;
 	column-fill: auto;
 	orphans: 10;
 	font-family: "Arial";
