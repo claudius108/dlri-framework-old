@@ -92,8 +92,6 @@ declare function dlri-views:sense($node) {
 		if ($rendering-mode = 'online')
 		then "block"
 		else if (matches($sense-level, "[A-Z]")) then "block" else "inline"
-	
-	
 	let $semantic-units-1 := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	let $semantic-units-2 := 
 		if (count($semantic-units-1) > 0)
@@ -125,7 +123,7 @@ declare function dlri-views:sense($node) {
 			            let $sufix := if ($cit/following-sibling::tei:cit) then ", " else ""
 			            
 			            return
-							<div class="cit-container">
+							<div class="cit-container-{$sense-level-type}">
 								{
 									($prefix-3, dlri-views:cit($cit), $sufix)
 								}

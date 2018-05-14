@@ -27,7 +27,11 @@ div.sense-level-inline {
 	display: inline;
 }
 
-div.cit-container {
+div.cit-container-block {
+	display: block;
+}
+
+div.cit-container-inline {
 	display: inline;
 }
 

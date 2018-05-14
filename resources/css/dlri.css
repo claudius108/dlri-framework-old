@@ -147,5 +147,5 @@ etym > note > * {
 }
 
 graphic {
-    content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 700px);
+    content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
 }
