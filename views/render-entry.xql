@@ -20,6 +20,7 @@ declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/
 declare variable $usages := parse-xml(unparsed-text("resources/ontology/usages.html"));
 
 declare variable $editing-mode := replace(/*//tei:text/@type, "editing-mode-", "");
+declare variable $rendering-mode := "online"; (: "print" :)
 
 declare function local:generate-span($content, $class-name) {
   	if ($content != '')
@@ -87,7 +88,12 @@ declare function dlri-views:gramGrp($node) {
 declare function dlri-views:sense($node) {
 	let $sense-level := data($node/@n)
 	let $sense-usg := dlri-views:usg-with-parenthesis($node/tei:def[1]/preceding-sibling::tei:usg)
-	let $sense-level-type := if (matches($sense-level, "[A-Z]")) then "block" else "inline"
+	let $sense-level-type :=
+		if ($rendering-mode = 'online')
+		then "block"
+		else if (matches($sense-level, "[A-Z]")) then "block" else "inline"
+	
+	
 	let $semantic-units-1 := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	let $semantic-units-2 := 
 		if (count($semantic-units-1) > 0)
@@ -125,20 +131,28 @@ declare function dlri-views:sense($node) {
 								}
 							</div>
 						,
-						if ($sense-level-type = 'block')
-						then dlri-views:sense($node/tei:sense[1])
+						if ($rendering-mode = 'online')
+						then ()
 						else
-						    for $sense in $node/tei:sense
-						    return dlri-views:sense($sense)
+							if ($sense-level-type = 'block')
+							then dlri-views:sense($node/tei:sense[1])
+							else
+							    for $sense in $node/tei:sense
+							    return dlri-views:sense($sense)
 					)
 				}		        
 		    </div>
 		    ,
-			if ($sense-level-type = 'block')
-			then
-			    for $sense in $node/tei:sense[position() > 1]
-			    return dlri-views:sense($sense)			
-			else ()
+		    if ($rendering-mode = 'online')
+		    then
+				for $sense in $node/tei:sense
+				return dlri-views:sense($sense)		    
+		    else
+				if ($sense-level-type = 'block')
+				then
+				    for $sense in $node/tei:sense[position() > 1]
+				    return dlri-views:sense($sense)			
+				else ()
 		)
 };
 
