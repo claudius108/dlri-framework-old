@@ -118,7 +118,7 @@ declare function dlri-views:sense($node) {
 			            let $current-type := data($cit/tei:bibl/@type)
 			            
 			            let $prefix-1 := if ($current-type = 'unknown') then "" else $current-type
-			            let $prefix-2 := if ($prefix-1 = 'cf.') then "Cf." else $prefix-1
+			            let $prefix-2 := if ($prefix-1 = 'cf.') then "Cf. " else $prefix-1
 			            let $prefix-3 := if ($preceding-type = 'cf.') then "" else $prefix-2
 			            let $sufix := if ($cit/following-sibling::tei:cit) then ", " else ""
 			            
@@ -186,12 +186,12 @@ declare function dlri-views:semantic-unit($nodes) {
 		let $type := $node/tei:idno/@type
 		let $prefix :=
 			switch($type)
-			case "syntagma" return "Sint."
+			case "syntagma" return " Sint."
 			default return ""
 
-		return ($prefix, local:generate-span($node/tei:term[1]/text(), "bold"), " | ")
+		return ($prefix, " ", local:generate-span($node/tei:term[1]/text(), "bold"), " | ")
 	let $definitions := $nodes/following-sibling::tei:def/text()
-	let $sufix := if ($definitions != '') then "=" else ""	
+	let $sufix := if ($definitions != '') then " =" else ""	
 		
 	
 	return ($result[position() < last()], $sufix) 
@@ -314,6 +314,8 @@ declare function dlri-views:lexical-variant($nodes) {
 		
 		return (
 			dlri-views:usg-with-parenthesis($node/tei:usg)
+			,
+			" "
 			,
 			$node/tei:def/text()
 			,
