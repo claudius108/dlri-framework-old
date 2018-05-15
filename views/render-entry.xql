@@ -79,7 +79,7 @@ declare function dlri-views:gramGrp($node) {
 	then
 	    <div class="gramGrp">
 	    	{
-		   		local:generate-span(string-join($node/(tei:pos/@value, tei:iType/@value, tei:subc/@value, tei:gen/@value), " "), "")
+		   		string-join($node/(tei:pos/@value, tei:iType/@value, tei:subc/@value, tei:gen/@value), " ")
 	    	}
 	    </div>
 	else ()
@@ -251,10 +251,7 @@ declare function dlri-views:bibl($node) {
 };
 
 declare function dlri-views:bibl-with-parenthesis($nodes) {
-	let $bibl := dlri-views:bibl($nodes)
-	let $bibl-processed := if (empty($bibl)) then "" else (" (", $bibl, ")")
-	
-	return $bibl-processed
+	if (empty($nodes)) then "" else (" (", dlri-views:bibl($nodes), ")")
 };
 
 declare function dlri-views:abbreviation-form($node) {
