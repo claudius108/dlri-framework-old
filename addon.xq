@@ -1981,7 +1981,6 @@ ua:template("author-before",
             <option label="Dincă Garofița" value="garofitad" />
             <option label="Dragomir Mioara" value="mioara.dragomir" />
             <option label="Florescu Cristina" value="cristina.florescu" />
-            <option label="Geană Ionuț" value="igeana" />
             <option label="Haja Gabriela" value="Gabriela_Haja" />
             <option label="Hoinărescu Liliana" value="Lilianah" />
             <option label="Manea Laura" value="laura.manea" />
