@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-${uuid}" version="3.3.0" source="0.17">
-	<teiHeader type="text">
+	<teiHeader>
 		<fileDesc>
 			<titleStmt>
 				<title />
