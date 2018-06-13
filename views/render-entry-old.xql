@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace dlri-views = "http://dlri.ro/ns/dlri-views" at "http://54.235.80.220/apps/dlri-app/services/views.xqm";
+import module namespace dlr-views = "http://lingv.ro/ns/dlr-views" at "http://54.235.80.220/apps/dlr-app/services/views.xqm";
 import module namespace request = "http://exist-db.org/xquery/request";
 
 declare default element namespace "http://www.w3.org/1999/xhtml";
@@ -9,15 +9,15 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)
         case text() return $node
-        case element(tei:orth) return dlri-views:orth($node)
+        case element(tei:orth) return dlr-views:orth($node)
         case element(tei:gramGrp) return local:gramGrp($node)
-        case element(tei:sense) return dlri-views:sense($node, local:process-sense-content($node))
+        case element(tei:sense) return dlr-views:sense($node, local:process-sense-content($node))
         case element(tei:def) return local:def($node)
         case element(tei:cit) return local:cit($node)
         case element(tei:xr) return local:xr($node)
         case element(tei:usg) return local:usg($node)
         case element(tei:citedRange) return local:bibl-citedRange($node)
-        case element(tei:form) return dlri-views:form($node)
+        case element(tei:form) return dlr-views:form($node)
         default return local:passthru($node)
 };
 
@@ -105,14 +105,14 @@ declare function local:usg($node as node()) as item()+ {
   )
 };
 
-let $entry := dlri-views:get-entry(request:get-parameter("entry", ""))
+let $entry := dlr-views:get-entry(request:get-parameter("entry", ""))
 
 
 return
   <html>
     <head>
       <link rel="stylesheet" type="text/css" href="render-entry.css"/>
-      {dlri-views:get-page-title($entry)}
+      {dlr-views:get-page-title($entry)}
     </head>
     <body>
       {for $node in $entry/node() return local:dispatch($node)}

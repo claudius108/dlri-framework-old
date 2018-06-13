@@ -1,11 +1,11 @@
 xquery version "3.0";
 
 declare default element namespace "http://www.w3.org/1999/xhtml";
-declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
+declare namespace dlr-utils = "java:ro.dlri.oxygen.plugin.Utils";
 
-declare variable $framework-dir := dlri-utils:expandEditorVariables("${framework(dlri)}");
+declare variable $framework-dir := dlr-utils:expandEditorVariables("${framework(dlri)}");
 
-let $structural-validation-errors := dlri-utils:validate()
+let $structural-validation-errors := dlr-utils:validate()
 
 
 return

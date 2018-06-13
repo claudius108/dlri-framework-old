@@ -1,11 +1,11 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "../resources/xquery/dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/dlr.xqm";
 
 declare namespace uuid = "java:java.util.UUID";
 
 let $processed-template :=
-	copy $template := $dlri:sense-template
+	copy $template := $dlr:sense-template
 	modify replace value of node $template/@xml:id with concat('uuid-', uuid:randomUUID())
 	return $template
 	

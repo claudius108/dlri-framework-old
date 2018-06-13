@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "../resources/xquery/dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/dlr.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
@@ -64,37 +64,37 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     	'cuvântul.titlu-element.moştenit-etimon.neatestat'
     	)
     )
-    then insert node $dlri:term-la-template after .	            
+    then insert node $dlr:term-la-template after .	            
     else (),       
     if (@type = 'cuvântul.titlu-element.de.substrat')
-    then insert nodes ($dlri:term-template, $dlri:term-template) after .  
+    then insert nodes ($dlr:term-template, $dlr:term-template) after .  
     else (),  
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
-    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-word-template) after .
+    then insert nodes ($dlr:term-prefix-template, $dlr:ptr-base-word-template) after .
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
-    then insert nodes ($dlri:ptr-base-word-template, $dlri:term-sufix-template) after .
+    then insert nodes ($dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
-    then insert nodes ($dlri:term-prefix-template, $dlri:ptr-base-word-template, $dlri:term-sufix-template) after .
+    then insert nodes ($dlr:term-prefix-template, $dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (), 
     if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
-    then insert nodes ($dlri:ptr-component-element-template, $dlri:ptr-base-word-template) after .
+    then insert nodes ($dlr:ptr-component-element-template, $dlr:ptr-base-word-template) after .
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
-    then insert nodes ($dlri:ptr-base-word-template, $dlri:ptr-component-element-template) after .
+    then insert nodes ($dlr:ptr-base-word-template, $dlr:ptr-component-element-template) after .
     else (), 
     if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
-    then insert nodes ($dlri:ptr-base-word-template, $dlri:ptr-base-word-template) after .
+    then insert nodes ($dlr:ptr-base-word-template, $dlr:ptr-base-word-template) after .
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
     then
 		let $processed-template-1 :=
-			copy $template := $dlri:term-la-template
+			copy $template := $dlr:term-la-template
 			modify replace value of node $template/@type with 'latin-base'
 			return $template
 		let $processed-template-2 :=
-			copy $template := $dlri:ptr-template
+			copy $template := $dlr:ptr-template
 			modify replace value of node $template/@type with 'added-base'
 			return $template				
 		return insert nodes ($processed-template-1, $processed-template-2) after .
@@ -102,18 +102,18 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
     then (
             insert nodes (
-            	$dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template
+            	$dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template
             	,
-            	$dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+            	$dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
             ) after .
     )
     else (),    
     if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
-    then insert nodes ($dlri:ptr-template, $dlri:ptr-template) after .
+    then insert nodes ($dlr:ptr-template, $dlr:ptr-template) after .
     else (),       
     if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor')
     then (
-            insert nodes ($dlri:ptr-template, $dlri:bibl-template) after .
+            insert nodes ($dlr:ptr-template, $dlr:bibl-template) after .
          )
     else (),  
     if (@type =
@@ -124,8 +124,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     )
     then (
             insert nodes (
-            	$dlri:ptr-unul.sau.mai.multe.sensuri-sensul-template,
-            	$dlri:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template
+            	$dlr:ptr-unul.sau.mai.multe.sensuri-sensul-template,
+            	$dlr:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template
             ) after .
          )
     else (),
@@ -170,7 +170,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             )
     )
     then (
-            insert node $dlri:term-template after .
+            insert node $dlr:term-template after .
     )
     else (),         
     if (@type = (
@@ -208,20 +208,20 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     	)
     )
     then (
-        insert node $dlri:ptr-template after .
+        insert node $dlr:ptr-template after .
     )
     else (), 
     if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
     then (
-        insert nodes ($dlri:term-una.sau.mai.multe.variante.lexicale-template, $dlri:ptr-una.sau.mai.multe.variante.lexicale-cf.-template) after .
+        insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:ptr-una.sau.mai.multe.variante.lexicale-cf.-template) after .
     )
     else (), 
     if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))
     then (
-        insert nodes ($dlri:term-una.sau.mai.multe.variante.lexicale-template, $dlri:bibl-template) after .
+        insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:bibl-template) after .
     )
     else (),
     if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
-    then insert node $dlri:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template after .
+    then insert node $dlr:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template after .
     else ()   
 )

@@ -1,5 +1,5 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
-insert node $dlri:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template after .
+insert node $dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template after .

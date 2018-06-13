@@ -4,8 +4,8 @@ declare namespace file = "http://expath.org/ns/file";
 
 declare default element namespace "http://www.w3.org/1999/xhtml";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
-declare namespace dlri-views = "http://dlri.ro/ns/dlri-views";
-declare namespace dlri-utils = "java:ro.dlri.oxygen.plugin.Utils";
+declare namespace dlr-views = "http://lingv.ro/ns/dlr-views";
+declare namespace dlr-utils = "java:ro.dlri.oxygen.plugin.Utils";
 declare namespace html = "http://www.w3.org/1999/xhtml";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
@@ -15,7 +15,7 @@ declare option output:item-separator "";
 
 declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
-declare variable $entry-title := dlri-views:get-entry-title($entry);
+declare variable $entry-title := dlr-views:get-entry-title($entry);
 declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/languages.html"));
 declare variable $usages := parse-xml(unparsed-text("resources/ontology/usages.html"));
 
@@ -60,13 +60,13 @@ declare function local:xr-association($node) {
   )
 };
 
-declare function dlri-views:get-entry-title($entry) {
+declare function dlr-views:get-entry-title($entry) {
     let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
     
     return if ($title != '') then $title else ''
 };
 
-declare function dlri-views:headword($node) {
+declare function dlr-views:headword($node) {
 	<div class="headword">
 		<span>{$entry-title}</span>
 	  	{local:generate-span(data($node/tei:orth/@n), "superscript")}
@@ -74,7 +74,7 @@ declare function dlri-views:headword($node) {
 	</div>
 };
 
-declare function dlri-views:gramGrp($node) {
+declare function dlr-views:gramGrp($node) {
 	if (not(empty($node)))
 	then
 	    <div class="gramGrp">
@@ -85,9 +85,9 @@ declare function dlri-views:gramGrp($node) {
 	else ()
 };
 
-declare function dlri-views:sense($node) {
+declare function dlr-views:sense($node) {
 	let $sense-level := data($node/@n)
-	let $sense-usg := dlri-views:usg-with-parenthesis($node/tei:def[1]/preceding-sibling::tei:usg)
+	let $sense-usg := dlr-views:usg-with-parenthesis($node/tei:def[1]/preceding-sibling::tei:usg)
 	let $sense-level-type :=
 		if ($rendering-mode = 'online')
 		then "block"
@@ -95,7 +95,7 @@ declare function dlri-views:sense($node) {
 	let $semantic-units-1 := $node/tei:form[@type = 'unitate-semantică-subsumată']
 	let $semantic-units-2 := 
 		if (count($semantic-units-1) > 0)
-		then dlri-views:semantic-unit($semantic-units-1)
+		then dlr-views:semantic-unit($semantic-units-1)
 		else ''
 	
 	return
@@ -109,7 +109,7 @@ declare function dlri-views:sense($node) {
 		                ,
 		                local:generate-span($sense-usg, "")
 		                ,
-		                dlri-views:def($node/tei:def)
+		                dlr-views:def($node/tei:def)
 		                ,
 		                "."
 						,
@@ -125,7 +125,7 @@ declare function dlri-views:sense($node) {
 			            return
 							<div class="cit-container-{$sense-level-type}">
 								{
-									($prefix-3, dlri-views:cit($cit), $sufix)
+									($prefix-3, dlr-views:cit($cit), $sufix)
 								}
 							</div>
 						,
@@ -133,10 +133,10 @@ declare function dlri-views:sense($node) {
 						then ()
 						else
 							if ($sense-level-type = 'block')
-							then dlri-views:sense($node/tei:sense[1])
+							then dlr-views:sense($node/tei:sense[1])
 							else
 							    for $sense in $node/tei:sense
-							    return dlri-views:sense($sense)
+							    return dlr-views:sense($sense)
 					)
 				}		        
 		    </div>
@@ -144,17 +144,17 @@ declare function dlri-views:sense($node) {
 		    if ($rendering-mode = 'online')
 		    then
 				for $sense in $node/tei:sense
-				return dlri-views:sense($sense)		    
+				return dlr-views:sense($sense)		    
 		    else
 				if ($sense-level-type = 'block')
 				then
 				    for $sense in $node/tei:sense[position() > 1]
-				    return dlri-views:sense($sense)			
+				    return dlr-views:sense($sense)			
 				else ()
 		)
 };
 
-declare function dlri-views:usg($nodes) {
+declare function dlr-views:usg($nodes) {
 	if (not(empty($nodes)))
 	then
 		let $result :=
@@ -174,13 +174,13 @@ declare function dlri-views:usg($nodes) {
 	else ()
 };
 
-declare function dlri-views:usg-with-parenthesis($nodes) {
-	let $usg := dlri-views:usg($nodes)
+declare function dlr-views:usg-with-parenthesis($nodes) {
+	let $usg := dlr-views:usg($nodes)
 	
 	return if (not(empty($usg))) then concat(" (", $usg, ")") else ()
 };
 
-declare function dlri-views:semantic-unit($nodes) {
+declare function dlr-views:semantic-unit($nodes) {
 	let $result :=
 		for $node in $nodes
 		let $type := $node/tei:idno/@type
@@ -197,11 +197,11 @@ declare function dlri-views:semantic-unit($nodes) {
 	return ($result[position() < last()], $sufix) 
 };
 
-declare function dlri-views:def($nodes) {
+declare function dlr-views:def($nodes) {
 	let $result :=
 		for $node in $nodes
 		let $corresp-value := concat('#', $node/@xml:id)
-		let $usages-content := dlri-views:usg-with-parenthesis($node/following-sibling::tei:usg[@corresp = $corresp-value])
+		let $usages-content := dlr-views:usg-with-parenthesis($node/following-sibling::tei:usg[@corresp = $corresp-value])
 		let $references-content :=
 			for $reference in $node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value]
 			
@@ -212,7 +212,7 @@ declare function dlri-views:def($nodes) {
 		return (
 			$content-1
 			,
-			dlri-views:latin-name($node/following-sibling::tei:term[@corresp = $corresp-value])
+			dlr-views:latin-name($node/following-sibling::tei:term[@corresp = $corresp-value])
 			,
 			"; "
 		)
@@ -220,7 +220,7 @@ declare function dlri-views:def($nodes) {
 	return $result[position() < last()]
 };
 
-declare function dlri-views:latin-name($node) {
+declare function dlr-views:latin-name($node) {
 	let $result := $node/text()
 	
 	return
@@ -229,14 +229,14 @@ declare function dlri-views:latin-name($node) {
 		else ""
 };
 
-declare function dlri-views:cit($node) {
+declare function dlr-views:cit($node) {
 	let $quote := data($node/tei:quote)
 	let $quote-processed := local:generate-span(if ($quote != '') then ": " || $quote else '', "")
 	
-	return (dlri-views:bibl($node/tei:bibl), $quote-processed)
+	return (dlr-views:bibl($node/tei:bibl), $quote-processed)
 };
 
-declare function dlri-views:bibl($node) {
+declare function dlr-views:bibl($node) {
 	let $result :=
 		let $date := local:generate-span(data($node/tei:date), "bold")
 		
@@ -250,31 +250,31 @@ declare function dlri-views:bibl($node) {
 	return $result
 };
 
-declare function dlri-views:bibl-with-parenthesis($nodes) {
-	if (empty($nodes)) then "" else (" (", dlri-views:bibl($nodes), ")")
+declare function dlr-views:bibl-with-parenthesis($nodes) {
+	if (empty($nodes)) then "" else (" (", dlr-views:bibl($nodes), ")")
 };
 
-declare function dlri-views:abbreviation-form($node) {
+declare function dlr-views:abbreviation-form($node) {
     <div class="abbreviation-form">Abr.: {$node/tei:abbr/text()}.</div>
 };
 
-declare function dlri-views:accentuation-form($node) {
-	<div class="accentuation-form">– Accentuat și: {dlri-views:usg-with-parenthesis($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {dlri-views:bibl-with-parenthesis($node/tei:bibl)}.</div>
+declare function dlr-views:accentuation-form($node) {
+	<div class="accentuation-form">– Accentuat și: {dlr-views:usg-with-parenthesis($node/tei:usg)} {local:generate-span($node/tei:stress/text(), "italic")} {dlr-views:bibl-with-parenthesis($node/tei:bibl)}.</div>
 };
 
-declare function dlri-views:articulation-form($node) {
+declare function dlr-views:articulation-form($node) {
 	<div class="articulation-form">– Articulat: {$node/tei:term/text()}.</div>
 };
 
-declare function dlri-views:pronunciation-form($node) {
+declare function dlr-views:pronunciation-form($node) {
     <div class="pronunciation-form">− Pronunțat: {$node/tei:pRef/text()}.</div>
 };
 
-declare function dlri-views:writing-form($node) {
-    <div class="writing-form">− Scris și: {dlri-views:usg-with-parenthesis($node/tei:usg)} {$node/tei:oVar/text()}.</div>
+declare function dlr-views:writing-form($node) {
+    <div class="writing-form">− Scris și: {dlr-views:usg-with-parenthesis($node/tei:usg)} {$node/tei:oVar/text()}.</div>
 };
 
-declare function dlri-views:grammatical-information($node) {
+declare function dlr-views:grammatical-information($node) {
 	let $type := $node/tei:form[1]/@type
 	
 	return
@@ -291,8 +291,8 @@ declare function dlri-views:grammatical-information($node) {
 				return
 					let $forms :=
 						for $form in $node/tei:form
-						let $usg := dlri-views:usg($form/tei:usg)
-						let $gramGrp := dlri-views:gramGrp($form/tei:gramGrp)
+						let $usg := dlr-views:usg($form/tei:usg)
+						let $gramGrp := dlr-views:gramGrp($form/tei:gramGrp)
 						let $prefix :=
 							if (empty($usg) and empty($gramGrp))
 							then ()
@@ -306,20 +306,20 @@ declare function dlri-views:grammatical-information($node) {
 	    </div>
 };
 
-declare function dlri-views:lexical-variant($nodes) {
+declare function dlr-views:lexical-variant($nodes) {
 	let $result :=
 		for $node at $i in $nodes
-		let $current-gramGrp := dlri-views:gramGrp($node/tei:gramGrp)
-		let $next-gramGrp := dlri-views:gramGrp($nodes[$i + 1]/tei:gramGrp)
+		let $current-gramGrp := dlr-views:gramGrp($node/tei:gramGrp)
+		let $next-gramGrp := dlr-views:gramGrp($nodes[$i + 1]/tei:gramGrp)
 		
 		return (
-			dlri-views:usg-with-parenthesis($node/tei:usg)
+			dlr-views:usg-with-parenthesis($node/tei:usg)
 			,
 			" "
 			,
 			$node/tei:def/text()
 			,
-			dlri-views:bibl-with-parenthesis($node/tei:bibl)
+			dlr-views:bibl-with-parenthesis($node/tei:bibl)
 			,
 			if ($current-gramGrp != $next-gramGrp) then $current-gramGrp else ""
 			,
@@ -341,7 +341,7 @@ declare function dlri-views:lexical-variant($nodes) {
 			</div>
 };
 
-declare function dlri-views:etym($nodes) {
+declare function dlr-views:etym($nodes) {
     <div class="etym">
     	{
     		(
@@ -392,37 +392,37 @@ declare function dlri-views:etym($nodes) {
     <body>
     	<button onclick="refreshContent();"><img src="resources/images/circular-arrow-yang.png" /></button>
         {
-        	dlri-views:headword($entry/tei:form[@type = 'headword'])
+        	dlr-views:headword($entry/tei:form[@type = 'headword'])
         	,
-        	dlri-views:gramGrp($entry/tei:gramGrp)
+        	dlr-views:gramGrp($entry/tei:gramGrp)
         	,
         	let $senses := $entry/tei:dictScrap[@xml:id = $editing-mode || '-senses']/tei:sense
         	
         	return
 	        	for $sense in $senses
-	        	return dlri-views:sense($sense)
+	        	return dlr-views:sense($sense)
         	,
         	for $form in $entry/tei:form[@type = 'accentuation-variant']
-        	return dlri-views:accentuation-form($form)
+        	return dlr-views:accentuation-form($form)
         	,
         	for $form in $entry/tei:form[@type = 'articulation']
-        	return dlri-views:articulation-form($form)        	
+        	return dlr-views:articulation-form($form)        	
         	,        	
         	for $form in $entry/tei:form[@type = 'pronunciation']
-        	return dlri-views:pronunciation-form($form)
+        	return dlr-views:pronunciation-form($form)
         	,
         	for $form in $entry/tei:form[@type = 'writing']
-        	return dlri-views:writing-form($form)
+        	return dlr-views:writing-form($form)
         	,
         	for $form in $entry/tei:form[@type = 'abbreviation']
-        	return dlri-views:abbreviation-form($form)
+        	return dlr-views:abbreviation-form($form)
         	,        	
         	for $form in $entry/tei:form[@type = 'grammatical-information']
-        	return dlri-views:grammatical-information($form)
+        	return dlr-views:grammatical-information($form)
         	,
-        	dlri-views:lexical-variant($entry/tei:re[@type = 'lexical-variant-section'])        	
+        	dlr-views:lexical-variant($entry/tei:re[@type = 'lexical-variant-section'])        	
         	,
-        	dlri-views:etym($entry/tei:etym)
+        	dlr-views:etym($entry/tei:etym)
         }
         <script type="text/javascript" src="views/render-entry.js">/**/</script>
     </body>

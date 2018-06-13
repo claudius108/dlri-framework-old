@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "../resources/xquery/dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/dlr.xqm";
 
 (
 	delete nodes child::*
@@ -23,49 +23,49 @@ import module namespace dlri = "http://dlri.ro/ns/dlri/" at "../resources/xquery
     'explicații.etimon-numele.de.localitate', 'explicații.etimon-numele.sărbătorii.religioase', 'explicații.etimon-numele.ştiințific.al.planetei', 'explicații.etimon-prez..ind.',
     'explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…', 'explicații.etimon-prin.confuzie.cu', 'model.etimon', 'note.suplimentare'))
     then (
-    	insert node $dlri:term-template as first into .
+    	insert node $dlr:term-template as first into .
     )
     else ()
     ,    
     if (@type = ('traducere.etimon', 'traducere.cuvânt.bază', 'explicații.etimon-contaminare.între.….și.…', 'explicații.etimon-prin.înlocuirea.lui.….cu.…', 'nume.propriu'))
     then (
-        insert nodes ($dlri:term-template, $dlri:term-template) as first into .
+        insert nodes ($dlr:term-template, $dlr:term-template) as first into .
     )
     else ()
     ,    
     if (@type = 'trimitere.(cf.)')
     then (
-        insert nodes (doc('../content-models/usg.xml'), $dlri:term-template, $dlri:term-template) as first into .
+        insert nodes (doc('../content-models/usg.xml'), $dlr:term-template, $dlr:term-template) as first into .
     )
     else () 
     ,    
     if (@type = ('explicații.etimon-pentru.explicarea.formei.româneşti', 'explicații.etimon-pentru.explicarea.formei.românești.cf.'))
     then (
-        insert nodes ($dlri:term-template, $dlri:bibl-template) as first into .
+        insert nodes ($dlr:term-template, $dlr:bibl-template) as first into .
     )
     else ()
     ,    
     if (@type = 'indicații.gramaticale')
     then (
-        insert nodes (doc('../content-models/grammatical-information.xml'), $dlri:term-template) as first into .
+        insert nodes (doc('../content-models/grammatical-information.xml'), $dlr:term-template) as first into .
     )
     else ()
     ,    
     if (@type = 'izvor')
     then (
-        insert nodes ($dlri:bibl-template, $dlri:term-template) as first into .
+        insert nodes ($dlr:bibl-template, $dlr:term-template) as first into .
     )
     else () 
     ,    
     if (@type = 'indicație.folosire')
     then (
-        insert nodes (doc('../content-models/usg.xml'), $dlri:term-template) as first into .
+        insert nodes (doc('../content-models/usg.xml'), $dlr:term-template) as first into .
     )
     else () 
     ,    
     if (@type = 'trimitere.intrare')
     then (
-        insert nodes ($dlri:term-template, $dlri:ptr-template) as first into .
+        insert nodes ($dlr:term-template, $dlr:ptr-template) as first into .
     )
     else ()                  
 )

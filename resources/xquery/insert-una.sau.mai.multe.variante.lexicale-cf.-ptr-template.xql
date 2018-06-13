@@ -1,5 +1,5 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
-insert node $dlri:ptr-una.sau.mai.multe.variante.lexicale-cf.-template after .
+insert node $dlr:ptr-una.sau.mai.multe.variante.lexicale-cf.-template after .

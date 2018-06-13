@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
@@ -8,7 +8,7 @@ let $context-node := .
 let $corresp-value := concat('#', $context-node/@xml:id)
 	   
 let $processed-template :=
-	copy $template := $dlri:term-la-template
+	copy $template := $dlr:term-la-template
 	modify insert node attribute {'corresp'} {$corresp-value} into $template
 	return $template
 

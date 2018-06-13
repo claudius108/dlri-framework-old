@@ -1,7 +1,7 @@
 xquery version "3.0";
 
-import module namespace dlri = "http://dlri.ro/ns/dlri/" at "dlri.xqm";
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
-insert node $dlri:ptr-component-element-template after .
+insert node $dlr:ptr-component-element-template after .
