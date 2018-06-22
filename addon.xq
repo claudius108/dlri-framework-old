@@ -2044,6 +2044,13 @@ ua:template("change",
 ),
 ua:attach-template(ua-dt:css-selector("change"), "change"),
 
+ua:template("headword-usg-template",
+    <template>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'headword']:before"), "headword-usg-template"),
+
 ua:template("dlr-senses-tree-template",
     <template>
         {
@@ -2104,7 +2111,6 @@ ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
 
 ua:template("entry-form-headword-before",
     <template>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="background-color: transparent; visibility: {count(usg) = 0};">Ind. fol.</button> 
         \00000A Cuvânt titlu*:&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
