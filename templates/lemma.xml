@@ -19,6 +19,7 @@
 				<date when-iso="${date(yyyy-MM-dd'T'HH:mm:ssZ)}" />
 			</creation>
 		</profileDesc>
+		<revisionDesc />
 	</teiHeader>
 	<text type="editing-mode-dlr">
 		<body>
