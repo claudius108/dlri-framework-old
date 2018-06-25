@@ -53,6 +53,7 @@ let $variant-etymology-types :=
 	return $concept/skos:prefLabel/text()
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:OrderedCollection[1]//skos:Concept
+let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
 				
 let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", normalize-space(string-join($headword-etymology-types, ",")))
 let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", normalize-space(string-join($sense-etymology-types, ",")))
@@ -119,7 +120,9 @@ return (
 	,
 	file:write-text($frameworkResourcesDirPath || "/ontology/usages.html", $usage-options)
 	,
-	file:write-text($frameworkResourcesDirPath || "/css/datalists/usage-options.less", $usage-options-datalist)	
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/usage-options.less", $usage-options-datalist)
+	,
+	file:write($frameworkDirPath || "/templates/lemma.xml", $lemma-template)	
     ,
 	file:write-binary(
 		$frameworkUberJarPath,	
@@ -182,7 +185,23 @@ return (
 			"resources/ontology/usages.html",
 			bin:encode-string($usage-options)
 		)
-	)	
+	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"templates/lemma.xml",
+			bin:encode-string(
+				serialize(
+					$lemma-template,
+					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+					  <output:indent value="yes" />
+					</output:serialization-parameters>
+				)
+			)			
+		)
+	)
 	,
 	file:write-binary(
 		$frameworkJarPath,	
