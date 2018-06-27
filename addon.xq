@@ -1910,23 +1910,23 @@ ua:template("idno-unitate-semantică-subsumată",
 		<input data-ua-ref="@type" type="checkbox" id="saying-checkbox" name="unitate-semantică-subsumată-checkbox" value="saying" />
 		<label for="saying-checkbox">zicătoare</label>
 		<input data-ua-ref="@type" type="checkbox" id="sibyl-checkbox" name="unitate-semantică-subsumată-checkbox" value="sibyl" />
-		<label for="saying-checkbox">ghicitoare</label>		
+		<label for="sibyl-checkbox">ghicitoare</label>
 		<input data-ua-ref="@type" type="checkbox" id="syntagma-checkbox" name="unitate-semantică-subsumată-checkbox" value="syntagma" />
-		<label for="saying-checkbox">sintagmă</label>
+		<label for="syntagma-checkbox">sintagmă</label>
 		<input data-ua-ref="@type" type="checkbox" id="phrase-checkbox" name="unitate-semantică-subsumată-checkbox" value="phrase" />
-		<label for="saying-checkbox">expresie</label>
+		<label for="phrase-checkbox">expresie</label>
 		<input data-ua-ref="@type" type="checkbox" id="compound-checkbox" name="unitate-semantică-subsumată-checkbox" value="compound" />
-		<label for="saying-checkbox">compus</label>
+		<label for="compound-checkbox">compus</label>
 		<input data-ua-ref="@type" type="checkbox" id="adjectival-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adjectival-locution" />
-		<label for="saying-checkbox">loc. adj.</label>		
+		<label for="adjectival-locution-checkbox">loc. adj.</label>	
 		<input data-ua-ref="@type" type="checkbox" id="adverbial-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="adverbial-locution" />
-		<label for="saying-checkbox">loc. adv.</label>
+		<label for="adverbial-locution-checkbox">loc. adv.</label>
 		<input data-ua-ref="@type" type="checkbox" id="prepositional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="prepositional-locution" />
-		<label for="saying-checkbox">loc. prep.</label>
+		<label for="prepositional-locution-checkbox">loc. prep.</label>
 		<input data-ua-ref="@type" type="checkbox" id="conjunctional-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="conjunctional-locution" />
-		<label for="saying-checkbox">loc. conj.</label>
+		<label for="conjunctional-locution-checkbox">loc. conj.</label>
 		<input data-ua-ref="@type" type="checkbox" id="verbal-locution-checkbox" name="unitate-semantică-subsumată-checkbox" value="verbal-locution" />
-		<label for="saying-checkbox">loc. vb.</label>		
+		<label for="verbal-locution-checkbox">loc. vb.</label>		
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
