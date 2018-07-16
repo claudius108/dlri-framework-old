@@ -22,19 +22,18 @@ declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDi
 declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
-declare function local:generate-datalist($datalist-name, $datalist-values) {
+declare function local:generate-datalist($datalist-name, $datalist-labels, $datalist-values) {
 	string-join(
 		(
 			$charset,
 			"&#10;",
-			"@",
-			$datalist-name,
-			": ",
-			"&quot;",
-			",",
-			$datalist-values,
-			"&quot;",
-			";"
+			"@" || $datalist-name || "-labels: ",
+			"&quot;" || $datalist-labels || "&quot;",
+			";",
+			"&#10;",
+			"@" || normalize-space($datalist-name) || "-values: ",
+			"&quot;" || normalize-space($datalist-values) || "&quot;",
+			";"			
 		),
 		""
 	)
@@ -54,12 +53,14 @@ let $variant-etymology-types :=
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:OrderedCollection[1]//skos:Concept
 let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
+let $semantic-units-concepts := parse-xml(unparsed-text($ontology-github-url || "/semantic-units.rdf"))//skos:OrderedCollection[1]//skos:Concept
 				
-let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", normalize-space(string-join($headword-etymology-types, ",")))
-let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", normalize-space(string-join($sense-etymology-types, ",")))
-let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", normalize-space(string-join($variant-etymology-types, ",")))
-let $languages-datalist := local:generate-datalist("languages", normalize-space(string-join($languages-concepts/skos:prefLabel, ",")))
-let $usage-options-datalist := local:generate-datalist("usage-options", normalize-space(string-join($usage-options-concepts/skos:hiddenLabel, ",")))
+let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", string-join(("", $headword-etymology-types), ","))
+let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", string-join(("", $sense-etymology-types), ","))
+let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", string-join(("", $variant-etymology-types), ","))
+let $languages-datalist := local:generate-datalist("languages", "", string-join(("", $languages-concepts/skos:prefLabel), ","))
+let $usage-options-datalist := local:generate-datalist("usage-options", "", string-join(("", $usage-options-concepts/skos:hiddenLabel), ","))
+let $semantic-units-datalist := local:generate-datalist("semantic-units", string-join($semantic-units-concepts/skos:prefLabel, ","), string-join($semantic-units-concepts/skos:altLabel, ","))
 
 (: process the controlled vocabulary for languages :)
 let $languages :=
@@ -122,6 +123,8 @@ return (
 	,
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/usage-options.less", $usage-options-datalist)
 	,
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/semantic-units.less", $semantic-units-datalist)
+	,	
 	file:write($frameworkDirPath || "/templates/lemma.xml", $lemma-template)	
     ,
 	file:write-binary(
@@ -169,6 +172,15 @@ return (
 		)
 	)
 	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/semantic-units.less",
+			bin:encode-string($semantic-units-datalist)
+		)
+	)
+	,	
 	file:write-binary(
 		$frameworkUberJarPath,	
 		arch:update(

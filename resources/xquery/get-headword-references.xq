@@ -8,7 +8,7 @@ let $search-string := lower-case(/*/@target)
 
 return
 	(
-		dlr-utils:updateDatalist("headword-references", doc("http://188.212.37.221:8080/apps/dlr-app/services/headword-references/headword-references.xq?search-string=" || $search-string))
+		dlr-utils:updateDatalist("headword-references", "", doc("http://188.212.37.221:8080/apps/dlr-app/services/headword-references/headword-references.xq?search-string=" || $search-string))
 		,
 		jp:showMessageDialog((), "Căutarea s-a efectuat cu succes!")
 	)
