@@ -22,45 +22,54 @@ declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDi
 declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
-declare function local:generate-datalist($datalist-name, $datalist-labels, $datalist-values) {
-	string-join(
-		(
-			$charset,
-			"&#10;",
-			"@" || $datalist-name || "-labels: ",
-			"&quot;" || $datalist-labels || "&quot;",
-			";",
-			"&#10;",
-			"@" || normalize-space($datalist-name) || "-values: ",
-			"&quot;" || normalize-space($datalist-values) || "&quot;",
-			";"			
-		),
-		""
-	)
+declare function local:generate-datalist($datalist-name, $datalist-labels, $datalist-values, $add-empty-value) {
+	let $labels-1 := $datalist-labels ! normalize-space(.)
+	let $labels-2 :=
+		if ($add-empty-value)
+		then ("", $labels-1)
+		else $labels-1
+	let $labels-3 := string-join($labels-2, ",")
+	let $values-1 := $datalist-values ! normalize-space(.)
+	let $values-2 :=
+		if ($add-empty-value)
+		then ("", $values-1)
+		else $values-1
+	let $values-3 := string-join($values-2, ",")	
+	
+	return
+		string-join(
+			(
+				$charset,
+				"&#10;",
+				"@" || $datalist-name || "-labels: ",
+				"&quot;" || $labels-3 || "&quot;",
+				";",
+				"&#10;",
+				"@" || normalize-space($datalist-name) || "-values: ",
+				"&quot;" || $values-3 || "&quot;",
+				";"
+			),
+			""
+		)
 };
 
 (: process the controlled vocabulary for etymology types :)
 let $etymology-types := parse-xml(unparsed-text($ontology-github-url || "/etymology-types.rdf"))
-let $headword-etymology-types :=
-	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/headword']//skos:Concept
-	return $concept/skos:prefLabel/text()
-let $sense-etymology-types :=
-	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/sense']//skos:Concept
-	return $concept/skos:prefLabel/text()
-let $variant-etymology-types :=
-	for $concept in $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
-	return $concept/skos:prefLabel/text()
+let $headword-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/headword']//skos:Concept
+let $sense-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/sense']//skos:Concept
+let $variant-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:OrderedCollection[1]//skos:Concept
-let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
 let $semantic-units-concepts := parse-xml(unparsed-text($ontology-github-url || "/semantic-units.rdf"))//skos:OrderedCollection[1]//skos:Concept
 				
-let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", string-join(("", $headword-etymology-types), ","))
-let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", string-join(("", $sense-etymology-types), ","))
-let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", string-join(("", $variant-etymology-types), ","))
-let $languages-datalist := local:generate-datalist("languages", "", string-join(("", $languages-concepts/skos:prefLabel), ","))
-let $usage-options-datalist := local:generate-datalist("usage-options", "", string-join(("", $usage-options-concepts/skos:hiddenLabel), ","))
-let $semantic-units-datalist := local:generate-datalist("semantic-units", string-join($semantic-units-concepts/skos:prefLabel, ","), string-join($semantic-units-concepts/skos:altLabel, ","))
+let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", $headword-etymology-types-concepts/skos:prefLabel, true())
+let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", $sense-etymology-types-concepts/skos:prefLabel, true())
+let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", $variant-etymology-types-concepts/skos:prefLabel, true())
+let $languages-datalist := local:generate-datalist("languages", $languages-concepts/skos:altLabel, $languages-concepts/skos:notation, true())
+let $usage-options-datalist := local:generate-datalist("usage-options", "", $usage-options-concepts/skos:hiddenLabel, true())
+let $semantic-units-datalist := local:generate-datalist("semantic-units", $semantic-units-concepts/skos:prefLabel, $semantic-units-concepts/skos:altLabel, false())
+
+let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
 
 (: process the controlled vocabulary for languages :)
 let $languages :=
