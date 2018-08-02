@@ -4,4 +4,4 @@ import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
-insert node $dlr:semantical-unit-template after .
+insert node $dlr:semantic-unit-template after .
