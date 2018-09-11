@@ -3,7 +3,7 @@ xquery version "3.0";
 import module "http://expath.org/ns/user-agent/";
 
 declare namespace ua-dt = "http://expath.org/ns/user-agent/datatype/";
-declare namespace oxy = "http://oxygenxml.com/extensions/author/";
+declare namespace oxy = "http://www.oxygenxml.com/extensions/author";
 
 declare variable $ua:document := /;
 
