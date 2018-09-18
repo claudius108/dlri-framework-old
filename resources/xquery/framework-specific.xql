@@ -55,19 +55,19 @@ declare function local:generate-datalist($datalist-name, $datalist-labels, $data
 
 (: process the controlled vocabulary for etymology types :)
 let $etymology-types := parse-xml(unparsed-text($ontology-github-url || "/etymology-types.rdf"))
-let $headword-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/headword']//skos:Concept
-let $sense-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/sense']//skos:Concept
-let $variant-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology-types/variant']//skos:Concept
+let $headword-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/headword']//skos:Concept
+let $sense-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/sense']//skos:Concept
+let $variant-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/variant']//skos:Concept
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
 let $usage-options-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages.rdf"))//skos:OrderedCollection[1]//skos:Concept
 let $semantic-units-concepts := parse-xml(unparsed-text($ontology-github-url || "/semantic-units.rdf"))//skos:OrderedCollection[1]//skos:Concept
 				
-let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", $headword-etymology-types-concepts/skos:prefLabel, true())
-let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", $sense-etymology-types-concepts/skos:prefLabel, true())
-let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", $variant-etymology-types-concepts/skos:prefLabel, true())
+let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", $headword-etymology-types-concepts/skos:hiddenLabel, true())
+let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", $sense-etymology-types-concepts/skos:hiddenLabel, true())
+let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", $variant-etymology-types-concepts/skos:hiddenLabel, true())
 let $languages-datalist := local:generate-datalist("languages", $languages-concepts/skos:altLabel, $languages-concepts/skos:notation, true())
 let $usage-options-datalist := local:generate-datalist("usage-options", "", $usage-options-concepts/skos:hiddenLabel, true())
-let $semantic-units-datalist := local:generate-datalist("semantic-units", $semantic-units-concepts/skos:prefLabel, $semantic-units-concepts/skos:altLabel, false())
+let $semantic-units-datalist := local:generate-datalist("semantic-units", $semantic-units-concepts/skos:prefLabel, $semantic-units-concepts/skos:hiddenLabel, false())
 
 let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
 
@@ -111,7 +111,7 @@ let $special-characters :=
 		<properties xmlns="">
 			{
 				for $concept in parse-xml(unparsed-text($ontology-github-url || "/special-characters.rdf"))//skos:Concept
-				return <entry key="{$concept/skos:notation}">{$concept/skos:definition/text()}</entry>		
+				return <entry key="{$concept/skos:hiddenLabel}">{$concept/skos:prefLabel/text()}</entry>		
 			}		
 		</properties>
 	)
