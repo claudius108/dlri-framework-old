@@ -1117,8 +1117,8 @@ ua:attach-template(ua-dt:css-selector("note[type = 'izvor'] > term:nth-of-type(1
 ua:template("usg-before",
     <template>
         Indicații privind folosirea:&amp;nbsp;
-        <datalist id="usage-options" />
-        <input data-ua-ref="{@value}" size="30" list="usage-options" />
+        <datalist id="usages-types" />
+        <input data-ua-ref="{@value}" size="30" list="usages-types" />
         <input data-ua-ref="{text()}" size="22" />      
     </template>
 ),

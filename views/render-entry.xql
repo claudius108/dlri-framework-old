@@ -17,7 +17,7 @@ declare variable $frameworkDir external;
 declare variable $entry := /*//tei:entry;
 declare variable $entry-title := dlr-views:get-entry-title($entry);
 declare variable $language-codes := parse-xml(unparsed-text("resources/ontology/languages.html"));
-declare variable $usages := parse-xml(unparsed-text("resources/ontology/usages.html"));
+declare variable $usages := parse-xml(unparsed-text("resources/ontology/usages-types.html"));
 
 declare variable $editing-mode := replace(/*//tei:text/@type, "editing-mode-", "");
 declare variable $rendering-mode := "online"; (: "print" :)
