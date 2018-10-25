@@ -951,86 +951,8 @@ ua:template("etym-edited-note-template",
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>
     	Tip&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="traducere.etimon" value="traducere.etimon" />
-            <option label="traducere.cuvânt.bază" value="traducere.cuvânt.bază" />
-            <option label="explicații.etimon-apropiat.de.cuv..rom..terminate.în" value="explicații.etimon-apropiat.de.cuv..rom..terminate.în" />
-            <option label="explicații.etimon-diminutiv.al.lui" value="explicații.etimon-diminutiv.al.lui" />
-            <option label="explicații.etimon-cu.schimbare.de.suf." value="explicații.etimon-cu.schimbare.de.suf." />
-            <option label="explicații.etimon-prin.accidente.fonetice-afereză" value="explicații.etimon-prin.accidente.fonetice-afereză" />
-            <option label="explicații.etimon-prin.accidente.fonetice-anaptixă" value="explicații.etimon-prin.accidente.fonetice-anaptixă" />
-            <option label="explicații.etimon-prin.accidente.fonetice-apocopă" value="explicații.etimon-prin.accidente.fonetice-apocopă" />
-            <option label="explicații.etimon-prin.accidente.fonetice-elidare" value="explicații.etimon-prin.accidente.fonetice-elidare" />            
-            <option label="explicații.etimon-prin.accidente.fonetice-epenteză" value="explicații.etimon-prin.accidente.fonetice-epenteză" />
-            <option label="explicații.etimon-prin.accidente.fonetice-metateză" value="explicații.etimon-prin.accidente.fonetice-metateză" />
-            <option label="explicații.etimon-prin.accidente.fonetice-propagare" value="explicații.etimon-prin.accidente.fonetice-propagare" />
-            <option label="explicații.etimon-prin.accidente.fonetice-proteză" value="explicații.etimon-prin.accidente.fonetice-proteză" />
-            <option label="explicații.etimon-prin.accidente.fonetice-sincopă" value="explicații.etimon-prin.accidente.fonetice-sincopă" />
-            <option label="explicații.etimon-prin.accidente.fonetice-sinereză" value="explicații.etimon-prin.accidente.fonetice-sinereză" />
-            <option label="explicații.etimon-prin.apropiere.de" value="explicații.etimon-prin.apropiere.de" />
-            <option label="explicații.etimon-prin.analogie.cu" value="explicații.etimon-prin.analogie.cu" />
-            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" />
-            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" value="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" />
-            <option label="explicații.etimon-prin.contaminare.cu" value="explicații.etimon-prin.contaminare.cu" />
-            <option label="explicații.etimon-după.modelul" value="explicații.etimon-după.modelul" />
-            <option label="explicații.etimon-după.modelul.lui" value="explicații.etimon-după.modelul.lui" />
-            <option label="explicații.etimon-variantă.a.lui" value="explicații.etimon-variantă.a.lui" />
-            <option label="explicații.etimon-prin.falsă.analiză" value="explicații.etimon-prin.falsă.analiză" />
-            <option label="explicații.etimon-refăcut.după" value="explicații.etimon-refăcut.după" />
-            <option label="explicații.etimon-adaptat.după" value="explicații.etimon-adaptat.după" />
-            <option label="explicații.etimon-din.latina.clasică.pentru.et..*" value="explicații.etimon-din.latina.clasică.pentru.et..*" />
-            <option label="explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*" value="explicații.etimon-cuvânt.din.care.provine.etimonul-.atestat.pentru.et..*" />
-            <option label="explicații.etimon-pentru.explicarea.formei.româneşti" value="explicații.etimon-pentru.explicarea.formei.româneşti" />
-            <option label="explicații.etimon-după" value="explicații.etimon-după" />
-            <option label="explicații.etimon-prin.filieră" value="explicații.etimon-prin.filieră" />
-            <option label="explicații.etimon-cu.reduplicarea.consoanei" value="explicații.etimon-cu.reduplicarea.consoanei" />
-            <option label="explicații.etimon-imper..lui" value="explicații.etimon-imper..lui" />
-            <option label="explicații.etimon-aor..lui" value="explicații.etimon-aor..lui" />
-            <option label="explicații.etimon-voc..lui" value="explicații.etimon-voc..lui" />
-            <option label="explicații.etimon-pl..lui" value="explicații.etimon-pl..lui" />
-            <option label="explicații.etimon-acuz." value="explicații.etimon-acuz." />
-            <option label="explicații.etimon-la.scriitorii.mai.vechi.din" value="explicații.etimon-la.scriitorii.mai.vechi.din" />
-            <option label="explicații.etimon-sub.influența.lui" value="explicații.etimon-sub.influența.lui" />
-            <option label="explicații.etimon-dial." value="explicații.etimon-dial." />
-            <option label="explicații.etimon-prin.reduplicare" value="explicații.etimon-prin.reduplicare" />
-            <option label="explicații.etimon-part..lui" value="explicații.etimon-part..lui" />
-            <option label="explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf." value="explicații.etimon-prin.apropiere.de.cuv..formate.cu.suf." />
-            <option label="explicații.etimon-prin.analogie.cu" value="explicații.etimon-prin.analogie.cu" />
-            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine" />
-            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" value="explicații.etimon-prin.analogie.cu.cuvinte.de.tipul" />
-            <option label="explicații.etimon-prin.etimologie.populară" value="explicații.etimon-prin.etimologie.populară" />
-            <option label="explicații.etimon-s..pr." value="explicații.etimon-s..pr." />
-            <option label="explicații.etimon-numele.științific.al" value="explicații.etimon-numele.științific.al" />
-            <option label="explicații.etimon-la" value="explicații.etimon-la" />
-            <option label="explicații.etimon-mai.vechi" value="explicații.etimon-mai.vechi" />
-            <option label="explicații.etimon-var..a.lui" value="explicații.etimon-var..a.lui" />
-            <option label="explicații.etimon-de.la.s..pr." value="explicații.etimon-de.la.s..pr." />
-            <option label="explicații.etimon-în.rom." value="explicații.etimon-în.rom." />
-            <option label="explicații.etimon-sg..refăcut.după.pl." value="explicații.etimon-sg..refăcut.după.pl." />
-            <option label="explicații.etimon-numele.topic" value="explicații.etimon-numele.topic" />
-            <option label="explicații.etimon-contaminare.în.care.primul.element.este" value="explicații.etimon-contaminare.în.care.primul.element.este" />
-            <option label="explicații.etimon-contaminare.între.….și.…" value="explicații.etimon-contaminare.între.….și.…" />
-            <option label="explicații.etimon-f..lui" value="explicații.etimon-f..lui" />
-            <option label="explicații.etimon-numele.ştiințific.al.plantei" value="explicații.etimon-numele.ştiințific.al.plantei" />
-            <option label="explicații.etimon-n..pr." value="explicații.etimon-n..pr." />
-            <option label="explicații.etimon-numele.de.localitate" value="explicații.etimon-numele.de.localitate" />
-            <option label="explicații.etimon-numele.sărbătorii.religioase" value="explicații.etimon-numele.sărbătorii.religioase" />
-            <option label="explicații.etimon-numele.ştiințific.al.planetei" value="explicații.etimon-numele.ştiințific.al.planetei" />
-            <option label="explicații.etimon-pentru.explicarea.formei.românești.cf." value="explicații.etimon-pentru.explicarea.formei.românești.cf." />
-            <option label="explicații.etimon-prez..ind." value="explicații.etimon-prez..ind." />
-            <option label="explicații.etimon-rin.înlocuirea.lui.….cu.…" value="explicații.etimon-prin.înlocuirea.lui.….cu.…" />
-            <option label="explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…" value="explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…" />
-            <option label="explicații.etimon-prin.confuzie.cu" value="explicații.etimon-prin.confuzie.cu" />
-            <option label="trimitere.(cf.)" value="trimitere.(cf.)" />
-            <option label="trimitere.intrare" value="trimitere.intrare" />
-            <option label="nume.propriu" value="nume.propriu" />
-            <option label="indicații.gramaticale" value="indicații.gramaticale" />
-            <option label="indicație.folosire" value="indicație.folosire" />
-            <option label="model.etimon" value="model.etimon" />
-            <option label="izvor" value="izvor" />
-            <option label="note.suplimentare" value="note.suplimentare" />            
-        </select>
+        <datalist id="etymological-note-types" />
+        <select data-ua-ref="{@type}" contenteditable="false" list="etymological-note-types" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
@@ -1056,7 +978,7 @@ ua:template("etym-note-traducere.cuvânt.bază-term-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'traducere.cuvânt.bază'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-450e4af3-9749-3ed8-9bd0-b8a53c30a8a0'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
 
 ua:template("etym-note-languages-term-template",
     <template>

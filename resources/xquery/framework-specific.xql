@@ -58,15 +58,17 @@ let $etymology-types := parse-xml(unparsed-text($ontology-github-url || "/etymol
 let $headword-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/headword']//skos:Concept
 let $sense-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/sense']//skos:Concept
 let $variant-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/variant']//skos:Concept
+let $etymological-note-types-concepts := parse-xml(unparsed-text($ontology-github-url || "/etymological-note-types.rdf"))//skos:Concept
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
-let $usage-types-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages-types.rdf"))//skos:Concept
+let $usages-types-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages-types.rdf"))//skos:Concept
 let $semantic-units-concepts := parse-xml(unparsed-text($ontology-github-url || "/semantic-units.rdf"))//skos:OrderedCollection[1]//skos:Concept
 				
 let $headword-etymology-types-datalist := local:generate-datalist("headword-etymology-types", "", $headword-etymology-types-concepts/skos:hiddenLabel, true())
 let $sense-etymology-types-datalist := local:generate-datalist("sense-etymology-types", "", $sense-etymology-types-concepts/skos:hiddenLabel, true())
 let $variant-etymology-types-datalist := local:generate-datalist("variant-etymology-types", "", $variant-etymology-types-concepts/skos:hiddenLabel, true())
+let $etymological-note-types-datalist := local:generate-datalist("etymological-note-types", $etymological-note-types-concepts/skos:prefLabel, $etymological-note-types-concepts/skos:notation, true())
 let $languages-datalist := local:generate-datalist("languages", $languages-concepts/skos:altLabel, $languages-concepts/skos:notation, true())
-let $usages-types-datalist := local:generate-datalist("usage-types", "", $usage-types-concepts/skos:hiddenLabel, true())
+let $usages-types-datalist := local:generate-datalist("usages-types", $usages-types-concepts/skos:prefLabel, $usages-types-concepts/skos:hiddenLabel, true())
 let $semantic-units-datalist := local:generate-datalist("semantic-units", $semantic-units-concepts/skos:prefLabel, $semantic-units-concepts/skos:hiddenLabel, false())
 
 let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
@@ -93,7 +95,7 @@ let $usages-types :=
 	serialize(
 		<select>
 			{
-				for $concept in $usage-types-concepts
+				for $concept in $usages-types-concepts
 				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:hiddenLabel}" />			
 			}
 		</select>
@@ -124,6 +126,8 @@ return (
     ,
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/variant-etymology-types.less", $variant-etymology-types-datalist)
     ,
+	file:write-text($frameworkResourcesDirPath || "/css/datalists/etymological-note-types.less", $etymological-note-types-datalist)
+    ,    
 	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $languages)
 	,
 	file:write-text($frameworkResourcesDirPath || "/css/datalists/languages.less", $languages-datalist)	
@@ -162,6 +166,15 @@ return (
 			bin:encode-string($variant-etymology-types-datalist)
 		)
 	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"resources/css/datalists/etymological-note-types.less",
+			bin:encode-string($etymological-note-types-datalist)
+		)
+	)	
 	,
 	file:write-binary(
 		$frameworkUberJarPath,	
