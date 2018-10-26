@@ -15,13 +15,13 @@ import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/
     'uuid-691bd716-15c8-3e7f-a65a-3913e069704e', 'uuid-3f710ecc-95a9-340c-a590-95d5df3579ff', 'uuid-0f858857-7617-32cb-ba46-c55260b89aa3', 'uuid-5523b5f5-56d7-3d73-9cea-ffd90a583511',
     'uuid-ad3bc6bb-3be4-33ff-9344-12086fccd869', 'uuid-1783f802-4a10-3750-b66a-9a9275a61560', 'uuid-8e12df0b-3244-3bb7-9db9-3f976a5d1454', 'uuid-bf82a126-1e54-3766-aa59-af0085ccd638',
     'uuid-cabef37d-3a62-3896-95c8-4ca1d0571ec2', 'uuid-fdc6694a-aa47-3abe-914b-d6d2c68188b2', 'uuid-2204861a-1908-3842-9e0e-a23bde160835', 'uuid-18c8dde4-8637-360e-a5ce-bed3782ec8bf',
-    'uuid-96d499dc-8eab-3f43-a985-49baabc623be', 'uuid-1ed81e29-8140-3c1a-9413-9edb502da14a', 'uuid-1ed81e29-8140-3c1a-9413-9edb502da14a', 'uuid-63124564-6adc-3499-b29f-0300f8a4c9c4',
-    'uuid-b4ef13cd-48d3-3ca5-aa91-4b116a97ff2b', 'uuid-b8dfaa01-f3ee-3932-92ec-2e71b8f7815d', 'uuid-582d4b93-054d-3e91-96cf-a06503cb0be9', 'uuid-f917f891-d45c-3e99-817c-6dc841699f08',
-    'uuid-400e13bd-d41b-39bf-8fc5-51d171034902', 'uuid-537f83b4-4279-32c1-baa6-d3b01d7e22d7', 'uuid-bce9f1cb-b3f8-33a7-b14d-b7157b301111', 'uuid-9a812db9-0134-3199-ab1b-cf0241f3c0e6', 
-    'uuid-e70ea0d7-5d49-36a8-8f78-7b83a6700c95', 'uuid-bd351e5b-fa6f-398e-9fac-d9ef842fd299', 'uuid-bd054c7f-f232-34a6-ad8b-d59cb0fc5645', 'uuid-7460d240-9ea8-35a3-befe-d6a08e162a3e',
-    'uuid-47b30d86-ac8d-37ed-ad7d-046fb434232e', 'uuid-0db38935-2139-3cf4-8689-fc3efff0eed0', 'uuid-2ddb8204-ca58-37e8-ba3c-2012972ae4e7', 'uuid-c5e56f21-1897-3d39-8536-004cc47ba833',
-    'uuid-c7e8d913-ee1f-30c5-9d70-402da52ac9b7', 'uuid-3ab6022d-648f-3ae0-85c3-6d8910d5dc95', 'uuid-0a31c9cc-4252-355e-87cc-e1ca516dacdb', 'uuid-2b306e9d-6f58-3089-b273-03c4c9180af3',
-    'uuid-95ca6e84-4012-39cf-86f3-eb258bd93fcb', 'uuid-8749f46d-f471-39bf-83c4-5087c8500ab5'))
+    'uuid-96d499dc-8eab-3f43-a985-49baabc623be', 'uuid-1ed81e29-8140-3c1a-9413-9edb502da14a', 'uuid-1ed81e29-8140-3c1a-9413-9edb502da14a', 'uuid-b4ef13cd-48d3-3ca5-aa91-4b116a97ff2b',
+    'uuid-b8dfaa01-f3ee-3932-92ec-2e71b8f7815d', 'uuid-582d4b93-054d-3e91-96cf-a06503cb0be9', 'uuid-f917f891-d45c-3e99-817c-6dc841699f08', 'uuid-400e13bd-d41b-39bf-8fc5-51d171034902',
+    'uuid-537f83b4-4279-32c1-baa6-d3b01d7e22d7', 'uuid-bce9f1cb-b3f8-33a7-b14d-b7157b301111', 'uuid-9a812db9-0134-3199-ab1b-cf0241f3c0e6', 'uuid-e70ea0d7-5d49-36a8-8f78-7b83a6700c95',
+    'uuid-bd351e5b-fa6f-398e-9fac-d9ef842fd299', 'uuid-bd054c7f-f232-34a6-ad8b-d59cb0fc5645', 'uuid-7460d240-9ea8-35a3-befe-d6a08e162a3e', 'uuid-47b30d86-ac8d-37ed-ad7d-046fb434232e',
+    'uuid-0db38935-2139-3cf4-8689-fc3efff0eed0', 'uuid-2ddb8204-ca58-37e8-ba3c-2012972ae4e7', 'uuid-c5e56f21-1897-3d39-8536-004cc47ba833', 'uuid-c7e8d913-ee1f-30c5-9d70-402da52ac9b7',
+    'uuid-3ab6022d-648f-3ae0-85c3-6d8910d5dc95', 'uuid-0a31c9cc-4252-355e-87cc-e1ca516dacdb', 'uuid-2b306e9d-6f58-3089-b273-03c4c9180af3', 'uuid-95ca6e84-4012-39cf-86f3-eb258bd93fcb',
+    'uuid-8749f46d-f471-39bf-83c4-5087c8500ab5'))
     then (
     	insert node $dlr:term-template as first into .
     )
@@ -66,7 +66,7 @@ import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/
     ,    
     if (@type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d')
     then (
-        insert nodes ($dlr:term-template, $dlr:ptr-template) as first into .
+        insert nodes ($dlr:term-template, $dlr:term-template, $dlr:term-template) as first into .
     )
     else ()                  
 )

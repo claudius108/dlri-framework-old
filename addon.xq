@@ -970,7 +970,7 @@ ua:template("etym-note-traducere.etimon-term-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'traducere.etimon'] > term:nth-of-type(2):before"), "etym-note-traducere.etimon-term-template"),
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-3da5e0a5-9c68-3bb8-b68a-69151380ca62'] > term:nth-of-type(2):before"), "etym-note-traducere.etimon-term-template"),
 
 ua:template("etym-note-traducere.cuvânt.bază-term-template",
     <template>
@@ -988,27 +988,26 @@ ua:template("etym-note-languages-term-template",
         <input data-ua-ref="{text()}" size="22" /> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'explicații.etimon-după.modelul'] > term:nth-of-type(1):before, note[type = 'explicații.etimon-prin.filieră'] > term:nth-of-type(1):before, 
-note[type ~= 'explicații.etimon-la.scriitorii.mai.vechi.din'] > term:nth-of-type(1):before, note[type = 'explicații.etimon-prin.analogie.cu.cuvinte.de.origine.….de.tipul.…'] > term:nth-of-type(1):before,
-note[type = 'trimitere.(cf.)'] > term:nth-of-type(1):before"), "etym-note-languages-term-template"),
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-a863aae7-47d7-379f-ba70-3c7e1093f37d'] > term:nth-of-type(1):before, note[type = 'uuid-691bd716-15c8-3e7f-a65a-3913e069704e'] > term:nth-of-type(1):before, 
+note[type ~= 'uuid-bf82a126-1e54-3766-aa59-af0085ccd638'] > term:nth-of-type(1):before, note[type = 'uuid-0a31c9cc-4252-355e-87cc-e1ca516dacdb'] > term:nth-of-type(1):before,
+note[type = 'uuid-9d0f4561-7312-3d4c-8db5-119c6a852071'] > term:nth-of-type(1):before"), "etym-note-languages-term-template"),
 
 ua:template("etym-note-term2-template",
     <template>
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'explicații.etimon-contaminare.între.….și.…'] > term:nth-of-type(2):before,
-note[type = 'explicații.etimon-prin.înlocuirea.lui.….cu.…'] > term:nth-of-type(2):before,
-note[type = 'trimitere.(cf.)'] > term:nth-of-type(2):before"), "etym-note-term2-template"),
-
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-bbc29f17-a728-3ebb-931d-56249488fb3d'] > term:nth-of-type(2):before,
+note[type = 'uuid-c2e64e06-d14b-308e-8802-5104b95b860f'] > term:nth-of-type(2):before"), "etym-note-term2-template")
+,
 ua:template("etym-note-trimitere.(cf.)-term2-template",
     <template>
         traducere&amp;nbsp;   
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'trimitere.(cf.)'] > term:nth-of-type(2):before"), "etym-note-trimitere.(cf.)-term2-template"),
-
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-9d0f4561-7312-3d4c-8db5-119c6a852071'] > term:nth-of-type(2):before"), "etym-note-trimitere.(cf.)-term2-template")
+,
 ua:template("etym-note-nume.propriu-term1-template",
     <template>
     	De la numele propriu&amp;nbsp;
@@ -1018,24 +1017,38 @@ ua:template("etym-note-nume.propriu-term1-template",
         <input data-ua-ref="{text()}" size="22" /> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'nume.propriu'] > term:nth-of-type(1):before"), "etym-note-nume.propriu-term1-template"),
-
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-dee348f1-d8b7-387d-bb51-5dfabfb1dd99'] > term:nth-of-type(1):before"), "etym-note-nume.propriu-term1-template")
+,
 ua:template("etym-note-nume.propriu-term2-template",
     <template>
     	&amp;nbsp;+ suf.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" /> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'nume.propriu'] > term:nth-of-type(2):before"), "etym-note-nume.propriu-term2-template"),
-
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-dee348f1-d8b7-387d-bb51-5dfabfb1dd99'] > term:nth-of-type(2):before"), "etym-note-nume.propriu-term2-template")
+,
 ua:template("etym-note-izvor-term-template",
     <template>
     	Explicații din izvor&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("note[type = 'izvor'] > term:nth-of-type(1):before"), "etym-note-izvor-term-template"),
-
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-c23988ce-0a96-34e3-82fb-a07af5058502'] > term:nth-of-type(1):before"), "etym-note-izvor-term-template")
+,
+ua:template("etym-note-trimitere.intrare-term2-template",
+    <template>
+    	Nr. omonim&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" /> 
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(2):before"), "etym-note-trimitere.intrare-term2-template")
+,
+ua:template("etym-note-trimitere.intrare-term3-template",
+    <template>
+    	Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" /> 
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(3):before"), "etym-note-trimitere.intrare-term3-template")
+,
 ua:template("usg-before",
     <template>
         Indicații privind folosirea:&amp;nbsp;
