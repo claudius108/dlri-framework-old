@@ -276,7 +276,9 @@
 						</validationScenario-array>
 					</field>
 					<field name="defaultValidationScenarios">
-						<null/>
+						<list>
+							<String>dlri</String>
+						</list>
 					</field>
 					<field name="defaultTransformationScenarios">
 						<null/>
