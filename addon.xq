@@ -1054,24 +1054,18 @@ ua:template("usg-before",
         Indicații privind folosirea:&amp;nbsp;
         <datalist id="usages-types" />
         <input data-ua-ref="{@value}" size="30" list="usages-types" />
-        <input data-ua-ref="{text()}" size="22" />      
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("usg:before"), "usg-before"),
-
-ua:template("pc",
-    <template>
-        <select data-ua-ref="{text()}" contenteditable="false" style="width: 7px;">
+        <input data-ua-ref="{text()}" size="22" />
+        <select data-ua-ref="{@rend}" contenteditable="false" style="width: 7px;">
             <option label="" value="" />
             <option label="\\," value="\\," />
             <option label=";" value=";" />
             <option label="și" value="și" />
             <option label="sau" value="sau" />
-        </select>  
+        </select>        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pc:before"), "pc"),
-
+ua:attach-template(ua-dt:css-selector("usg:before"), "usg-before")
+,
 ua:template("usg-after",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="background-color: transparent;" />

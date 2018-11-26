@@ -164,7 +164,7 @@ declare function dlr-views:usg($nodes) {
 				let $usg-value := $node/@value
 				let $usg-label := $usages//html:option[@value = $usg-value]/@label
 				
-				let $delimiter := $node/tei:pc/text()
+				let $delimiter := $node/@rend/string()
 				let $delimiter-1 := if ($delimiter != '') then $delimiter else ', '
 				let $delimiter-2 := if ($delimiter-1 = 'și') then concat(' ', $delimiter, ' ') else $delimiter
 								
