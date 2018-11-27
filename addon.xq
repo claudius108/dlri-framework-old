@@ -1211,8 +1211,8 @@ ua:template("gen-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("gen:before"), "gen-before"),
-
+ua:attach-template(ua-dt:css-selector("gen:before"), "gen-before")
+,
 ua:template("pos-s-gen-before",
     <template>
         Gen:&amp;nbsp;
@@ -1225,8 +1225,8 @@ ua:template("pos-s-gen-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ gen:before"), "pos-s-gen-before"),
-
+ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ gen:before"), "pos-s-gen-before")
+,
 ua:template("pos-s-number-before",
     <template>
         Număr:&amp;nbsp;
@@ -1238,8 +1238,8 @@ ua:template("pos-s-number-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ number:before"), "pos-s-number-before"),
-
+ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ number:before"), "pos-s-number-before")
+,
 ua:template("subc-articulare-before",
     <template>
         Articulare:&amp;nbsp;
@@ -1249,8 +1249,8 @@ ua:template("subc-articulare-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before, pos[value = 's.'] ~ subc:before"), "subc-articulare-before"),
-
+ua:attach-template(ua-dt:css-selector("pos[value = 's. pr.'] ~ subc:before, pos[value = 's.'] ~ subc:before, pos[value = 'pron.'] ~ subc:nth-of-type(3):before"), "subc-articulare-before")
+,
 ua:template("subc-loc.-before",
     <template>
         Tip:&amp;nbsp;
@@ -1264,8 +1264,8 @@ ua:template("subc-loc.-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 'loc.'] ~ subc:before"), "subc-loc.-before"),
-
+ua:attach-template(ua-dt:css-selector("pos[value = 'loc.'] ~ subc:before"), "subc-loc.-before")
+,
 ua:template("pos-adj-number-before",
     <template>
         Număr:&amp;nbsp;
@@ -1275,8 +1275,8 @@ ua:template("pos-adj-number-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 'adj.'] ~ number:before"), "pos-adj-number-before"),
-
+ua:attach-template(ua-dt:css-selector("pos[value = 'adj.'] ~ number:before"), "pos-adj-number-before")
+,
 ua:template("case-before",
     <template>
         Caz:&amp;nbsp;

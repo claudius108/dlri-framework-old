@@ -27,6 +27,7 @@ xquery version "3.0";
             	doc('../content-models/gen.xml'),
             	doc('../content-models/per.xml'),
             	doc('../content-models/number.xml'),
+            	doc('../content-models/subc.xml'),
             	doc('../content-models/subc.xml')
             ) as last into parent::*
         )
