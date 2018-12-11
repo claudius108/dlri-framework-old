@@ -1102,7 +1102,7 @@ ua:template("bibl-buttons-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after"), "bibl-buttons-template"),
+ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after"), "bibl-buttons-template"),
 
 ua:template("bibl-ptr-before",
     <template>
