@@ -1840,34 +1840,8 @@ ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumat�
 ua:template("author-before",
     <template>
         Redactor*:&amp;nbsp;
-        <select data-ua-ref="{text()}" contenteditable="false">
-            <option label="" value="guest" />
-            <option label="Anghelina Alexandru" value="anghelina.alexandru" />
-            <option label="Busuioc Monica" value="monica.busuioc" />
-            <option label="Bădic Dana-Melania" value="Dana-Melania" />
-            <option label="Celac Victor" value="victor.celac" />
-            <option label="Clim Marius" value="marius.clim" />
-            <option label="Corbeanu Ramona Catalina" value="Catalina.Corbeanu" />
-            <option label="Dincă Garofița" value="garofitad" />
-            <option label="Dragomir Mioara" value="mioara.dragomir" />
-            <option label="Florescu Cristina" value="cristina.florescu" />
-            <option label="Haja Gabriela" value="Gabriela_Haja" />
-            <option label="Hoinărescu Liliana" value="Lilianah" />
-            <option label="Manea Laura" value="laura.manea" />
-            <option label="Marin Mihaela" value="mihaela.marin" />
-            <option label="Mihai Nicoleta" value="Nicoleta" />
-            <option label="Mărănduc Cătălina" value="Catamara" />
-            <option label="Nedea Raluca-Mihaela" value="r_nedea" />
-            <option label="Niculescu-Gorpin Anabella-Gloria" value="Anabella" />
-            <option label="Popescu Mihaela" value="msmihaelap" />
-            <option label="Popuşoi Carolina" value="vozduh" />
-            <option label="Pătrașcu Mădălin" value="madalin.patrascu" />
-            <option label="Sterian Florin" value="FlorinSterian" />
-            <option label="Ștefănescu Maria" value="Maria.Stefanescu" />
-            <option label="Tamba Isabella" value="isabelle.tamba" />
-            <option label="Teste" value="tests" />
-            <option label="Vasilescu Florin" value="FlorinV" />
-        </select>
+		<datalist id="redactors" />
+		<select data-ua-ref="{text()}" contenteditable="false" list="redactors" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertAuthorElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/author) > 1};" />
     </template>
