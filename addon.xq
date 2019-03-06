@@ -1543,8 +1543,8 @@ ua:template("stress",
         <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="visibility: {count(following-sibling::bibl) = 0};" data-showIcon="false" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("stress"), "stress"),
-
+ua:attach-template(ua-dt:css-selector("stress"), "stress")
+,
 ua:template("form-pronunciation-before",
     <template>
         Pronunțare
@@ -1955,14 +1955,22 @@ ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
 
 ua:template("entry-form-headword-before",
     <template>
-        \00000A Cuvânt titlu*:&amp;nbsp;
+        \00000A Cuvânt titlu (neaccentuat):&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
         <input data-ua-ref="{@n}" size="2" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"), "entry-form-headword-before"),
-
+ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"), "entry-form-headword-before")
+,
+ua:template("headword-stress",
+    <template>
+        Cuvânt titlu (accentuat):&amp;nbsp;
+        <input data-ua-ref="{text()}" size="40" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("form[type = 'headword'] > stress"), "headword-stress")
+,
 ua:template("lexical-variant-section-before",
     <template>
         Variantă lexicală&amp;nbsp;
