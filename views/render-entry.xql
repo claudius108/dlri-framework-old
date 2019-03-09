@@ -61,7 +61,7 @@ declare function local:xr-association($node) {
 };
 
 declare function dlr-views:get-entry-title($entry) {
-    let $title := data($entry/tei:form[@type = 'headword']/tei:orth)
+    let $title := data($entry/tei:form[@type = 'headword']/tei:stress)
     
     return if ($title != '') then $title else ''
 };
