@@ -74,6 +74,12 @@ declare variable $dlr:term-cuvântul.titlu-formație.internă-trimitere-Cf.-temp
     <term xmlns="http://www.tei-c.org/ns/1.0" xml:lang="" type="cuvântul.titlu-formație.internă-trimitere-Cf." />
 ;
 
+declare variable $dlr:xr-template as element() :=
+	<xr xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
+    	<ptr target="unknown" />
+    </xr>
+;
+
 declare variable $dlr:ptr-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unknown" subtype="unknown" target="unknown" />
 ;

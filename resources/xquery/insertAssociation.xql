@@ -15,17 +15,17 @@ let $corresp-value :=
 let $processed-template :=
 	if ($corresp-value != '')
 	then
-		copy $template := $dlr:ptr-template
+		copy $template := $dlr:xr-template
 		modify (
 			replace value of node $template//@type with 'asoc'
 			,
 			insert node attribute {'corresp'} {$corresp-value} into $template
 		)
 		return $template
-	else $dlr:ptr-template	
+	else $dlr:xr-template	
 
 
 return
-	if (local-name() = 'ptr')
+	if (local-name() = 'xr')
 	then insert node $processed-template after $context-node
-	else insert node $processed-template after ($context-node | following-sibling::tei:usg[@corresp = $corresp-value] | $context-node/following-sibling::tei:ptr[@type = ('syn', 'analog') and @corresp = $corresp-value])[last()]	
+	else insert node $processed-template after ($context-node | following-sibling::tei:usg[@corresp = $corresp-value] | $context-node/following-sibling::tei:xr[@type = ('syn', 'analog') and @corresp = $corresp-value])[last()]	

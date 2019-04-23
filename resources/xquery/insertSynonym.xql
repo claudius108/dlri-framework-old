@@ -15,14 +15,14 @@ let $corresp-value :=
 let $processed-template :=
 	if ($corresp-value != '')
 	then
-		copy $template := $dlr:ptr-template
+		copy $template := $dlr:xr-template
 		modify (
 			replace value of node $template//@type with 'syn'
 			,
 			insert node attribute {'corresp'} {$corresp-value} into $template
 		)
 		return $template
-	else $dlr:ptr-template
+	else $dlr:xr-template
 
 
 return insert node $processed-template after ($context-node | following-sibling::tei:usg)[last()]
