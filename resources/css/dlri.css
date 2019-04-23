@@ -44,7 +44,7 @@ creation, revisionDesc {
 	font-weight: bold;
 }
 
-creation>date {
+creation > date {
 	display: inline;
 	font-weight: normal;
 }
@@ -63,12 +63,21 @@ entry > form, teiHeader, entry > gramGrp, etym, entry > re {
 
 orth,form[type = 'headword'] > pron, def, cit, entry > form[type = 'headword'] {
 	width: 1000px;
-	background-color: #d8d8d8;
+	background-color: #e0e4e5;
 	margin-top: 5px;
 }
 
 form[type = 'headword'] > pron {
 	display: none;
+}
+
+sense > xr {
+    padding:0 0 10px 0;
+}
+
+xr:hover {
+	background-color: #e0e4e5;
+	width: 1000px;
 }
 
 sense > def {

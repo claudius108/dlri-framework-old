@@ -153,6 +153,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/cloneCurrentElement.xql")
 ),
 ua:action(
+    "cloneXrElement",
+    map { 
+        "name" := "Duplicare",
+        "smallIconPath" := "../../resources/images/add.png"       
+    },   
+    oxy:execute-xquery-update-script("resources/xquery/cloneXrElement.xql")
+),
+ua:action(
     "deleteSenseElement",
     map { 
         "name" := "Ștergere",
@@ -410,8 +418,16 @@ ua:template("trimitere-before",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimitere-before"),
-
+ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimitere-before")
+,
+ua:template("sense-xr-hover",
+    <template>
+        <button onclick="{oxy:xquery-update-action('cloneXrElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("sense > xr:hover"), "sense-xr-hover")
+,
 ua:template("syn-before",
     <template>
         Sinonim&amp;nbsp;
@@ -420,13 +436,11 @@ ua:template("syn-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
-        <button onclick="{oxy:xquery-update-action('insertSynonym')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>                
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'syn']:before"), "syn-before"),
-
+ua:attach-template(ua-dt:css-selector("xr[type = 'syn'] > ptr:before"), "syn-before")
+,
 ua:template("analog-before",
     <template>
         Analogie&amp;nbsp;
@@ -435,12 +449,10 @@ ua:template("analog-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />    
-        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'analog']:before"), "analog-before"),
-
+ua:attach-template(ua-dt:css-selector("xr[type = 'analog'] > ptr:before"), "analog-before")
+,
 ua:template("asoc-before",
     <template>
         Asociație&amp;nbsp;
@@ -449,12 +461,10 @@ ua:template("asoc-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />     
-        <button onclick="{oxy:xquery-update-action('insertAssociation')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'asoc']:before"), "asoc-before"),
-
+ua:attach-template(ua-dt:css-selector("xr[type = 'asoc'] > ptr:before"), "asoc-before")
+,
 ua:template("antonim-before",
     <template>
         În  opoziţie cu&amp;nbsp;
@@ -464,11 +474,10 @@ ua:template("antonim-before",
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />       
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("ptr[type = 'antonim']:before"), "antonim-before"),
-
+ua:attach-template(ua-dt:css-selector("xr[type = 'antonim'] > ptr:before"), "antonim-before")
+,
 ua:template("nume.latinesc.definiție.sens-template",
     <template>
         Nume lat.&amp;nbsp;
@@ -1940,10 +1949,10 @@ ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 ua:template("sense-def-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::ptr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {let $context := . return count($context/following-sibling::term[@corresp = concat('#', $context/@xml:id)]) = 0};">Nume lat.</button>
         \00000A
         <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
