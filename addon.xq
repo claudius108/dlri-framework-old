@@ -420,13 +420,14 @@ ua:template("trimitere-before",
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'trimitere']:before"), "trimitere-before")
 ,
-ua:template("sense-xr-hover",
+ua:template("sense-xr-before",
     <template>
         <button onclick="{oxy:xquery-update-action('cloneXrElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {@type = 'syn' and count(usg) = 0};">Ind. fol.</button> 
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > xr:hover"), "sense-xr-hover")
+ua:attach-template(ua-dt:css-selector("sense > xr:before"), "sense-xr-before")
 ,
 ua:template("syn-before",
     <template>
@@ -436,7 +437,6 @@ ua:template("syn-before",
 	    </datalist>
 	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
 	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>                
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("xr[type = 'syn'] > ptr:before"), "syn-before")
