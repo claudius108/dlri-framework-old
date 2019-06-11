@@ -1778,6 +1778,7 @@ ua:template("sense-currentEdited-value-before",
         <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
             <option label="◊" value="◊" />
             <option label="♦" value="♦" />
+            <option label="✧" value="✧" />
         </select>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(def[1]/preceding-sibling::*[local-name() = 'usg']) = 0};">Ind. fol. globală</button>
