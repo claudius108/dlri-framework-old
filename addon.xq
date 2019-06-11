@@ -1094,12 +1094,13 @@ ua:attach-template(ua-dt:css-selector("quote"), "quote"),
 ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false" style="width: 5px;">
+        <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
             <option label="" value="unknown" />
             <option label="ap." value="ap." />
             <option label="cf." value="cf." />
             <option label="în" value="în" />
             <option label="▭" value="▭" />
+            <option label="✧ POP." value="✧ POP." />
         </select>
     </template>
 ),
