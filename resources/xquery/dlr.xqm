@@ -28,7 +28,7 @@ declare variable $dlr:bibl-template as element() :=
 ;
 
 declare variable $dlr:cit-template as element() :=
-    <cit xmlns="http://www.tei-c.org/ns/1.0">
+    <cit xmlns="http://www.tei-c.org/ns/1.0" type="unknown">
         <quote />
         {$dlr:bibl-template}
     </cit>
@@ -129,4 +129,3 @@ declare variable $dlr:semantic-unit-template as element() :=
 		<term />
 	</form>
 ;
-

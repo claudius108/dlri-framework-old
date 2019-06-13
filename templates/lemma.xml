@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-${uuid}" version="3.3.0" source="0.19">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-${uuid}" version="3.3.0" source="0.20">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
@@ -36,7 +36,7 @@
 				<dictScrap xml:id="dlr-senses">
 					<sense xml:id="uuid-${uuid}" n="">
 						<def xml:id="uuid-${uuid}"/>
-						<cit>
+						<cit type="unknown">
 							<quote/>
 							<bibl type="unknown">
 								<ptr target="unknown"/>

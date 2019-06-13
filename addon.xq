@@ -1099,8 +1099,6 @@ ua:template("bibl-template",
             <option label="ap." value="ap." />
             <option label="cf." value="cf." />
             <option label="în" value="în" />
-            <option label="▭" value="▭" />
-            <option label="✧ POP." value="✧ POP." />
         </select>
     </template>
 ),
@@ -1144,6 +1142,11 @@ ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRa
 ua:template("cit-before",
     <template>
         Atestare:
+        <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
+            <option label="" value="unknown" />
+            <option label="▭" value="▭" />
+            <option label="✧ POP." value="✧ POP." />
+        </select>        
         <button onclick="{oxy:xquery-update-action('insertBibliographicReferenceAuthor')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
     </template>
