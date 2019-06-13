@@ -1776,8 +1776,7 @@ ua:template("sense-currentEdited-value-before",
     <template>
         Nivel:&amp;nbsp;
         <select data-ua-ref="{@n}" contenteditable="true" style="width: 17px;">
-            <option label="◊" value="◊" />
-            <option label="♦" value="♦" />
+            <option label="✦" value="✦" />
             <option label="✧" value="✧" />
         </select>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
