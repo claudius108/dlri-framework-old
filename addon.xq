@@ -643,6 +643,13 @@ ua:template("cuvântul.titlu-element.extern-trimitere-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-element.extern-trimitere'] ~ term"), "cuvântul.titlu-element.extern-trimitere-template"),
 
+ua:template("variantă-directă-etimon.variantă-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon.variantă'] ~ term"), "variantă-directă-etimon.variantă-template"),
+
 ua:template("cuvântul.titlu-element.de.substrat-term-1-etymon",
     <template>
         El. de substrat&amp;nbsp;
@@ -1143,8 +1150,8 @@ ua:template("cit-before",
         Atestare:
         <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
             <option label="" value="unknown" />
+            <option label="✧ POP." value="✧ POP." />            
             <option label="▭" value="▭" />
-            <option label="✧ POP." value="✧ POP." />
         </select>        
         <button onclick="{oxy:xquery-update-action('insertBibliographicReferenceAuthor')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>

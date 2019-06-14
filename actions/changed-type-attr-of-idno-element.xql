@@ -168,6 +168,11 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-element.extern-trimitere-Cf.',
                 'cuvântul.titlu-element.extern-trimitere-După'
             )
+            or
+	    	(
+	    		starts-with(@type, 'variantă-directă-etimon.variantă')
+	    		and @type != 'variantă-directă-etimon.variantă-prin.hiperurbanism'
+	    	)            
     )
     then (
             insert node $dlr:term-template after .
@@ -200,11 +205,6 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-sub.influența',
             'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
             'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*'
-    	)
-    	or
-    	(
-    		starts-with(@type, 'variantă-directă-etimon.variantă')
-    		and @type != 'variantă-directă-etimon.variantă-prin.hiperurbanism'
     	)
     )
     then (
