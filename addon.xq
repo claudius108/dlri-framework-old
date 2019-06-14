@@ -496,7 +496,6 @@ ua:template("etym-before",
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat' and count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(gramGrp) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymonTranslation.xq')}" style="visibility: {idno[1][starts-with(@type, 'variantă-directă-etimon.variantă')] and count(term[@type = 'translation']) = 0};">Traducere etimon</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
     </template>
 ),
