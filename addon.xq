@@ -645,6 +645,10 @@ ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-elem
 
 ua:template("variantă-directă-etimon.variantă-template",
     <template>
+        Limba&amp;nbsp;
+        {
+            $languages-template
+        }    
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
