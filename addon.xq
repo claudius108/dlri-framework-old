@@ -1911,13 +1911,6 @@ ua:template("change",
 ),
 ua:attach-template(ua-dt:css-selector("change"), "change"),
 
-ua:template("headword-usg-template",
-    <template>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form[type = 'headword']:before"), "headword-usg-template"),
-
 ua:template("dlr-senses-tree-template",
     <template>
         {
