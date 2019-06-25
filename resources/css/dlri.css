@@ -29,10 +29,10 @@ TEI:before {
     color: blue;
 }
 
-title, author, editor, syll, quote, stress, usg, term, def, form[type = 'headword'] > orth,
+title, author, editor, syll, stress, term, def, form[type = 'headword'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
-note, bibl > citedRange, bibl > date, idno {
+note, bibl > date, idno {
 	visibility: "-oxy-collapse-text";
 }
 
@@ -83,14 +83,6 @@ xr:hover {
 sense > def {
 	margin-left: 10px;
 	border: solid 1px black;
-}
-
-hi {
-	display: inline;
-}
-
-hi[rend = 'bold'] {
-	font-weight: bold;
 }
 
 etym > idno {
@@ -157,4 +149,154 @@ etym > note > * {
 
 graphic {
     content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
+}
+
+quote, citedRange {
+    width: 1000px;
+    border: 1px solid black;
+    background-color: #ffffff;
+    height: 300px;
+}
+
+quote:before {
+	display:block;
+	background-color: #cccccc;
+	content: "Citat: "
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Bold16.png'),
+				name, 'Bold', 
+				description, 'Toggles bold styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action,  oxy_action(
+				icon, url('/images/Italic16.png'),
+				name, 'Italic', 
+				description, 'Toggles italic styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Underline16.png'),
+				name, 'Underline', 
+				description, 'Toggles underline styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
+				arg-insertLocation, 'caret'
+			)
+        );
+}
+
+citedRange:before {
+	display: block;
+	background-color: #cccccc;
+	content: "Localizare în sursă: "
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Bold16.png'),
+				name, 'Bold', 
+				description, 'Toggles bold styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action,  oxy_action(
+				icon, url('/images/Italic16.png'),
+				name, 'Italic', 
+				description, 'Toggles italic styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Underline16.png'),
+				name, 'Underline', 
+				description, 'Toggles underline styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
+				arg-insertLocation, 'caret'
+			)
+        );
+}
+
+usg {
+	display: block;
+	background-color: #ffffff;
+	border: 1px solid black;
+	content: 
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Bold16.png'),
+				name, 'Bold', 
+				description, 'Toggles bold styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action,  oxy_action(
+				icon, url('/images/Italic16.png'),
+				name, 'Italic', 
+				description, 'Toggles italic styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Underline16.png'),
+				name, 'Underline', 
+				description, 'Toggles underline styling for the selected fragment.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
+				arg-insertLocation, 'caret'
+			)
+        );
+}
+
+hi {
+	display: inline;
+}
+
+hi[rend = 'bold'] {
+	font-weight: bold;
+}
+
+hi[rend = 'italic'] {
+    font-style: italic;
+}
+
+hi[rend = 'underline'] {
+    text-decoration: underline;
 }

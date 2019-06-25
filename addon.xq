@@ -1073,7 +1073,6 @@ ua:template("usg-before",
         Indicații privind folosirea:&amp;nbsp;
         <datalist id="usages-types" />
         <input data-ua-ref="{@value}" size="30" list="usages-types" />
-        <input data-ua-ref="{text()}" size="22" />
         <select data-ua-ref="{@rend}" contenteditable="false" style="width: 7px;">
             <option label="" value="" />
             <option label="\\," value="\\," />
@@ -1092,14 +1091,6 @@ ua:template("usg-after",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("usg:after"), "usg-after"),
-
-ua:template("quote",
-    <template>
-        Citat:&amp;nbsp;
-        <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("quote"), "quote"),
 
 ua:template("bibl-template",
     <template>
@@ -1140,14 +1131,6 @@ ua:template("bibl-date-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before"),
-
-ua:template("bibl-citedRange-before",
-    <template>
-    	\00000ALocalizare în sursă:&amp;nbsp;
-        <input data-ua-ref="{text()}" size="30" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl > citedRange:before"), "bibl-citedRange-before"),
 
 ua:template("cit-before",
     <template>
