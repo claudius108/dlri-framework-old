@@ -155,7 +155,7 @@ quote, citedRange {
     width: 1000px;
     border: 1px solid black;
     background-color: #ffffff;
-    height: 300px;
+    min-height: 50px;
 }
 
 quote:before {
