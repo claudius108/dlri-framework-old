@@ -29,7 +29,7 @@ TEI:before {
     color: blue;
 }
 
-title, author, editor, syll, stress, term, def, form[type = 'headword'] > orth,
+title, author, editor, syll, stress, term, form[type = 'headword'] > orth,
 form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
 form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
 note, bibl > date, idno {
@@ -151,12 +151,36 @@ graphic {
     content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
 }
 
-quote, citedRange {
+sense > def, quote, citedRange {
     width: 1000px;
     border: 1px solid black;
     background-color: #ffffff;
-    min-height: 50px;
+    min-height: 100px;
 }
+
+sense > def:before {
+	min-height: 100px;
+	display:block;
+	background-color: #cccccc;
+	-oxy-append-content:
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('../../resources/images/Spaced16.png'),
+				name, 'Spațiat', 
+				description, 'Textul selectat este redat spațiat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="spaced"/>',
+				arg-insertLocation, 'caret'
+			)
+        )        
+        ;
+}
+
+
+
+
 
 quote:before {
 	display:block;

@@ -1936,7 +1936,7 @@ ua:template("syll",
 ),
 ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 
-ua:template("sense-def-template",
+ua:template("sense-def-before-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
@@ -1944,13 +1944,12 @@ ua:template("sense-def-template",
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {let $context := . return count($context/following-sibling::term[@corresp = concat('#', $context/@xml:id)]) = 0};">Nume lat.</button>
-        \00000A
-        <textarea data-ua-ref="{text()}" cols="70" rows="7" data-contentType="text/plain" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xql')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
+        \00000A
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > def"), "sense-def-template"),
+ua:attach-template(ua-dt:css-selector("sense > def:before"), "sense-def-before-template"),
 
 ua:template("entry-form-headword-before",
     <template>
