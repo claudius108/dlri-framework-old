@@ -197,9 +197,6 @@ citedRange:before {
         ;
 }
 
-
-
-
 quote:before {
 	display:block;
 	background-color: #cccccc;
@@ -216,6 +213,14 @@ quote:before {
 				arg-insertLocation, 'caret'
 			)
 		)
+        ;
+}
+
+usg {
+	display: block;
+	background-color: #ffffff;
+	border: 1px solid black;
+	content: 
         oxy_button(
 			transparent, true,
 			actionContext, caret,
@@ -235,74 +240,6 @@ quote:before {
         		icon, url('/images/Underline16.png'),
 				name, 'Underline', 
 				description, 'Toggles underline styling for the selected fragment.', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
-				arg-insertLocation, 'caret'
-			)
-        )
-        oxy_button(
-        	transparent, true,
-        	actionContext, caret,
-        	action, oxy_action(
-        		icon, url('/images/Superscript16.png'),
-				name, 'Exponent', 
-				description, 'Textul selectat este redat la exponent.', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="superscript"/>',
-				arg-insertLocation, 'caret'
-			)
-        )
-        oxy_button(
-        	transparent, true,
-        	actionContext, caret,
-        	action, oxy_action(
-        		icon, url('../../resources/images/Spaced16.png'),
-				name, 'Spațiat', 
-				description, 'Textul selectat este redat spațiat.', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="spaced"/>',
-				arg-insertLocation, 'caret'
-			)
-        )        
-        ;
-}
-
-usg {
-	display: block;
-	background-color: #ffffff;
-	border: 1px solid black;
-	content: 
-		oxy_button(
-			transparent, true,
-			actionContext, caret,
-			action, oxy_action(
-				icon, url('/images/Bold16.png'),
-				name, 'Îngroșat', 
-				description, 'Textul selectat este redat îngroșat.', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
-				arg-insertLocation, 'caret'
-			)
-		)
-        oxy_button(
-			transparent, true,
-			actionContext, caret,
-			action,  oxy_action(
-				icon, url('/images/Italic16.png'),
-				name, 'Înclinat', 
-				description, 'Textul selectat este redat înclinat.', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
-				arg-insertLocation, 'caret'
-			)
-		)
-        oxy_button(
-        	transparent, true,
-        	actionContext, caret,
-        	action, oxy_action(
-        		icon, url('/images/Underline16.png'),
-				name, 'Subliniat', 
-				description, 'Textul selectat este redat subliniat.', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
 				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
 				arg-insertLocation, 'caret'

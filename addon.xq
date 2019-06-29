@@ -1142,19 +1142,10 @@ ua:template("cit-before",
         </select>        
         <button onclick="{oxy:xquery-update-action('insertBibliographicReferenceAuthor')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::sense/cit) > 1};" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:before'), "cit-before"),
-
-ua:template("cit-not-first-of-type-before",
-    <template>
-        {
-            ua:get-template('cit-before')
-        }
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector('cit:not( :first-of-type):before'), "cit-not-first-of-type-before"),
 
 ua:template("bibl-author-reference-template",
     <template>
