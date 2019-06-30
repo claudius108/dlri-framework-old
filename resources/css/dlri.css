@@ -29,10 +29,8 @@ TEI:before {
     color: blue;
 }
 
-title, author, editor, syll, stress, term, form[type = 'headword'] > orth,
-form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'],
-note, bibl > date, idno {
+title, author, editor, syll, stress, term, form[type = 'headword'] > orth, form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno {
 	visibility: "-oxy-collapse-text";
 }
 
@@ -93,10 +91,6 @@ usg {
 	margin-left: 10px;
 }
 
-usg > * {
-	display: inline-block;
-}
-
 quote {
 	margin-left: 10px;
 	height: 200px;
@@ -151,7 +145,7 @@ graphic {
     content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
 }
 
-sense > def, quote, citedRange {
+sense > def, citedRange, quote, usg {
     width: 1000px;
     border: 1px solid black;
     background-color: #ffffff;
@@ -216,7 +210,7 @@ quote:before {
         ;
 }
 
-usg {
+usg:before {
 	display: block;
 	background-color: #ffffff;
 	border: 1px solid black;
@@ -225,11 +219,10 @@ usg {
 			transparent, true,
 			actionContext, caret,
 			action,  oxy_action(
-				icon, url('/images/Italic16.png'),
-				name, 'Italic', 
-				description, 'Toggles italic styling for the selected fragment.', 
+				name, 'geo', 
+				description, 'geografic', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="geo"/>',
 				arg-insertLocation, 'caret'
 			)
 		)
@@ -237,14 +230,90 @@ usg {
         	transparent, true,
         	actionContext, caret,
         	action, oxy_action(
-        		icon, url('/images/Underline16.png'),
-				name, 'Underline', 
-				description, 'Toggles underline styling for the selected fragment.', 
+				name, 'time', 
+				description, 'temporal', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="underline"/>',
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="time"/>',
 				arg-insertLocation, 'caret'
 			)
         )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'register style', 
+				description, 'registru / stil', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="register style"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'lang', 
+				description, 'limba de origine', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="lang"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'gram', 
+				description, 'gramatical', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="gram"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'hint', 
+				description, 'neclasificat', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="hint"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'coloc', 
+				description, 'colocație', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="coloc"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'sem', 
+				description, 'semantic', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="sem"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+				name, 'plev', 
+				description, 'frecvență', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="plev"/>',
+				arg-insertLocation, 'caret'
+			)
+        )        
         ;
 }
 
