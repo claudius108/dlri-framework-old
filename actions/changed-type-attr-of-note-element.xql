@@ -36,7 +36,7 @@ import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/
     ,    
     if (@type = 'uuid-9d0f4561-7312-3d4c-8db5-119c6a852071')
     then (
-        insert nodes (doc('../content-models/usg.xml'), $dlr:term-template, $dlr:term-template) as first into .
+        insert nodes ($dlr:usg-container-template, $dlr:term-template, $dlr:term-template) as first into .
     )
     else () 
     ,    
@@ -60,7 +60,7 @@ import module namespace dlr = "http://lingv.ro/ns/dlr/" at "../resources/xquery/
     ,    
     if (@type = 'uuid-7660b929-371a-3e2f-a37d-d07fe9f12fa5')
     then (
-        insert nodes (doc('../content-models/usg.xml'), $dlr:term-template) as first into .
+        insert nodes ($dlr:usg-container-template, $dlr:term-template) as first into .
     )
     else () 
     ,    

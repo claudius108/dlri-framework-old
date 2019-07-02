@@ -76,7 +76,6 @@ let $sense-etymology-types-concepts := $etymology-types//skos:OrderedCollection[
 let $variant-etymology-types-concepts := $etymology-types//skos:OrderedCollection[@rdf:about = 'http://lingv.ro/ontology/etymology/types/variant']//skos:Concept
 let $etymological-note-types-concepts := parse-xml(unparsed-text($ontology-github-url || "/etymological-note-types.rdf"))//skos:Concept
 let $languages-concepts := parse-xml(unparsed-text($ontology-github-url || "/languages.rdf"))//skos:Concept
-let $usages-types-concepts := parse-xml(unparsed-text($ontology-github-url || "/usages-types.rdf"))//skos:Concept
 let $semantic-units-concepts := parse-xml(unparsed-text($ontology-github-url || "/semantic-units.rdf"))//skos:OrderedCollection[1]//skos:Concept
 let $members-doc := parse-xml(unparsed-text($ontology-github-url || "/members.rdf"))
 let $redactors-concepts := $members-doc//skos:Concept[ends-with(foaf:Person/org:Membership/@rdf:resource, 'dlr-redactors')]
@@ -110,23 +109,6 @@ let $languages :=
 		</output:serialization-parameters>
 	)
 	
-(: process the controlled vocabulary for usages :)
-let $usages-types :=
-	serialize(
-		<select>
-			{
-				for $concept in $usages-types-concepts
-				return <option xmlns="http://www.w3.org/1999/xhtml" label="{$concept/skos:prefLabel}" value="{$concept/skos:hiddenLabel}" />			
-			}
-		</select>
-		,
-		<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-			<output:method value="xml" />
-			<output:omit-xml-declaration value="yes" />
-			<output:indent value="yes" />
-		</output:serialization-parameters>
-	)	
-
 (: process the controlled vocabulary for special characters :)
 let $special-characters :=
 	(
@@ -150,8 +132,6 @@ return (
 	,
 	local:generate-datalist("languages", $languages-concepts/skos:altLabel/text(), $languages-concepts/skos:notation/text(), true())
 	,
-	local:generate-datalist("usages-types", $usages-types-concepts/skos:prefLabel/text(), $usages-types-concepts/skos:hiddenLabel/text(), true())
-	,
 	local:generate-datalist("semantic-units", $semantic-units-concepts/skos:prefLabel/text(), $semantic-units-concepts/skos:hiddenLabel/text(), false())
 	,
 	local:generate-datalist("redactors", for $redactor-concept in $redactors-concepts return $redactor-concept/foaf:Person/foaf:name/text(), for $redactor-concept in $redactors-concepts return $redactor-concept/skos:notation/text(), true())
@@ -160,8 +140,6 @@ return (
 	,
 	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $languages)
 	,
-	file:write-text($frameworkResourcesDirPath || "/ontology/usages-types.html", $usages-types)
-	,	
 	file:write($frameworkDirPath || "/templates/lemma.xml", $lemma-template)	
     ,
 	file:write-binary(
@@ -170,15 +148,6 @@ return (
 			file:read-binary($frameworkUberJarPath),
 			"resources/ontology/languages.html",
 			bin:encode-string($languages)
-		)
-	)
-	,
-	file:write-binary(
-		$frameworkUberJarPath,	
-		arch:update(
-			file:read-binary($frameworkUberJarPath),
-			"resources/ontology/usages-types.html",
-			bin:encode-string($usages-types)
 		)
 	)
 	,

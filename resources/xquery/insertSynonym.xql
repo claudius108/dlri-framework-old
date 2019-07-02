@@ -18,4 +18,4 @@ let $processed-template :=
 	return $template
 
 
-return insert node $processed-template after ($context-node | following-sibling::tei:usg)[last()]
+return insert node $processed-template after ($context-node | following-sibling::tei:dictScrap[@rend =  'usg'])[last()]

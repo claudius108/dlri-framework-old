@@ -129,3 +129,7 @@ declare variable $dlr:semantic-unit-template as element() :=
 		<term />
 	</form>
 ;
+
+declare variable $dlr:usg-container-template as element() :=
+	<dictScrap xmlns="http://www.tei-c.org/ns/1.0" rend="usg" />
+;

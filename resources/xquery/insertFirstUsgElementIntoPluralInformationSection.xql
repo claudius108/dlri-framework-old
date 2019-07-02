@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
+
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-insert node doc('../../content-models/usg.xml') after (number | gramGrp)[last()]
+insert node $dlr:usg-container-template after (number | gramGrp)[last()]

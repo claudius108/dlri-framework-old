@@ -286,13 +286,6 @@ ua:action(
     oxy:execute-xquery-update-script("actions/changed-type-attr-of-idno-element.xql")
 ),
 ua:action(
-    "changedValueAttrOfUsgElement",
-    map { 
-        "name" := "changedValueAttrOfUsgElement"
-    },
-    oxy:execute-xquery-update-script("actions/changed-value-attr-of-usg-element.xql")
-),
-ua:action(
     "changedTypeAttrOfNoteElement",
     map { 
         "name" := "changedTypeAttrOfNoteElement"
@@ -344,12 +337,6 @@ ua:connect-observer("changedValueAttrOfFormElementObserver", ua-dt:xpath-selecto
     map {
         "attributes" := "true",
         "attributeFilter" := "['type']"}
-),
-ua:observer("changedValueAttrOfUsgElementObserver", "changedValueAttrOfUsgElement"),
-ua:connect-observer("changedValueAttrOfUsgElementObserver", ua-dt:xpath-selector('//usg'),
-    map {
-        "attributes" := "true",
-        "attributeFilter" := "['value']"}
 ),
 ua:observer("changedTypeAttrOfNoteElementObserver", "changedTypeAttrOfNoteElement"),
 ua:connect-observer("changedTypeAttrOfNoteElementObserver", ua-dt:xpath-selector('//note'),
@@ -405,8 +392,15 @@ ua:template("grammatical-information-form",
         \00000A
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information']:before"), "grammatical-information-form"),
-
+ua:attach-template(ua-dt:css-selector("form[type = 'grammatical-information']:before"), "grammatical-information-form")
+,
+ua:template("dicScrap-usg-before",
+    <template>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("dictScrap[rend = 'usg']:before"), "dicScrap-usg-before")
+,
 ua:template("trimitere-before",
     <template>
         Trimitere&amp;nbsp;
@@ -424,7 +418,7 @@ ua:template("sense-xr-before",
     <template>
         <button onclick="{oxy:xquery-update-action('cloneXrElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {@type = 'syn' and count(usg) = 0};">Ind. fol.</button> 
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {@type = 'syn' and count(dictScrap[@rend =  'usg']) = 0};">Ind. fol.</button> 
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > xr:before"), "sense-xr-before")
@@ -485,8 +479,8 @@ ua:template("nume.latinesc.definiție.sens-template",
 		<button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > def ~ term"), "nume.latinesc.definiție.sens-template"),
-
+ua:attach-template(ua-dt:css-selector("sense > def ~ term"), "nume.latinesc.definiție.sens-template")
+,
 ua:template("etym-before",
     <template>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAfter.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
@@ -1068,30 +1062,6 @@ ua:template("etym-note-trimitere.intrare-term3-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(3):before"), "etym-note-trimitere.intrare-term3-template")
 ,
-ua:template("usg-before",
-    <template>
-        Indicații privind folosirea:&amp;nbsp;
-        <datalist id="usages-types" />
-        <input data-ua-ref="{@value}" size="30" list="usages-types" />
-        <select data-ua-ref="{@rend}" contenteditable="false" style="width: 7px;">
-            <option label="" value="" />
-            <option label="\\," value="\\," />
-            <option label=";" value=";" />
-            <option label="și" value="și" />
-            <option label="sau" value="sau" />
-        </select>        
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("usg:before"), "usg-before")
-,
-ua:template("usg-after",
-    <template>
-        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("usg:after"), "usg-after"),
-
 ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
@@ -1536,7 +1506,7 @@ ua:template("stress",
         Variantă de accentuare&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
         \00000A
-        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="visibility: {count(following-sibling::usg) = 0};" data-showIcon="false" />
+        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" style="visibility: {count(following-sibling::dictScrap[@rend =  'usg']) = 0};" data-showIcon="false" />
         <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="visibility: {count(following-sibling::bibl) = 0};" data-showIcon="false" />
     </template>
 ),
@@ -1555,7 +1525,7 @@ ua:template("form-pronunciation-before",
         </select>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronElement.xq')}" style="visibility: {count(pron) = 0};">Pron.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstPronunciationReferenceElement.xq')}" style="visibility: {count(pRef) = 0};">Pronunţat şi</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementInPronunciationForm.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementInPronunciationForm.xql')}" style="visibility: {count(dictScrap[@rend =  'usg']) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
     </template>
 ),
@@ -1586,7 +1556,7 @@ ua:template("form-writing-before",
         Scriere
         <button onclick="{oxy:xquery-update('resources/xquery/addWritingSection.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(dictScrap[@rend =  'usg']) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) > 0};" />
     </template>
 ),
@@ -1767,7 +1737,7 @@ ua:template("sense-currentEdited-value-before",
             <option label="✧" value="✧" />
         </select>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
-        <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(def[1]/preceding-sibling::*[local-name() = 'usg']) = 0};">Ind. fol. globală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(dictScrap[@rend =  'usg']) = 0};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
@@ -1781,7 +1751,7 @@ ua:template("form-unitate-semantică-subsumată",
         Unitate semantică subsumată:&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/insertSemanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(dictScrap[@rend =  'usg']) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addTermOfEtymType.xql')}" style="visibility: {count(term[@type = 'etym']) = 0};">Etimologie</button>
@@ -1929,7 +1899,7 @@ ua:attach-template(ua-dt:css-selector("syll"), "syll"),
 
 ua:template("sense-def-before-template",
     <template>
-        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::dictScrap[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
@@ -1966,7 +1936,7 @@ ua:template("lexical-variant-section-before",
         <button onclick="{oxy:xquery-update('resources/xquery/addLexicalVariant.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('cloneCurrentElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(dictScrap[@rend =  'usg']) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('addFirstAccentuationSection')}" style="visibility: {count(form[contains(' unknown-accentuation accentuation-variant ', @type)]) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstPronunciationSection')}" style="visibility: {count(form[@type = 'pronunciation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(form[@type = 'writing']) = 0};" />
