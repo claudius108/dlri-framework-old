@@ -217,17 +217,6 @@ dictScrap[rend ^= 'usg']:before {
 	border: 1px solid black;
 	-oxy-prepend-content: 
         oxy_button(
-			transparent, true,
-			actionContext, caret,
-			action,  oxy_action(
-				name, 'geo', 
-				description, 'geografic', 
-				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="geo"/>',
-				arg-insertLocation, 'caret'
-			)
-		)
-        oxy_button(
         	transparent, true,
         	actionContext, caret,
         	action, oxy_action(
@@ -238,6 +227,17 @@ dictScrap[rend ^= 'usg']:before {
 				arg-insertLocation, 'caret'
 			)
         )
+        oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action,  oxy_action(
+				name, 'dom', 
+				description, 'domeniu', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="dom"/>',
+				arg-insertLocation, 'caret'
+			)
+		)        
         oxy_button(
         	transparent, true,
         	actionContext, caret,
@@ -326,7 +326,7 @@ hi[rend = 'bold'] {
 	font-weight: bold;
 }
 
-hi[rend = 'italic'] {
+hi[rend = 'italic'], usg[type ~= 'time dom sem plev'] {
     font-style: italic;
 }
 
@@ -341,4 +341,14 @@ hi[rend = 'superscript'] {
 
 hi[rend = 'spaced'] {
     letter-spacing: 5px;
+}
+
+usg[type = 'time'], usg[type = 'dom'], usg[type = 'sem'], usg[type = 'plev'] {
+    font-style: italic;
+    background-color: #cccccc;
+    padding: 1px;
+}
+
+usg[type = 'time']:before, usg[type = 'dom']:before, usg[type = 'sem']:before, usg[type = 'plev']:before {
+    content: attr(type) ": ";
 }
