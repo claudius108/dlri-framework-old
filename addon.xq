@@ -592,7 +592,7 @@ ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat.(reconstruit)-term"),
 
-ua:template("cuvântul.titlu-element.extern-calc-template",
+ua:template("element.extern-calc-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -602,7 +602,7 @@ ua:template("cuvântul.titlu-element.extern-calc-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-calc'] ~ term"), "cuvântul.titlu-element.extern-calc-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-calc'] ~ term"), "element.extern-calc-template"),
 
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
     <template>

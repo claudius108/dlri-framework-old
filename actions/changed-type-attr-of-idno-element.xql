@@ -163,7 +163,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'cuvântul.titlu-formație.internă-din.formulă.de.urare',
                 'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
                 'cuvântul.titlu-etimon.neatestat.(reconstruit)',
-                'cuvântul.titlu-element.extern-calc',
+                'element.extern-calc',
                 'variantă-directă-din.lat.',
                 'cuvântul.titlu-element.extern-trimitere-Cf.',
                 'cuvântul.titlu-element.extern-trimitere-După'
