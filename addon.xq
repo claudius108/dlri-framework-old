@@ -74,13 +74,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertFirstBiblElement.xql")   
 ),
 ua:action(
-    "searchBibliographicReferences",
-    map { 
-        "name" := "Căutare"       
-    },   
-    oxy:execute-xquery-script("resources/xquery/get-bibliographic-references.xql")
-),
-ua:action(
     "searchHeadwordReferences",
     map { 
         "name" := "Căutare"       
@@ -1082,17 +1075,6 @@ ua:template("bibl-buttons-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after"), "bibl-buttons-template"),
-
-ua:template("bibl-ptr-before",
-    <template>
-        <datalist id="bibliographic-references">
-            <option label="" value=""/>
-        </datalist>
-        <input data-ua-ref="{@target}" size="40" list="bibliographic-references" />
-        <button onclick="{oxy:xquery('searchBibliographicReferences')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl > ptr"), "bibl-ptr-before"),
 
 ua:template("bibl-date-before",
     <template>

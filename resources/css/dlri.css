@@ -30,7 +30,7 @@ TEI:before {
 }
 
 title, author, editor, syll, stress, term, form[type = 'headword'] > orth, form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno {
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno, ptr {
 	visibility: "-oxy-collapse-text";
 }
 
@@ -365,4 +365,11 @@ usg[type = 'time'], usg[type = 'dom'], usg[type = 'sem'], usg[type = 'plev'] {
 
 usg:before {
     content: attr(type) ": ";
+}
+
+bibl > ptr {
+	content:
+		oxy_editor(type, combo, edit, "@target", values, oxy_xpath(oxy_concat('let $q := lower-case(./text()) return string-join(doc("', oxy_url('${framework}/resources/xml/bibliographic-references.xml'), '")/*/*[contains(lower-case(.), $q)]/@value, ",")')), labels, oxy_xpath(oxy_concat('let $q := lower-case(./text()) return string-join(doc("', oxy_url('${framework}/resources/xml/bibliographic-references.xml'), '")/*/*[contains(lower-case(.), $q)], ",")')), columns, 22, editable, false)
+		oxy_editor(type, text, edit, "#text", columns, 10)
+		oxy_editor(type, button, action, oxy_action(name, "Căutare", operation, "ro.sync.ecss.extensions.commons.operations.XQueryOperation", arg-action, "After", arg-script, "resources/xquery/get-bibliographic-references.xql"), transparent, true);
 }
