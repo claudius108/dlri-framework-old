@@ -1,4 +1,4 @@
-<options>
+<datalist xmlns="http://www.w3.org/1999/xhtml">
     <option value="#uuid-dd6cc872-0497-6608-176a-8c04607f1152">MANEA\, St. Viața Svinți.\, I</option>
     <option value="#uuid-081a21b8-5772-0177-157c-8d56a7b01e03">Doc. Ist. Rom.\, III 1</option>
     <option value="#uuid-dcd75440-6377-a3ec-52b8-32ce100ea034">CANTACUZINO\, Serile</option>
@@ -5245,4 +5245,4 @@
     <option value="#uuid-04e1af17-a159-956a-5620-6bbcfc7f14c6">BRV\, III 1-2 (I-II) | BV III | (DA) BV | </option>
     <option value="#uuid-d6de6a2a-966a-4825-a171-7a6c563b924d">ANGHEL\, Fantome | ANGHEL\, PR.</option>
     <option value="#uuid-6becd917-13fa-a264-18df-fa33d2eb08b8">CIORĂNESCU\, D. Etim. | CIORĂNESCU\, D. ET.</option>
-</options>
+</datalist>
