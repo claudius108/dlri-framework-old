@@ -21,7 +21,7 @@ declare variable $frameworkTargetDirPath := file:path-to-native($frameworkDirPat
 declare variable $frameworkResourcesDirPath := file:path-to-native($frameworkDirPath || "/resources");
 declare variable $frameworkUberJarPath := file:path-to-native($frameworkTargetDirPath || "/" || $frameworkId || ".jar");
 
-declare variable $ontology-github-url := "https://rawgit.com/lingv-ro/ilir-ontology/master";
+declare variable $ontology-github-url := "https://cdn.jsdelivr.net/gh/solirom/ilir-ontology@master";
 declare variable $charset := "@charset &quot;utf-8&quot;; ";
 
 declare function local:generate-datalist($datalist-name as xs:string, $datalist-labels as xs:string*, $datalist-values as xs:string*, $add-empty-value) {
