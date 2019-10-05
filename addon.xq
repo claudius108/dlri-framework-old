@@ -175,7 +175,7 @@ ua:action(
         "name" := "Izvor",
         "smallIconPath" := "../../resources/images/add.png"       
     },
-    oxy:execute-xquery-update-script("resources/xquery/insertBiblElement.xq")    
+    oxy:execute-xquery-update-script("resources/xquery/insertBiblElement.xql")    
 ),
 ua:action(
     "insertSynonym",
@@ -360,6 +360,7 @@ ua:template("TEI-before-template",
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstBiblElement.xql')}" style="visibility: {count(//entry/note[@type = 'bibliographic-references']/bibl) = 0}; background-color: transparent; color: blue;">Ref. biblio.</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("TEI:before"), "TEI-before-template"),
@@ -1055,6 +1056,13 @@ ua:template("etym-note-trimitere.intrare-term3-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(3):before"), "etym-note-trimitere.intrare-term3-template")
 ,
+ua:template("bibliographic-references-before-template",
+    <template>
+        Referințe bibliografice&amp;nbsp;
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("note[type = 'bibliographic-references']:before"), "bibliographic-references-before-template")
+,
 ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
@@ -1071,10 +1079,10 @@ ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):bef
 ua:template("bibl-buttons-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/deleteBiblElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after"), "bibl-buttons-template"),
+ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after, note > bibl:after"), "bibl-buttons-template"),
 
 ua:template("bibl-date-before",
     <template>
