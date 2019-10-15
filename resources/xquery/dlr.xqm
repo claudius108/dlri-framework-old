@@ -131,5 +131,5 @@ declare variable $dlr:semantic-unit-template as element() :=
 ;
 
 declare variable $dlr:usg-container-template as element() :=
-	<dictScrap xmlns="http://www.tei-c.org/ns/1.0" rend="usg" />
+	<usg xmlns="http://www.tei-c.org/ns/1.0" />
 ;

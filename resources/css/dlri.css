@@ -87,7 +87,7 @@ etym > idno {
 	display: inline;
 }
 
-usg {
+seg[rend = 'usg'] {
 	margin-left: 10px;
 }
 
@@ -145,7 +145,7 @@ graphic {
     content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
 }
 
-sense > def, citedRange, quote, dictScrap[rend = 'usg'] {
+sense > def, citedRange, quote, usg {
     width: 1000px;
     border: 1px solid black;
     background-color: #ffffff;
@@ -211,7 +211,7 @@ quote:before {
         ;
 }
 
-dictScrap[rend ^= 'usg']:before {
+usg:before {
 	display: block;
 	background-color: #ffffff;
 	border: 1px solid black;
@@ -223,7 +223,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'geo', 
 				description, 'geografic', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="geo"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="geo" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -234,7 +234,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'time', 
 				description, 'temporal', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="time"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="time" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -245,7 +245,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'dom', 
 				description, 'domeniu', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="dom"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="dom" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
 		)        
@@ -256,7 +256,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'register style', 
 				description, 'registru / stil', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="register style"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="register style" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -267,7 +267,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'lang', 
 				description, 'limba de origine', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="lang"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="lang" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -278,7 +278,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'gram', 
 				description, 'gramatical', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="gram"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="gram" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -289,7 +289,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'hint', 
 				description, 'neclasificat', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="hint"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="hint" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -300,7 +300,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'coloc', 
 				description, 'colocație', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="coloc"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="coloc" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -311,7 +311,7 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'sem', 
 				description, 'semantic', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="sem"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="sem" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )
@@ -322,14 +322,14 @@ dictScrap[rend ^= 'usg']:before {
 				name, 'plev', 
 				description, 'frecvență', 
 				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
-				arg-element, '<usg xmlns="http://www.tei-c.org/ns/1.0" type="plev"/>',
+				arg-element, '<seg xmlns="http://www.tei-c.org/ns/1.0" type="plev" rend="usg"/>',
 				arg-insertLocation, 'caret'
 			)
         )        
         ;
 }
 
-hi, usg {
+hi, seg[rend = 'usg'] {
 	display: inline;
 	content: oxy_xpath("@style");
 }
@@ -338,7 +338,7 @@ hi[rend ~= 'bold'] {
 	font-weight: bold;
 }
 
-hi[rend ~= 'italic'], usg[type ~= 'time dom sem plev'] {
+hi[rend ~= 'italic'], seg[type ~= 'time dom sem plev'] {
     font-style: italic;
 }
 
@@ -355,15 +355,15 @@ hi[rend = 'spaced'] {
     letter-spacing: 5px;
 }
 
-usg {
+seg[rend = 'usg'] {
     background-color: #cccccc;
 }
 
-usg[type = 'time'], usg[type = 'dom'], usg[type = 'sem'], usg[type = 'plev'] {
+seg[type = 'time'], seg[type = 'dom'], seg[type = 'sem'], seg[type = 'plev'] {
     font-style: italic;
 }
 
-usg:before {
+seg[rend = 'usg']:before {
     content: attr(type) ": ";
 }
 

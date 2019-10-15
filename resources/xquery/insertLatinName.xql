@@ -13,4 +13,4 @@ let $processed-template :=
 	return $template
 
 
-return insert node $processed-template after ($context-node | $context-node/following-sibling::tei:dictScrap[@corresp = $corresp-value] | $context-node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])[last()]	
+return insert node $processed-template after ($context-node | $context-node/following-sibling::tei:usg[@corresp = $corresp-value] | $context-node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])[last()]	
