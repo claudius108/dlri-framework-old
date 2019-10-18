@@ -1239,13 +1239,14 @@ ua:template("case-before",
         Caz:&amp;nbsp;
         <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
-            <option label="voc." value="voc." />
+            <option label="dat." value="dat." />
             <option label="gen.-dat." value="gen.-dat." />
             <option label="gen.-dat. și" value="gen.-dat. și" />
             <option label="gen.-dat. sg." value="gen.-dat. sg." />
             <option label="gen.-dat. sg. și" value="gen.-dat. sg. și" />
             <option label="gen.-dat. pl." value="gen.-dat. pl." />
             <option label="gen.-dat. pl. și" value="gen.-dat. pl. și" />
+            <option label="voc." value="voc." />
         </select>
     </template>
 ),
