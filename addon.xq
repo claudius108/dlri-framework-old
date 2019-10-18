@@ -1129,6 +1129,7 @@ ua:template("gramGrp-before",
     <template>
         Categorie gramaticală:
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" style="background-color: transparent;" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {local-name(parent::*) = ('sense', 'etym') or count(parent::*/gramGrp) > 1};" />        
     </template>
 ),
