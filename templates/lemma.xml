@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-${uuid}" version="3.3.0" source="0.20">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-${uuid}" version="3.3.0" source="0.21">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
@@ -7,8 +7,8 @@
 				<editor role="reviewer"/>
 			</titleStmt>
 			<publicationStmt>
-				<publisher>Linguistic Institute of the Romanian Academy</publisher>
-				<idno type="dictionary">DLR</idno>
+				<publisher>Romanian Academy, Philology and Literature Section</publisher>
+				<idno type="project">dlr2</idno>
 			</publicationStmt>
 			<sourceDesc>
 				<p>born digital</p>
