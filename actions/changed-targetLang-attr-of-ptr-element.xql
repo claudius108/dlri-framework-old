@@ -25,27 +25,27 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 		return replace node . with $processed-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-compus-format.din-bază' and @targetLang != 'ro')
+	if (@type = 'formație.internă-compus-format.din-bază' and @targetLang != 'ro')
 	then
 		let $processed-template :=
-			copy $template := $dlr:term-cuvântul.titlu-formație.internă-compus-format.din-bază-template
+			copy $template := $dlr:term-formație.internă-compus-format.din-bază-template
 			modify replace value of node $template/@xml:lang with ./@targetLang
 			return $template
 			
 		return replace node . with $processed-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat' and @targetLang != 'ro')
+	if (@type = 'formație.internă-compus-format.din-element.adăugat' and @targetLang != 'ro')
 	then
 		let $processed-template :=
-			copy $template := $dlr:term-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+			copy $template := $dlr:term-formație.internă-compus-format.din-element.adăugat-template
 			modify replace value of node $template/@xml:lang with ./@targetLang
 			return $template
 			
 		return replace node . with $processed-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.' and @targetLang != 'ro')
-	then replace node . with $dlr:term-cuvântul.titlu-formație.internă-trimitere-Cf.-template
+	if (@type = 'formație.internă-trimitere-Cf.' and @targetLang != 'ro')
+	then replace node . with $dlr:term-formație.internă-trimitere-Cf.-template
 	else ()
 )	

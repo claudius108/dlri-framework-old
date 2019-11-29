@@ -49,8 +49,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     	delete nodes ./following-sibling::*[not(local-name() = 'note')],
     	let $cert-value :=
     		if (@type = (
-    			'cuvântul.titlu-element.moştenit-etimon.neatestat',
-    			'cuvântul.titlu-formație.internă-trimitere-V.'
+    			'element.moştenit-etimon.neatestat',
+    			'formație.internă-trimitere-V.'
     			)
     		)
     		then 'low'
@@ -60,34 +60,34 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     else ()
     ,
     if (@type = (
-    	'cuvântul.titlu-element.moştenit-etimon.atestat',
-    	'cuvântul.titlu-element.moştenit-etimon.neatestat'
+    	'element.moştenit-etimon.atestat',
+    	'element.moştenit-etimon.neatestat'
     	)
     )
     then insert node $dlr:term-la-template after .	            
     else (),       
-    if (@type = 'cuvântul.titlu-element.de.substrat')
+    if (@type = 'element.de.substrat')
     then insert nodes ($dlr:term-template, $dlr:term-template) after .  
     else (),  
-    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix')
+    if (@type = 'formație.internă-derivat-cu.prefix')
     then insert nodes ($dlr:term-prefix-template, $dlr:ptr-base-word-template) after .
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.sufix')
+    if (@type = 'formație.internă-derivat-cu.sufix')
     then insert nodes ($dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-derivat-cu.prefix.şi.sufix')
+    if (@type = 'formație.internă-derivat-cu.prefix.şi.sufix')
     then insert nodes ($dlr:term-prefix-template, $dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (), 
-    if (@type = 'cuvântul.titlu-formație.internă-compus-element.de.compunere.+.cuvânt.bază')
+    if (@type = 'formație.internă-compus-element.de.compunere.+.cuvânt.bază')
     then insert nodes ($dlr:ptr-component-element-template, $dlr:ptr-base-word-template) after .
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-compus-cuvânt.bază.+.element.de.compunere')
+    if (@type = 'formație.internă-compus-cuvânt.bază.+.element.de.compunere')
     then insert nodes ($dlr:ptr-base-word-template, $dlr:ptr-component-element-template) after .
     else (), 
-    if (@type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază')
+    if (@type = 'formație.internă-compus-din.mai.multe.cuvinte.de.bază')
     then insert nodes ($dlr:ptr-base-word-template, $dlr:ptr-base-word-template) after .
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-compus-formație.savantă.din.latină')
+    if (@type = 'formație.internă-compus-formație.savantă.din.latină')
     then
 		let $processed-template-1 :=
 			copy $template := $dlr:term-la-template
@@ -99,16 +99,16 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 			return $template				
 		return insert nodes ($processed-template-1, $processed-template-2) after .
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-compus-format.din')
+    if (@type = 'formație.internă-compus-format.din')
     then (
             insert nodes (
-            	$dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template
+            	$dlr:ptr-formație.internă-compus-format.din-bază-template
             	,
-            	$dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+            	$dlr:ptr-formație.internă-compus-format.din-element.adăugat-template
             ) after .
     )
     else (),    
-    if (@type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
+    if (@type = 'formație.internă-contaminare-cu.două.sau.mai.multe.elemente')
     then insert nodes ($dlr:ptr-template, $dlr:ptr-template) after .
     else (),       
     if (@type = 'unul.sau.mai.multe.sensuri-explicarea.sensului-cf..izvor')
@@ -132,9 +132,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     if (@type = 
         (
         	'',
-            'cuvântul.titlu-formație.internă-singular.refăcut.după.plural',
-            'cuvântul.titlu-formație.internă-denumire.comercială',
-            'cuvântul.titlu-element.necunoscut',
+            'formație.internă-singular.refăcut.după.plural',
+            'formație.internă-denumire.comercială',
+            'element.necunoscut',
             'variantă-directă-sg..refăcut.după.plural',
             'variantă-directă-prin.etimologie.populară',
             'variantă-directă-prin.accidente.fonetice-afereză',
@@ -150,8 +150,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-refăcut.după.forma.articulată',
             'variantă-directă-refăcut.după.sg..art.',	            
             'variantă-directă-cu.schimbare.de.suf.',
-            'cuvântul.titlu-loc.lat.',
-            'cuvântul.titlu-formație.internă-onomatopee',
+            'loc.lat.',
+            'formație.internă-onomatopee',
             'variantă-directă-etimon.variantă-prin.hiperurbanism'
         )
     )
@@ -159,14 +159,14 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     else (),  
     if (@type =
             (
-                'cuvântul.titlu-formație.internă-calc',
-                'cuvântul.titlu-formație.internă-din.formulă.de.urare',
-                'cuvântul.titlu-element.extern-împrumut-etimon.sigur',
-                'cuvântul.titlu-etimon.neatestat.(reconstruit)',
+                'formație.internă-calc',
+                'formație.internă-din.formulă.de.urare',
+                'element.extern-împrumut-etimon.sigur',
+                'etimon.neatestat.(reconstruit)',
                 'element.extern-calc',
                 'variantă-directă-din.lat.',
-                'cuvântul.titlu-element.extern-trimitere-Cf.',
-                'cuvântul.titlu-element.extern-trimitere-După'
+                'element.extern-trimitere-Cf.',
+                'element.extern-trimitere-După'
             )
             or
 	    	(
@@ -179,32 +179,32 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     )
     else (),         
     if (@type = (
-    		'cuvântul.titlu-formație.internă-trimitere-V.',
-            'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
-            'cuvântul.titlu-formație.internă-trimitere-De.la-n..pr.',
-            'cuvântul.titlu-formație.internă-trimitere-De.la-numele.de.localitate',
-            'cuvântul.titlu-formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
-            'cuvântul.titlu-formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
-            'cuvântul.titlu-formație.internă-prescurtare', 
-			'cuvântul.titlu-formație.internă-derivat.regresiv',
-    		'cuvântul.titlu-formație.internă-derivat.postverbal',
-            'cuvântul.titlu-formație.internă-izolare-din.nume.de.localităţi',
-            'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
-            'cuvântul.titlu-formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
-            'cuvântul.titlu-formație.internă-format.după',
-            'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
-            'cuvântul.titlu-formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este',
-            'cuvântul.titlu-formație.internă-contragere',
-            'cuvântul.titlu-formație.internă-formație.spontană.de.la',
-            'cuvântul.titlu-formație.internă-prin.figură.etimologică.de.la',
+    		'formație.internă-trimitere-V.',
+            'formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
+            'formație.internă-trimitere-De.la-n..pr.',
+            'formație.internă-trimitere-De.la-numele.de.localitate',
+            'formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
+            'formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
+            'formație.internă-prescurtare', 
+			'formație.internă-derivat.regresiv',
+    		'formație.internă-derivat.postverbal',
+            'formație.internă-izolare-din.nume.de.localităţi',
+            'formație.internă-izolare-prin.analiză.din.împrumuturi.ca',                    
+            'formație.internă-izolare-prin.analiză.din.cuvinte.compuse.împrumutate',
+            'formație.internă-format.după',
+            'formație.internă-contaminare-cu.un.element-în.care.primul.element.este',
+            'formație.internă-contaminare-cu.un.element-în.care.unul.dintre.elemente.este',
+            'formație.internă-contragere',
+            'formație.internă-formație.spontană.de.la',
+            'formație.internă-prin.figură.etimologică.de.la',
             'variantă-directă-singular.refăcut.după.pluralul',
             'variantă-directă-prin.apropiere.de',
             'variantă-directă-etimologie.populară.prin.apropiere.de',
             'variantă-directă-derivat.regresiv.de.la',
             'variantă-directă-prin.confuzie.cu',
             'variantă-directă-sub.influența',
-            'cuvântul.titlu-formație.internă-trimitere-Din-etimon.atestat',
-            'cuvântul.titlu-formație.internă-trimitere-Din-etimon.*'
+            'formație.internă-trimitere-Din-etimon.atestat',
+            'formație.internă-trimitere-Din-etimon.*'
     	)
     )
     then (
@@ -221,7 +221,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:bibl-template) after .
     )
     else (),
-    if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.')
-    then insert node $dlr:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template after .
+    if (@type = 'formație.internă-trimitere-Cf.')
+    then insert node $dlr:ptr-formație.internă-trimitere-Cf.-template after .
     else ()   
 )

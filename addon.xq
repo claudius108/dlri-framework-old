@@ -482,8 +482,8 @@ ua:template("etym-before",
         Probabilitate etimologie&amp;nbsp;
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'cuvântul.titlu-element.de.substrat' and count(bibl) = 0};" />
-        <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'cuvântul.titlu-formație.internă-trimitere-')] and count(gramGrp) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'element.de.substrat' and count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'formație.internă-trimitere-')] and count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
     </template>
 ),
@@ -516,21 +516,21 @@ ua:template("variant-etym-idno-first-of-type",
 ),
 ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section'] > etym > idno:first-of-type"), "variant-etym-idno-first-of-type"),
 
-ua:template("cuvântul.titlu-formație.internă-formație.onomatopeică-template",
+ua:template("formație.internă-formație.onomatopeică-template",
     <template>
         Formaţie onomatopeică&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-formație.onomatopeică'] ~ term"), "cuvântul.titlu-formație.internă-formație.onomatopeică-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-formație.onomatopeică'] ~ term"), "formație.internă-formație.onomatopeică-template"),
 
-ua:template("cuvântul.titlu-formație.internă-din.formulă.de.urare-template",
+ua:template("formație.internă-din.formulă.de.urare-template",
     <template>
         Din formulă de urare&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-din.formulă.de.urare'] ~ term"), "cuvântul.titlu-formație.internă-din.formulă.de.urare-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-din.formulă.de.urare'] ~ term"), "formație.internă-din.formulă.de.urare-template"),
 
 ua:template("translation-template",
 	<template>
@@ -572,7 +572,7 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-te
 ),
 ua:attach-template(ua-dt:css-selector("etym > term[type = 'una.sau.mai.multe.variante.lexicale-cf.']"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-term-template")
 ,
-ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
+ua:template("etimon.neatestat.(reconstruit)-term",
     <template>
         Limba&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
@@ -584,7 +584,7 @@ ua:template("cuvântul.titlu-etimon.neatestat.(reconstruit)-term",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-etimon.neatestat.(reconstruit)'] ~ term"), "cuvântul.titlu-etimon.neatestat.(reconstruit)-term"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'etimon.neatestat.(reconstruit)'] ~ term"), "etimon.neatestat.(reconstruit)-term"),
 
 ua:template("element.extern-calc-template",
     <template>
@@ -620,7 +620,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..și.etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template"),
 
-ua:template("cuvântul.titlu-element.extern-trimitere-template",
+ua:template("element.extern-trimitere-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -629,7 +629,7 @@ ua:template("cuvântul.titlu-element.extern-trimitere-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'cuvântul.titlu-element.extern-trimitere'] ~ term"), "cuvântul.titlu-element.extern-trimitere-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'element.extern-trimitere'] ~ term"), "element.extern-trimitere-template"),
 
 ua:template("variantă-directă-etimon.variantă-template",
     <template>
@@ -642,15 +642,15 @@ ua:template("variantă-directă-etimon.variantă-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon.variantă'] ~ term"), "variantă-directă-etimon.variantă-template"),
 
-ua:template("cuvântul.titlu-element.de.substrat-term-1-etymon",
+ua:template("element.de.substrat-term-1-etymon",
     <template>
         El. de substrat&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term:nth-of-type(1):before"), "cuvântul.titlu-element.de.substrat-term-1-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'element.de.substrat'] ~ term:nth-of-type(1):before"), "element.de.substrat-term-1-etymon"),
 
-ua:template("cuvântul.titlu-element.de.substrat-term-2-template",
+ua:template("element.de.substrat-term-2-template",
     <template>
         Cf.&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
@@ -662,24 +662,24 @@ ua:template("cuvântul.titlu-element.de.substrat-term-2-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.de.substrat'] ~ term:nth-of-type(2):before"), "cuvântul.titlu-element.de.substrat-term-2-template"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'element.de.substrat'] ~ term:nth-of-type(2):before"), "element.de.substrat-term-2-template"),
 
-ua:template("cuvântul.titlu-element.moştenit-etimon.atestat-etymon",
+ua:template("element.moştenit-etimon.atestat-etymon",
     <template>
         Lat.&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
         În funcţie de partea de vorbire se vor indica următoarele forme ale etimonului: pentru s./ subst. - Nom. şi Gen; pentru adj. - formele de m, f şi n.; pentru vb. - inf. lung ; pentru pron. - formele de Nom., Gen. şi Dat.; pentru num. - formele de m. şi f.; pentru art. - formele de m. şi f.
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.moştenit-etimon.atestat'] ~ term"), "cuvântul.titlu-element.moştenit-etimon.atestat-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'element.moştenit-etimon.atestat'] ~ term"), "element.moştenit-etimon.atestat-etymon"),
 
-ua:template("cuvântul.titlu-element.moştenit-etimon.neatestat-etymon",
+ua:template("element.moştenit-etimon.neatestat-etymon",
     <template>
         Lat. *&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-element.moştenit-etimon.neatestat'] ~ term"), "cuvântul.titlu-element.moştenit-etimon.neatestat-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'element.moştenit-etimon.neatestat'] ~ term"), "element.moştenit-etimon.neatestat-etymon"),
 
 ua:template("etym-term-prefix-template",
     <template>
@@ -748,7 +748,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-ptr-template",
+ua:template("formație.internă-compus-format.din-bază-ptr-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -759,9 +759,9 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-ptr-temp
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-bază-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'formație.internă-compus-format.din-bază']:after"), "formație.internă-compus-format.din-bază-ptr-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-term-template",
+ua:template("formație.internă-compus-format.din-bază-term-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -770,9 +770,9 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-bază-term-tem
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-bază']:after"), "cuvântul.titlu-formație.internă-compus-format.din-bază-term-template")
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'formație.internă-compus-format.din-bază']:after"), "formație.internă-compus-format.din-bază-term-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-ptr-template",
+ua:template("formație.internă-compus-format.din-element.adăugat-ptr-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -781,24 +781,24 @@ ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăug
         {
             ua:get-template('ptr-template')
         }
-        <button onclick="{oxy:xquery-update('resources/xquery/insert-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']) > 1};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'formație.internă-compus-format.din-element.adăugat']) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'formație.internă-compus-format.din-element.adăugat']:after"), "formație.internă-compus-format.din-element.adăugat-ptr-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-term-template",
+ua:template("formație.internă-compus-format.din-element.adăugat-term-template",
     <template>
         Limba&amp;nbsp;
         {
             $languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insert-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']) > 1};" />
+        <button onclick="{oxy:xquery-update('resources/xquery/insert-formație.internă-compus-format.din-element.adăugat.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/(term | ptr)[@type = 'formație.internă-compus-format.din-element.adăugat']) > 1};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat']:after"), "cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-term-template")
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'formație.internă-compus-format.din-element.adăugat']:after"), "formație.internă-compus-format.din-element.adăugat-term-template")
 ,
 ua:template("ptr-base-word-template",
     <template>
@@ -810,7 +810,7 @@ ua:template("ptr-base-word-template",
 ),
 ua:attach-template(ua-dt:css-selector("ptr[type = 'base-word']:after"), "ptr-base-word-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template",
+ua:template("formație.internă-compus-din.mai.multe.cuvinte.de.bază-template",
     <template>
     	Cuvânt de bază&amp;nbsp;
         {
@@ -820,7 +820,7 @@ ua:template("cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază'] ~ ptr:after"), "cuvântul.titlu-formație.internă-compus-din.mai.multe.cuvinte.de.bază-template")
+ua:attach-template(ua-dt:css-selector("idno[type = 'formație.internă-compus-din.mai.multe.cuvinte.de.bază'] ~ ptr:after"), "formație.internă-compus-din.mai.multe.cuvinte.de.bază-template")
 ,
 ua:template("latin-base-template",
     <template>
@@ -858,7 +858,7 @@ ua:template("variantă-directă-derivat.regresiv.de.la-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-derivat.regresiv.de.la'] ~ term"), "variantă-directă-derivat.regresiv.de.la-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template",
+ua:template("formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template",
     <template>
         Contaminare între&amp;nbsp;
         {
@@ -867,9 +867,9 @@ ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.mul
         \00000Aşi&amp;nbsp;
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:nth-of-type(1):after"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:nth-of-type(1):after"), "formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr1-template"),
 
-ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template",
+ua:template("formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template",
     <template>
         {
             ua:get-template('ptr-template')
@@ -878,9 +878,9 @@ ua:template("cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.mul
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/ptr) > 2};" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:not( :first-of-type):after"), "cuvântul.titlu-formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-contaminare-cu.două.sau.mai.multe.elemente'] ~ ptr:not( :first-of-type):after"), "formație.internă-contaminare-cu.două.sau.mai.multe.elemente-ptr2-template"),
 
-ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
+ua:template("element.extern-împrumut-etimon.sigur-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -900,9 +900,9 @@ ua:template("cuvântul.titlu-element.extern-împrumut-etimon.sigur-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-element.extern-împrumut-etimon.sigur'] ~ term"), "cuvântul.titlu-element.extern-împrumut-etimon.sigur-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-împrumut-etimon.sigur'] ~ term"), "element.extern-împrumut-etimon.sigur-template"),
 
-ua:template("cuvântul.titlu-formație.internă-calc-template",
+ua:template("formație.internă-calc-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -911,9 +911,9 @@ ua:template("cuvântul.titlu-formație.internă-calc-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvântul.titlu-formație.internă-calc'] ~ term"), "cuvântul.titlu-formație.internă-calc-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-calc'] ~ term"), "formație.internă-calc-template"),
 
-ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template",
+ua:template("formație.internă-trimitere-Cf.-ptr-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -924,9 +924,9 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template",
         }
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'formație.internă-trimitere-Cf.']:after"), "formație.internă-trimitere-Cf.-ptr-template")
 ,
-ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
+ua:template("formație.internă-trimitere-Cf.-term-template",
     <template>
         Limba&amp;nbsp;
         {
@@ -935,7 +935,7 @@ ua:template("cuvântul.titlu-formație.internă-trimitere-Cf.-term-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > term[type = 'cuvântul.titlu-formație.internă-trimitere-Cf.']:after"), "cuvântul.titlu-formație.internă-trimitere-Cf.-term-template")
+ua:attach-template(ua-dt:css-selector("etym > term[type = 'formație.internă-trimitere-Cf.']:after"), "formație.internă-trimitere-Cf.-term-template")
 ,
 ua:template("etym-note-template",
     <template>

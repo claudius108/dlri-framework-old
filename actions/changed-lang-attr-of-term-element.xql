@@ -13,15 +13,15 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 	then replace node . with $dlr:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-compus-format.din-bază' and @xml:lang = 'ro')
-	then replace node . with $dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-bază-template
+	if (@type = 'formație.internă-compus-format.din-bază' and @xml:lang = 'ro')
+	then replace node . with $dlr:ptr-formație.internă-compus-format.din-bază-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-compus-format.din-element.adăugat' and @xml:lang = 'ro')
-	then replace node . with $dlr:ptr-cuvântul.titlu-formație.internă-compus-format.din-element.adăugat-template
+	if (@type = 'formație.internă-compus-format.din-element.adăugat' and @xml:lang = 'ro')
+	then replace node . with $dlr:ptr-formație.internă-compus-format.din-element.adăugat-template
 	else ()
 	,
-	if (@type = 'cuvântul.titlu-formație.internă-trimitere-Cf.' and @xml:lang = 'ro')
-	then replace node . with $dlr:ptr-cuvântul.titlu-formație.internă-trimitere-Cf.-template
+	if (@type = 'formație.internă-trimitere-Cf.' and @xml:lang = 'ro')
+	then replace node . with $dlr:ptr-formație.internă-trimitere-Cf.-template
 	else ()	
 )	
