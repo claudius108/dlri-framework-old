@@ -150,7 +150,6 @@ sense > def, citedRange, quote, usg {
     border: 1px solid black;
     background-color: #ffffff;
     min-height: 100px;
-	-oxy-placeholder-content:"a";    
 }
 
 sense > def:before {

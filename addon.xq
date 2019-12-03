@@ -1066,6 +1066,8 @@ ua:attach-template(ua-dt:css-selector("note[type = 'bibliographic-references']:b
 ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
+        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
+        <button onclick="{oxy:xquery-update('resources/xquery/deleteBiblElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>        
         <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
             <option label="" value="unknown" />
             <option label="ap." value="ap." />
@@ -1075,14 +1077,6 @@ ua:template("bibl-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):before"), "bibl-template"),
-
-ua:template("bibl-buttons-template",
-    <template>
-        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update('resources/xquery/deleteBiblElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after, note > bibl:after"), "bibl-buttons-template"),
 
 ua:template("bibl-date-before",
     <template>
