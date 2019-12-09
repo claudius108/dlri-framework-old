@@ -166,7 +166,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'element.extern-calc',
                 'variantă-directă-din.lat.',
                 'element.extern-trimitere-Cf.',
-                'element.extern-trimitere-După'
+                'element.extern-trimitere-După',
+                'cuvânt.internațional'
             )
             or
 	    	(

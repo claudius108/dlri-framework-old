@@ -886,7 +886,14 @@ ua:template("element.extern-împrumut-etimon.sigur-template",
         {
             $languages-template
         }
-        tip etimon sigur&amp;nbsp;
+        &amp;nbsp;etimon sigur&amp;nbsp;
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-împrumut-etimon.sigur'] ~ term"), "element.extern-împrumut-etimon.sigur-template"),
+
+ua:template("cuvânt.internațional-template",
+    <template>
         <select data-ua-ref="{@type}" contenteditable="false">
             <option label="" value="unknown" />
             <option label="cuv. chinezesc" value="cuv. chinezesc" />
@@ -895,12 +902,11 @@ ua:template("element.extern-împrumut-etimon.sigur-template",
             <option label="împrumut savant din greacă" value="împrumut savant din greacă" />
             <option label="cuv. lat." value="cuv. lat." />
             <option label="cuv. it." value="cuv. it." />
-        </select>        
-        &amp;nbsp;etimon sigur&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
+            <option label="Cuv. din Filipine" value="Cuv. din Filipine" />
+        </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-împrumut-etimon.sigur'] ~ term"), "element.extern-împrumut-etimon.sigur-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvânt.internațional'] ~ term"), "cuvânt.internațional-template"),
 
 ua:template("formație.internă-calc-template",
     <template>
@@ -1063,6 +1069,8 @@ ua:template("bibliographic-references-before-template",
 ),
 ua:attach-template(ua-dt:css-selector("note[type = 'bibliographic-references']:before"), "bibliographic-references-before-template")
 ,
+
+
 ua:template("bibl-template",
     <template>
         Izvor:&amp;nbsp;
@@ -1077,6 +1085,37 @@ ua:template("bibl-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):before"), "bibl-template"),
+
+
+
+
+
+
+ua:template("bibl-author-reference-template",
+    <template>
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference']:after"), "bibl-author-reference-template"),
+
+ua:template("author-reference-template",
+    <template>
+	    <datalist id="bibliographic-reference-authors">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="bibliographic-reference-authors" />
+	    <button onclick="{oxy:xquery('searchBibliographicReferenceAuthors')}" style="background-color: transparent;" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:before"), "author-reference-template"),
+
+
+
+
+
+
+
+
 
 ua:template("bibl-date-before",
     <template>
@@ -1100,24 +1139,6 @@ ua:template("cit-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:before'), "cit-before"),
-
-ua:template("bibl-author-reference-template",
-    <template>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference']:after"), "bibl-author-reference-template"),
-
-ua:template("author-reference-template",
-    <template>
-	    <datalist id="bibliographic-reference-authors">
-	        <option label="" value=""/>
-	    </datalist>
-	    <input data-ua-ref="{@target}" size="40" list="bibliographic-reference-authors" />
-	    <button onclick="{oxy:xquery('searchBibliographicReferenceAuthors')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:before"), "author-reference-template"),
 
 ua:template("gramGrp-before",
     <template>
