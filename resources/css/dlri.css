@@ -390,19 +390,3 @@ bibl > ptr {
 		oxy_editor(type, text, edit, "#text", columns, 10)
 		oxy_editor(type, button, action, oxy_action(name, "Căutare", operation, "ro.sync.ecss.extensions.commons.operations.XQueryOperation", arg-action, "After", arg-script, "resources/xquery/get-bibliographic-references.xql"), transparent, true);
 }
-
-bibl:not([type = 'author-reference']):before {
-	content:
-		"Izvor: "
-		oxy_editor(type, combo, edit, "@type", values, "unknown,ap.,cf.,în", labels, ",ap.,cf.,în", columns, 10, editable, false)
-	;
-}
-
-form > bibl:before, etym > bibl:before, re > bibl:before, note > bibl:before {
-	-oxy-append-content:
-		oxy_editor(type, button, action, oxy_action(name, "Izvor", icon, "../../resources/images/add.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/insertBiblElement.xql"), transparent, true, visible, oxy_xpath("count(bibl) = 0"))
-		oxy_editor(type, button, action, oxy_action(name, "955a60c2d4474f6cb66354550092a421", icon, "../../resources/images/delete.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/deleteBiblElement.xql"), transparent, true)
-	;
-}
-
-bibl[type = 'author-reference']:after{content: oxy_editor(type, button, action, oxy_action(name, "Ștergere", icon, "../../resources/images/delete.png", operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation", arg-script, "resources/xquery/deleteCurrentElement.xq"), transparent, true);}
