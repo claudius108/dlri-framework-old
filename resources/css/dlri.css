@@ -28,6 +28,10 @@ form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, for
 	visibility: "-oxy-collapse-text";
 }
 
+sense > form > usg {
+    visibility: visible;
+}
+
 oxy|comment, form[type = 'headword'] > syll, titleStmt > title, publicationStmt, publicationStmt > *, sourceDesc, sourceDesc > * {
 	display: none !important;
 }
