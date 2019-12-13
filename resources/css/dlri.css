@@ -24,7 +24,7 @@ TEI:before {
 }
 
 title, author, editor, syll, stress, term, form[type = 'headword'] > orth, form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno, ptr {
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno, ptr, re > def {
 	visibility: "-oxy-collapse-text";
 }
 
