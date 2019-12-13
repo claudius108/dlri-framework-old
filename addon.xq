@@ -903,6 +903,7 @@ ua:template("cuvânt.internațional-template",
             <option label="cuv. lat." value="cuv. lat." />
             <option label="cuv. it." value="cuv. it." />
             <option label="Cuv. din Filipine" value="Cuv. din Filipine" />
+            <option label="Cuv. ebr." value="Cuv. ebr." />
         </select>
     </template>
 ),
