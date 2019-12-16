@@ -1921,7 +1921,7 @@ ua:attach-template(ua-dt:css-selector("sense > def:before"), "sense-def-before-t
 
 ua:template("entry-form-headword-before",
     <template>
-        \00000A Cuvânt titlu (neaccentuat):&amp;nbsp;
+        \00000A Cuvânt titlu (neaccentuat, cu minuscule):&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
         \00000ANumăr ordine omonime:&amp;nbsp;
         <input data-ua-ref="{@n}" size="2" />
@@ -1931,7 +1931,7 @@ ua:attach-template(ua-dt:css-selector("entry > form[type = 'headword'] > orth"),
 ,
 ua:template("headword-stress",
     <template>
-        Cuvânt titlu (accentuat):&amp;nbsp;
+        Cuvânt titlu (accentuat, cu majuscule):&amp;nbsp;
         <input data-ua-ref="{text()}" size="40" />
     </template>
 ),

@@ -28,7 +28,7 @@ form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, for
 	visibility: "-oxy-collapse-text";
 }
 
-sense > form > usg {
+sense > form > usg, citedRange {
     visibility: visible;
 }
 
@@ -166,7 +166,43 @@ sense > def:before {
 				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="spaced"/>',
 				arg-insertLocation, 'caret'
 			)
-        )        
+        )  
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Bold16.png'),
+				name, 'Bold', 
+				description, 'Textul selectat este redat îngroșat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Italic16.png'),
+				name, 'Italic', 
+				description, 'Textul selectat este redat înclinat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Superscript16.png'),
+				name, 'Exponent', 
+				description, 'Textul selectat este redat la exponent.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="superscript"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
         ;
 }
 
