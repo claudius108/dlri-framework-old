@@ -400,14 +400,13 @@ usg:before {
 
 hi, seg[rend = 'usg'] {
 	display: inline;
-	content: oxy_xpath("@style");
 }
 
-hi[rend ~= 'bold'] {
+hi[rend = 'bold'] {
 	font-weight: bold;
 }
 
-hi[rend ~= 'italic'], seg[type ~= 'time dom sem plev'] {
+hi[rend = 'italic'] {
     font-style: italic;
 }
 
@@ -433,7 +432,7 @@ seg[type = 'time'], seg[type = 'dom'], seg[type = 'sem'], seg[type = 'plev'] {
 }
 
 seg[rend = 'usg']:before {
-    content: attr(type) ": ";
+    content: attr(type) ":";
 }
 
 bibl > ptr {
