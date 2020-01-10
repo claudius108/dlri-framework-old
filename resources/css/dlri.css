@@ -203,6 +203,18 @@ sense > def:before {
 				arg-insertLocation, 'caret'
 			)
         )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Subscript16.png'),
+				name, 'Exponent', 
+				description, 'Textul selectat este redat la indice.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="subscript"/>',
+				arg-insertLocation, 'caret'
+			)
+        )        
         ;
 }
 
