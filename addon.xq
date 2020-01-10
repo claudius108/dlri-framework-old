@@ -186,6 +186,14 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertSynonym.xql")  
 ),
 ua:action(
+    "insertRemoteSynonym",
+    map { 
+        "name" := "Sinonim îndepărtat",
+        "smallIconPath" := "../../resources/images/add.png"
+    }, 
+    oxy:execute-xquery-update-script("resources/xquery/insertRemoteSynonym.xql")  
+),
+ua:action(
     "insertAnalogy",
     map { 
         "name" := "Analogie",
@@ -428,6 +436,18 @@ ua:template("syn-before",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("xr[type = 'syn'] > ptr:before"), "syn-before")
+,
+ua:template("remote-syn-before",
+    <template>
+        Sinonim îndepărtat&amp;nbsp;
+	    <datalist id="headword-references">
+	        <option label="" value=""/>
+	    </datalist>
+	    <input data-ua-ref="{@target}" size="40" list="headword-references" />
+	    <button onclick="{oxy:xquery('searchHeadwordReferences')}" style="background-color: transparent;" />      
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("xr[type = 'remote-syn'] > ptr:before"), "remote-syn-before")
 ,
 ua:template("analog-before",
     <template>
@@ -1907,6 +1927,7 @@ ua:template("sense-def-before-template",
     <template>
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertRemoteSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'remote-syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
