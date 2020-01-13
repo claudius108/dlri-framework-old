@@ -420,7 +420,7 @@ ua:template("sense-xr-before",
     <template>
         <button onclick="{oxy:xquery-update-action('cloneXrElement')}" style="background-color: transparent;" />
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {@type = 'syn' and count(usg) = 0};">Ind. fol.</button> 
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsLastIntoElement.xql')}" style="visibility: {@type = ('syn', 'remote-syn') and count(usg) = 0};">Ind. fol.</button> 
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > xr:before"), "sense-xr-before")
