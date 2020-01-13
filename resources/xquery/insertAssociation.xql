@@ -18,4 +18,4 @@ let $processed-template :=
 	return $template
 
 
-return insert node $processed-template after ($context-node | $context-node/following-sibling::tei:usg | $context-node/following-sibling::tei:xr[@type = ('syn', 'remote-syn', 'analog')])[@corresp = $corresp-value][last()]	
+return insert node $processed-template after ($context-node | $context-node/following-sibling::tei:usg[@corresp = $corresp-value] | $context-node/following-sibling::tei:xr[@type = ('syn', 'remote-syn', 'analog') and @corresp = $corresp-value])[last()]	
