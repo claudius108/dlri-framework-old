@@ -1425,6 +1425,7 @@ ua:template("pos-vb-subc-1-before-template",
             <option label="refl." value="refl." />
             <option label="impers." value="impers." />
             <option label="refl. impers." value="refl. impers." />
+            <option label="tranz. fact." value="tranz. fact." />
         </select>
     </template>
 ),
