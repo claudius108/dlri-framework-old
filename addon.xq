@@ -922,8 +922,9 @@ ua:template("cuvânt.internațional-template",
             <option label="împrumut savant din greacă" value="împrumut savant din greacă" />
             <option label="cuv. lat." value="cuv. lat." />
             <option label="cuv. it." value="cuv. it." />
-            <option label="Cuv. din Filipine" value="Cuv. din Filipine" />
-            <option label="Cuv. ebr." value="Cuv. ebr." />
+            <option label="cuv. din Filipine" value="cuv. din Filipine" />
+            <option label="cuv. ebr." value="cuv. ebr." />
+            <option label="cuv. arab" value="cuv. arab" />
         </select>
     </template>
 ),
