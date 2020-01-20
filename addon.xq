@@ -502,7 +502,7 @@ ua:template("etym-before",
         Probabilitate etimologie&amp;nbsp;
         <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
-        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {idno[1]/@type = 'element.de.substrat' and count(bibl) = 0};" />
+        <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'formație.internă-trimitere-')] and count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
     </template>
