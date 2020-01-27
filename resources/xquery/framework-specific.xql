@@ -91,7 +91,8 @@ let $editors-concepts :=
 	
 	return $editors-concept
 					
-let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/lemma.xml"))
+let $lemma-template := parse-xml(unparsed-text($ontology-github-url || "/templates/DLR/lemma.xml"))
+let $variant-template := parse-xml(unparsed-text($ontology-github-url || "/templates/DLR/variant.xml"))
 (: process the controlled vocabulary for languages :)
 let $languages :=
 	serialize(
@@ -140,7 +141,9 @@ return (
 	,
 	file:write-text($frameworkResourcesDirPath || "/ontology/languages.html", $languages)
 	,
-	file:write($frameworkDirPath || "/templates/lemma.xml", $lemma-template)	
+	file:write($frameworkDirPath || "/templates/lemma.xml", $lemma-template)
+	,
+	file:write($frameworkDirPath || "/templates/variant.xml", $variant-template)
     ,
 	file:write-binary(
 		$frameworkUberJarPath,	
@@ -166,6 +169,22 @@ return (
 			)			
 		)
 	)
+	,
+	file:write-binary(
+		$frameworkUberJarPath,	
+		arch:update(
+			file:read-binary($frameworkUberJarPath),
+			"templates/variant.xml",
+			bin:encode-string(
+				serialize(
+					$variant-template,
+					<output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+					  <output:indent value="yes" />
+					</output:serialization-parameters>
+				)
+			)			
+		)
+	)	
 	,
 	file:write-binary(
 		$frameworkJarPath,	
