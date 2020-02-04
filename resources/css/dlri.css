@@ -468,7 +468,7 @@ seg[rend = 'usg'] {
     background-color: #cccccc;
 }
 
-seg[type = 'time'], seg[type = 'dom'], seg[type = 'sem'], seg[type = 'plev'] {
+seg[type = 'time'], seg[type = 'dom'], seg[type = 'sem'], seg[type = 'plev'], seg[type = 'geo'] {
     font-style: italic;
 }
 
