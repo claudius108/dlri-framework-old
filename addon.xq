@@ -1129,14 +1129,6 @@ ua:template("author-reference-template",
 ),
 ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:before"), "author-reference-template"),
 
-
-
-
-
-
-
-
-
 ua:template("bibl-date-before",
     <template>
     	Dată:&amp;nbsp;
@@ -1416,7 +1408,7 @@ ua:attach-template(ua-dt:css-selector("pos[value='vb.'] ~ iType:before"), "pos-i
 ua:template("pos-vb-subc-1-before-template",
     <template>
         Tip 1:&amp;nbsp;
-        <select data-ua-ref="{@value}" multiple="multiple" data-ua-appearance="oxy:popupWithMultipleSelection">
+        <select data-ua-ref="{@value}" contenteditable="false">
             <option label="" value="" />
             <option label="fact." value="fact." />
             <option label="intranz." value="intranz." />
