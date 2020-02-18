@@ -1133,7 +1133,7 @@ ua:attach-template(ua-dt:css-selector("bibl[type = 'author-reference'] > author:
 ua:template("bibl-date-before",
     <template>
     	Dată:&amp;nbsp;
-        <input data-ua-ref="{text()}" size="10" />
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("bibl > date:before"), "bibl-date-before"),
