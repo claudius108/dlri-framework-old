@@ -50,7 +50,9 @@ xquery version "3.0";
     then
         (
             delete nodes parent::*/element()[position() > 1],
-            insert nodes (doc('../content-models/iType.xml'), doc('../content-models/subc.xml'), doc('../content-models/subc.xml')) as last into parent::*
+            if (parent::*/parent::*/local-name() = "entry")
+            then insert nodes doc('../content-models/iType.xml') as last into parent::*
+            else insert nodes (doc('../content-models/iType.xml'), doc('../content-models/subc.xml'), doc('../content-models/subc.xml')) as last into parent::*
         )
     else ()
 )
