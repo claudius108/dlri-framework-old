@@ -931,6 +931,13 @@ ua:template("cuvânt.internațional-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'cuvânt.internațional'] ~ term"), "cuvânt.internațional-template"),
 
+ua:template("formație.internă-derivat-nume.propriu.cu.sufix-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'formație.internă-derivat-nume.propriu.cu.sufix'] ~ term:nth-of-type(1)"), "formație.internă-derivat-nume.propriu.cu.sufix-template"),
+
 ua:template("formație.internă-calc-template",
     <template>
         Limba&amp;nbsp;

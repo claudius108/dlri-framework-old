@@ -75,6 +75,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     if (@type = 'formație.internă-derivat-cu.sufix')
     then insert nodes ($dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (),
+    if (@type = 'formație.internă-derivat-nume.propriu.cu.sufix')
+    then insert nodes ($dlr:term-template, $dlr:term-sufix-template) after .
+    else (),    
     if (@type = 'formație.internă-derivat-cu.prefix.şi.sufix')
     then insert nodes ($dlr:term-prefix-template, $dlr:ptr-base-word-template, $dlr:term-sufix-template) after .
     else (), 
