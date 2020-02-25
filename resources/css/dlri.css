@@ -312,7 +312,19 @@ quote:before {
 				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="spaced"/>',
 				arg-insertLocation, 'caret'
 			)
-        )         
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Superscript16.png'),
+				name, 'Exponent', 
+				description, 'Textul selectat este redat la exponent.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="superscript"/>',
+				arg-insertLocation, 'caret'
+			)
+        )        
         ;
 }
 
