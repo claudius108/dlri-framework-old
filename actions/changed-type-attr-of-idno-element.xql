@@ -184,6 +184,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     else (),         
     if (@type = (
     		'formație.internă-trimitere-V.',
+    		'formație.internă-derivat.îndepărtat',
             'formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
             'formație.internă-trimitere-De.la-n..pr.',
             'formație.internă-trimitere-De.la-numele.de.localitate',
