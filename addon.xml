@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xt:extensions xmlns:xt="http://www.oxygenxml.com/ns/extension">    
     <xt:extension id="dlri">
-        <xt:location href="http://188.212.37.221/repo/dlri-main-framework/dlri.jar"/>
+        <xt:location href="http://repo.dlri.ro/dlri-main-framework/dlri.jar"/>
         <xt:version>1.78</xt:version>
         <xt:oxy_version>21.1+</xt:oxy_version>
         <xt:type>framework</xt:type>

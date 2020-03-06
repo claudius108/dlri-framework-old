@@ -220,10 +220,15 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
         insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:ptr-una.sau.mai.multe.variante.lexicale-cf.-template) after .
     )
-    else (), 
-    if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..izvor'))
+    else (),
+    if (@type = 'una.sau.mai.multe.variante.lexicale-variante.cu-trimitere-cf..izvor')
     then (
         insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:bibl-template) after .
+    )
+    else (),    
+    if (@type = ('una.sau.mai.multe.variante.lexicale-variante.de.tipul-trimitere-cf..izvor', 'una.sau.mai.multe.variante.lexicale-variantă-trimitere-cf..izvor'))
+    then (
+        insert node $dlr:bibl-template after .
     )
     else (),
     if (@type = 'formație.internă-trimitere-Cf.')
