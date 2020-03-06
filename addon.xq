@@ -926,6 +926,7 @@ ua:template("cuvânt.internațional-template",
             <option label="cuv. ebr." value="cuv. ebr." />
             <option label="cuv. arab" value="cuv. arab" />
             <option label="cuv. tc." value="cuv. tc." />
+            <option label="cuv. amerindian" value="cuv. amerindian" />
         </select>
     </template>
 ),
