@@ -126,10 +126,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         )
     )
     then (
-            insert nodes (
-            	$dlr:ptr-unul.sau.mai.multe.sensuri-sensul-template,
-            	$dlr:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template
-            ) after .
+            insert node $dlr:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template after .
          )
     else (),
     if (@type = 

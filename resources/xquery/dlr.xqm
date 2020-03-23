@@ -88,10 +88,6 @@ declare variable $dlr:ptr-una.sau.mai.multe.variante.lexicale-cf.-template as el
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="una.sau.mai.multe.variante.lexicale-cf." target="unknown" />
 ;
 
-declare variable $dlr:ptr-unul.sau.mai.multe.sensuri-sensul-template as element() :=
-    <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="" type="unul.sau.mai.multe.sensuri-sensul" target="unknown" />
-;
-
 declare variable $dlr:ptr-unul.sau.mai.multe.sensuri-sensul-cf.-template as element() :=
     <ptr xmlns="http://www.tei-c.org/ns/1.0" targetLang="ro" type="unul.sau.mai.multe.sensuri-sensul-cf." target="unknown" />
 ;
