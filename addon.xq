@@ -1881,7 +1881,7 @@ ua:template("dlr-senses-tree-template",
             ua:get-template(oxy:get-template("ro.dlri.oxygen.templates.tree.TreeFormControl",
                 map {
                     "edit" := "#text",
-                    "itemLabel" := "concat(@n, ' ', if (form) then concat(string-join(form/term[1], ' | '), ' =') else (), ' ', string-join(def, ' '))",
+                    "itemLabel" := "concat(@n, ' ', if (form) then concat(string-join(form/term[1], ' | '), ' =') else (), ' ', string-join(usg, ' '), ' ', string-join(def, ' '))",
                     "treeWidth" := "1100",
                     "treeHeight" := "350",
                     "treeParentNodePath" := "//dictScrap[@xml:id = 'dlr-senses']"
