@@ -1628,7 +1628,7 @@ ua:template("form-grammatical-information-idno-nth-of-type-2",
             <option label="" value="unknown" />
             <option label="pl." value="grammatical-information-subtype-for-pl" />
             <option label="caz" value="grammatical-information-subtype-for-case" />
-            <option label="fem. sg. (pentru adj.)" value="grammatical-information-subtype-for-fem-sg" />
+            <option label="fem. sg. (pentru adj. / s.)" value="grammatical-information-subtype-for-fem-sg" />
         </select>
         \00000A
     </template>
