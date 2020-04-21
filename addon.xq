@@ -662,15 +662,15 @@ ua:template("variantă-directă-etimon.variantă-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon.variantă'] ~ term"), "variantă-directă-etimon.variantă-template"),
 
-ua:template("element.de.substrat-term-1-etymon",
+ua:template("cuv.de.origine-term-1-etymon",
     <template>
-        El. de substrat&amp;nbsp;
+        Cuvânt de origine&amp;nbsp;
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'element.de.substrat'] ~ term:nth-of-type(1):before"), "element.de.substrat-term-1-etymon"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuv.de.origine'] ~ term:nth-of-type(1):before"), "cuv.de.origine-term-1-etymon"),
 
-ua:template("element.de.substrat-term-2-template",
+ua:template("cuv.de.origine-term-2-template",
     <template>
         Cf.&amp;nbsp;
         <select data-ua-ref="{@xml:lang}" contenteditable="false">
@@ -682,7 +682,7 @@ ua:template("element.de.substrat-term-2-template",
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("idno[type = 'element.de.substrat'] ~ term:nth-of-type(2):before"), "element.de.substrat-term-2-template"),
+ua:attach-template(ua-dt:css-selector("idno[type = 'cuv.de.origine'] ~ term:nth-of-type(2):before"), "cuv.de.origine-term-2-template"),
 
 ua:template("element.moştenit-etimon.atestat-etymon",
     <template>

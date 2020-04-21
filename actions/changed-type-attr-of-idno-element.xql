@@ -66,7 +66,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     )
     then insert node $dlr:term-la-template after .	            
     else (),       
-    if (@type = 'element.de.substrat')
+    if (@type = 'cuv.de.origine')
     then insert nodes ($dlr:term-template, $dlr:term-template) after .  
     else (),  
     if (@type = 'formație.internă-derivat-cu.prefix')
