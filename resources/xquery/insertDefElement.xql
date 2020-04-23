@@ -13,4 +13,4 @@ let $processed-template :=
 	modify replace value of node $template/@xml:id with concat('uuid-', uuid:randomUUID())
 	return $template
 	
-return insert node $processed-template after ($context-node | $context-node/(following-sibling::tei:dictScrap, following-sibling::tei:term)[@corresp = $corresp-value] | $context-node/following-sibling::tei:ptr[@type = ('syn', 'analog', 'asoc', 'antonim') and @corresp = $corresp-value])[last()]
+return insert node $processed-template after ($context-node | $context-node/(following-sibling::tei:usg, following-sibling::tei:term)[@corresp = $corresp-value] | $context-node/following-sibling::tei:xr[@type = ('syn', 'analog', 'asoc', 'antonim', 'remote-syn') and @corresp = $corresp-value])[last()]
