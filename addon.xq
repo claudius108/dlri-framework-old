@@ -1760,6 +1760,7 @@ ua:template("sense-currentEdited-value-before",
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>        
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
     </template>
@@ -1925,7 +1926,6 @@ ua:template("sense-def-before-template",
         <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'analog' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {let $context := . return count($context/following-sibling::term[@corresp = concat('#', $context/@xml:id)]) = 0};">Nume lat.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xql')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
         \00000A
