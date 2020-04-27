@@ -6,4 +6,4 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
 let $context-node := .
 
-return insert node $dlr:term-la-template before $context-node/tei:cit[first()]	
+return insert node $dlr:term-la-template before $context-node/tei:cit[1]	
