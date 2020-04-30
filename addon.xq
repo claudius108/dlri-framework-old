@@ -500,7 +500,6 @@ ua:template("etym-before",
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAfter.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::entry/etym) > 1 or count(parent::sense/etym) > 0 or parent::re[@type = 'lexical-variant-section']};" />
         Probabilitate etimologie&amp;nbsp;
-        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'formație.internă-trimitere-')] and count(gramGrp) = 0};" />
