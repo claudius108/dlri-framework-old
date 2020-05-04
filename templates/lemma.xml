@@ -33,16 +33,7 @@
 					<pos value=""/>
 				</gramGrp>
 				<dictScrap xml:id="dlr-senses">
-					<sense xml:id="uuid-${uuid}" n="">
-						<cit type="unknown">
-							<quote/>
-							<bibl type="unknown">
-								<ptr target="unknown"/>
-								<date/>
-								<citedRange/>
-							</bibl>
-						</cit>
-					</sense>
+					<sense xml:id="uuid-${uuid}" n=""/>
 				</dictScrap>
 				<dictScrap xml:id="dex-senses">
 					<sense xml:id="uuid-${uuid}" n="">
