@@ -113,9 +113,7 @@ declare variable $dlr:ptr-formație.internă-trimitere-Cf.-template as element()
 ;
 
 declare variable $dlr:sense-template as element() :=
-    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" n="">
-        {$dlr:cit-template}
-    </sense>
+    <sense xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" n="" />
 ;
 
 declare variable $dlr:semantic-unit-template as element() :=

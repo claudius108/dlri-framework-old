@@ -1145,7 +1145,7 @@ ua:template("cit-before",
         </select>        
         <button onclick="{oxy:xquery-update-action('insertBibliographicReferenceAuthor')}" style="background-color: transparent; visibility: {count(bibl/author) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertCitElement.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::sense/cit) > 1};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector('cit:before'), "cit-before"),
@@ -1755,12 +1755,13 @@ ua:template("sense-currentEdited-value-before",
             <option label="✦" value="✦" />
             <option label="✧" value="✧" />
         </select>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstDefElement.xql')}" style="visibility: {count(def) = 0};">Def. analitică</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def) = 0};">Def. analitică</button>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>        
+        <button onclick="{oxy:xquery-update('resources/xquery/firstCitElement.xq')}" style="visibility: {count(cit) = 0};">Atestare</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
     </template>
