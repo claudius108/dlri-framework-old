@@ -1755,6 +1755,7 @@ ua:template("sense-currentEdited-value-before",
             <option label="✦" value="✦" />
             <option label="✧" value="✧" />
         </select>
+        <button onclick="{oxy:xquery-update('resources/xquery/insertFirstDefElement.xql')}" style="visibility: {count(def) = 0};">Def. analitică</button>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />        
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
@@ -1926,7 +1927,7 @@ ua:template("sense-def-before-template",
         <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'asoc' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xql')}" style="background-color: transparent; visibility: {count(parent::*/def) > 1};"><img src="../../resources/images/delete.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
         \00000A
     </template>
 ),
