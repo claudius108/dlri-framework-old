@@ -1759,12 +1759,14 @@ ua:template("sense-currentEdited-value-before",
         <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>        
     	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         \00000A
-        <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def) = 0};">Def. analitică</button>
-        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {count(xr[@type = 'analog']) = 0};"/>        
-        <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {count(xr[@type = 'asoc']) = 0};"/>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>        
-        \00000A
+        <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. analitică</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/globalSynonym.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. sinonimică</button>
+
+        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>         
+        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'analog']) = 0};"/>        
+        <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};"/>
+        \00000A        
+        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>       
         <button onclick="{oxy:xquery-update('resources/xquery/firstCitElement.xq')}" style="visibility: {count(cit) = 0};">Atestare</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
