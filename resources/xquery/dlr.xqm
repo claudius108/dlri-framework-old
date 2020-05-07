@@ -2,6 +2,8 @@ xquery version "3.0";
 
 module namespace dlr = "http://lingv.ro/ns/dlr/";
 
+declare namespace tei = "http://www.tei-c.org/ns/1.0";
+
 declare variable $dlr:gramGrp-template as element() :=
    <gramGrp xmlns="http://www.tei-c.org/ns/1.0">
        <pos value="" />
@@ -126,3 +128,10 @@ declare variable $dlr:semantic-unit-template as element() :=
 declare variable $dlr:usg-container-template as element() :=
 	<usg xmlns="http://www.tei-c.org/ns/1.0" />
 ;
+
+declare function dlr:get-last-def-component($context-node as element()) as element() {
+    let $last-def := $context-node/tei:def[last()]
+    let $corresp-value := "#" || $last-def/@xml:id
+    
+    return ($last-def | $context-node/*[@corresp = $corresp-value])[last()]	
+};

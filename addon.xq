@@ -194,22 +194,6 @@ ua:action(
     oxy:execute-xquery-update-script("resources/xquery/insertRemoteSynonym.xql")  
 ),
 ua:action(
-    "insertAnalogy",
-    map { 
-        "name" := "Analogie",
-        "smallIconPath" := "../../resources/images/add.png"        
-    }, 
-    oxy:execute-xquery-update-script("resources/xquery/insertAnalogy.xql")  
-),
-ua:action(
-    "insertAssociation",
-    map { 
-        "name" := "Asociație",
-        "smallIconPath" := "../../resources/images/add.png"
-    },
-    oxy:execute-xquery-update-script("resources/xquery/insertAssociation.xql")
-),
-ua:action(
     "insertAntonym",
     map { 
         "name" := "Antonim",
@@ -367,7 +351,7 @@ ua:template("TEI-before-template",
         <button onclick="{oxy:xquery-update-action('addFirstWritingSection')}" style="visibility: {count(//entry/form[@type = 'writing']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(//entry/form[@type = 'abbreviation']) = 0}; background-color: transparent; color: blue;" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(//entry/form[@type = 'grammatical-information']) = 0}; background-color: transparent; color: blue;" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/firstLexicalVariant.xql')}" style="visibility: {count(//entry/re[@type = 'lexical-variant-section']) = 0}; background-color: transparent; color: blue;">Variantă lexicală</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstBiblElement.xql')}" style="visibility: {count(//entry/note[@type = 'bibliographic-references']/bibl) = 0}; background-color: transparent; color: blue;">Ref. biblio.</button>
     </template>
 ),
@@ -1762,14 +1746,14 @@ ua:template("sense-currentEdited-value-before",
         <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. analitică</button>
         <button onclick="{oxy:xquery-update('resources/xquery/globalSynonym.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. sinonimică</button>
 
-        <button onclick="{oxy:xquery-update('resources/xquery/insertLatinName.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>         
-        <button onclick="{oxy:xquery-update-action('insertAnalogy')}" data-showIcon="false" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'analog']) = 0};"/>        
-        <button onclick="{oxy:xquery-update-action('insertAssociation')}" data-showIcon="false" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};"/>
+        <button onclick="{oxy:xquery-update('resources/xquery/latinName.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>         
+        <button onclick="{oxy:xquery-update('resources/xquery/analogy.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'analog']) = 0};">Analogie</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/association.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};">Analogie</button>
         \00000A        
-        <button onclick="{oxy:xquery-update('resources/xquery/insertReference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>       
-        <button onclick="{oxy:xquery-update('resources/xquery/firstCitElement.xq')}" style="visibility: {count(cit) = 0};">Atestare</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
+        <button onclick="{oxy:xquery-update('resources/xquery/reference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>       
+        <button onclick="{oxy:xquery-update('resources/xquery/firstCitElement.xql')}" style="visibility: {count(cit) = 0};">Atestare</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/firstLexicalVariant.xql')}" style="visibility: {count(//sense/re[@type = 'lexical-variant-section']) = 0};">Variantă lexicală</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/etymElementAsLastInto.xql')}" style="visibility: {count(etym) = 0};">Etimologie</button>     
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
@@ -1969,7 +1953,7 @@ ua:template("lexical-variant-section-before",
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update-action('addFirstGrammaticalInformationSection')}" style="visibility: {count(form[@type = 'grammatical-information']) = 0};" />
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addEtymElementAsLastInto.xql')}" style="visibility: {local-name(parent::*) = 'entry'};">Etimologie</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/etymElementAsLastInto.xql')}" style="visibility: {local-name(parent::*) = 'entry'};">Etimologie</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("re[type = 'lexical-variant-section']:before"), "lexical-variant-section-before"),
