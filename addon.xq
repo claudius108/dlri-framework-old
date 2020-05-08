@@ -1748,7 +1748,7 @@ ua:template("sense-currentEdited-value-before",
 
         <button onclick="{oxy:xquery-update('resources/xquery/latinName.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>         
         <button onclick="{oxy:xquery-update('resources/xquery/analogy.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'analog']) = 0};">Analogie</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/association.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};">Analogie</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/association.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};">Asociație</button>
         \00000A        
         <button onclick="{oxy:xquery-update('resources/xquery/reference.xql')}" style="visibility: {count(ptr[@type = 'trimitere']) = 0};">Trimitere</button>       
         <button onclick="{oxy:xquery-update('resources/xquery/firstCitElement.xql')}" style="visibility: {count(cit) = 0};">Atestare</button>
