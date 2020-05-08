@@ -10,15 +10,15 @@ let $context-node := .
 let $processed-template :=
 	copy $template := $dlr:xr-template
 	modify (
-        insert node attribute xml:id {concat('uuid-', uuid:randomUUID())} into $template
+        insert node attribute {'xml:id'} {concat('uuid-', uuid:randomUUID())} into $template
         ,
         replace value of node $template/@type with 'syn'
     )
 	
 	return $template
-let $last-def-element := ($context-node/tei:xr[@type = 'syn'])[last()]
+let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:form[@type = 'unitate-semantică-subsumată'] | $context-node/tei:xr[@type = 'syn'])[last()]
 
 return
-    if ($last-def-element)
-    then insert node $processed-template after $last-def-element
+    if ($delimiter)
+    then insert node $processed-template after $delimiter
     else insert node $processed-template as first into $context-node

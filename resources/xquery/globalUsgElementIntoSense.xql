@@ -2,7 +2,7 @@ xquery version "3.0";
 
 import module namespace dlr = "http://lingv.ro/ns/dlr/" at "dlr.xqm";
 
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
 let $context-node := .
 let $corresp-value := concat('#', $context-node/@xml:id)
@@ -11,9 +11,9 @@ let $processed-template :=
 	modify insert node attribute {'corresp'} {$corresp-value} into $template
 	
 	return $template
-
+let $delimiter := $context-node/tei:gramGrp[last()]
 
 return
-	if (element()[1]/local-name() = 'gramGrp')
-	then insert node $processed-template after element()[1]
+	if ($delimiter)
+	then insert node $processed-template after $delimiter
 	else insert node $processed-template as first into .

@@ -207,7 +207,7 @@ ua:action(
         "name" := "Cat. gram.",
         "smallIconPath" := "../../resources/images/add.png"        
     },
-    oxy:execute-xquery-update-script("resources/xquery/addGramGrp.xq")
+    oxy:execute-xquery-update-script("resources/xquery/gramGrp.xql")
 ),
 ua:action(
     "addGrammaticalInformationSection",
@@ -1760,7 +1760,7 @@ ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-valu
 ua:template("form-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;
-        <button onclick="{oxy:xquery-update('resources/xquery/insertSemanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
+        <button onclick="{oxy:xquery-update('resources/xquery/semanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>

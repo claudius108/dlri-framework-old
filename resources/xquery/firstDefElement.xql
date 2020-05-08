@@ -12,4 +12,9 @@ let $processed-template :=
 	modify replace value of node $template/@xml:id with concat('uuid-', uuid:randomUUID())
 	return $template
 	
-return insert node $processed-template as first into $context-node
+let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:form[@type = 'unitate-semantică-subsumată'])[last()]
+	
+return
+	if ($delimiter)
+	then insert node $processed-template after $delimiter
+	else insert node $processed-template as first into $context-node
