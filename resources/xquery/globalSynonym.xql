@@ -16,6 +16,9 @@ let $processed-template :=
     )
 	
 	return $template
+let $last-def-element := ($context-node/tei:xr[@type = 'syn'])[last()]
 
-
-return insert node $processed-template after ($context-node/tei:xr[@type = 'syn'])[last()]
+return
+    if ($last-def-element)
+    then insert node $processed-template after $last-def-element
+    else insert node $processed-template as first into $context-node
