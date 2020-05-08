@@ -1740,12 +1740,11 @@ ua:template("sense-currentEdited-value-before",
             <option label="✧" value="✧" />
         </select>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/insertGlobalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>        
-    	<button onclick="{oxy:xquery-update('resources/xquery/insertFirstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/globalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>        
+    	<button onclick="{oxy:xquery-update('resources/xquery/firstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         \00000A
         <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. analitică</button>
-        <button onclick="{oxy:xquery-update('resources/xquery/globalSynonym.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. sinonimică</button>
-
+        <button onclick="{oxy:xquery-update('resources/xquery/globalSynonym.xql')}">Def. sinonimică</button>
         <button onclick="{oxy:xquery-update('resources/xquery/latinName.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(term[@xml:lang = 'la']) = 0};">Nume lat.</button>         
         <button onclick="{oxy:xquery-update('resources/xquery/analogy.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'analog']) = 0};">Analogie</button>
         <button onclick="{oxy:xquery-update('resources/xquery/association.xql')}" style="visibility: {count(def | xr[@type = 'syn']) > 0 and count(xr[@type = 'asoc']) = 0};">Asociație</button>

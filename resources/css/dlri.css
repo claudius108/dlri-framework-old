@@ -218,6 +218,13 @@ sense > def:before {
         ;
 }
 
+xr[type = 'syn'][xml|id]:before {
+	min-height: 100px;
+	display:block;
+	background-color: #cccccc;
+    -oxy-prepend-content: "Definiție sinonimică "
+}
+
 citedRange:before {
 	display: block;
 	background-color: #cccccc;
