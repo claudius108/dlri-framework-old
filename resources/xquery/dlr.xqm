@@ -129,7 +129,7 @@ declare variable $dlr:usg-container-template as element() :=
 	<usg xmlns="http://www.tei-c.org/ns/1.0" />
 ;
 
-declare function dlr:get-last-def-component($context-node as element()) as element() {
+declare function dlr:get-last-def-component($context-node as element()) as element()? {
     let $last-def := $context-node/tei:def[last()]
     let $corresp-value := "#" || $last-def/@xml:id
     

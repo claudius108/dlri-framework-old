@@ -477,7 +477,7 @@ ua:template("nume.latinesc.definiție.sens-template",
 		<button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />        
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > def ~ term"), "nume.latinesc.definiție.sens-template")
+ua:attach-template(ua-dt:css-selector("sense > def ~ term, sense > xr ~ term"), "nume.latinesc.definiție.sens-template")
 ,
 ua:template("etym-before",
     <template>
