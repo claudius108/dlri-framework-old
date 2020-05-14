@@ -487,7 +487,7 @@ ua:template("etym-before",
         <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>      
         <button onclick="{oxy:xquery-update-action('insertFirstBiblElement')}" style="visibility: {count(bibl) = 0};" />
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {idno[starts-with(@type, 'formație.internă-trimitere-')] and count(gramGrp) = 0};" />
-        <button onclick="{oxy:xquery-update('resources/xquery/addFirstEtymologicalNote.xq')}" style="visibility: {count(note) = 0};">Notă</button>
+        <button onclick="{oxy:xquery-update('resources/xquery/firstEtymologicalNote.xql')}" style="visibility: {count(note) = 0};">Notă</button>
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym:before"), "etym-before"),
@@ -948,150 +948,11 @@ ua:attach-template(ua-dt:css-selector("etym > term[type = 'formație.internă-tr
 ua:template("etym-note-template",
     <template>
 		Notă&amp;nbsp;
-		<button onclick="{oxy:xquery-update('resources/xquery/addEtymologicalNote.xq')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-		<button onclick="{oxy:execute-action-by-name('editEtymologicalNote')}" style="background-color: transparent;" />
+		<button onclick="{oxy:xquery-update('resources/xquery/etymologicalNote.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template"),
-
-ua:template("etym-edited-note-template",
-    <template>
-        <select data-ua-ref="{@n}" contenteditable="false">
-            <option label="" value="unknown" />
-            <option label="cf." value="cf." />
-            <option label="cf. și" value="cf. și" />
-        </select>
-        Probabilitate&amp;nbsp;
-        <input data-ua-ref="{@cert}" type="radio" value="high">sigur</input>
-        <input data-ua-ref="{@cert}" type="radio" value="low">probabil</input>
-    	Tip&amp;nbsp;
-        <datalist id="etymological-note-types" />
-        <select data-ua-ref="{@type}" contenteditable="false" list="etymological-note-types" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note:root[type]"), "etym-edited-note-template"),
-
-ua:template("etym-note-term1-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note > term:nth-of-type(1):before"), "etym-note-term1-template"),
-
-ua:template("etym-note-traducere.etimon-term-template",
-    <template>
-    	Traducere etimon&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-3da5e0a5-9c68-3bb8-b68a-69151380ca62'] > term:nth-of-type(2):before"), "etym-note-traducere.etimon-term-template"),
-
-ua:template("etym-note-traducere.cuvânt.bază-term-template",
-    <template>
-    	Traducere cuvânt bază&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-450e4af3-9749-3ed8-9bd0-b8a53c30a8a0'] > term:nth-of-type(2):before"), "etym-note-traducere.cuvânt.bază-term-template"),
-
-ua:template("etym-note-languages-term-template",
-    <template>
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-a863aae7-47d7-379f-ba70-3c7e1093f37d'] > term:nth-of-type(1):before, note[type = 'uuid-691bd716-15c8-3e7f-a65a-3913e069704e'] > term:nth-of-type(1):before, 
-note[type ~= 'uuid-bf82a126-1e54-3766-aa59-af0085ccd638'] > term:nth-of-type(1):before, note[type = 'uuid-0a31c9cc-4252-355e-87cc-e1ca516dacdb'] > term:nth-of-type(1):before,
-note[type = 'uuid-9d0f4561-7312-3d4c-8db5-119c6a852071'] > term:nth-of-type(1):before"), "etym-note-languages-term-template"),
-
-ua:template("etym-note-term2-template",
-    <template>
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-bbc29f17-a728-3ebb-931d-56249488fb3d'] > term:nth-of-type(2):before,
-note[type = 'uuid-c2e64e06-d14b-308e-8802-5104b95b860f'] > term:nth-of-type(2):before"), "etym-note-term2-template")
-,
-ua:template("etym-note-trimitere.(cf.)-term2-template",
-    <template>
-        traducere&amp;nbsp;   
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-9d0f4561-7312-3d4c-8db5-119c6a852071'] > term:nth-of-type(2):before"), "etym-note-trimitere.(cf.)-term2-template")
-,
-ua:template("etym-note-nume.propriu-term1-template",
-    <template>
-    	De la numele propriu&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-dee348f1-d8b7-387d-bb51-5dfabfb1dd99'] > term:nth-of-type(1):before"), "etym-note-nume.propriu-term1-template")
-,
-ua:template("etym-note-nume.propriu-term2-template",
-    <template>
-    	&amp;nbsp;+ suf.&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-dee348f1-d8b7-387d-bb51-5dfabfb1dd99'] > term:nth-of-type(2):before"), "etym-note-nume.propriu-term2-template")
-,
-ua:template("etym-note-izvor-term-template",
-    <template>
-    	Explicații din izvor&amp;nbsp;
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-c23988ce-0a96-34e3-82fb-a07af5058502'] > term:nth-of-type(1):before"), "etym-note-izvor-term-template")
-,
-ua:template("etym-note-trimitere.intrare-term2-template",
-    <template>
-    	Nr. omonim&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(2):before"), "etym-note-trimitere.intrare-term2-template")
-,
-ua:template("etym-note-trimitere.intrare-term3-template",
-    <template>
-    	Nr. sens&amp;nbsp;<input data-ua-ref="{@corresp}" size="10" /> 
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'uuid-06c1a37f-bd24-3e45-ab93-02147fcebe5d'] > term:nth-of-type(3):before"), "etym-note-trimitere.intrare-term3-template")
-,
-ua:template("bibliographic-references-before-template",
-    <template>
-        Referințe bibliografice&amp;nbsp;
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("note[type = 'bibliographic-references']:before"), "bibliographic-references-before-template")
-,
-ua:template("bibl-template",
-    <template>
-        Izvor:&amp;nbsp;
-        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update('resources/xquery/deleteBiblElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
-        <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
-            <option label="" value="unknown" />
-            <option label="ap." value="ap." />
-            <option label="în" value="în" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):before"), "bibl-template"),
-
-ua:template("bibl-buttons-template",
-    <template>
-        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update('resources/xquery/deleteBiblElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("form > bibl:after, etym > bibl:after, re > bibl:after, note > bibl:after"), "bibl-buttons-template"),
 
 ua:template("bibl-author-reference-template",
     <template>

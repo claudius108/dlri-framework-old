@@ -24,11 +24,11 @@ TEI:before {
 }
 
 title, author, editor, syll, stress, term, form[type = 'headword'] > orth, form[type = 'grammatical-information-for-plural'] > number, form[type = 'writing'] > oVar,
-form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], note, bibl > date, idno, ptr, re > def, form > pron {
+form[type = 'abbreviation'] > abbr, form[type='pronunciation'] > pRef, case, form[type='details-for-grammatical-information-for-verb'], bibl > date, idno, ptr, re > def, form > pron {
 	visibility: "-oxy-collapse-text";
 }
 
-sense > form > usg, citedRange {
+sense > form > usg, citedRange, etym > note {
     visibility: visible;
 }
 
@@ -135,15 +135,11 @@ bibl > * {
 	display: inline-block;
 }
 
-etym > note > * {
-    display: none;
-}
-
 graphic {
     content: oxy_browser(href, oxy_url(attr(url)), width, 1000px, height, 600px);
 }
 
-sense > def, citedRange, quote, usg {
+sense > def, citedRange, quote, usg, etym > note {
     width: 1000px;
     border: 1px solid black;
     background-color: #ffffff;
@@ -524,4 +520,71 @@ bibl > ptr {
 		oxy_editor(type, combo, edit, "@target", values, oxy_xpath(oxy_concat('let $q := lower-case(./text()) return string-join(doc("', oxy_url('${framework}/resources/xml/bibliographic-references.xml'), '")/*/*[contains(lower-case(.), $q)]/@value, ",")')), labels, oxy_xpath(oxy_concat('let $q := lower-case(./text()) return string-join(doc("', oxy_url('${framework}/resources/xml/bibliographic-references.xml'), '")/*/*[contains(lower-case(.), $q)], ",")')), columns, 22, editable, false)
 		oxy_editor(type, text, edit, "#text", columns, 10)
 		oxy_editor(type, button, action, oxy_action(name, "Căutare", operation, "ro.sync.ecss.extensions.commons.operations.XQueryOperation", arg-action, "After", arg-script, "resources/xquery/get-bibliographic-references.xql"), transparent, true);
+}
+
+etym > note:before {
+	display:block;
+	background-color: #cccccc;
+	-oxy-append-content:
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Bold16.png'),
+				name, 'Bold', 
+				description, 'Textul selectat este redat îngroșat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="bold"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+		oxy_button(
+			transparent, true,
+			actionContext, caret,
+			action, oxy_action(
+				icon, url('/images/Italic16.png'),
+				name, 'Italic', 
+				description, 'Textul selectat este redat înclinat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="italic"/>',
+				arg-insertLocation, 'caret'
+			)
+		)
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Subscript16.png'),
+				name, 'Exponent', 
+				description, 'Textul selectat este redat la indice.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="subscript"/>',
+				arg-insertLocation, 'caret'
+			)
+        )   
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('/images/Superscript16.png'),
+				name, 'Exponent', 
+				description, 'Textul selectat este redat la exponent.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="superscript"/>',
+				arg-insertLocation, 'caret'
+			)
+        )
+        oxy_button(
+        	transparent, true,
+        	actionContext, caret,
+        	action, oxy_action(
+        		icon, url('../../resources/images/Spaced16.png'),
+				name, 'Spațiat', 
+				description, 'Textul selectat este redat spațiat.', 
+				operation, 'ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation', 
+				arg-element, '<hi xmlns="http://www.tei-c.org/ns/1.0" rend="spaced"/>',
+				arg-insertLocation, 'caret'
+			)
+        )          
+        ;
 }
