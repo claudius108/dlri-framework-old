@@ -15,16 +15,6 @@ declare default element namespace "http://www.tei-c.org/ns/1.0";
 		return replace node . with $processed-template
 	else ()
 	,
-	if (@type = 'unul.sau.mai.multe.sensuri-sensul-cf.' and @targetLang != 'ro')
-	then
-		let $processed-template :=
-			copy $template := $dlr:term-unul.sau.mai.multe.sensuri-sensul-cf.-template
-			modify replace value of node $template/@xml:lang with ./@targetLang
-			return $template
-			
-		return replace node . with $processed-template
-	else ()
-	,
 	if (@type = 'formație.internă-compus-format.din-bază' and @targetLang != 'ro')
 	then
 		let $processed-template :=

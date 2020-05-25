@@ -601,27 +601,16 @@ ua:template("element.extern-calc-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-calc'] ~ term"), "element.extern-calc-template"),
 
-ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template",
-    <template>
-        Cf.&amp;nbsp;
-        {
-            $languages-template
-        }
-        <input data-ua-ref="{text()}" size="22" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-term-template"),
-
-ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-ptr-template",
     <template>
         Cf. și&amp;nbsp;
         {
-            $languages-template
+            $target-languages-template
         }
         <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..și.etimon'] ~ term:after"), "unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-template"),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..și.etimon'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-ptr-template"),
 
 ua:template("element.extern-trimitere-template",
     <template>
@@ -726,18 +715,16 @@ ua:template("una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-tem
 ),
 ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'una.sau.mai.multe.variante.lexicale-cf.']:after"), "una.sau.mai.multe.variante.lexicale-*-trimitere-cf..cuvânt-ptr-template")
 ,
-ua:template("unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template",
+ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template",
     <template>
     	Cf.&amp;nbsp;
         {
             $target-languages-template
         }
-        {
-            ua:get-template('ptr-template')
-        }
+        <input data-ua-ref="{text()}" size="22" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("etym > ptr[type = 'unul.sau.mai.multe.sensuri-sensul-cf.']:after"), "unul.sau.mai.multe.sensuri-sensul-cf.-ptr-template")
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template")
 ,
 ua:template("formație.internă-compus-format.din-bază-ptr-template",
     <template>
