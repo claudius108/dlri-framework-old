@@ -607,7 +607,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-ptr-template",
         {
             $target-languages-template
         }
-        <input data-ua-ref="{text()}" size="22" />
+        <input data-ua-ref="{@target}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..și.etimon'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-ptr-template"),
@@ -721,7 +721,7 @@ ua:template("unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template",
         {
             $target-languages-template
         }
-        <input data-ua-ref="{text()}" size="22" />
+        <input data-ua-ref="{@target}" size="22" />
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'unul.sau.mai.multe.sensuri-sensul-cf..etimon'] ~ ptr:after"), "unul.sau.mai.multe.sensuri-sensul-cf..etimon-ptr-template")
