@@ -1040,7 +1040,7 @@ ua:template("pos-s-gen-before",
         </select>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ gen:before"), "pos-s-gen-before")
+ua:attach-template(ua-dt:css-selector("pos[value = 's.'] ~ gen:before, pos[value = 'adj.'] ~ gen:before"), "pos-s-gen-before")
 ,
 ua:template("pos-s-number-before",
     <template>
