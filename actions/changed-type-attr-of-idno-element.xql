@@ -135,6 +135,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'formație.internă-singular.refăcut.după.plural',
             'formație.internă-denumire.comercială',
             'element.necunoscut',
+            'et..nes.',
             'variantă-directă-sg..refăcut.după.plural',
             'variantă-directă-prin.etimologie.populară',
             'variantă-directă-prin.accidente.fonetice-afereză',
