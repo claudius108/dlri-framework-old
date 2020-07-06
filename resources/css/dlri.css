@@ -131,6 +131,44 @@ bibl {
 	margin-left: 10px;
 }
 
+bibl:before {
+	content:
+        oxy_button(
+        	transparent, true,
+        	action, oxy_action(
+				name, 'Izvor', 
+                icon, url('../../resources/images/add.png'),
+				operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation",
+                arg-script, "resources/xquery/insertBiblElement.xql"
+			)
+        ) 	
+        oxy_button(
+        	transparent, true,
+            visible, oxy_xpath("count(parent::*/bibl) > 1"),
+        	action, oxy_action(
+				name, 'Ștergere', 
+                icon, url('../../resources/images/delete.png'),
+				operation, "ro.sync.ecss.extensions.commons.operations.XQueryUpdateOperation",
+                arg-script, "resources/xquery/deleteCurrentElement.xq"
+			)
+        )        
+	;
+}
+
+bibl:not([type = 'author-reference']):before {
+    -oxy-prepend-content:
+        "Izvor: "
+        oxy_editor(
+            type, combo,
+            edit, "@type",
+            values, "unknown,ap.,cf.,în",
+            labels, ",ap.,cf.,în",
+            columns, 10,
+            editable, false
+        )
+    ;
+}
+
 bibl > * {
 	display: inline-block;
 }

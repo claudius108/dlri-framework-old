@@ -941,27 +941,6 @@ ua:template("etym-note-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > note:before"), "etym-note-template"),
 
-ua:template("bibl-template",
-    <template>
-        Izvor:&amp;nbsp;
-        <select data-ua-ref="{@type}" contenteditable="false" style="width: 10px;">
-            <option label="" value="unknown" />
-            <option label="ap." value="ap." />
-            <option label="cf." value="cf." />
-            <option label="în" value="în" />
-        </select>
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl:not([type = 'author-reference']):before"), "bibl-template"),
-
-ua:template("bibl-buttons-template",
-    <template>
-        <button onclick="{oxy:xquery-update-action('insertBiblElement')}" style="background-color: transparent; visibility: {count(bibl) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("bibl:after"), "bibl-buttons-template"),
-
 ua:template("bibl-author-reference-template",
     <template>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
