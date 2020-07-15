@@ -1488,6 +1488,8 @@ ua:template("form-grammatical-information-for-verb-per",
             <option label="pers. 1 şi" value="pers. 1 şi" />
             <option label="pers. 2 şi" value="pers. 2 şi" />
             <option label="pers. 3 şi" value="pers. 3 şi" />
+            <option label="pers. 3 și 6" value="pers. 3 și 6" />
+            <option label="pers. 3 și 6 și" value="pers. 3 și 6 și" />
             <option label="pers. 4 şi" value="pers. 4 şi" />
             <option label="pers. 5 şi" value="pers. 5 şi" />
             <option label="pers. 6 şi" value="pers. 6 şi" />            
