@@ -151,6 +151,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             'variantă-directă-refăcut.după.forma.articulată',
             'variantă-directă-refăcut.după.sg..art.',	            
             'variantă-directă-cu.schimbare.de.suf.',
+            'variantă-directă-etimon.variantă-cu.românizarea.sufixului',
             'loc.lat.',
             'formație.internă-onomatopee',
             'variantă-directă-etimon.variantă-prin.hiperurbanism'
@@ -173,7 +174,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             or
 	    	(
 	    		starts-with(@type, 'variantă-directă-etimon.variantă')
-	    		and @type != 'variantă-directă-etimon.variantă-prin.hiperurbanism'
+	    		and not(@type = ('variantă-directă-etimon.variantă-prin.hiperurbanism', 'variantă-directă-etimon.variantă-cu.românizarea.sufixului'))
 	    	)            
     )
     then (
