@@ -169,7 +169,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'variantă-directă-din.lat.',
                 'element.extern-trimitere-Cf.',
                 'element.extern-trimitere-După',
-                'cuvânt.internațional'
+                'cuvânt.internațional',
+                'variantă-directă-sub.influența.etimon.extern'
             )
             or
 	    	(
@@ -214,7 +215,21 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
         insert node $dlr:ptr-template after .
     )
-    else (), 
+    else (),
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     if (starts-with(@type, 'una.sau.mai.multe.variante.lexicale-') and ends-with(@type, '-trimitere-cf..cuvânt'))
     then (
         insert nodes ($dlr:term-una.sau.mai.multe.variante.lexicale-template, $dlr:ptr-una.sau.mai.multe.variante.lexicale-cf.-template) after .
