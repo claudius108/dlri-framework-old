@@ -600,10 +600,6 @@ ua:template("element.extern-calc-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'element.extern-calc'] ~ term"), "element.extern-calc-template"),
-
-
-
-
 ua:template("variantă-directă-sub.influența.etimon.extern-template",
     <template>
         Limba&amp;nbsp;
@@ -614,12 +610,12 @@ ua:template("variantă-directă-sub.influența.etimon.extern-template",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-sub.influența.etimon.extern'] ~ term"), "variantă-directă-sub.influența.etimon.extern-template"),
-
-
-
-
-
-
+ua:template("variantă-directă-latinizat.după-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-latinizat.după'] ~ term"), "variantă-directă-latinizat.după-template"),
 ua:template("unul.sau.mai.multe.sensuri-sensul-cf..și.etimon-ptr-template",
     <template>
         Cf. și&amp;nbsp;

@@ -158,7 +158,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
         )
     )
     then ()
-    else (),  
+    else (),
+    
+    
     if (@type =
             (
                 'formație.internă-calc',
@@ -170,7 +172,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'element.extern-trimitere-Cf.',
                 'element.extern-trimitere-După',
                 'cuvânt.internațional',
-                'variantă-directă-sub.influența.etimon.extern'
+                'variantă-directă-sub.influența.etimon.extern',
+                'variantă-directă-latinizat.după'
             )
             or
 	    	(
@@ -181,7 +184,9 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     then (
             insert node $dlr:term-template after .
     )
-    else (),         
+    else (), 
+    
+    
     if (@type = (
     		'formație.internă-trimitere-V.',
     		'formație.internă-derivat.îndepărtat',
