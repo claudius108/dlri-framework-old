@@ -173,7 +173,8 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 'element.extern-trimitere-După',
                 'cuvânt.internațional',
                 'variantă-directă-sub.influența.etimon.extern',
-                'variantă-directă-latinizat.după'
+                'variantă-directă-latinizat.după',
+                'variantă-directă-etimon.variantă-din.etimon.intern'
             )
             or
 	    	(

@@ -649,6 +649,13 @@ ua:template("variantă-directă-etimon.variantă-template",
 ),
 ua:attach-template(ua-dt:css-selector("etym > idno[type ^= 'variantă-directă-etimon.variantă'] ~ term"), "variantă-directă-etimon.variantă-template"),
 
+ua:template("variantă-directă-etimon.variantă-din.etimon.intern-template",
+    <template>
+        <input data-ua-ref="{text()}" size="22" />
+    </template>
+),
+ua:attach-template(ua-dt:css-selector("etym > idno[type = 'variantă-directă-etimon.variantă-din.etimon.intern'] ~ term"), "variantă-directă-etimon.variantă-din.etimon.intern-template"),
+
 ua:template("cuv.de.origine-term-1-etymon",
     <template>
         Cuvânt de origine&amp;nbsp;
