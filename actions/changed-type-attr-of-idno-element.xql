@@ -192,7 +192,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
     		'formație.internă-trimitere-V.',
     		'formație.internă-derivat.îndepărtat',
             'formație.internă-trimitere-De.la-numele.ştiințific.al.plantei',
-            'formație.internă-trimitere-De.la-n..pr.',
+            'formație.internă-trimitere-De.la-s..pr.',
             'formație.internă-trimitere-De.la-numele.de.localitate',
             'formație.internă-trimitere-De.la-numele.sărbătorii.religioase',
             'formație.internă-trimitere-De.la-numele.ştiințific.al.planetei',
