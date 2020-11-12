@@ -1785,7 +1785,8 @@ ua:template("sense-def-before-template",
         <button onclick="{oxy:xquery-update-action('insertUsgElement')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::usg[@corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
         <button onclick="{oxy:xquery-update-action('insertRemoteSynonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'remote-syn' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
-        <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>
+        <button onclick="{oxy:xquery-update-action('insertAntonym')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::xr[@type = 'antonim' and @corresp = concat('#', $context/@xml:id)]) = 0};"/>        
+        <button onclick="{oxy:xquery-update('resources/xquery/bibl-for-def.xql')}" data-showIcon="false" style="visibility: {let $context := . return count($context/following-sibling::bibl[@type = 'bibl-for-def' and @corresp = concat('#', $context/@xml:id)]) = 0};">Atestare definiție</button>        
         <button onclick="{oxy:xquery-update('resources/xquery/insertDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update('resources/xquery/deleteDefElement.xql')}" style="background-color: transparent;"><img src="../../resources/images/delete.png" /></button>
         \00000A
