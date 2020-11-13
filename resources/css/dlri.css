@@ -144,7 +144,7 @@ bibl:before {
         ) 	
         oxy_button(
         	transparent, true,
-            visible, oxy_xpath("count(parent::*/bibl) > 1"),
+            visible, oxy_xpath("if (@subtype = 'bibl-for-def') then count(parent::*/bibl) > 0 else count(parent::*/bibl) > 1"),
         	action, oxy_action(
 				name, 'Ștergere', 
                 icon, url('../../resources/images/delete.png'),
