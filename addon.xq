@@ -1613,7 +1613,7 @@ ua:template("sense-currentEdited-value-before",
         </select>
         <button onclick="{oxy:xquery-update-action('addGramGrp')}" data-showIcon="false" style="visibility: {count(gramGrp) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/globalUsgElementIntoSense.xql')}" style="visibility: {count(usg) = 0};">Ind. fol. globală</button>        
-    	<button onclick="{oxy:xquery-update('resources/xquery/firstSemanticalUnit.xql')}" style="visibility: {count(form[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
+    	<button onclick="{oxy:xquery-update('resources/xquery/firstSemanticalUnit.xql')}" style="visibility: {count(re[@type = 'unitate-semantică-subsumată']) = 0};">Expr. etc.</button>
         \00000A
         <button onclick="{oxy:xquery-update('resources/xquery/firstDefElement.xql')}" style="visibility: {count(def | xr[@type = 'syn']) = 0};">Def. analitică</button>
         <button onclick="{oxy:xquery-update('resources/xquery/globalSynonym.xql')}">Def. sinonimică</button>
@@ -1629,18 +1629,18 @@ ua:template("sense-currentEdited-value-before",
 ),
 ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-value-before"),
 
-ua:template("form-unitate-semantică-subsumată",
+ua:template("re-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;
         <button onclick="{oxy:xquery-update('resources/xquery/semanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
-        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/form[@type = 'unitate-semantică-subsumată']) > 0};" />
+        <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/re[@type = 'unitate-semantică-subsumată']) > 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
         <button onclick="{oxy:xquery-update('resources/xquery/insert-subc-unitate-semantică-subsumată.xql')}" style="visibility: {count(subc) = 0};">Tip verbal</button>
         <button onclick="{oxy:xquery-update-action('addFirstAbbreviationSection')}" style="visibility: {count(form[@type = 'abbreviation']) = 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/addTermOfEtymType.xql')}" style="visibility: {count(term[@type = 'etym']) = 0};">Etimologie</button>
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("sense > form[type = 'unitate-semantică-subsumată']:before"), "form-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("sense > re[type = 'unitate-semantică-subsumată']:before"), "re-unitate-semantică-subsumată"),
 
 ua:template("idno-unitate-semantică-subsumată",
     <template>
@@ -1657,7 +1657,7 @@ ua:template("term1-unitate-semantică-subsumată",
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term:nth-of-type(1):before"), "term1-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("re[type = 'unitate-semantică-subsumată'] > term:nth-of-type(1):before"), "term1-unitate-semantică-subsumată"),
 
 ua:template("subc-unitate-semantică-subsumată-template",
     <template>
@@ -1674,7 +1674,7 @@ ua:template("subc-unitate-semantică-subsumată-template",
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent;" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > subc:before"), "subc-unitate-semantică-subsumată-template"),
+ua:attach-template(ua-dt:css-selector("re[type = 'unitate-semantică-subsumată'] > subc:before"), "subc-unitate-semantică-subsumată-template"),
 
 ua:template("term2-unitate-semantică-subsumată",
     <template>
@@ -1685,7 +1685,7 @@ ua:template("term2-unitate-semantică-subsumată",
         <input data-ua-ref="{text()}" size="70" />
     </template>
 ),
-ua:attach-template(ua-dt:css-selector("form[type = 'unitate-semantică-subsumată'] > term[type = 'etym']:before"), "term2-unitate-semantică-subsumată"),
+ua:attach-template(ua-dt:css-selector("re[type = 'unitate-semantică-subsumată'] > term[type = 'etym']:before"), "term2-unitate-semantică-subsumată"),
 
 ua:template("author-before",
     <template>

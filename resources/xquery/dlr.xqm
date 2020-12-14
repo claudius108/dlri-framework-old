@@ -119,10 +119,10 @@ declare variable $dlr:sense-template as element() :=
 ;
 
 declare variable $dlr:semantic-unit-template as element() :=
-	<form xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
+	<re xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
 		<idno n="tip-unitate-semantică-subsumată" type="unknown" />
 		<term />
-	</form>
+	</re>
 ;
 
 declare variable $dlr:usg-container-template as element() :=

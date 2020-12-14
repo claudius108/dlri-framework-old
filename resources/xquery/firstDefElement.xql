@@ -12,7 +12,7 @@ let $processed-template :=
 	modify replace value of node $template/@xml:id with concat('uuid-', uuid:randomUUID())
 	return $template
 	
-let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:form[@type = 'unitate-semantică-subsumată'])[last()]
+let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:re[@type = 'unitate-semantică-subsumată'])[last()]
 	
 return
 	if ($delimiter)

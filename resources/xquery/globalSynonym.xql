@@ -16,7 +16,7 @@ let $processed-template :=
     )
 	
 	return $template
-let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:form[@type = 'unitate-semantică-subsumată'] | $context-node/tei:xr[@type = 'syn'])[last()]
+let $delimiter := ($context-node/tei:gramGrp | $context-node/tei:usg | $context-node/tei:re[@type = 'unitate-semantică-subsumată'] | $context-node/tei:xr[@type = 'syn'])[last()]
 
 return
     if ($delimiter)
