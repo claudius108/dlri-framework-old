@@ -1632,7 +1632,6 @@ ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-valu
 ua:template("re-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;
-        Tip:&amp;nbsp;
 	    <datalist id="semantic-units" />
 	    <input type="checkbox" data-ua-ref="{@subtype}" size="40" list="semantic-units" />        
         <button onclick="{oxy:xquery-update('resources/xquery/semanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
