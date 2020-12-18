@@ -1632,6 +1632,9 @@ ua:attach-template(ua-dt:css-selector("sense:before"), "sense-currentEdited-valu
 ua:template("re-unitate-semantică-subsumată",
     <template>
         Unitate semantică subsumată:&amp;nbsp;
+        Tip:&amp;nbsp;
+	    <datalist id="semantic-units" />
+	    <input type="checkbox" data-ua-ref="{@subtype}" size="40" list="semantic-units" />        
         <button onclick="{oxy:xquery-update('resources/xquery/semanticalUnit.xql')}" style="background-color: transparent;"><img src="../../resources/images/add.png" /></button>
         <button onclick="{oxy:xquery-update-action('deleteCurrentElement')}" style="background-color: transparent; visibility: {count(parent::*/re[@type = 'unitate-semantică-subsumată']) > 0};" />
         <button onclick="{oxy:xquery-update('resources/xquery/insertFirstUsgElementAsFirstIntoElement.xql')}" style="visibility: {count(usg) = 0};">Ind. fol.</button>
@@ -1641,15 +1644,6 @@ ua:template("re-unitate-semantică-subsumată",
     </template>
 ),
 ua:attach-template(ua-dt:css-selector("sense > re[type = 'unitate-semantică-subsumată']:before"), "re-unitate-semantică-subsumată"),
-
-ua:template("idno-unitate-semantică-subsumată",
-    <template>
-        Tip:&amp;nbsp;
-	    <datalist id="semantic-units" />
-	    <input type="checkbox" data-ua-ref="{@type}" size="40" list="semantic-units" />
-    </template>
-),
-ua:attach-template(ua-dt:css-selector("idno[n = 'tip-unitate-semantică-subsumată']"), "idno-unitate-semantică-subsumată"),
 
 ua:template("term1-unitate-semantică-subsumată",
     <template>

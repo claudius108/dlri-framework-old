@@ -119,8 +119,7 @@ declare variable $dlr:sense-template as element() :=
 ;
 
 declare variable $dlr:semantic-unit-template as element() :=
-	<re xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată">
-		<idno n="tip-unitate-semantică-subsumată" type="unknown" />
+	<re xmlns="http://www.tei-c.org/ns/1.0" type="unitate-semantică-subsumată" subtype="unknown">
 		<term />
 	</re>
 ;
